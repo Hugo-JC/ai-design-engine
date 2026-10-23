@@ -1,0 +1,26 @@
+# AI DESIGN ENGINE RULES
+
+Sempre que for gerar componentes de UI, páginas ou layouts de frontend, siga rigorosamente as diretrizes contidas nos ficheiros:
+- `01-rules-and-constraints/ai-design-rules.md`
+- `01-rules-and-constraints/anti-patterns.md`
+- `02-styles-and-tokens/design-styles.json`
+- `03-references/personality-extractor.md` (escolha do style_id a partir do prompt)
+- `03-references/layout-archetypes.md` (opções de layout para fugir do genérico)
+- `03-references/curated-references.md` (marcas e padrões a estudar por nicho)
+- `03-references/component-catalog.md` (exemplos Slop vs. Elite)
+- `04-agent-prompts/system-prompt-auditor.md` (fluxo de trabalho e auto-auditoria)
+
+## REGRAS DE EXECUÇÃO RÁPIDA:
+1. NUNCA gere layouts genéricos com gradientes de roxo neon ou botões com `border-radius: 0` a menos que o estilo seja explicitamente Neo-Brutalismo.
+2. Evite o uso desnecessário de linhas horizontais (`<hr>` ou `---`). Prefira espaçamento (padding/margin) no grid de 8px para separar conteúdos.
+3. Adapte a personalidade visual (Cores, Tipografia, Elevação) ao tom de voz do utilizador e ao nicho do projeto.
+4. Garanta contraste WCAG AA mínimo em todos os textos.
+
+## REGRAS DE CONSISTÊNCIA E ACABAMENTO:
+5. ANTES de escrever código, escreva o DESIGN BRIEF (formato em `04-agent-prompts/system-prompt-auditor.md`). O brief fixa style_id, modo, fontes e arquétipo de layout.
+6. Use os valores do `style_id` escolhido (cores, raio, fontes). Não invente paletas fora do token, a menos que o utilizador as peça.
+7. Escolha um arquétipo de hero/secções em `layout-archetypes.md`. O split "texto à esquerda + imagem à direita" é só mais uma opção, não o padrão.
+8. Títulos: tracking entre `-0.02em` e `0em`, com `text-wrap: balance`. Sem palavras órfãs.
+9. Cards/badges flutuantes nunca tapam o elemento principal da ilustração.
+10. Divisores disfarçados (`border-t`, `border-b`, `divide-y`, `h-px`) contam como `<hr>`.
+11. No fim, corra `node tools/validate-design.js <ficheiro>` e corrija os avisos relevantes.

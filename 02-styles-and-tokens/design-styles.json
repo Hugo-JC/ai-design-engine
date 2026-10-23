@@ -1,0 +1,222 @@
+{
+  "name": "AI Design Engine Preset Tokens",
+  "version": 2,
+  "selection_rules": {
+    "how_to_choose": "Cruzar as palavras-chave do prompt com o campo 'keywords' de cada estilo e com 03-references/personality-extractor.md. Escolher UM style_id e registá-lo no DESIGN BRIEF.",
+    "tie_breaker": "Em caso de empate, escolher o estilo cuja 'description' descreve melhor o nicho. Nunca sortear.",
+    "mode_rule": "Respeitar o campo 'mode' do estilo. Só trocar para a variante dark/light do mesmo nicho quando o prompt o sugerir (ex: 'sofisticado', 'premium', 'noturno' -> variante dark).",
+    "override_rule": "Se o utilizador pedir cores ou fontes específicas, estas substituem o token, mas contraste WCAG AA e regras de anti-patterns continuam a valer."
+  },
+  "global_constraints": {
+    "spacing_grid": "8px (tolerância mínima de 4px para micro-ajustes)",
+    "heading_tracking_range": "-0.02em a 0em",
+    "min_text_contrast": "4.5:1 (texto normal) e 3:1 (texto grande)",
+    "accent_max_share": "10% da superfície"
+  },
+  "styles": {
+    "saas_dark_modern": {
+      "name": "SaaS Dark Modern",
+      "description": "Estilo limpo, focado em alta tecnologia, desenvolvedores e produtos modernos.",
+      "keywords": ["saas", "dashboard", "developer", "api", "ia", "startup", "moderno", "produto digital"],
+      "mode": "dark",
+      "colors": {
+        "background": "#09090B",
+        "surface": "#18181B",
+        "border": "#27272A",
+        "text_primary": "#FAFAFA",
+        "text_secondary": "#A1A1AA",
+        "accent": "#6366F1"
+      },
+      "radius": "8px",
+      "typography": "Inter, Plus Jakarta Sans, Geist",
+      "font_display": "Geist",
+      "font_body": "Inter",
+      "heading_tracking": "-0.02em",
+      "accent_usage": "CTA primário, badges e estado ativo"
+    },
+    "clean_editorial": {
+      "name": "Clean Editorial",
+      "description": "Focado em leitura, blogs, portfólios sofisticados e marcas de luxo/mídia.",
+      "keywords": ["blog", "portfólio", "editorial", "revista", "luxo", "mídia", "artigos", "educativo"],
+      "mode": "light",
+      "colors": {
+        "background": "#FBFBFB",
+        "surface": "#FFFFFF",
+        "border": "#E4E4E7",
+        "text_primary": "#09090B",
+        "text_secondary": "#71717A",
+        "accent": "#18181B"
+      },
+      "radius": "4px",
+      "typography": "Newsreader (Titulos) + Inter (Corpo)",
+      "font_display": "Newsreader",
+      "font_body": "Inter",
+      "heading_tracking": "-0.01em",
+      "accent_usage": "CTA primário e links; destaque tipográfico em vez de cor"
+    },
+    "bold_neobrutalism": {
+      "name": "Bold Neo-Brutalism",
+      "description": "Estilo jovem, expressivo, alto impacto visual com sombras duras.",
+      "keywords": ["jovem", "agressivo", "crypto", "web3", "ousado", "playful", "criativo", "rápido"],
+      "mode": "light",
+      "colors": {
+        "background": "#FEF08A",
+        "surface": "#FFFFFF",
+        "border": "#000000",
+        "text_primary": "#000000",
+        "text_secondary": "#18181B",
+        "accent": "#F43F5E"
+      },
+      "radius": "0px",
+      "border_width": "3px",
+      "shadow": "4px 4px 0px #000000",
+      "typography": "Space Grotesk, Syne",
+      "font_display": "Space Grotesk",
+      "font_body": "Space Grotesk",
+      "heading_tracking": "-0.02em",
+      "accent_usage": "CTA primário, stickers e badges"
+    },
+    "minimalist_corporate": {
+      "name": "Minimalist Corporate",
+      "description": "Aparência profissional, confiável e limpa para finanças, saúde ou enterprise.",
+      "keywords": ["enterprise", "bancário", "segurança", "finanças", "saúde", "corporate", "imobiliário", "marketplace", "confiança"],
+      "mode": "light",
+      "colors": {
+        "background": "#F8FAFC",
+        "surface": "#FFFFFF",
+        "border": "#E2E8F0",
+        "text_primary": "#0F172A",
+        "text_secondary": "#64748B",
+        "accent": "#2563EB"
+      },
+      "radius": "12px",
+      "typography": "SF Pro, Outfit, Roboto",
+      "font_display": "Outfit",
+      "font_body": "Inter",
+      "heading_tracking": "-0.02em",
+      "accent_usage": "CTA primário, links e estado ativo"
+    },
+    "glassmorphism_tech": {
+      "name": "Glassmorphism Tech",
+      "description": "Ideal para interfaces futuristas, dashboards e plataformas de IA avançadas.",
+      "keywords": ["futurista", "ia avançada", "dashboard", "tech", "glass", "plataforma de ia"],
+      "mode": "dark",
+      "colors": {
+        "background": "#030712",
+        "surface": "rgba(17, 24, 39, 0.7)",
+        "border": "rgba(255, 255, 255, 0.1)",
+        "text_primary": "#F9FAFB",
+        "text_secondary": "#9CA3AF",
+        "accent": "#38BDF8"
+      },
+      "backdrop_filter": "blur(16px)",
+      "radius": "16px",
+      "typography": "Geist, Inter",
+      "font_display": "Geist",
+      "font_body": "Inter",
+      "heading_tracking": "-0.02em",
+      "accent_usage": "CTA primário, indicadores e estado ativo"
+    },
+    "bento_grid_layout": {
+      "name": "Bento Grid Modern",
+      "description": "Inspirado na Apple e Vercel. Excelente para apresentar múltiplos recursos em mosaico visual.",
+      "keywords": ["bento", "mosaico", "múltiplos recursos", "produto", "apple", "vitrine de funcionalidades"],
+      "mode": "dark",
+      "colors": {
+        "background": "#000000",
+        "surface": "#111111",
+        "border": "#222222",
+        "text_primary": "#FFFFFF",
+        "text_secondary": "#888888",
+        "accent": "#FFFFFF"
+      },
+      "radius": "24px",
+      "gap": "16px",
+      "typography": "SF Pro Display, Inter",
+      "font_display": "Inter",
+      "font_body": "Inter",
+      "heading_tracking": "-0.02em",
+      "accent_usage": "CTA primário em branco sólido; hierarquia feita por tamanho das células"
+    },
+    "minimalist_warm": {
+      "name": "Minimalist Warm / Organic",
+      "description": "Perfeito para e-commerces, café, bem-estar, moda, branding e arquitetura.",
+      "keywords": ["acolhedor", "orgânico", "café", "saúde", "bem-estar", "moda", "arquitetura", "e-commerce", "artesanal"],
+      "mode": "light",
+      "colors": {
+        "background": "#FAF7F2",
+        "surface": "#FFFFFF",
+        "border": "#E8E2D9",
+        "text_primary": "#2C2A29",
+        "text_secondary": "#78716C",
+        "accent": "#D97706"
+      },
+      "radius": "12px",
+      "typography": "Playfair Display (Titulos) + Plus Jakarta Sans (Corpo)",
+      "font_display": "Playfair Display",
+      "font_body": "Plus Jakarta Sans",
+      "heading_tracking": "-0.01em",
+      "accent_usage": "CTA primário, 1 palavra do título e badges"
+    },
+    "minimalist_warm_dark": {
+      "name": "Minimalist Warm Dark",
+      "description": "Variante escura e sofisticada do Minimalist Warm. Torrefação, cacau, padaria premium, produtos artesanais de gama alta.",
+      "keywords": ["café premium", "torrefação", "cacau", "padaria", "artesanal", "sofisticado", "premium", "noturno", "acolhedor"],
+      "mode": "dark",
+      "colors": {
+        "background": "#1C1917",
+        "surface": "#292524",
+        "border": "#3F3A36",
+        "text_primary": "#FAF7F2",
+        "text_secondary": "#A8A29E",
+        "accent": "#F59E0B"
+      },
+      "radius": "16px",
+      "typography": "Playfair Display (Titulos) + Plus Jakarta Sans (Corpo)",
+      "font_display": "Playfair Display",
+      "font_body": "Plus Jakarta Sans",
+      "heading_tracking": "-0.01em",
+      "accent_usage": "CTA primário, 1 expressão em itálico no título e badges (nunca em números, ícones e bordas ao mesmo tempo)"
+    },
+    "organic_forest_dark": {
+      "name": "Organic Forest Dark",
+      "description": "Verde-floresta profundo com dourado discreto. Orgânico, sustentável, origem e natureza com tom premium.",
+      "keywords": ["orgânico", "natureza", "sustentável", "origem", "chá", "vinho", "herbal", "produtor", "terroir"],
+      "mode": "dark",
+      "colors": {
+        "background": "#0F1A14",
+        "surface": "#16241C",
+        "border": "#263A2F",
+        "text_primary": "#F4EFE4",
+        "text_secondary": "#A7B5A9",
+        "accent": "#D4AF5A"
+      },
+      "radius": "16px",
+      "typography": "Fraunces (Titulos) + Inter (Corpo)",
+      "font_display": "Fraunces",
+      "font_body": "Inter",
+      "heading_tracking": "-0.01em",
+      "accent_usage": "CTA primário e pequenos detalhes de origem/certificação"
+    },
+    "dark_craft_ink": {
+      "name": "Dark Craft / Ink",
+      "description": "Escuro, artesanal e de alto contraste, com tipografia forte. Tatuagem, barbearia, bares, marcas de atitude.",
+      "keywords": ["tatuagem", "barbearia", "bar", "rock", "couro", "artesanal escuro", "atitude", "estúdio"],
+      "mode": "dark",
+      "colors": {
+        "background": "#0A0A0A",
+        "surface": "#141414",
+        "border": "#2A2A2A",
+        "text_primary": "#F5F1E8",
+        "text_secondary": "#A3A3A3",
+        "accent": "#EF4444"
+      },
+      "radius": "6px",
+      "typography": "Bebas Neue (Titulos) + Inter (Corpo)",
+      "font_display": "Bebas Neue",
+      "font_body": "Inter",
+      "heading_tracking": "0em a 0.04em",
+      "accent_usage": "CTA primário e um único elemento de destaque por secção; texto sobre accent em branco ou preto com contraste >= 4.5:1"
+    }
+  }
+}
