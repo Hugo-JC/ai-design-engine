@@ -1,7 +1,8 @@
 // tools/validate-design.js
 // Execução: node tools/validate-design.js <ficheiro-html-ou-jsx> [<outro-ficheiro> ...] [--strict]
 // --strict: termina com código 1 se existirem avisos (útil em CI).
-// Nota: são verificações heurísticas. Confirme sempre no contexto do design.
+// Nota: são verificações heurísticas; o grid presume a escala Tailwind padrão de 4px.
+// Confirme sempre os avisos no contexto do design, sobretudo com tokens personalizados.
 
 const fs = require('fs');
 const path = require('path');
@@ -38,6 +39,28 @@ function where(content, hits, max = 5) {
 }
 
 // ---------- validação ----------
+function findTagMatches(content, pattern) {
+  return findAll(content, pattern);
+}
+
+function tagHasInlineState(tagText, patterns) {
+  return patterns.some((pattern) => new RegExp(pattern, 'i').test(tagText));
+}
+
+function isButtonLikeTag(hit) {
+  const tagText = hit.text;
+  const tagNameMatch = tagText.match(/^<([A-Za-z][A-Za-z0-9]*)\b/);
+  if (!tagNameMatch) return false;
+  const tagName = tagNameMatch[1];
+  if (/^button$/i.test(tagName) || /^[A-Z][A-Za-z0-9]*Button$/.test(tagName)) return true;
+  if (/^a$/i.test(tagName)) {
+    return /\bhref\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/i.test(tagText)
+      || /\brole\s*=\s*(?:"button"|'button'|button\b)/i.test(tagText);
+  }
+  if (/^input$/i.test(tagName)) return /\btype\s*=\s*(?:"(?:button|submit|reset)"|'(?:button|submit|reset)'|(?:button|submit|reset)\b)/i.test(tagText);
+  return false;
+}
+
 function validate(content) {
   const warnings = [];
 
@@ -46,29 +69,42 @@ function validate(content) {
   if (hr.length > 0) {
     warnings.push(`⚠️ Encontradas ${hr.length} tag(s) <hr> ${where(content, hr)}. Recomendação: Remova divisores rígidos e use espaçamento (gap/padding).`);
   }
+  const markdownRules = findAll(content, /(?:^|\n)\s*(?:---+|___+|\*\*\*+)\s*(?=\r?\n|$)/g)
+    .map((hit) => hit.text.startsWith('\n') ? { ...hit, index: hit.index + 1 } : hit);
+  if (markdownRules.length > 0) {
+    warnings.push(`⚠️ Encontrada(s) ${markdownRules.length} linha(s) horizontal(is) Markdown ${where(content, markdownRules)}. Prefira espaçamento ou mudança de superfície.`);
+  }
 
-  // 2. Divisores disfarçados (border-t, border-b, divide-y, h-px, border-top/bottom em CSS)
+  // 2. Divisores disfarçados conforme as regras (border-t/b, divide-y, h-px e border-top/bottom em CSS)
   const disguised = [
-    ...findAll(content, /\b(?:border-t|border-b|divide-y|divide-x)\b/),
+    ...findAll(content, /\b(?:border-t|border-b|divide-y)\b/),
     ...findAll(content, /\bh-px\b/),
-    ...findAll(content, /border-(?:top|bottom)\s*:\s*\d+px\s+(?:solid|dashed|dotted)/i),
+    ...findAll(content, /border-(?:top|bottom)\s*:\s*\d+(?:\.\d+)?px\s+(?:solid|dashed|dotted)/i),
   ];
   if (disguised.length > 0) {
     warnings.push(`⚠️ ${disguised.length} possível(eis) divisor(es) disfarçado(s) (border-t/b, divide-y, h-px) ${where(content, disguised)}. Se separam blocos soltos, troque por espaçamento ou mudança de fundo.`);
   }
 
   // 3. Checagem de botões com border-radius 0 sem contexto Neo-Brutalista
-  if (content.includes('rounded-none') && !content.includes('border-black')) {
-    warnings.push('⚠️ Detectado "rounded-none" (border-radius: 0). Garanta que isso é proposital ou aplique curvatura (rounded-md/lg).');
+  const squareButtons = findTagMatches(content, /<[A-Za-z][A-Za-z0-9]*\b[^>]*>/g)
+    .filter(isButtonLikeTag)
+    .filter((hit) => /\brounded-none\b/.test(hit.text))
+    .filter((hit) => !(/\bborder-black\b/.test(hit.text) && /\bshadow-(?:hard|neo|\[)/.test(hit.text)));
+  if (squareButtons.length > 0) {
+    warnings.push(`⚠️ ${squareButtons.length} botão(ões) com "rounded-none" sem sinais de estilo neo-brutalista ${where(content, squareButtons)}. Confirme que é uma decisão de estilo explícita.`);
   }
 
   // 4. Estados interativos (hover e focus)
-  if (content.includes('<button')) {
-    if (!/hover:|:hover/.test(content)) {
-      warnings.push('⚠️ Existem botões sem estado de hover (hover:bg-...). Adicione feedback visual para interatividade.');
+  const buttonTags = findTagMatches(content, /<[A-Za-z][A-Za-z0-9]*\b[^>]*>/g).filter(isButtonLikeTag);
+  const buttonWithoutHover = buttonTags.filter((hit) => !tagHasInlineState(hit.text, ['hover:']));
+  const buttonWithoutFocus = buttonTags.filter((hit) => !tagHasInlineState(hit.text, ['focus:', 'focus-visible']));
+
+  if (buttonTags.length > 0) {
+    if (buttonWithoutHover.length > 0) {
+      warnings.push(`⚠️ ${buttonWithoutHover.length} botão(ões) sem estado de hover (hover:...) ${where(content, buttonWithoutHover)}. Adicione feedback visual para interatividade.`);
     }
-    if (!/focus:|focus-visible|:focus/.test(content)) {
-      warnings.push('⚠️ Existem botões sem estado de focus (focus-visible:ring-...). Garanta navegação por teclado visível.');
+    if (buttonWithoutFocus.length > 0) {
+      warnings.push(`⚠️ ${buttonWithoutFocus.length} botão(ões) sem estado de focus (focus-visible:...) ${where(content, buttonWithoutFocus)}. Garanta navegação por teclado visível.`);
     }
   }
 
@@ -86,22 +122,28 @@ function validate(content) {
   }
 
   // 6. Quebras de linha em títulos (text-wrap)
-  if (/<h1\b/i.test(content) && !/text-balance|text-wrap|textWrap|balance/.test(content)) {
-    warnings.push('⚠️ Existe <h1> sem "text-balance" / "text-wrap: balance". Evite palavras órfãs e quebras desiguais.');
+  const headingTags = findTagMatches(content, /<h[1-6]\b[^>]*>/gi);
+  const headingsWithoutBalance = headingTags.filter((hit) => !tagHasInlineState(hit.text, ['text-balance', 'text-wrap', 'textWrap', 'balance']));
+  if (headingsWithoutBalance.length > 0) {
+    warnings.push(`⚠️ ${headingsWithoutBalance.length} título(s) sem "text-balance" / "text-wrap: balance" ${where(content, headingsWithoutBalance)}. Evite palavras órfãs e quebras desiguais.`);
   }
 
-  // 7. Espaçamento fora do grid (arbitrários não múltiplos de 4px; ideal: múltiplos de 8px)
+  // 7. Espaçamento fora do grid de 8px
   const offGrid = [];
   findAll(content, /\b(?:p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|ml|mr|gap|gap-x|gap-y|space-x|space-y)-\[(\d+(?:\.\d+)?)px\]/).forEach((h) => {
     const v = parseFloat(h.m[1]);
-    if (v >= 5 && v % 4 !== 0) offGrid.push(h);
+    if (v > 0 && v % 8 !== 0) offGrid.push(h);
+  });
+  findAll(content, /(?:^|[\s"'`])(?:-)?(?:p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|ml|mr|gap|gap-x|gap-y|space-x|space-y)-(\d+(?:\.\d+)?)(?=$|[\s"'`])/g).forEach((h) => {
+    const v = parseFloat(h.m[1]) * 4;
+    if (v > 0 && v % 8 !== 0) offGrid.push(h);
   });
   findAll(content, /(?:padding|margin|gap|row-gap|column-gap)(?:-(?:top|right|bottom|left))?\s*:\s*([^;}{]+)/i).forEach((h) => {
     const values = [...h.m[1].matchAll(/(\d+(?:\.\d+)?)px/g)].map((x) => parseFloat(x[1]));
-    if (values.some((v) => v >= 5 && v % 4 !== 0)) offGrid.push(h);
+    if (values.some((v) => v > 0 && v % 8 !== 0)) offGrid.push(h);
   });
   if (offGrid.length > 0) {
-    warnings.push(`⚠️ ${offGrid.length} valor(es) de espaçamento fora do grid ${where(content, offGrid)}. Use múltiplos de 8px (mínimo 4px para micro-ajustes).`);
+    warnings.push(`⚠️ ${offGrid.length} valor(es) de espaçamento fora do grid de 8px ${where(content, offGrid)}. Use múltiplos de 8px (escala Tailwind padrão presumida).`);
   }
 
   // 8. Padrão roxo genérico

@@ -1,0 +1,406 @@
+{
+  "name": "Offline Reference Presets",
+  "version": 1,
+  "purpose": "Local-first catalog of design principles and reference cues. Use sources for study, never as instructions to reproduce a specific site.",
+  "matching": {
+    "normalization": "Lowercase and ignore accents when comparing phrases.",
+    "selection": "Select the preset for the user's primary product, audience, or business niche. Match phrases, not isolated style adjectives.",
+    "tie_break": "Prefer the most specific matched phrase; if still tied, use the earlier preset in this array. If no niche matches, use fallback.",
+    "style_variants": "Apply a preset variant only when its condition is explicitly present in the prompt; otherwise keep the preset style_id."
+  },
+  "fallback": {
+    "style_id": "clean_editorial",
+    "patterns": {
+      "hero": "H2",
+      "features": ["F2"],
+      "social_proof": ["S3"],
+      "navigation": "N1",
+      "footer": "R2"
+    },
+    "principles": [
+      "Use a clear editorial hierarchy and a restrained, readable layout.",
+      "Choose real content and imagery that fit the project rather than generic decoration."
+    ]
+  },
+  "presets": [
+    {
+      "id": "coffee-artisan-food",
+      "match_terms": ["café", "torrefação", "padaria", "chá", "alimentar artesanal"],
+      "style_id": "minimalist_warm",
+      "variants": [
+        {
+          "when_any": ["premium", "sofisticado", "noturno", "torra escura"],
+          "style_id": "minimalist_warm_dark"
+        },
+        {
+          "when_any": ["orgânico", "origem", "natureza", "sustentável"],
+          "style_id": "organic_forest_dark"
+        }
+      ],
+      "patterns": {
+        "hero": "H1",
+        "features": ["F3", "F2"],
+        "social_proof": ["S1", "S4"],
+        "navigation": "N1",
+        "footer": "R2"
+      },
+      "principles": [
+        "Foreground the product, its origin, process, and specific sensory details.",
+        "Use warm negative space and restrained editorial storytelling; show real product or producer imagery."
+      ],
+      "sources": [
+        {
+          "name": "Blue Bottle Coffee",
+          "url": "https://bluebottlecoffee.com/",
+          "pattern_cues": ["Product and origin storytelling", "Quiet composition and deliberate product photography"]
+        },
+        {
+          "name": "Onyx Coffee Lab",
+          "url": "https://onyxcoffeelab.com/",
+          "pattern_cues": ["Specific lot and process details", "Packaging and product as strong visual anchors"]
+        }
+      ]
+    },
+    {
+      "id": "wellness-health-beauty",
+      "match_terms": ["bem-estar", "wellness", "cosmética", "skincare", "saúde"],
+      "style_id": "minimalist_warm",
+      "variants": [
+        {
+          "when_any": ["luxo", "premium"],
+          "style_id": "clean_editorial"
+        }
+      ],
+      "patterns": {
+        "hero": "H2",
+        "features": ["F2"],
+        "social_proof": ["S1"],
+        "navigation": "N1",
+        "footer": "R2"
+      },
+      "principles": [
+        "Keep copy calm and concise with generous whitespace and tactile, truthful imagery.",
+        "Use credible product or care details instead of generic health claims or decorative icon overload."
+      ],
+      "sources": [
+        {
+          "name": "Aesop",
+          "url": "https://www.aesop.com/",
+          "pattern_cues": ["Measured editorial copy", "Material and product-led imagery"]
+        },
+        {
+          "name": "Headspace",
+          "url": "https://www.headspace.com/",
+          "pattern_cues": ["Approachable language", "Consistent, calm illustration and content hierarchy"]
+        }
+      ]
+    },
+    {
+      "id": "fashion-commerce",
+      "match_terms": ["moda", "e-commerce", "loja online", "vestuário"],
+      "style_id": "minimalist_warm",
+      "variants": [
+        {
+          "when_any": ["luxo", "premium"],
+          "style_id": "clean_editorial"
+        }
+      ],
+      "patterns": {
+        "hero": "H3",
+        "features": ["F1"],
+        "social_proof": ["S2"],
+        "navigation": "N1",
+        "footer": "R2"
+      },
+      "principles": [
+        "Let consistent product photography and useful product details lead.",
+        "Make price, materials, fit, and care easy to scan; keep promotion secondary."
+      ],
+      "sources": [
+        {
+          "name": "Everlane",
+          "url": "https://www.everlane.com/",
+          "pattern_cues": ["Product information and material details", "Consistent catalog presentation"]
+        },
+        {
+          "name": "Glossier",
+          "url": "https://www.glossier.com/",
+          "pattern_cues": ["Distinctive product photography", "Clear paths between editorial content and shopping"]
+        }
+      ]
+    },
+    {
+      "id": "saas-developer-ai",
+      "match_terms": ["saas", "api", "dashboard", "developer tools", "ferramentas para developers", "inteligência artificial", "ia"],
+      "style_id": "saas_dark_modern",
+      "variants": [
+        {
+          "when_any": ["futurista", "ia avançada", "glassmorphism"],
+          "style_id": "glassmorphism_tech"
+        },
+        {
+          "when_any": ["múltiplos recursos", "mosaico", "bento"],
+          "style_id": "bento_grid_layout"
+        }
+      ],
+      "patterns": {
+        "hero": "H4",
+        "features": ["F1", "F4"],
+        "social_proof": ["S2", "S3"],
+        "navigation": "N1",
+        "footer": "R2"
+      },
+      "principles": [
+        "Show the working product, a credible workflow, or code instead of abstract technology imagery.",
+        "Use distinct feature hierarchy and concrete evidence; avoid interchangeable feature cards and ornamental gradients."
+      ],
+      "sources": [
+        {
+          "name": "Linear",
+          "url": "https://linear.app/",
+          "pattern_cues": ["Product-led demonstrations", "Compact, high-clarity hierarchy"]
+        },
+        {
+          "name": "Vercel",
+          "url": "https://vercel.com/",
+          "pattern_cues": ["Technical proof and developer-facing language", "Clear product capability sections"]
+        },
+        {
+          "name": "Stripe",
+          "url": "https://stripe.com/",
+          "pattern_cues": ["Concrete product workflows", "Structured explanations of complex capabilities"]
+        }
+      ]
+    },
+    {
+      "id": "fintech-enterprise",
+      "match_terms": ["fintech", "finanças", "banco", "bancário", "seguros", "enterprise"],
+      "style_id": "minimalist_corporate",
+      "patterns": {
+        "hero": "H1",
+        "features": ["F5", "F3"],
+        "social_proof": ["S3", "S4"],
+        "navigation": "N1",
+        "footer": "R2"
+      },
+      "principles": [
+        "Make fees, security, eligibility, and next steps explicit and easy to compare.",
+        "Use restrained color, legible data displays, and substantiated trust signals."
+      ],
+      "sources": [
+        {
+          "name": "Stripe",
+          "url": "https://stripe.com/",
+          "pattern_cues": ["Clear explanations of money movement", "Product evidence paired with concise copy"]
+        },
+        {
+          "name": "Ramp",
+          "url": "https://ramp.com/",
+          "pattern_cues": ["Finance workflows presented as measurable outcomes", "Prominent product and trust information"]
+        },
+        {
+          "name": "Wise",
+          "url": "https://wise.com/",
+          "pattern_cues": ["Transparent pricing cues", "Plain-language explanations of transfers"]
+        }
+      ]
+    },
+    {
+      "id": "real-estate-marketplace",
+      "match_terms": ["imobiliário", "imobiliária", "marketplace", "imóveis", "alojamento"],
+      "style_id": "minimalist_corporate",
+      "variants": [
+        {
+          "when_any": ["moderno", "tecnológico"],
+          "style_id": "saas_dark_modern"
+        }
+      ],
+      "patterns": {
+        "hero": "H6",
+        "features": ["F3", "F1"],
+        "social_proof": ["S2", "S1"],
+        "navigation": "N1",
+        "footer": "R2"
+      },
+      "principles": [
+        "Put useful search controls first and keep the initial form to a few meaningful fields.",
+        "Make listing imagery, location, price, and verification cues easy to compare."
+      ],
+      "sources": [
+        {
+          "name": "Airbnb",
+          "url": "https://www.airbnb.com/",
+          "pattern_cues": ["Search-led discovery", "Large listing photography and scannable details"]
+        },
+        {
+          "name": "Zillow",
+          "url": "https://www.zillow.com/",
+          "pattern_cues": ["Search and map/list coordination", "Prominent listing price and location"]
+        }
+      ]
+    },
+    {
+      "id": "portfolio-editorial-education",
+      "match_terms": ["portfólio", "portfolio", "blog", "revista", "educação", "educativo", "publicação"],
+      "style_id": "clean_editorial",
+      "variants": [
+        {
+          "when_any": ["tecnológico"],
+          "style_id": "saas_dark_modern"
+        }
+      ],
+      "patterns": {
+        "hero": "H8",
+        "features": ["F2"],
+        "social_proof": ["S4"],
+        "navigation": "N1",
+        "footer": "R1"
+      },
+      "principles": [
+        "Prioritize typographic hierarchy, useful metadata, and a deliberate reading or project index.",
+        "Use real work, authorship, and publication details rather than generic card grids."
+      ],
+      "sources": [
+        {
+          "name": "Stripe Press",
+          "url": "https://press.stripe.com/",
+          "pattern_cues": ["Editorial pacing", "Distinctive book and author presentation"]
+        },
+        {
+          "name": "Substack",
+          "url": "https://substack.com/",
+          "pattern_cues": ["Publication identity and topic discovery", "Clear reading-oriented content hierarchy"]
+        },
+        {
+          "name": "Awwwards",
+          "url": "https://www.awwwards.com/",
+          "pattern_cues": ["Portfolio navigation and varied project presentation"]
+        }
+      ]
+    },
+    {
+      "id": "community-gaming",
+      "match_terms": ["comunidade", "jogos", "gaming", "discord", "streaming"],
+      "style_id": "saas_dark_modern",
+      "patterns": {
+        "hero": "H1",
+        "features": ["F1"],
+        "social_proof": ["S2"],
+        "navigation": "N1",
+        "footer": "R2"
+      },
+      "principles": [
+        "Make community activity, channels, events, or participation states tangible.",
+        "Use a deliberate brand accent against readable neutrals; avoid a generic corporate treatment."
+      ],
+      "sources": [
+        {
+          "name": "Discord",
+          "url": "https://discord.com/",
+          "pattern_cues": ["Community and channel discovery", "Participation-oriented product storytelling"]
+        },
+        {
+          "name": "Twitch",
+          "url": "https://www.twitch.tv/",
+          "pattern_cues": ["Live activity and creator discovery", "Clear status and audience signals"]
+        }
+      ]
+    },
+    {
+      "id": "tattoo-barber-nightlife",
+      "match_terms": ["tatuagem", "barbearia", "bar", "rock", "estúdio de tattoo"],
+      "style_id": "dark_craft_ink",
+      "patterns": {
+        "hero": "H3",
+        "features": ["F2"],
+        "social_proof": ["S1"],
+        "navigation": "N1",
+        "footer": "R1"
+      },
+      "principles": [
+        "Let authentic work photography, booking details, and strong type establish the character.",
+        "Use high contrast and a restrained accent; avoid corporate blue, generic gradients, and overly rounded controls."
+      ],
+      "sources": [
+        {
+          "name": "Brutalist Websites",
+          "url": "https://brutalistwebsites.com/",
+          "pattern_cues": ["Unconventional composition", "Direct, high-contrast typography"]
+        },
+        {
+          "name": "Fontsinuse",
+          "url": "https://fontsinuse.com/",
+          "pattern_cues": ["Typography research by context and medium"]
+        },
+        {
+          "name": "Liquid Death",
+          "url": "https://liquiddeath.com/",
+          "pattern_cues": ["Distinctive irreverent brand voice", "Packaging-led visual impact"]
+        }
+      ]
+    },
+    {
+      "id": "crypto-web3-youth",
+      "match_terms": ["crypto", "web3", "blockchain"],
+      "style_id": "bold_neobrutalism",
+      "patterns": {
+        "hero": "H7",
+        "features": ["F1"],
+        "social_proof": ["S2"],
+        "navigation": "N1",
+        "footer": "R1"
+      },
+      "principles": [
+        "Use bold flat color, visible structure, and strong typography with restraint.",
+        "Explain utility and risk plainly; avoid implying returns or using decorative motion that obscures content."
+      ],
+      "sources": [
+        {
+          "name": "Neobrutalism",
+          "url": "https://neobrutalism.dev/",
+          "pattern_cues": ["Hard edges and direct visual hierarchy", "Flat colors and decisive borders"]
+        },
+        {
+          "name": "Brutalist Websites",
+          "url": "https://brutalistwebsites.com/",
+          "pattern_cues": ["Expressive, unconventional web composition"]
+        }
+      ]
+    },
+    {
+      "id": "restaurant-hospitality",
+      "match_terms": ["restaurante", "hospitalidade", "hotel", "viagens", "turismo"],
+      "style_id": "minimalist_warm",
+      "patterns": {
+        "hero": "H3",
+        "features": ["F2"],
+        "social_proof": ["S1"],
+        "navigation": "N1",
+        "footer": "R2"
+      },
+      "principles": [
+        "Use authentic atmosphere imagery and concise sensory copy.",
+        "Keep menu or offering, opening hours, location, and reservation path easy to find."
+      ],
+      "sources": [
+        {
+          "name": "Noma",
+          "url": "https://noma.dk/",
+          "pattern_cues": ["Place and experience-led storytelling", "Editorial presentation of offerings"]
+        },
+        {
+          "name": "Blue Bottle Coffee",
+          "url": "https://bluebottlecoffee.com/",
+          "pattern_cues": ["Product and hospitality context", "Quiet, deliberate photography"]
+        }
+      ]
+    }
+  ],
+  "pattern_ids": {
+    "hero": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9"],
+    "features": ["F1", "F2", "F3", "F4", "F5", "F6"],
+    "social_proof": ["S1", "S2", "S3", "S4"],
+    "navigation": ["N1", "N2", "N3"],
+    "footer": ["R1", "R2"]
+  }
+}
