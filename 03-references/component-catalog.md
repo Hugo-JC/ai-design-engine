@@ -23,7 +23,7 @@ Este guia mostra como transformar código genérico gerado por IA em interfaces 
 
 <!-- CORRETO: Design elegante, legível e moderno -->
 <div class="bg-zinc-900/50 border border-white/10 p-6 rounded-2xl flex flex-col gap-4 hover:border-white/20 transition-all">
-  <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+  <div class="w-10 h-10 rounded-xl bg-teal-400/10 border border-teal-400/20 flex items-center justify-center text-teal-300">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
   </div>
   
@@ -32,7 +32,7 @@ Este guia mostra como transformar código genérico gerado por IA em interfaces 
     <p class="text-zinc-400 text-sm leading-relaxed">Nossa ferramenta otimiza seus fluxos de trabalho com precisão e sem complicação.</p>
   </div>
 
-  <button class="w-full mt-2 bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-medium py-2.5 px-4 rounded-xl border border-white/5 transition-colors focus:ring-2 focus:ring-indigo-500/50 outline-none">
+  <button class="w-full mt-2 bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-medium py-2.5 px-4 rounded-xl border border-white/5 transition-colors focus:ring-2 focus:ring-teal-400/50 outline-none">
     Saiba mais
   </button>
 </div>

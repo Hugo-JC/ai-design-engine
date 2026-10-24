@@ -28,23 +28,22 @@ O repositório é uma biblioteca de orientação e um validador simples. Não é
 6. **Consistência com acessibilidade:** garantir contraste adequado e estados visíveis de interação, incluindo foco de teclado.
 7. **Regras como guardrails:** requisitos funcionais e de acessibilidade prevalecem sobre preferências decorativas. Exceções visuais devem ser intencionais e coerentes com o briefing.
 
-## 4. Componentes atuais do repositório
+## 4. Componentes do repositório (v3)
 
-Os seguintes ficheiros constituem a estrutura existente do projeto:
-
-- `.cursorrules` — instruções rápidas para agentes que trabalham no repositório.
-- `01-rules-and-constraints/ai-design-rules.md` — regras de composição, tipografia, espaçamento, cor, layout e qualidade.
-- `01-rules-and-constraints/anti-patterns.md` — padrões visuais a evitar e respetivo contexto.
-- `02-styles-and-tokens/design-styles.json` — estilos, tokens e regras de seleção de estilo.
-- `03-references/personality-extractor.md` — extração de tom e mapeamento de nicho para `style_id`.
-- `03-references/layout-archetypes.md` — opções de hero, secções, prova social, navegação e rodapé.
-- `03-references/curated-references.md` — referências de marcas e padrões de design.
-- `03-references/component-catalog.md` — exemplos e orientação para componentes.
-- `03-references/local-presets.json` — catálogo local de presets de nicho e pistas de referência.
-- `03-references/reference-router.md` — encaminhamento determinístico com fallback local e pesquisa externa limitada.
-- `04-agent-prompts/system-prompt-auditor.md` — prompt de trabalho e auto-auditoria do agente.
-- `tools/validate-design.js` — validador heurístico de ficheiros de interface.
-- `MASTER-PROJECT-SPEC.md` — esta especificação geral do projeto.
+- `CORE.md` — núcleo de 1 página (protocolo + 14 regras que mais falham). É o primeiro e, muitas vezes, o único ficheiro de regras a ler.
+- `AGENTS.md`, `.cursorrules` — instruções curtas para agentes; apontam para `CORE.md` e para o router.
+- `01-rules-and-constraints/ai-design-rules.md` — regras detalhadas (tipografia, grelha, cor com intensidade, layout, precedência).
+- `01-rules-and-constraints/anti-patterns.md` — padrões a evitar (20 itens, incluindo monocultura do repo e animação sem controlo).
+- `02-styles-and-tokens/design-styles.json` — 14 estilos com tokens, `intensity`, `accent_mode`, `heading_tracking_range` e `accent_alternatives` (contrastes verificados pelo lint).
+- `03-references/local-presets.json` — **fonte única** nicho → estilo/variantes/padrões/dossiê; `tones` e `non_niche_terms`.
+- `03-references/reference-router.md`, `personality-extractor.md` — especificação do routing e do tom (o código está em `tools/route.js`).
+- `03-references/layout-archetypes.md`, `curated-references.md`, `component-catalog.md` — arquétipos, dossiês por nicho e exemplos Slop vs. Elite.
+- `04-agent-prompts/system-prompt-auditor.md` — fluxo de trabalho e auto-auditoria do agente.
+- `05-evals/` — prompts fixos, rubrica e sumário para medir se o repo melhora o resultado (com/sem repo).
+- `06-case-studies/` — casos reais antes/depois (Refri).
+- `tools/` — `route.js` (router + brief + contexto), `validate-design.js` (validador estático CSS-aware), `lint-repo.js` (integridade do repo), `eval-summary.js`, `render-audit.js` (experimental, requer Playwright).
+- `tests/` — testes do router, do validador e da avaliação (`npm test`).
+- `MASTER-PROJECT-SPEC.md` — esta especificação.
 
 ## 5. Fluxo de trabalho do agente
 
@@ -56,7 +55,7 @@ Antes de escrever código, o agente deve:
 
 1. extrair do pedido o nicho, público, objetivo, contexto e tom;
 2. identificar requisitos funcionais, conteúdo disponível e quaisquer restrições explícitas;
-3. consultar `personality-extractor.md`, `reference-router.md`, `local-presets.json` e `design-styles.json` para selecionar um `style_id` determinístico e adequado;
+3. correr `node tools/route.js "<pedido>" --context` (ou seguir `reference-router.md` à mão) para obter um `style_id` determinístico, os tokens, os arquétipos e o dossiê do nicho;
 4. escolher pelo nicho e contexto sem perguntar pela estética só porque ela não foi especificada; usar o fallback local se não houver correspondência e perguntar apenas quando faltar um requisito essencial que impeça uma escolha segura;
 5. fixar no **DESIGN BRIEF** o nicho/público, tom, `style_id` e justificação, modo, tipografia, arquétipo de hero, referências, elemento visual principal e riscos de genericidade.
 
@@ -79,10 +78,10 @@ Antes da entrega, o agente deve fazer uma revisão visual e contextual com as ch
 O validador pode complementar essa revisão:
 
 ```bash
-node tools/validate-design.js <ficheiro>
+node tools/validate-design.js <ficheiro> --style <style_id>
 ```
 
-Para uma execução rigorosa, o script também aceita `--strict` e pode receber vários ficheiros. Os avisos são heurísticos: devem ser confirmados no contexto e não corrigidos cegamente. A revisão humana/contextual continua necessária, pois o script não avalia a intenção, a qualidade global da composição nem todos os critérios de acessibilidade.
+O script lê o CSS real (hover/foco, contraste, variáveis), compara com os tokens do estilo (`--style`), aceita `--allow #hex` (cores de produto/pedidas), `--accent #hex`, `--json` e `--strict`, e pode receber vários ficheiros. Os avisos são heurísticos: devem ser confirmados no contexto e não corrigidos cegamente. A revisão humana/contextual continua necessária, pois o script não avalia a intenção, a qualidade global da composição nem todos os critérios de acessibilidade.
 
 ## 6. Requisitos de qualidade
 
@@ -108,3 +107,5 @@ O AI Design Engine cumpre a sua finalidade quando um agente que siga os materiai
 - estruturar a interface com intenção, em vez de repetir automaticamente um layout;
 - justificar as principais decisões de design com base no produto e nas referências;
 - rever o resultado segundo critérios claros e usar o validador como apoio, não como substituto do julgamento.
+- **medir** o efeito do repo com `05-evals/` (avaliação cega com/sem repo) e usar o resultado para decidir o que simplificar ou expandir;
+- manter o próprio repo coerente: `node tools/lint-repo.js` e `npm test` passam antes de cada release.

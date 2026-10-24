@@ -55,9 +55,13 @@ Objetivo: impedir que toda a página seja "texto à esquerda + imagem à direita
 | Tatuagem / barbearia | H3 ou H2 | F2 | S1 |
 | Jovem / crypto | H7 ou H1 | F1 | S2 |
 | Restaurante | H3 | F2 | S1 |
+| Bebidas / embalagem de consumo | H5 (H7, H3) | F2, F1 | S2 |
+| Hardware / engenharia / arquitetura | H1 (H2, H8) | F3, F5, F6 | S3, S4 |
+| Clínicas / saúde | H1 (H2) | F3, F2 | S1, S2 |
 
 ## 7. Regra de Escolha
 1. Procurar o nicho na matriz.
 2. Escolher o arquétipo cujo requisito de conteúdo a página realmente cumpre (ex: H5 só se existir produto reconhecível).
 3. Registar no brief: `Arquétipo de hero: H? — porquê`.
+4. `node tools/route.js "<pedido>" --context` já devolve as linhas destes arquétipos para o nicho (hero, alternativas, funcionalidades, prova, navegação, rodapé).
 4. Se for H1, indicar a assimetria usada (ex: 7/5) e quais são os (máx. 2) elementos flutuantes.

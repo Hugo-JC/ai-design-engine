@@ -94,6 +94,21 @@ Quando precisar estruturar o fluxo visual de uma página, consulte os conceitos 
 - **Pedir emprestado:** fotografia full-bleed; menu como secção editorial; horário e localização acima da dobra; botão de reserva fixo; cópia sensorial curta.
 - **Evitar:** menu em PDF; carrosséis de fotos pequenas; falta de morada e horário no topo.
 
+### Bebidas e embalagem de consumo (energéticos, refrigerantes)
+- **Estudar:** Liquid Death, Poppi, Olipop, Celsius (o princípio de embalagem como herói, não os layouts).
+- **Pedir emprestado:** produto em escala e reconhecível (arquétipo H5); cor por sabor aplicada ao produto e a uma faixa, não à UI inteira; tipografia condensada em maiúsculas; rótulo legível com número e unidade ligados; movimento de scroll que revela a lata por ângulos ou ingredientes; mapa de pontos de venda.
+- **Evitar:** neon + roxo “gamer”; ícone de raio genérico como logótipo; alegações de saúde sem prova; avisos legais (cafeína, idade mínima) sem contraste; várias cores de UI a competir com a cor do produto.
+
+### Hardware, engenharia, arquitetura
+- **Estudar:** Teenage Engineering, Framework (frame.work).
+- **Pedir emprestado:** tabelas de especificações em monoespaçada; desenhos técnicos e diagramas com cotas; grelha visível; fotografia de produto em fundo neutro; datasheets descarregáveis; numeração de secções (01, 02…).
+- **Evitar:** imagens de stock de capacetes e apertos de mão; “inovação” como promessa; hero vazio sem um produto ou projeto real.
+
+### Clínicas e saúde
+- **Estudar:** One Medical, Zocdoc.
+- **Pedir emprestado:** marcação como ação principal (máx. 3 campos); horários, morada e contactos sem scroll; equipa com nome e especialidade verificável; preços e tabelas claros; FAQ da primeira consulta; contraste e tamanho de texto generosos.
+- **Evitar:** azul-hospital genérico com stock sorridente; promessas de cura ou resultados; pop-ups invasivos; formulários longos.
+
 ## C. Dez Fugas do Genérico (aplicar pelo menos 3 por página)
 1. **Assimetria deliberada:** colunas 7/5 ou 8/4 em vez de 50/50.
 2. **Escala exagerada:** um número, uma palavra ou um objeto em tamanho enorme, cortado pela margem.

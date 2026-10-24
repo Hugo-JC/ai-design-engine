@@ -1,51 +1,56 @@
-# AI Design Engine
+# AI Design Engine v3
 
-Um conjunto de regras, tokens, referências e prompts para orientar interfaces de frontend com identidade de nicho e reduzir padrões genéricos de “AI Slop”. É um guardrail de direção visual, não substitui requisitos de produto nem uma revisão de UX.
+Regras, tokens, um **router determinístico** e validadores para orientar interfaces de frontend com identidade de nicho e reduzir o “AI Slop”. É um guardrail de direção visual; não substitui requisitos de produto nem uma revisão de UX.
+
+## O que mudou na v3 (resumo)
+- **Menos para ler:** `CORE.md` (1 página) + `node tools/route.js --context` (≈2 KB) em vez de 10 ficheiros.
+- **Routing executável e testado**, com fonte única (`local-presets.json`). Fim das contradições entre router e extrator.
+- **Validador CSS-aware** com tokens (`--style`): sem falsos positivos de hover/foco em CSS puro, com contraste, accent espalhado, deriva de paleta e mais.
+- **Intensidade** (`calm`/`balanced`/`loud`) e **cor do produto ≠ accent de UI**: regras já não penalizam marcas ruidosas.
+- **4 estilos novos** e 3 presets (bebidas, hardware/arquitetura, clínicas); o accent por defeito de `saas_dark_modern` deixou de ser índigo.
+- **Avaliação** (`05-evals/`) para medir se o repo ajuda e **lint do repo** para impedir deriva.
+Detalhe e migração: `CHANGELOG.md`.
 
 ## Estrutura
-
 ```text
 ai-design-engine/
-├── .cursorrules
-├── README.md
-├── MASTER-PROJECT-SPEC.md
-├── 01-rules-and-constraints/
-│   ├── ai-design-rules.md          # regras detalhadas de design
-│   └── anti-patterns.md
-├── 02-styles-and-tokens/
-│   └── design-styles.json
-├── 03-references/
-│   ├── curated-references.md
-│   ├── component-catalog.md
-│   ├── layout-archetypes.md
-│   ├── personality-extractor.md
-│   ├── reference-router.md
-│   └── local-presets.json
-├── 04-agent-prompts/
-│   └── system-prompt-auditor.md
-└── tools/
-    └── validate-design.js
+├── CORE.md                         # núcleo de 1 página (ler primeiro)
+├── AGENTS.md  .cursorrules         # instruções curtas para agentes
+├── README.md  CHANGELOG.md  MASTER-PROJECT-SPEC.md  package.json
+├── 01-rules-and-constraints/       # ai-design-rules.md · anti-patterns.md
+├── 02-styles-and-tokens/           # design-styles.json (14 estilos)
+├── 03-references/                  # local-presets.json (fonte única) · router · extrator · arquétipos · dossiês · catálogo
+├── 04-agent-prompts/               # system-prompt-auditor.md
+├── 05-evals/                       # prompts.json · rubric.md · results.template.json
+├── 06-case-studies/refri/          # v1 (slop) vs v2 (com regras) + análise
+├── tools/                          # route · validate-design · lint-repo · eval-summary · render-audit · lib/color
+└── tests/                          # node --test
 ```
 
-## Como usar
-
-1. Leia `MASTER-PROJECT-SPEC.md` como especificação geral do projeto e `01-rules-and-constraints/ai-design-rules.md` para as regras detalhadas de design; consulte também os anti-patterns.
-2. Identifique o nicho principal e escolha o `style_id` de forma determinística com `03-references/reference-router.md` e `03-references/local-presets.json`. O catálogo local é o fallback offline; `03-references/personality-extractor.md` complementa o mapeamento.
-3. Confirme que o estilo existe em `02-styles-and-tokens/design-styles.json` e escolha apenas arquétipos válidos de `03-references/layout-archetypes.md`.
-4. Escreva um DESIGN BRIEF conciso e implemente. Use referências como inspiração de padrões abstratos, nunca para copiar páginas, textos, imagens, identidade ou componentes distintivos.
-5. Antes de entregar, faça a auditoria real do resultado: reveja o código e o brief, corrija problemas relevantes e volte a validar. Consulte `04-agent-prompts/system-prompt-auditor.md`.
-
-Pode incluir um elemento visual distintivo ou assinatura quando pedido ou adequado, mas não invente nem imponha uma assinatura, marca ou monograma.
-
-## Validador heurístico
-
+## Início rápido
 ```bash
-node tools/validate-design.js ./src/App.jsx
-node tools/validate-design.js ./index.html ./src/Hero.jsx --strict
+node tools/route.js "Quero um site para uma marca de refrigerantes energéticos" --context
+# … o agente constrói o ficheiro …
+node tools/validate-design.js index.html --style loud_beverage_dark --allow "#ff7a00,#ff3d6e"
+npm test            # router, validador, avaliação
+npm run lint        # integridade do repo (tokens, contrastes, presets, referências)
 ```
+Requer Node ≥ 18 (testado em 22). Sem dependências.
 
-O comando aceita um ou mais caminhos de ficheiros de texto e a opção `--strict`. Analisa o conteúdo-fonte à procura de sinais heurísticos, como divisores, certos estados de botões, tracking, títulos, espaçamento, cores roxas, texto placeholder, imagens sem `alt` e classes repetidas. Não renderiza a página nem confirma visualmente o design, comportamento, responsividade, acessibilidade real ou conformidade completa com as regras. Sem caminhos, ou se um ficheiro não puder ser lido, termina com código 1; com `--strict`, também termina com código 1 se encontrar avisos. Os avisos precisam de revisão humana e não devem ser corrigidos cegamente.
+## Ferramentas
+| Comando | Função |
+| :--- | :--- |
+| `tools/route.js "<pedido>" [--brief\|--context\|--json]` | pedido → `style_id`, intensidade, padrões, brief, contexto compacto |
+| `tools/validate-design.js <f...> [--style id] [--accent #hex] [--allow #hex,…] [--strict] [--json]` | validação estática de HTML/JSX/TSX/Vue/Svelte/CSS |
+| `tools/lint-repo.js` | valida o próprio repo (contraste dos tokens, IDs, dossiês, deriva, versões) |
+| `tools/eval-summary.js [results.json]` | sumário da avaliação com/sem repo |
+| `tools/render-audit.js <f\|url> [--out dir]` | **beta**: auditoria com Chromium (overflow, contraste computado, alvos de toque, foco por teclado, tracking) em 3 viewports + screenshots; requer `playwright` |
 
-## Âmbito
+## Limites (honestos)
+- O validador **não renderiza**. Contraste e “accent espalhado” são estimativas; confirme no browser.
+- `render-audit.js` foi testado em Chromium headless (fixtures e a Refri v2), mas não em dispositivos reais, Firefox ou WebKit. Recursos externos (fontes, CDN) precisam de rede para o render ser representativo.
+- Presets e dossiês são pontos de partida, não verdades. O gosto não se codifica todo em regras: valide com `05-evals/`.
+- Em produtos operacionais complexos, requisitos funcionais e usabilidade prevalecem sobre regras decorativas.
 
-Este material é especialmente útil para páginas com direção visual marcada — por exemplo, landing pages, showcases, comércio eletrónico, SaaS, portfólios e marcas de nicho. Em produtos operacionais complexos, os requisitos funcionais e a usabilidade continuam a prevalecer sobre regras decorativas.
+## Como saber se o repo compensa
+Siga `05-evals/README.md`: 8 prompts fixos, geração com e sem repo, pontuação cega (0–2 × 8 critérios) e `node tools/eval-summary.js`. Não expanda regras sem ganho medido.

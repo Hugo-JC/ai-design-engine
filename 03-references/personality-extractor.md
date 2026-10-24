@@ -1,38 +1,39 @@
-# Guia de Extração de Personalidade e Tom do Prompt
+# Guia de Extração de Personalidade e Tom do Prompt (v3)
 
-A IA deve ler o prompt do utilizador e extrair os **Adjetivos de Tom** para personalizar a interface.
+A IA lê o pedido e separa duas coisas que antes se misturavam:
 
-## Tabela de Conversão: Prompt do Utilizador → Decisões Visuais
+- **Nicho** (o que é o produto, quem o usa) → decide o `style_id`. Fonte única: `03-references/local-presets.json`, executada por `node tools/route.js`.
+- **Tom** (adjetivos do pedido) → ajusta a **intensidade** (`calm`, `balanced`, `loud`) e detalhes de tipografia e movimento. **Nunca troca o nicho.**
 
-| Palavras-chave no Prompt do User | Estilo Visual Recomendado | Tipografia | Raios de Borda (`radius`) | Sensação da Paleta |
-| :--- | :--- | :--- | :--- | :--- |
-| "Agressivo", "Rápido", "Crypto", "Web3" | Neo-Brutalism ou Dark High Contrast | Fonte Display angular (Space Grotesk) | `0px` a `4px` com bordas marcadas | Cores saturadas (Amarelo, Rosa Neon, Preto) |
-| "Acolhedor", "Orgânico", "Café", "Saúde" | Minimalist Warm | Serifa elegante + Sans limpa | `12px` a `20px` (suave e curvo) | Tons terrosos, creme, verde oliva, bege |
-| "Enterprise", "Segurança", "Bancário" | Minimalist Corporate | Sans-serif sóbria (Inter, Roboto) | `8px` a `10px` | Tons frios (Azul escuro, Cinza, Branco) |
-| "Moderno", "SaaS", "Dashboard", "IA" | SaaS Dark Modern ou Glassmorphism | Sans-serif moderna (Geist, Plus Jakarta) | `12px` a `16px` | Fundo dark escuro com luzes e bordas sutis |
+> v3: a antiga tabela “Nicho → `style_id`” foi removida deste ficheiro porque duplicava `local-presets.json` e já tinha divergido dele. `node tools/lint-repo.js` falha se ela reaparecer.
 
-### Regra de Ouro da Personalidade:
-Se o utilizador disser: *"Quero uma landing page para o meu estúdio de tatuagem"*, a IA NUNCA deve entregar uma página azul corporativa com botões redondos de banco. Ela deve adotar o tom escuro, artesanal, com tipografia forte e alto contraste!
+## Tabela de tom → intensidade e detalhes
 
----
+Lista completa e executável em `local-presets.json` → `tones`. Resumo:
 
-## Mapa Determinístico: Nicho → `style_id` (adicionado)
-
-Objetivo: o mesmo prompt deve levar sempre ao mesmo estilo. Os `style_id` correspondem às chaves de `02-styles-and-tokens/design-styles.json`.
-
-| Nicho / palavras-chave | `style_id` por defeito | Variantes (quando o prompt sugerir) |
+| Tom (palavras no pedido) | Intensidade | O que ajusta |
 | :--- | :--- | :--- |
-| Café, torrefação, padaria, chá, alimentar artesanal | `minimalist_warm` | "sofisticado", "premium", "noturno", "torra escura" → `minimalist_warm_dark`; "orgânico", "origem", "natureza", "sustentável" → `organic_forest_dark` |
-| Saúde, bem-estar, moda, arquitetura, e-commerce | `minimalist_warm` | "luxo", "premium" → `clean_editorial` |
-| Tatuagem, barbearia, bar, rock, couro | `dark_craft_ink` | — |
-| SaaS, API, dashboard, startup, IA | `saas_dark_modern` | "futurista" → `glassmorphism_tech`; "vários recursos / mosaico" → `bento_grid_layout` |
-| Enterprise, banco, finanças, seguros | `minimalist_corporate` | — |
-| Imobiliário, marketplace, confiança | `minimalist_corporate` | "moderno", "tecnológico" → `saas_dark_modern` |
-| Blog, portfólio, revista, educativo, conteúdo | `clean_editorial` | "tecnológico" → `saas_dark_modern` |
-| Crypto, web3, jovem, agressivo, ousado | `bold_neobrutalism` | — |
+| agressivo, ousado, explosivo, energético, jovem, rápido, irreverente, rebelde, intenso, vibrante, atitude | `loud` | Accent até 25% da superfície, tipografia de display maior, movimento mais marcado, contraste de cor mais forte |
+| calmo, acolhedor, elegante, sereno, minimalista, sofisticado, suave, discreto, tranquilo | `calm` | Accent até 10%, mais espaço negativo, movimento mínimo, tipografia mais contida |
+| (nenhum ou empate) | a do estilo (`intensity`) | — |
 
-### Regras de aplicação
-1. **Nunca improvisar paleta.** Se o `style_id` existe, usar as cores, raio e fontes do token. Só mudar se o utilizador pedir cores ou fontes específicas.
-2. **Modo (dark/light):** seguir o campo `mode` do estilo. Só usar a variante do outro modo quando o prompt o sugerir (ver coluna "Variantes").
-3. **Nicho sem linha na tabela:** escolher o estilo cuja `description` e `keywords` mais se aproximam, e registar a justificação no DESIGN BRIEF. Nunca sortear.
-4. **Conflito entre palavras-chave** (ex: "agressivo" + "bancário"): privilegiar o nicho (quem paga e quem usa) e usar o tom apenas para ajustar tipografia e detalhes.
+## Regras de aplicação
+
+1. **Nunca improvisar paleta.** Com um `style_id`, usar cores, raio e fontes do token. Só mudar se o utilizador pedir cores ou fontes específicas. Sem cores pedidas, pode usar-se um `accent_alternatives` do estilo.
+2. **Modo (dark/light):** seguir o campo `mode` do estilo; a variante do outro modo só se o pedido a sugerir (`variants[].when_any`).
+3. **Nicho sem preset:** o router pontua as `keywords` dos estilos (ignorando adjetivos de tom listados em `non_niche_terms`); a melhor pontuação decide e a razão vai para o brief. Sem pontuação, usa-se o `fallback`. Nunca sortear.
+4. **Conflito entre palavras-chave** (ex.: “agressivo” + “bancário”): o nicho decide o estilo; o tom só ajusta a intensidade. (O router tem um teste automático para isto.)
+5. **Cor do produto ≠ accent de UI.** Se o produto tem cor própria (lata, embalagem), declare-a no brief; ela não conta para o limite de accent.
+
+## Regra de ouro da personalidade
+
+Se o utilizador pede “uma landing page para o meu estúdio de tatuagem”, a IA nunca entrega uma página azul corporativa com botões redondos de banco: adota o tom escuro, artesanal, com tipografia forte e alto contraste (`dark_craft_ink`). Se pede “refrigerantes energéticos”, a embalagem é o herói (`loud_beverage_dark`, H5), não um hero com “texto à esquerda + imagem à direita”.
+
+## Como correr
+
+```bash
+node tools/route.js "Landing page para um estúdio de tatuagem"            # resumo
+node tools/route.js "<pedido>" --brief                                    # esqueleto do DESIGN BRIEF
+node tools/route.js "<pedido>" --context                                  # brief + tokens + arquétipos + dossiê
+node tools/route.js "<pedido>" --json                                     # tudo, para scripts
+```

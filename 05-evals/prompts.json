@@ -1,0 +1,131 @@
+{
+  "version": 3,
+  "about": "Prompts fixos para avaliar o repo. `expected_*` verificam o ROUTER (automático, npm test). `visual_eval:true` marca os 8 prompts para a avaliação visual cega com/sem repo (ver rubric.md).",
+  "prompts": [
+    {
+      "id": 1,
+      "prompt": "Quero um site para a Refri, uma marca de refrigerantes energéticos, jovem e bem animado, com a lata em destaque.",
+      "expected_style_id": "loud_beverage_dark",
+      "expected_path": "preset",
+      "expected_hero": "H5",
+      "visual_eval": true,
+      "note": "Cor do produto (lata) ≠ accent de UI: declarar no brief."
+    },
+    {
+      "id": 2,
+      "prompt": "Landing page para uma torrefação artesanal de café, tom acolhedor.",
+      "expected_style_id": "minimalist_warm",
+      "expected_path": "preset",
+      "expected_hero": "H1",
+      "visual_eval": true
+    },
+    {
+      "id": 3,
+      "prompt": "Landing page para uma marca de café premium, sofisticada e noturna.",
+      "expected_style_id": "minimalist_warm_dark",
+      "expected_path": "preset",
+      "expected_hero": "H1",
+      "visual_eval": false,
+      "note": "Variante dark por 'premium'/'noturna'."
+    },
+    {
+      "id": 4,
+      "prompt": "Landing page para uma API de IA para developers.",
+      "expected_style_id": "saas_dark_modern",
+      "expected_path": "preset",
+      "expected_hero": "H4",
+      "visual_eval": true
+    },
+    {
+      "id": 5,
+      "prompt": "Marketplace imobiliário para Angola com pesquisa de imóveis.",
+      "expected_style_id": "minimalist_corporate",
+      "expected_path": "preset",
+      "expected_hero": "H6",
+      "visual_eval": true
+    },
+    {
+      "id": 6,
+      "prompt": "Portfólio de um developer frontend.",
+      "expected_style_id": "clean_editorial",
+      "expected_path": "preset",
+      "expected_hero": "H8",
+      "visual_eval": false
+    },
+    {
+      "id": 7,
+      "prompt": "Site para um estúdio de tatuagem.",
+      "expected_style_id": "dark_craft_ink",
+      "expected_path": "preset",
+      "expected_hero": "H3",
+      "visual_eval": true
+    },
+    {
+      "id": 8,
+      "prompt": "Servidor de Discord para aprender Roblox Studio, comunidade em português.",
+      "expected_style_id": "game_arcade_dark",
+      "expected_path": "preset",
+      "expected_hero": "H1",
+      "visual_eval": true
+    },
+    {
+      "id": 9,
+      "prompt": "Site de uma clínica de saúde com marcação online.",
+      "expected_style_id": "minimalist_corporate",
+      "expected_path": "preset",
+      "expected_hero": "H1",
+      "visual_eval": true
+    },
+    {
+      "id": 10,
+      "prompt": "Site de um atelier de arquitetura e engenharia.",
+      "expected_style_id": "swiss_technical_light",
+      "expected_path": "preset",
+      "expected_hero": "H1",
+      "visual_eval": true
+    },
+    {
+      "id": 11,
+      "prompt": "App bancário agressivo e rápido.",
+      "expected_style_id": "minimalist_corporate",
+      "expected_path": "preset",
+      "expected_hero": "H1",
+      "visual_eval": false,
+      "expected_intensity": "loud",
+      "note": "O nicho (banco) decide o estilo; o tom agressivo só sobe a intensidade."
+    },
+    {
+      "id": 12,
+      "prompt": "Quero uma landing page bonita e moderna.",
+      "expected_style_id": "clean_editorial",
+      "expected_path": "fallback",
+      "expected_hero": "H2",
+      "visual_eval": false,
+      "note": "Adjetivos (bonita, moderna) não são nicho: cai no fallback e regista-se a razão."
+    },
+    {
+      "id": 13,
+      "prompt": "Site para um restaurante de cozinha angolana.",
+      "expected_style_id": "minimalist_warm",
+      "expected_path": "preset",
+      "expected_hero": "H3",
+      "visual_eval": false
+    },
+    {
+      "id": 14,
+      "prompt": "Plataforma para um produtor de chá herbal com foco em origem e sustentabilidade.",
+      "expected_style_id": "organic_forest_dark",
+      "expected_path": "preset",
+      "expected_hero": "H1",
+      "visual_eval": false
+    },
+    {
+      "id": 15,
+      "prompt": "Página de produto com vitrine de funcionalidades.",
+      "expected_style_id": "bento_grid_layout",
+      "expected_path": "keywords",
+      "expected_hero": "H2",
+      "visual_eval": false
+    }
+  ]
+}

@@ -17,17 +17,18 @@ Estas regras não substituem os requisitos do produto: servem como guardrail par
 
 - Use uma escala de texto clara: H1, H2, H3, corpo, legenda e microcopy com diferença real de peso e proporção.
 - H1: `2.5rem` a `3.5rem`, peso forte, contraste alto e line-height próximo de `1.1`.
+- **Exceção de display (v3):** em heróis de marca com arquétipos H2, H5, H7 e rodapé R1, o título/wordmark pode exceder `3.5rem` (ex.: `clamp(4rem, 20vw, 26rem)`), desde que seja um único elemento de display por ecrã, mantenha o tracking do estilo e exista um `<h1>` legível por leitores de ecrã.
 - H2: `1.75rem` a `2.25rem`, sem excesso de estilo em vez de escala.
 - Corpo: `1rem`, line-height `1.5` a `1.6`.
 - Legenda: `0.875rem`, line-height `1.4`.
 - A hierarquia deve ser criada por combinação de tamanho, peso, contraste e espaçamento, não só por cor.
-- Em títulos, mantenha `letter-spacing` entre `-0.02em` e `0em`. Evite tracking apertado ou excesso de serrilhado visual.
+- Em títulos, o `letter-spacing` segue o `heading_tracking_range` do estilo (por defeito `[-0.02em, 0em]`; estilos de maiúsculas condensadas, como `dark_craft_ink`, usam `[0, 0.04em]`). Nunca abaixo de `-0.02em`.
 - Títulos com texto longo devem usar `text-wrap: balance` / `text-balance` para evitar quebras feias.
 
 ## 3. Espaçamento e respiro (grid de 8px)
 
-- Todos os valores de `padding`, `margin` e `gap` devem ser múltiplos de 8px: `8, 16, 24, 32, 48, 64, 96, 128`.
-- Evite micro-ajustes fora do grid; só use-os quando uma necessidade funcional ou de acessibilidade os justificar.
+- Base de 8px: `8, 16, 24, 32, 48, 64, 96, 128`. Meio-passo de 4px permitido só até 16px (`4, 12`) para ícones, badges e ajustes finos.
+- Valores acima de 16px que não sejam múltiplos de 8 (20, 28, 36…) são desvios: aceite-os apenas com razão funcional ou de acessibilidade. Valores que nem sequer são múltiplos de 4 (6, 10, 13…) são erro.
 - Divisões entre secções devem ser feitas por respiro, mudança de fundo ou escala, não por linhas inventadas.
 - Não use `---`,`<hr>`, `border-top` solto ou `h-px` como “lixívia visual”.
 
@@ -43,7 +44,9 @@ Estas regras não substituem os requisitos do produto: servem como guardrail par
 ## 5. Cor e contraste: disciplina, não excesso
 
 - A cor de destaque não deve “pintar a página”. Use-a apenas para ação, estado ativo, badge de destaque, ou um único gesto tipográfico.
-- Regra do 60-30-10 para composição geral: 60% fundo, 30% estrutura e 10% accent.
+- Regra do 60-30-10 para composição geral: 60% fundo, 30% estrutura e 10% accent, calibrada pela **intensidade** do estilo: `calm` ≤ 10%, `balanced` ≤ 15%, `loud` ≤ 25% da superfície visível.
+- **Cor do produto ≠ accent de UI (v3).** Embalagem, lata, ilustração ou fotografia do produto podem ter a cor que o produto tem; isso não conta para o limite do accent, mas deve ser declarado no brief. A UI (botões, texto, bordas, faixas) mantém os tokens. Em estilos com `accent_mode: "product"` (ex.: `loud_beverage_dark`) o accent é a cor do produto.
+- Se o pedido não fixa cores, pode usar-se um dos `accent_alternatives` do estilo (todos com contraste verificado) para evitar a monocultura de paletas; registe a escolha no brief.
 - O texto deve respeitar contraste mínimo WCAG AA: 4.5:1 para texto normal e 3:1 para títulos grandes.
 - Não use roxo/neon genérico como “default”. Só use se o nicho e o estilo o exigirem.
 - O comportamento da paleta deve ser funcional e emocional: reforçar identidade, não apenas “parecer moderno”.
@@ -86,10 +89,23 @@ Antes de fechar a interface, confirme:
 - [ ] O grid e o espaçamento respeitam o sistema de 8px.
 - [ ] O CTA principal está claro e os botões têm contraste e hover/focus.
 - [ ] O texto e a imagem comunicam uma ideia real do produto.
-- [ ] A paleta está sob controle e a cor de destaque não domina a página.
+- [ ] A paleta está sob controlo e a cor de destaque respeita o limite da intensidade do estilo (10/15/25%).
+- [ ] Cor do produto e accent de UI estão separados e declarados no brief.
+- [ ] Números e unidades ligados (`&nbsp;`); animações respeitam `prefers-reduced-motion`.
+- [ ] `node tools/validate-design.js <ficheiro> --style <id>` corrido e o resultado revisto renderizado.
 - [ ] O hero usa um arquétipo apropriado e não o split genérico por defeito.
 - [ ] A interface tem identidade, não parece um template universal.
 
-## 11. Resumo prático
+## 11. Precedência quando as regras entram em conflito (v3)
+
+1. Requisitos funcionais e acessibilidade.
+2. Pedido explícito do utilizador (cores, fontes, estilo).
+3. Tokens do `style_id`.
+4. Regras gerais deste documento.
+5. Avisos do validador (heurísticos; confirmar no contexto).
+
+Quando um pedido explícito contraria uma regra, siga o pedido, mantenha o contraste AA e registe o desvio no brief.
+
+## 12. Resumo prático
 
 Se uma página parecesse boa no primeiro olhar, mas não tem identidade, a IA provavelmente criou um “template neutro”. Para evitar isso, o design precisa de contexto, disciplina e decisão ativa. Não se escreve apenas código: escreve-se direção.

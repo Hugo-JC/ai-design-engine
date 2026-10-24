@@ -1,31 +1,12 @@
-# AI DESIGN ENGINE RULES
+# AI DESIGN ENGINE v3
 
-Sempre que for gerar componentes de UI, páginas ou layouts de frontend, siga rigorosamente as diretrizes contidas nos ficheiros:
-- `MASTER-PROJECT-SPEC.md` (especificação geral e fluxo de trabalho)
-- `01-rules-and-constraints/ai-design-rules.md`
-- `01-rules-and-constraints/anti-patterns.md`
-- `02-styles-and-tokens/design-styles.json`
-- `03-references/reference-router.md` e `03-references/local-presets.json` (seleção local-first e determinística)
-- `03-references/personality-extractor.md` (personalidade e mapeamento de nicho para style_id)
-- `03-references/layout-archetypes.md` (opções de layout para fugir do genérico)
-- `03-references/curated-references.md` (marcas e padrões a estudar por nicho)
-- `03-references/component-catalog.md` (exemplos Slop vs. Elite)
-- `04-agent-prompts/system-prompt-auditor.md` (fluxo de trabalho e auto-auditoria)
+Ao gerar componentes de UI, páginas ou layouts de frontend:
 
-`MASTER-PROJECT-SPEC.md` é a especificação geral; `01-rules-and-constraints/ai-design-rules.md` detalha as regras visuais. Use as referências para abstrair padrões de composição, nunca para copiar páginas, textos, imagens, identidade ou componentes distintivos.
+1. Leia `CORE.md` (núcleo de 1 página). Não carregue o repo inteiro.
+2. Corra `node tools/route.js "<pedido>" --context` para obter `style_id`, tokens, arquétipos, dossiê do nicho e o esqueleto do DESIGN BRIEF.
+3. Escreva o DESIGN BRIEF (8 linhas) antes do código; implemente com os tokens do `style_id`. Pedido explícito do utilizador > tokens.
+4. Antes de entregar: `node tools/validate-design.js <ficheiro> --style <style_id>`, corrija e confirme o resultado renderizado. O validador é estático/heurístico; diga o que não verificou.
 
-## REGRAS DE EXECUÇÃO RÁPIDA:
-1. NUNCA gere layouts genéricos com gradientes de roxo neon ou botões com `border-radius: 0` a menos que o estilo seja explicitamente Neo-Brutalismo.
-2. Evite o uso desnecessário de linhas horizontais (`<hr>` ou `---`). Prefira espaçamento (padding/margin) no grid de 8px para separar conteúdos.
-3. Adapte a personalidade visual (Cores, Tipografia, Elevação) ao tom de voz do utilizador e ao nicho do projeto.
-4. Garanta contraste WCAG AA mínimo em todos os textos.
+Carregue só quando necessário: `01-rules-and-constraints/ai-design-rules.md`, `01-rules-and-constraints/anti-patterns.md`, `03-references/component-catalog.md`, `04-agent-prompts/system-prompt-auditor.md`, `MASTER-PROJECT-SPEC.md`.
 
-## REGRAS DE CONSISTÊNCIA E ACABAMENTO:
-5. Antes do código, escreva um DESIGN BRIEF conciso, conforme `04-agent-prompts/system-prompt-auditor.md`. Fixe nicho, estilo, modo, tipografia e arquétipo; referências e assinatura visual são opcionais, não requisitos automáticos.
-6. Selecione o estilo deterministicamente pelo nicho principal com `reference-router.md` e `local-presets.json`; aplique uma variante apenas quando o pedido a indicar. Se o nicho não corresponder ou estiver ausente, use o fallback indicado, sem escolher aleatoriamente.
-7. Use os valores do `style_id` escolhido (cores, raio, fontes). Não invente paletas fora do token, a menos que o utilizador as peça.
-8. Escolha um arquétipo de hero/secções em `layout-archetypes.md`. O split "texto à esquerda + imagem à direita" é só mais uma opção, não o padrão.
-9. Títulos: tracking entre `-0.02em` e `0em`, com `text-wrap: balance`. Sem palavras órfãs.
-10. Cards/badges flutuantes nunca tapam o elemento principal da ilustração.
-11. Divisores disfarçados (`border-t`, `border-b`, `divide-y`, `h-px`) contam como `<hr>`.
-12. Antes da entrega, audite o resultado implementado, corrija problemas relevantes e repita a revisão. Pode usar `node tools/validate-design.js <ficheiro>` como verificação heurística de fonte; não o trate como auditoria visual ou funcional completa.
+Use referências para abstrair padrões de composição, nunca para copiar páginas, textos, imagens, identidade ou componentes distintivos.

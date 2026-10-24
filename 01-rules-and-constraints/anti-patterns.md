@@ -72,6 +72,21 @@ Se a interface parece “bonita” mas não parece pertenecer a um produto real,
     - Se a IA não consegue explicar por que o hero, as secções e a informação estão ordenadas assim, o design provavelmente está sem intenção.
     - Em design, ordem e ritmo têm a mesma importância que cor e tipografia.
 
+17. **PROIBIDO: Monocultura do próprio repo (v3)**
+    - Usar sempre os mesmos 2–3 estilos, pares tipográficos e arquétipos produz um novo “slop”, só que com a assinatura deste repo.
+    - Se o utilizador não fixou cores, considere os `accent_alternatives` do estilo. Registe no brief porque este estilo e arquétipo, e não o vizinho.
+
+18. **PROIBIDO: Confundir a cor do produto com o accent de UI (v3)**
+    - A lata, a embalagem ou a ilustração podem ocupar grande área com a cor do produto; botões, texto, bordas e faixas mantêm os tokens.
+    - Pintar toda a UI com a cor do produto é o erro nº 13 (“accent a pintar a página”) com outro nome.
+
+19. **PROIBIDO: Animação sem controlo (v3)**
+    - Loops, marquees e animações ligadas ao scroll sem `prefers-reduced-motion`, ou que escondem conteúdo até a animação correr.
+    - O movimento serve a narrativa (revelar, guiar, relacionar), não decora.
+
+20. **PROIBIDO: Aplicar uma regra contra o pedido explícito (v3)**
+    - Se o utilizador pede cores ou fontes específicas, a regra “não inventar paletas” não se aplica. Siga o pedido, mantenha o contraste e registe o desvio.
+
 ## Teste rápido: “a página parece ser de uma marca real?”
 
 Se a resposta for “não”, provavelmente há AI Slop. Faça esta validação rápida:

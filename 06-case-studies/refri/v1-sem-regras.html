@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Refri · Energia que estoura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800;900&family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0a0b;
+        --ac: #b6ff00;
+        --ink: #f4f4ef;
+        --mut: #a9aaa3;
+        color-scheme: dark;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      html {
+        scroll-padding-top: env(safe-area-inset-top, 0px);
+        overflow-x: clip;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          400 1.05rem/1.6 "DM Sans",
+          system-ui,
+          Arial,
+          sans-serif;
+        overflow-x: clip;
+      }
+      h1,
+      h2,
+      .disp {
+        font-family: "Unbounded", "Arial Black", Impact, sans-serif;
+      }
+      button {
+        font: inherit;
+        color: inherit;
+        cursor: pointer;
+        background: none;
+        border: 0;
+      }
+      :focus-visible {
+        outline: 3px solid var(--ac);
+        outline-offset: 3px;
+      }
+
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: calc(16px + env(safe-area-inset-top, 0px)) 5vw 16px;
+      }
+      .logo {
+        font:
+          900 1.3rem "Unbounded",
+          "Arial Black",
+          sans-serif;
+        letter-spacing: -0.03em;
+        color: var(--ac);
+      }
+      .nav nav {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+      .nav nav button {
+        padding: 0.55em 1em;
+        border-radius: 99px;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+      .nav nav button:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .btn {
+        background: var(--ac);
+        color: #0a0a0b;
+        padding: 0.95em 1.6em;
+        border-radius: 99px;
+        font:
+          800 0.9rem "Unbounded",
+          sans-serif;
+        transition: transform 0.25s;
+      }
+      .btn:hover {
+        transform: scale(1.06) translateY(-2px);
+      }
+      .nav .btn {
+        padding: 0.6em 1.2em;
+        font-size: 0.78rem;
+      }
+
+      /* lata */
+      .stage {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      #can {
+        position: relative;
+        height: 78vh;
+        aspect-ratio: 1/2;
+        will-change: transform;
+      }
+      #can::before {
+        content: "";
+        position: absolute;
+        inset: -35%;
+        z-index: -1;
+        background: radial-gradient(
+          closest-side,
+          color-mix(in srgb, var(--ac) 38%, transparent),
+          transparent
+        );
+      }
+      #can svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.55));
+        overflow: visible;
+      }
+      .bub {
+        position: absolute;
+        bottom: -40px;
+        border-radius: 50%;
+        border: 2px solid var(--ac);
+        opacity: 0.35;
+      }
+
+      /* secções */
+      .sec {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 14vh 6vw;
+      }
+      .sec.right {
+        justify-content: flex-end;
+      }
+      .in {
+        position: relative;
+        z-index: 2;
+        max-width: min(42vw, 520px);
+      }
+      .tag {
+        display: inline-block;
+        color: var(--ac);
+        font:
+          800 0.78rem "Unbounded",
+          sans-serif;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-weight: 800;
+        font-size: clamp(2rem, 4.6vw, 4.2rem);
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+        margin-bottom: 1.2rem;
+      }
+      h2 em {
+        font-style: normal;
+        color: var(--ac);
+      }
+      p.lead {
+        color: var(--mut);
+        max-width: 44ch;
+      }
+      .list {
+        list-style: none;
+        padding: 0;
+        margin-top: 1.6rem;
+        display: grid;
+        gap: 0.7rem;
+      }
+      .list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+        font-weight: 500;
+      }
+      .list li::before {
+        content: "⚡";
+        color: var(--ac);
+      }
+
+      .hero {
+        display: grid;
+        place-items: center;
+        padding: 0;
+        overflow: hidden;
+      }
+      .giant {
+        position: absolute;
+        z-index: 0;
+        inset: auto 0;
+        text-align: center;
+        font:
+          900 clamp(4rem, 19vw, 26rem)/0.9 "Unbounded",
+          "Arial Black",
+          sans-serif;
+        letter-spacing: -0.05em;
+        color: transparent;
+        -webkit-text-stroke: 2px var(--ac);
+        overflow: hidden;
+        padding-bottom: 0.06em;
+        white-space: nowrap;
+      }
+      .ch {
+        display: inline-block;
+      }
+      .hl,
+      .hr {
+        position: absolute;
+        bottom: calc(8vh + env(safe-area-inset-bottom, 0px));
+        z-index: 2;
+      }
+      .hl {
+        left: 6vw;
+        font:
+          800 clamp(1.1rem, 2vw, 1.7rem)/1.15 "Unbounded",
+          sans-serif;
+        max-width: 12em;
+      }
+      .hr {
+        right: 6vw;
+        text-align: right;
+        color: var(--mut);
+        font-size: 0.95rem;
+      }
+      .cue {
+        position: absolute;
+        top: calc(50% + 40vh);
+        left: 50%;
+        z-index: 2;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--mut);
+      }
+
+      .mq {
+        position: relative;
+        z-index: 2;
+        background: var(--ac);
+        color: #0a0a0b;
+        transform: rotate(-2deg);
+        margin: 0 -6vw;
+        overflow: hidden;
+        white-space: nowrap;
+        font:
+          800 1.5rem "Unbounded",
+          sans-serif;
+        padding: 0.7em 0;
+      }
+      .mq div {
+        display: inline-block;
+        animation: mq 24s linear infinite;
+      }
+      @keyframes mq {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .fl h2 {
+        font-size: clamp(2.2rem, 5.2vw, 4.8rem);
+      }
+      .fl small {
+        display: block;
+        margin-top: 1.2rem;
+        color: var(--ac);
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+      .st {
+        margin-bottom: 2rem;
+      }
+      .st b {
+        display: block;
+        font:
+          900 clamp(3rem, 7vw, 6rem)/1 "Unbounded",
+          sans-serif;
+        letter-spacing: -0.04em;
+        color: var(--ac);
+      }
+      .st span {
+        color: var(--mut);
+      }
+      .cta {
+        align-items: flex-end;
+        justify-content: center;
+        text-align: center;
+        padding-bottom: calc(8vh + env(safe-area-inset-bottom, 0px));
+      }
+      .cta .in {
+        max-width: 760px;
+      }
+      .cta h2 {
+        font-size: clamp(2.2rem, 6vw, 5rem);
+      }
+      .cta p.lead {
+        margin: 0 auto 1.8rem;
+      }
+      .foot {
+        margin-top: 2.4rem;
+        font-size: 0.78rem;
+        color: var(--mut);
+        max-width: 60ch;
+        margin-inline: auto;
+      }
+
+      @media (max-width: 760px) {
+        #can {
+          opacity: 0.34;
+        }
+        .in {
+          max-width: none;
+          text-shadow: 0 2px 24px #000;
+        }
+        .hr,
+        .cue {
+          display: none;
+        }
+        .nav nav button:not(.btn) {
+          display: none;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .mq div {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <span class="logo">REFRI</span>
+      <nav>
+        <button data-go="#sabores">Sabores</button>
+        <button data-go="#numeros">Números</button>
+        <button class="btn" data-go="#cta">Quero uma</button>
+      </nav>
+    </header>
+
+    <div class="stage" aria-hidden="true">
+      <div id="can">
+        <svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path
+              id="bp"
+              d="M32 70C32 52 52 46 62 34L66 26H134L138 34C148 46 168 52 168 70V332C168 350 148 356 138 366L134 374H66L62 366C52 356 32 350 32 332Z"
+            />
+            <clipPath id="cl"><use href="#bp" /></clipPath>
+            <linearGradient id="sh" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#000" stop-opacity=".5" />
+              <stop offset=".24" stop-color="#fff" stop-opacity=".32" />
+              <stop offset=".45" stop-color="#fff" stop-opacity="0" />
+              <stop offset=".82" stop-color="#000" stop-opacity=".28" />
+              <stop offset="1" stop-color="#000" stop-opacity=".6" />
+            </linearGradient>
+          </defs>
+          <rect x="66" y="372" width="68" height="9" rx="3" fill="#aeb4b8" />
+          <use href="#bp" style="fill: var(--ac)" />
+          <g clip-path="url(#cl)">
+            <rect x="20" y="104" width="160" height="196" fill="#0a0a0b" />
+            <g
+              id="lab"
+              font-family="Unbounded,Arial Black,sans-serif"
+              text-anchor="middle"
+              style="fill: var(--ac)"
+            >
+              <polygon points="104,116 86,150 98,150 93,176 114,140 101,140" />
+              <text
+                x="100"
+                y="212"
+                font-size="29"
+                font-weight="900"
+                letter-spacing="-1"
+              >
+                REFRI
+              </text>
+              <text
+                x="100"
+                y="236"
+                font-size="8.5"
+                font-weight="800"
+                letter-spacing="2.4"
+                fill="#f4f4ef"
+                style="fill: #f4f4ef"
+              >
+                ENERGY SODA
+              </text>
+              <text
+                x="100"
+                y="286"
+                font-size="8"
+                font-weight="600"
+                letter-spacing="2"
+                fill="#f4f4ef"
+                style="fill: #f4f4ef"
+              >
+                250 ML
+              </text>
+            </g>
+          </g>
+          <use href="#bp" fill="url(#sh)" />
+          <rect
+            x="50"
+            y="64"
+            width="9"
+            height="270"
+            rx="4.5"
+            fill="#fff"
+            opacity=".28"
+          />
+          <rect x="66" y="18" width="68" height="11" rx="4" fill="#d9dde0" />
+          <rect x="74" y="21" width="52" height="4" rx="2" fill="#9aa0a4" />
+        </svg>
+      </div>
+    </div>
+
+    <main>
+      <section class="sec hero" data-can="0,1,0">
+        <h1 class="giant" aria-label="Refri"></h1>
+        <p class="hl">Energia que estoura.</p>
+        <p class="hr">250 ml · zero açúcar<br />160 mg de cafeína</p>
+        <span class="cue">Desce ↓</span>
+      </section>
+
+      <div class="mq" aria-hidden="true">
+        <div>
+          ⚡ ENERGIA LÍQUIDA ⚡ ZERO AÇÚCAR ⚡ BEBE GELADA ⚡ ABRE E ARRANCA ⚡
+          ENERGIA LÍQUIDA ⚡ ZERO AÇÚCAR ⚡ BEBE GELADA ⚡ ABRE E ARRANCA
+        </div>
+      </div>
+
+      <section class="sec" data-can="28,1.05,0">
+        <div class="in">
+          <span class="tag rv">Refrigerante energético</span>
+          <h2 class="rv">Abre.<br />Estala.<br /><em>Arranca.</em></h2>
+          <p class="lead rv">
+            Refri é para quem não tem tempo para esperar. Bolha fina, sabor a
+            sério e energia que chega à primeira golada.
+          </p>
+          <ul class="list rv">
+            <li>Zero açúcar, sabor inteiro</li>
+            <li>Cafeína de origem natural</li>
+            <li>Lata 100% reciclável</li>
+          </ul>
+        </div>
+      </section>
+
+      <div id="sabores">
+        <section
+          class="sec fl"
+          data-can="28,1.12,0"
+          data-c="#b6ff00"
+          data-bg="#0a0a0b"
+        >
+          <div class="in">
+            <span class="tag rv">Sabor 01</span>
+            <h2 class="rv">Lima<br />Voltagem</h2>
+            <p class="lead rv">
+              Cítrico, afiado, com final seco. O sabor de abrir a lata e acordar
+              de vez.
+            </p>
+            <small class="rv">Lima · hortelã · gelo</small>
+          </div>
+        </section>
+        <section
+          class="sec fl right"
+          data-can="-28,1.12,0"
+          data-c="#ff7a00"
+          data-bg="#170a02"
+        >
+          <div class="in">
+            <span class="tag rv">Sabor 02</span>
+            <h2 class="rv">Laranja<br />Faísca</h2>
+            <p class="lead rv">
+              Laranja sanguínea com um toque de gengibre. Doce ao início, faísca
+              no fim.
+            </p>
+            <small class="rv">Laranja · gengibre · pimenta rosa</small>
+          </div>
+        </section>
+        <section
+          class="sec fl"
+          data-can="28,1.12,0"
+          data-c="#ff3d6e"
+          data-bg="#18060d"
+        >
+          <div class="in">
+            <span class="tag rv">Sabor 03</span>
+            <h2 class="rv">Framboesa<br />Raio</h2>
+            <p class="lead rv">
+              Bagas vermelhas, bolha fina e um pico ácido que não pede licença.
+            </p>
+            <small class="rv">Framboesa · amora · limão</small>
+          </div>
+        </section>
+      </div>
+
+      <section class="sec right" id="numeros" data-can="-28,1,0">
+        <div class="in">
+          <span class="tag rv">Em números</span>
+          <div class="st rv">
+            <b><span data-n="160">0</span> mg</b
+            ><span>de cafeína por lata</span>
+          </div>
+          <div class="st rv">
+            <b><span data-n="0">0</span> g</b><span>de açúcar adicionado</span>
+          </div>
+          <div class="st rv">
+            <b><span data-n="250">0</span> ml</b><span>de pura voltagem</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec cta" id="cta" data-can="0,.72,-18">
+        <div class="in">
+          <h2 class="rv">Está na hora de <em>levantar a lata.</em></h2>
+          <p class="lead rv">
+            Encontra o Refri no teu supermercado ou pede a primeira caixa.
+          </p>
+          <button class="btn rv" data-go=".hero">Quero a minha caixa</button>
+          <p class="foot rv">
+            © 2026 Refri. Bebida com cafeína (160 mg/lata). Não recomendada a
+            crianças, grávidas ou pessoas sensíveis à cafeína. Consome com
+            moderação.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+      const $ = (s) => document.querySelector(s),
+        $$ = (s) => [...document.querySelectorAll(s)];
+      const rm = matchMedia("(prefers-reduced-motion:reduce)").matches;
+      const mob = matchMedia("(max-width:760px)").matches;
+      if (rm) gsap.defaults({ duration: 0.01 });
+
+      // título gigante
+      $(".giant").innerHTML = [..."REFRI"]
+        .map((c) => `<span class="ch">${c}</span>`)
+        .join("");
+      gsap.from(".ch", {
+        yPercent: 110,
+        duration: 1.1,
+        ease: "expo.out",
+        stagger: 0.08,
+        delay: 0.25,
+      });
+      gsap.from(".stage", {
+        y: "60vh",
+        opacity: 0,
+        duration: 1.5,
+        ease: "power4.out",
+        delay: 0.2,
+      });
+      gsap.from(".hl,.hr,.cue", {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        delay: 1,
+        stagger: 0.15,
+      });
+      gsap.to(".giant", {
+        yPercent: -35,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      if (!rm)
+        gsap.to("#can svg", {
+          y: -14,
+          duration: 2.4,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+        });
+
+      // a lata segue cada secção; cor do sabor muda o ambiente
+      $$("[data-can]").forEach((s) => {
+        const [x, sc, y] = s.dataset.can.split(",").map(Number);
+        const go = () => {
+          gsap.to("#can", {
+            x: mob ? 0 : x + "vw",
+            y: y + "vh",
+            scale: mob ? sc * 0.85 : sc,
+            duration: 1.3,
+            ease: "power3.inOut",
+            overwrite: "auto",
+          });
+          gsap.to(document.documentElement, {
+            "--ac": s.dataset.c || "#b6ff00",
+            "--bg": s.dataset.bg || "#0a0a0b",
+            duration: 0.9,
+            overwrite: "auto",
+          });
+        };
+        ScrollTrigger.create({
+          trigger: s,
+          start: "top 55%",
+          end: "bottom 55%",
+          onEnter: go,
+          onEnterBack: go,
+        });
+      });
+
+      // rótulo desliza com o scroll (efeito de lata a rodar, mantendo-a reta)
+      ScrollTrigger.create({
+        start: 0,
+        end: "max",
+        onUpdate: (s) =>
+          gsap.set("#lab", { x: Math.sin(s.progress * Math.PI * 10) * 18 }),
+      });
+
+      // revelações
+      $$(".rv").forEach((el) =>
+        gsap.from(el, {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 88%" },
+        }),
+      );
+
+      // contadores
+      $$("[data-n]").forEach((el) => {
+        const o = { v: 0 };
+        gsap.to(o, {
+          v: +el.dataset.n,
+          duration: 1.8,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 88%" },
+          onUpdate: () => (el.textContent = Math.round(o.v)),
+        });
+      });
+
+      // bolhas
+      if (!rm) {
+        const st = $(".stage");
+        for (let i = 0; i < 14; i++) {
+          const b = document.createElement("div"),
+            z = 6 + Math.random() * 16;
+          b.className = "bub";
+          b.style.cssText = `left:${Math.random() * 100}%;width:${z}px;height:${z}px`;
+          st.appendChild(b);
+          gsap.to(b, {
+            y: "-115vh",
+            x: "+=" + (Math.random() * 60 - 30),
+            duration: 6 + Math.random() * 8,
+            repeat: -1,
+            delay: Math.random() * 8,
+            ease: "none",
+          });
+        }
+      }
+
+      // navegação
+      $$("[data-go]").forEach((b) =>
+        b.addEventListener("click", () => {
+          const t = $(b.dataset.go);
+          if (t) t.scrollIntoView({ behavior: rm ? "auto" : "smooth" });
+        }),
+      );
+    </script>
+  </body>
+</html>
