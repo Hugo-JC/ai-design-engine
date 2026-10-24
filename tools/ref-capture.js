@@ -1,18 +1,176 @@
 #!/usr/bin/env node
-'use strict';
-const fs=require('fs');const path=require('path');const {URL}=require('url');
-const args=process.argv.slice(2);const url=args.find(x=>!x.startsWith('--'));
-const get=(f,d)=>{const i=args.indexOf(f);return i<0?d:args[i+1];};
-async function main(){
- if(!url)throw new Error('Uso: node tools/ref-capture.js <url> [--out references/<slug>] [--viewports 390,1440]');
- const parsed=new URL(url);if(!['http:','https:','file:'].includes(parsed.protocol))throw new Error('Apenas URLs http(s) ou file:// são aceites.');
- if(parsed.protocol!=='file:'&&!args.includes('--ignore-robots')){try{const robots=new URL('/robots.txt',parsed);const r=await fetch(robots,{signal:AbortSignal.timeout(5000)});if(r.ok){const t=await r.text();if(/^User-agent:\s*\*\s*$[\s\S]*?^Disallow:\s*\/\s*$/im.test(t))throw new Error('Captura bloqueada por robots.txt; use --ignore-robots explicitamente se tiver autorização.');}}catch(e){if(e.message.includes('robots.txt'))throw e;}}
- let pw;try{pw=require('playwright');}catch{console.error('Playwright é opcional. Instale-o localmente (npm install --no-save playwright) e disponibilize Chromium.');process.exitCode=2;return;}
- const out=path.resolve(get('--out',path.join('references',parsed.hostname||'local-capture')));fs.mkdirSync(out,{recursive:true});const widths=(get('--viewports','390,1440').split(',').map(Number));const browser=await pw.chromium.launch({headless:true});
- try{const metadata={url,captured_at:new Date().toISOString().slice(0,10),viewport_set:widths,fonts:[],colors:{background:null,text:null,accent_candidates:[]},type:{h1:null,body:null},root_vars:{},structure:{sections:0,has_marquee:false,has_sticky_nav:false}};
- for(const width of widths){const page=await browser.newPage({viewport:{width,height:900}});await page.goto(url,{waitUntil:'networkidle',timeout:30000}).catch(()=>page.goto(url,{waitUntil:'domcontentloaded',timeout:30000}));const data=await page.evaluate(()=>{const cs=e=>e?getComputedStyle(e):null;const h=document.querySelector('h1'),b=document.body,root=getComputedStyle(document.documentElement);const fonts={};for(const e of document.querySelectorAll('body *')){const f=getComputedStyle(e).fontFamily.split(',')[0].replace(/["']/g,'').trim();if(f)fonts[f]=(fonts[f]||0)+1;}const colors={};for(const e of document.querySelectorAll('body *')){const c=getComputedStyle(e).color;if(/^rgb/.test(c))colors[c]=(colors[c]||0)+1;}const sorted=Object.entries(colors).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);const vars={};for(let i=0;i<root.length;i++){const k=root[i];if(k.startsWith('--'))vars[k]=root.getPropertyValue(k).trim();}const hs=cs(h),bs=cs(b);return{fonts:Object.entries(fonts).sort((a,b)=>b[1]-a[1]),bg:bs.backgroundColor,text:bs.color,colors:sorted,type:{h1:hs?{size_px:parseFloat(hs.fontSize),weight:Number(hs.fontWeight)||400,letter_spacing_em:parseFloat(hs.letterSpacing)/(parseFloat(hs.fontSize)||1)}:null,body:bs?{size_px:parseFloat(bs.fontSize)}:null},vars,sections:document.querySelectorAll('main section,body>section').length,marquee:!!document.querySelector('[class*=marquee],[data-marquee]'),sticky:!!document.querySelector('nav[style*=sticky],header[style*=sticky]')};});
- if(width===widths[0]){const totalFontUses=data.fonts.reduce((sum,[,count])=>sum+count,0);metadata.fonts=data.fonts.map(([family,n])=>({family,usage_pct:Math.round(n/Math.max(1,totalFontUses)*100)}));metadata.colors={background:data.bg,text:data.text,accent_candidates:data.colors.slice(0,8)};metadata.type=data.type;metadata.root_vars=data.vars;metadata.structure={sections:data.sections,has_marquee:data.marquee,has_sticky_nav:data.sticky};}
- await page.screenshot({path:path.join(out,width<600?'mobile.png':'desktop.png'),fullPage:true});if(width>=600)await page.screenshot({path:path.join(out,'fold-desktop.png'),fullPage:false});await page.close();}
- fs.writeFileSync(path.join(out,'capture.json'),JSON.stringify(metadata,null,2)+'\n');fs.writeFileSync(path.join(out,'notes.md'),'# Referência visual\n- **Fonte:** '+url+' · capturado em '+metadata.captured_at+'\n- **Porque me atraiu (1 frase, minha):**\n\n## Padrões (palavras minhas)\n- Composição / arquétipo:\n- Tipografia (escala, peso, caixa):\n- Cor (papel de cada cor, não valores exatos):\n- Espaçamento e ritmo:\n- Movimento (o quê, quando, duração aproximada, easing):\n\n## Extrair\n-\n\n## Não copiar\n-\n\n## Mapeamento para o repo\n- Nicho(s): · Arquétipo(s): · Traço(s):\n');
- }finally{await browser.close();}}
-if(require.main===module)main().catch(e=>{console.error(e.message);process.exitCode=1;});
+"use strict";
+const fs = require("fs");
+const path = require("path");
+const { URL } = require("url");
+const args = process.argv.slice(2);
+const url = args.find((x) => !x.startsWith("--"));
+const get = (f, d) => {
+  const i = args.indexOf(f);
+  return i < 0 ? d : args[i + 1];
+};
+async function main() {
+  if (!url)
+    throw new Error(
+      "Uso: node tools/ref-capture.js <url> [--out references/<slug>] [--viewports 390,1440]",
+    );
+  const parsed = new URL(url);
+  if (!["http:", "https:", "file:"].includes(parsed.protocol))
+    throw new Error("Apenas URLs http(s) ou file:// são aceites.");
+  if (parsed.protocol !== "file:" && !args.includes("--ignore-robots")) {
+    try {
+      const robots = new URL("/robots.txt", parsed);
+      const r = await fetch(robots, { signal: AbortSignal.timeout(5000) });
+      if (r.ok) {
+        const t = await r.text();
+        if (/^User-agent:\s*\*\s*$[\s\S]*?^Disallow:\s*\/\s*$/im.test(t))
+          throw new Error(
+            "Captura bloqueada por robots.txt; use --ignore-robots explicitamente se tiver autorização.",
+          );
+      }
+    } catch (e) {
+      if (e.message.includes("robots.txt")) throw e;
+    }
+  }
+  let pw;
+  try {
+    pw = require("playwright");
+  } catch {
+    console.error(
+      "Playwright é opcional. Instale-o localmente (npm install --no-save playwright) e disponibilize Chromium.",
+    );
+    process.exitCode = 2;
+    return;
+  }
+  const out = path.resolve(
+    get("--out", path.join("references", parsed.hostname || "local-capture")),
+  );
+  fs.mkdirSync(out, { recursive: true });
+  const widths = get("--viewports", "390,1440").split(",").map(Number);
+  const browser = await pw.chromium.launch({ headless: true });
+  try {
+    const metadata = {
+      url,
+      captured_at: new Date().toISOString().slice(0, 10),
+      viewport_set: widths,
+      fonts: [],
+      colors: { background: null, text: null, accent_candidates: [] },
+      type: { h1: null, body: null },
+      root_vars: {},
+      structure: { sections: 0, has_marquee: false, has_sticky_nav: false },
+    };
+    for (const width of widths) {
+      const page = await browser.newPage({ viewport: { width, height: 900 } });
+      await page
+        .goto(url, { waitUntil: "networkidle", timeout: 30000 })
+        .catch(() =>
+          page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 }),
+        );
+      const data = await page.evaluate(() => {
+        const cs = (e) => (e ? getComputedStyle(e) : null);
+        const h = document.querySelector("h1"),
+          b = document.body,
+          root = getComputedStyle(document.documentElement);
+        const fonts = {};
+        for (const e of document.querySelectorAll("body *")) {
+          const f = getComputedStyle(e)
+            .fontFamily.split(",")[0]
+            .replace(/["']/g, "")
+            .trim();
+          if (f) fonts[f] = (fonts[f] || 0) + 1;
+        }
+        const colors = {};
+        for (const e of document.querySelectorAll("body *")) {
+          const c = getComputedStyle(e).color;
+          if (/^rgb/.test(c)) colors[c] = (colors[c] || 0) + 1;
+        }
+        const sorted = Object.entries(colors)
+          .sort((a, b) => b[1] - a[1])
+          .map((x) => x[0]);
+        const vars = {};
+        for (let i = 0; i < root.length; i++) {
+          const k = root[i];
+          if (k.startsWith("--")) vars[k] = root.getPropertyValue(k).trim();
+        }
+        const hs = cs(h),
+          bs = cs(b);
+        return {
+          fonts: Object.entries(fonts).sort((a, b) => b[1] - a[1]),
+          bg: bs.backgroundColor,
+          text: bs.color,
+          colors: sorted,
+          type: {
+            h1: hs
+              ? {
+                  size_px: parseFloat(hs.fontSize),
+                  weight: Number(hs.fontWeight) || 400,
+                  letter_spacing_em:
+                    parseFloat(hs.letterSpacing) /
+                    (parseFloat(hs.fontSize) || 1),
+                }
+              : null,
+            body: bs ? { size_px: parseFloat(bs.fontSize) } : null,
+          },
+          vars,
+          sections: document.querySelectorAll("main section,body>section")
+            .length,
+          marquee: !!document.querySelector("[class*=marquee],[data-marquee]"),
+          sticky: !!document.querySelector(
+            "nav[style*=sticky],header[style*=sticky]",
+          ),
+        };
+      });
+      if (width === widths[0]) {
+        const totalFontUses = data.fonts.reduce(
+          (sum, [, count]) => sum + count,
+          0,
+        );
+        metadata.fonts = data.fonts.map(([family, n]) => ({
+          family,
+          usage_pct: Math.round((n / Math.max(1, totalFontUses)) * 100),
+        }));
+        metadata.colors = {
+          background: data.bg,
+          text: data.text,
+          accent_candidates: data.colors.slice(0, 8),
+        };
+        metadata.type = data.type;
+        metadata.root_vars = data.vars;
+        metadata.structure = {
+          sections: data.sections,
+          has_marquee: data.marquee,
+          has_sticky_nav: data.sticky,
+        };
+      }
+      await page.screenshot({
+        path: path.join(out, width < 600 ? "mobile.png" : "desktop.png"),
+        fullPage: true,
+      });
+      if (width >= 600)
+        await page.screenshot({
+          path: path.join(out, "fold-desktop.png"),
+          fullPage: false,
+        });
+      await page.close();
+    }
+    fs.writeFileSync(
+      path.join(out, "capture.json"),
+      JSON.stringify(metadata, null, 2) + "\n",
+    );
+    fs.writeFileSync(
+      path.join(out, "notes.md"),
+      "# Referência visual\n- **Fonte:** " +
+        url +
+        " · capturado em " +
+        metadata.captured_at +
+        "\n- **Porque me atraiu (1 frase, minha):**\n\n## Padrões (palavras minhas)\n- Composição / arquétipo:\n- Tipografia (escala, peso, caixa):\n- Cor (papel de cada cor, não valores exatos):\n- Espaçamento e ritmo:\n- Movimento (o quê, quando, duração aproximada, easing):\n\n## Extrair\n-\n\n## Não copiar\n-\n\n## Mapeamento para o repo\n- Nicho(s): · Arquétipo(s): · Traço(s):\n",
+    );
+  } finally {
+    await browser.close();
+  }
+}
+if (require.main === module)
+  main().catch((e) => {
+    console.error(e.message);
+    process.exitCode = 1;
+  });

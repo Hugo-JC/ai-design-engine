@@ -2,7 +2,7 @@
 
 ## 1. Visão do projeto
 
-O **AI Design Engine** é um conjunto de regras, tokens visuais, referências e instruções para orientar agentes de IA na criação e avaliação de interfaces frontend. O seu propósito é reduzir o *AI Slop*: interfaces visualmente genéricas, sem contexto de produto, com composição repetitiva ou decisões de marca inconsistentes.
+O **AI Design Engine** é um conjunto de regras, tokens visuais, referências e instruções para orientar agentes de IA na criação e avaliação de interfaces frontend. O seu propósito é reduzir o _AI Slop_: interfaces visualmente genéricas, sem contexto de produto, com composição repetitiva ou decisões de marca inconsistentes.
 
 O projeto fornece direção e critérios de qualidade; não substitui o briefing, os requisitos funcionais nem o julgamento contextual de quem implementa a interface.
 

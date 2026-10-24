@@ -1,17 +1,225 @@
 #!/usr/bin/env node
-'use strict';
-const fs=require('fs');const path=require('path');const cp=require('child_process');const root=path.resolve(__dirname,'..');
-const args=process.argv.slice(2);const cmd=args[0];const opt=f=>{const i=args.indexOf(f);return i<0?undefined:args[i+1];};const list=f=>{const values=[];for(let i=0;i<args.length;i++)if(args[i]===f&&args[i+1]&&!args[i+1].startsWith('--'))values.push(...args[i+1].split(',').filter(Boolean));return values;};
-const slug=s=>String(s||'item').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-const notes='\n## Padrões (palavras minhas)\n- Composição / arquétipo:\n- Tipografia:\n- Cor:\n- Espaçamento e ritmo:\n- Movimento:\n\n## Extrair\n-\n\n## Não copiar\n-\n\n## Mapeamento para o repo\n- Nicho(s): · Arquétipo(s): · Traço(s):\n';
-function manifest(dir){const f=path.join(dir,'manifest.json');if(!fs.existsSync(f))fs.writeFileSync(f,JSON.stringify({version:1,items:[]},null,2)+'\n');return{f,data:JSON.parse(fs.readFileSync(f,'utf8'))};}
-function probe(bin,args){try{return cp.execFileSync(bin,args,{encoding:'utf8',stdio:['ignore','pipe','ignore']});}catch{return null;}}
-async function main(){const base=path.join(root,'07-library');if(cmd==='index'){let count=0;for(const c of ['videos','books','mobbin']){const dir=path.join(base,c);if(!fs.existsSync(dir))continue;const {f,data}=manifest(dir);for(const item of data.items){const note=path.join(base,item.notes_path||'');if(fs.existsSync(note)){const body=fs.readFileSync(note,'utf8');const lines=body.split(/\r?\n/).filter(x=>x.trim()).length;item.status=lines>=5&&/## Extrair[\s\S]*## Não copiar/.test(body)?'indexed':'raw';}else item.status='raw';count++;}fs.writeFileSync(f,JSON.stringify(data,null,2)+'\n');}console.log(`Índice atualizado: ${count} itens.`);return;}
- if(!['video','image','book'].includes(cmd))throw new Error('Uso: ref-ingest.js <video|image|book|index> <ficheiro> [metadados]');const source=args[1];if(!source||!fs.existsSync(source))throw new Error('Indique um ficheiro local existente. URLs não são aceites.');
- if(cmd==='image'&&opt('--source')!=='mobbin')throw new Error('Imagens só são aceites na coleção Mobbin com --source mobbin.');const collection=cmd==='video'?'videos':cmd==='book'?'books':'mobbin';const dir=path.join(base,collection);fs.mkdirSync(dir,{recursive:true});const {f,data}=manifest(dir);const idPrefix=cmd==='video'?'vid':cmd==='book'?'bk':'mob';const used=data.items.map(x=>Number(String(x.id||'').match(/(\d+)$/)?.[1]||0));const n=Math.max(0,...used)+1;const id=`${idPrefix}-${String(n).padStart(3,'0')}`;const title=opt('--title')||opt('--app')||path.basename(source,path.extname(source));const creator=opt('--creator')||opt('--author')||opt('--source')||'';const niche=list('--niche'),archetypes=list('--archetype'),traits=list('--trait');const folder=cmd==='image'?path.join(slug(opt('--app')),slug(opt('--flow')||'references')):`${String(n).padStart(3,'0')}-${slug(creator||title)}__${slug(traits[0]||title)}__${new Date().getFullYear()}`;const dest=path.join(dir,folder);fs.mkdirSync(dest,{recursive:true});const filename=cmd==='video'?'video'+path.extname(source):cmd==='book'?'book'+path.extname(source):path.basename(source);
- if(cmd==='image'&&fs.statSync(source).isDirectory()){const files=fs.readdirSync(source).filter(x=>/\.(png|jpe?g|webp)$/i.test(x)).sort();if(!files.length)throw new Error('A pasta não contém imagens PNG/JPEG/WebP.');for(let i=0;i<files.length;i++)fs.copyFileSync(path.join(source,files[i]),path.join(dest,`${String(i+1).padStart(2,'0')}${path.extname(files[i]).toLowerCase()}`));}else fs.copyFileSync(source,path.join(dest,filename));
- const item={id,type:cmd==='image'?'image':cmd==='video'?'video':'book',title,creator,source_url:opt('--url')||(cmd==='video'?'local-file (origem não especificada)':''),captured_at:new Date().toISOString().slice(0,10),license_note:'estudo privado; não redistribuir',local_path:path.relative(base,path.join(dest,filename)).replace(/\\/g,'/'),notes_path:path.relative(base,path.join(dest,cmd==='book'?'principles.md':'notes.md')).replace(/\\/g,'/'),niches,archetypes,patterns:[],traits,extract:[],do_not_copy:['logótipo','copy','imagens','composição integral'],rating:0,status:'raw'};
- if(cmd==='video'){const probeOut=probe('ffprobe',['-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',path.resolve(source)]);if(probeOut)item.duration_seconds=Number(probeOut.trim());const ffmpeg=probe('ffmpeg',['-version']);if(ffmpeg){const frames=path.join(dest,'frames');fs.mkdirSync(frames,{recursive:true});const fps='select=gt(scene\,0.30)';probe('ffmpeg',['-y','-i',path.resolve(source),'-vf',fps,'-vsync','vfr','-frames:v','24',path.join(frames,'%02d.jpg')]);const imgs=fs.readdirSync(frames).filter(x=>x.endsWith('.jpg')).slice(0,24);if(imgs.length)probe('ffmpeg',['-y','-i',path.join(frames,'%02d.jpg'),'-vf','scale=240:-1,tile=4x6','-frames:v','1',path.join(dest,'contact-sheet.jpg')]);}}
- fs.writeFileSync(path.join(dest,cmd==='book'?'principles.md':'notes.md'),cmd==='book'?`# ${title} — ${creator}\n> Princípios em palavras próprias; sem texto copiado.\n\n| # | Princípio (palavras minhas) | Página | Mapeia para (regra/estilo do repo) |\n| :-- | :-- | :-- | :-- |\n| 1 | | | |\n`:`# ${title}\n- **Fonte:** ${creator} · ${item.source_url} · capturado em ${item.captured_at}\n- **Porque me atraiu (1 frase, minha):**\n${notes}`);fs.writeFileSync(path.join(dest,'meta.json'),JSON.stringify(item,null,2)+'\n');data.items.push(item);fs.writeFileSync(f,JSON.stringify(data,null,2)+'\n');console.log(`Criado ${id} em ${path.relative(root,dest)}.`);
+"use strict";
+const fs = require("fs");
+const path = require("path");
+const cp = require("child_process");
+const root = path.resolve(__dirname, "..");
+const args = process.argv.slice(2);
+const cmd = args[0];
+const opt = (f) => {
+  const i = args.indexOf(f);
+  return i < 0 ? undefined : args[i + 1];
+};
+const list = (f) => {
+  const values = [];
+  for (let i = 0; i < args.length; i++)
+    if (args[i] === f && args[i + 1] && !args[i + 1].startsWith("--"))
+      values.push(...args[i + 1].split(",").filter(Boolean));
+  return values;
+};
+const slug = (s) =>
+  String(s || "item")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+const notes =
+  "\n## Padrões (palavras minhas)\n- Composição / arquétipo:\n- Tipografia:\n- Cor:\n- Espaçamento e ritmo:\n- Movimento:\n\n## Extrair\n-\n\n## Não copiar\n-\n\n## Mapeamento para o repo\n- Nicho(s): · Arquétipo(s): · Traço(s):\n";
+function manifest(dir) {
+  const f = path.join(dir, "manifest.json");
+  if (!fs.existsSync(f))
+    fs.writeFileSync(
+      f,
+      JSON.stringify({ version: 1, items: [] }, null, 2) + "\n",
+    );
+  return { f, data: JSON.parse(fs.readFileSync(f, "utf8")) };
 }
-if(require.main===module)main().catch(e=>{console.error(e.message);process.exitCode=1;});module.exports={slug};
+function probe(bin, args) {
+  try {
+    return cp.execFileSync(bin, args, {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    });
+  } catch {
+    return null;
+  }
+}
+async function main() {
+  const base = path.join(root, "07-library");
+  if (cmd === "index") {
+    let count = 0;
+    for (const c of ["videos", "books", "mobbin"]) {
+      const dir = path.join(base, c);
+      if (!fs.existsSync(dir)) continue;
+      const { f, data } = manifest(dir);
+      for (const item of data.items) {
+        const note = path.join(base, item.notes_path || "");
+        if (fs.existsSync(note)) {
+          const body = fs.readFileSync(note, "utf8");
+          const lines = body.split(/\r?\n/).filter((x) => x.trim()).length;
+          item.status =
+            lines >= 5 && /## Extrair[\s\S]*## Não copiar/.test(body)
+              ? "indexed"
+              : "raw";
+        } else item.status = "raw";
+        count++;
+      }
+      fs.writeFileSync(f, JSON.stringify(data, null, 2) + "\n");
+    }
+    console.log(`Índice atualizado: ${count} itens.`);
+    return;
+  }
+  if (!["video", "image", "book"].includes(cmd))
+    throw new Error(
+      "Uso: ref-ingest.js <video|image|book|index> <ficheiro> [metadados]",
+    );
+  const source = args[1];
+  if (!source || !fs.existsSync(source))
+    throw new Error(
+      "Indique um ficheiro local existente. URLs não são aceites.",
+    );
+  if (cmd === "image" && opt("--source") !== "mobbin")
+    throw new Error(
+      "Imagens só são aceites na coleção Mobbin com --source mobbin.",
+    );
+  const collection =
+    cmd === "video" ? "videos" : cmd === "book" ? "books" : "mobbin";
+  const dir = path.join(base, collection);
+  fs.mkdirSync(dir, { recursive: true });
+  const { f, data } = manifest(dir);
+  const idPrefix = cmd === "video" ? "vid" : cmd === "book" ? "bk" : "mob";
+  const used = data.items.map((x) =>
+    Number(String(x.id || "").match(/(\d+)$/)?.[1] || 0),
+  );
+  const n = Math.max(0, ...used) + 1;
+  const id = `${idPrefix}-${String(n).padStart(3, "0")}`;
+  const title =
+    opt("--title") ||
+    opt("--app") ||
+    path.basename(source, path.extname(source));
+  const creator = opt("--creator") || opt("--author") || opt("--source") || "";
+  const niche = list("--niche"),
+    archetypes = list("--archetype"),
+    traits = list("--trait");
+  const folder =
+    cmd === "image"
+      ? path.join(slug(opt("--app")), slug(opt("--flow") || "references"))
+      : `${String(n).padStart(3, "0")}-${slug(creator || title)}__${slug(traits[0] || title)}__${new Date().getFullYear()}`;
+  const dest = path.join(dir, folder);
+  fs.mkdirSync(dest, { recursive: true });
+  const filename =
+    cmd === "video"
+      ? "video" + path.extname(source)
+      : cmd === "book"
+        ? "book" + path.extname(source)
+        : path.basename(source);
+  if (cmd === "image" && fs.statSync(source).isDirectory()) {
+    const files = fs
+      .readdirSync(source)
+      .filter((x) => /\.(png|jpe?g|webp)$/i.test(x))
+      .sort();
+    if (!files.length)
+      throw new Error("A pasta não contém imagens PNG/JPEG/WebP.");
+    for (let i = 0; i < files.length; i++)
+      fs.copyFileSync(
+        path.join(source, files[i]),
+        path.join(
+          dest,
+          `${String(i + 1).padStart(2, "0")}${path.extname(files[i]).toLowerCase()}`,
+        ),
+      );
+  } else fs.copyFileSync(source, path.join(dest, filename));
+  const item = {
+    id,
+    type: cmd === "image" ? "image" : cmd === "video" ? "video" : "book",
+    title,
+    creator,
+    source_url:
+      opt("--url") ||
+      (cmd === "video" ? "local-file (origem não especificada)" : ""),
+    captured_at: new Date().toISOString().slice(0, 10),
+    license_note: "estudo privado; não redistribuir",
+    local_path: path
+      .relative(base, path.join(dest, filename))
+      .replace(/\\/g, "/"),
+    notes_path: path
+      .relative(
+        base,
+        path.join(dest, cmd === "book" ? "principles.md" : "notes.md"),
+      )
+      .replace(/\\/g, "/"),
+    niches,
+    archetypes,
+    patterns: [],
+    traits,
+    extract: [],
+    do_not_copy: ["logótipo", "copy", "imagens", "composição integral"],
+    rating: 0,
+    status: "raw",
+  };
+  if (cmd === "video") {
+    const probeOut = probe("ffprobe", [
+      "-v",
+      "error",
+      "-show_entries",
+      "format=duration",
+      "-of",
+      "default=nw=1:nk=1",
+      path.resolve(source),
+    ]);
+    if (probeOut) item.duration_seconds = Number(probeOut.trim());
+    const ffmpeg = probe("ffmpeg", ["-version"]);
+    if (ffmpeg) {
+      const frames = path.join(dest, "frames");
+      fs.mkdirSync(frames, { recursive: true });
+      const fps = "select=gt(scene\,0.30)";
+      probe("ffmpeg", [
+        "-y",
+        "-i",
+        path.resolve(source),
+        "-vf",
+        fps,
+        "-vsync",
+        "vfr",
+        "-frames:v",
+        "24",
+        path.join(frames, "%02d.jpg"),
+      ]);
+      const imgs = fs
+        .readdirSync(frames)
+        .filter((x) => x.endsWith(".jpg"))
+        .slice(0, 24);
+      if (imgs.length)
+        probe("ffmpeg", [
+          "-y",
+          "-i",
+          path.join(frames, "%02d.jpg"),
+          "-vf",
+          "scale=240:-1,tile=4x6",
+          "-frames:v",
+          "1",
+          path.join(dest, "contact-sheet.jpg"),
+        ]);
+    }
+  }
+  fs.writeFileSync(
+    path.join(dest, cmd === "book" ? "principles.md" : "notes.md"),
+    cmd === "book"
+      ? `# ${title} — ${creator}\n> Princípios em palavras próprias; sem texto copiado.\n\n| # | Princípio (palavras minhas) | Página | Mapeia para (regra/estilo do repo) |\n| :-- | :-- | :-- | :-- |\n| 1 | | | |\n`
+      : `# ${title}\n- **Fonte:** ${creator} · ${item.source_url} · capturado em ${item.captured_at}\n- **Porque me atraiu (1 frase, minha):**\n${notes}`,
+  );
+  fs.writeFileSync(
+    path.join(dest, "meta.json"),
+    JSON.stringify(item, null, 2) + "\n",
+  );
+  data.items.push(item);
+  fs.writeFileSync(f, JSON.stringify(data, null, 2) + "\n");
+  console.log(`Criado ${id} em ${path.relative(root, dest)}.`);
+}
+if (require.main === module)
+  main().catch((e) => {
+    console.error(e.message);
+    process.exitCode = 1;
+  });
+module.exports = { slug };

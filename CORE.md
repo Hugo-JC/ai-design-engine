@@ -10,6 +10,7 @@ Núcleo do AI Design Engine v3. O resto do repo carrega-se **só quando for prec
 4. **Auditar:** `node tools/validate-design.js <ficheiro> --style <style_id>` e corrija; depois reveja o resultado **renderizado** (ou `node tools/render-audit.js`). Declare o que não conseguiu verificar.
 
 ## Referências (opcional, máx. 3)
+
 Escada: pedido do utilizador → conector (Mobbin/Figma) → biblioteca [BETA] → captura por URL → dossiê do router.
 Extraia padrões, não layouts; registe no brief “fonte → extraído | não copiado”. Sem referências, siga só o dossiê.
 
@@ -19,7 +20,7 @@ Extraia padrões, não layouts; registe no brief “fonte → extraído | não c
 2. **Cor do produto ≠ accent de UI.** Accent ≤ 10 / 15 / 25 % da superfície (calm / balanced / loud); texto sobre accent com ≥ 4.5:1.
 3. Sem roxo/índigo genérico (inclui `#6366F1`) nem gradientes roxo→azul, salvo pedido explícito.
 4. Contraste: 4.5:1 em texto normal, 3:1 em texto grande e componentes de UI. Texto puramente decorativo leva `aria-hidden`.
-5. Títulos: tracking dentro do intervalo do estilo (nunca abaixo de −0.02em) e `text-wrap: balance`. Tipografia de *display* gigante só em hero/wordmark.
+5. Títulos: tracking dentro do intervalo do estilo (nunca abaixo de −0.02em) e `text-wrap: balance`. Tipografia de _display_ gigante só em hero/wordmark.
 6. Espaçamento: base 8 px; meio-passo de 4 px até 16 px.
 7. Nada de divisores (`<hr>`, `border-t/b`, `divide-y`, `h-px`) a separar blocos soltos: use espaço ou mudança de superfície.
 8. Botões com o raio do token (0 só em neo-brutalismo), `hover` e `:focus-visible` em todos os controlos; ações são `<button>`, não `<div onclick>`.

@@ -1,13 +1,36 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
-  "required": ["id", "type", "title", "notes_path", "niches", "archetypes", "traits", "status"],
+  "required": [
+    "id",
+    "type",
+    "title",
+    "notes_path",
+    "niches",
+    "archetypes",
+    "traits",
+    "status"
+  ],
   "properties": {
     "id": { "type": "string", "pattern": "^(vid|bk|mob)-[0-9]{3,}$" },
-    "type": { "enum": ["video", "image", "book"] }, "title": { "type": "string", "minLength": 1 },
-    "source_url": { "type": "string" }, "local_path": { "type": "string" }, "notes_path": { "type": "string", "minLength": 1 },
-    "niches": { "type": "array", "items": { "type": "string" } }, "archetypes": { "type": "array", "items": { "type": "string", "pattern": "^(H[1-9]|F[1-6]|S[1-4]|N[1-3]|R[1-3])$" } },
-    "traits": { "type": "array", "items": { "type": "string" } }, "extract": { "type": "array", "items": { "type": "string" } }, "do_not_copy": { "type": "array", "items": { "type": "string" } },
-    "rating": { "type": "integer", "minimum": 1, "maximum": 5 }, "status": { "enum": ["raw", "indexed", "summarized"] }
-  }, "additionalProperties": true
+    "type": { "enum": ["video", "image", "book"] },
+    "title": { "type": "string", "minLength": 1 },
+    "source_url": { "type": "string" },
+    "local_path": { "type": "string" },
+    "notes_path": { "type": "string", "minLength": 1 },
+    "niches": { "type": "array", "items": { "type": "string" } },
+    "archetypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(H[1-9]|F[1-6]|S[1-4]|N[1-3]|R[1-3])$"
+      }
+    },
+    "traits": { "type": "array", "items": { "type": "string" } },
+    "extract": { "type": "array", "items": { "type": "string" } },
+    "do_not_copy": { "type": "array", "items": { "type": "string" } },
+    "rating": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "status": { "enum": ["raw", "indexed", "summarized"] }
+  },
+  "additionalProperties": true
 }

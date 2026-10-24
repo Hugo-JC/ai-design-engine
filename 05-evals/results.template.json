@@ -7,7 +7,16 @@
     {
       "prompt_id": 1,
       "condition": "with_repo_refs",
-      "scores": { "identity": null, "hierarchy": null, "color": null, "rhythm": null, "composition": null, "copy": null, "polish": null, "realbrand": null },
+      "scores": {
+        "identity": null,
+        "hierarchy": null,
+        "color": null,
+        "rhythm": null,
+        "composition": null,
+        "copy": null,
+        "polish": null,
+        "realbrand": null
+      },
       "notes": ""
     },
     {

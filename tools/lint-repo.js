@@ -33,7 +33,8 @@ if (cat.version !== major)
   E(
     `local-presets.json version (${cat.version}) ≠ major do package.json (${major})`,
   );
-const top = (rd("CHANGELOG.md").match(/^## \[(\d+\.\d+\.\d+(?:-[\w.]+)?)\]/m) || [])[1];
+const top = (rd("CHANGELOG.md").match(/^## \[(\d+\.\d+\.\d+(?:-[\w.]+)?)\]/m) ||
+  [])[1];
 if (top !== pkg.version)
   E(`CHANGELOG (${top}) ≠ package.json (${pkg.version})`);
 
@@ -171,38 +172,87 @@ if (!stylesDoc.styles[cat.fallback.style_id])
   E("fallback com style_id inexistente");
 
 // ---- catálogo de referências v3.1 ----
-const nicheIds = new Set(cat.presets.map(p => p.id));
+const nicheIds = new Set(cat.presets.map((p) => p.id));
 const sourceIds = new Set();
 for (const s of sourceCatalog.sources || []) {
   if (sourceIds.has(s.id)) E(`fonte duplicada: ${s.id}`);
   sourceIds.add(s.id);
   if (!/^https:\/\//.test(s.url)) E(`[fonte ${s.id}] URL deve usar https`);
-  if (!['gallery','app-ui','packaging','typography','motion-code'].includes(s.kind)) E(`[fonte ${s.id}] kind inválido`);
-  (s.access || []).forEach(a => { if (!['url','screenshot','connector'].includes(a)) E(`[fonte ${s.id}] access inválido: ${a}`); });
-  (s.niches || []).forEach(n => { if (!nicheIds.has(n)) E(`[fonte ${s.id}] nicho inexistente: ${n}`); });
-  if (!['untested','ok','js-only','blocked','login','error'].includes(s.fetch_status)) E(`[fonte ${s.id}] fetch_status inválido`);
+  if (
+    !["gallery", "app-ui", "packaging", "typography", "motion-code"].includes(
+      s.kind,
+    )
+  )
+    E(`[fonte ${s.id}] kind inválido`);
+  (s.access || []).forEach((a) => {
+    if (!["url", "screenshot", "connector"].includes(a))
+      E(`[fonte ${s.id}] access inválido: ${a}`);
+  });
+  (s.niches || []).forEach((n) => {
+    if (!nicheIds.has(n)) E(`[fonte ${s.id}] nicho inexistente: ${n}`);
+  });
+  if (
+    !["untested", "ok", "js-only", "blocked", "login", "error"].includes(
+      s.fetch_status,
+    )
+  )
+    E(`[fonte ${s.id}] fetch_status inválido`);
 }
 const allowedMedia = /\.(mp4|mov|webm|mkv|png|jpe?g|webp|pdf|epub)$/i;
-for (const collection of ['videos','books','mobbin']) {
+for (const collection of ["videos", "books", "mobbin"]) {
   const manifestPath = `07-library/${collection}/manifest.json`;
   if (!exists(manifestPath)) continue;
   try {
-    const manifest = JSON.parse(rd(manifestPath)); const ids = new Set();
+    const manifest = JSON.parse(rd(manifestPath));
+    const ids = new Set();
     for (const item of manifest.items || []) {
-      if (ids.has(item.id)) E(`id de item duplicado: ${item.id}`); ids.add(item.id);
-      (item.niches || []).forEach(n => { if (!nicheIds.has(n)) E(`[${item.id}] nicho inválido: ${n}`); });
-      (item.archetypes || []).forEach(a => { if (!allIds.has(a)) E(`[${item.id}] arquétipo inválido: ${a}`); });
-      if (item.status !== 'raw' && !exists(`07-library/${item.notes_path}`)) E(`[${item.id}] notes_path inexistente`);
-      if (item.type === 'video' && !String(item.source_url || '').trim()) E(`[${item.id}] vídeo sem source_url`);
+      if (ids.has(item.id)) E(`id de item duplicado: ${item.id}`);
+      ids.add(item.id);
+      (item.niches || []).forEach((n) => {
+        if (!nicheIds.has(n)) E(`[${item.id}] nicho inválido: ${n}`);
+      });
+      (item.archetypes || []).forEach((a) => {
+        if (!allIds.has(a)) E(`[${item.id}] arquétipo inválido: ${a}`);
+      });
+      if (item.status !== "raw" && !exists(`07-library/${item.notes_path}`))
+        E(`[${item.id}] notes_path inexistente`);
+      if (item.type === "video" && !String(item.source_url || "").trim())
+        E(`[${item.id}] vídeo sem source_url`);
     }
-  } catch (e) { E(`${manifestPath} inválido: ${e.message}`); }
+  } catch (e) {
+    E(`${manifestPath} inválido: ${e.message}`);
+  }
 }
-const ignore = rd('.gitignore');
-['mp4','mov','webm','mkv','png','jpg','jpeg','webp','pdf','epub'].forEach(ext => { if (!ignore.includes(`07-library/**/*.${ext}`)) E(`.gitignore sem regra para ${ext}`); });
+const ignore = rd(".gitignore");
+[
+  "mp4",
+  "mov",
+  "webm",
+  "mkv",
+  "png",
+  "jpg",
+  "jpeg",
+  "webp",
+  "pdf",
+  "epub",
+].forEach((ext) => {
+  if (!ignore.includes(`07-library/**/*.${ext}`))
+    E(`.gitignore sem regra para ${ext}`);
+});
 try {
-  const tracked = require('child_process').execFileSync('git',['ls-files','07-library'],{cwd:ROOT,encoding:'utf8'}).split(/\r?\n/).filter(Boolean);
-  tracked.filter(f => allowedMedia.test(f)).forEach(f => E(`media pessoal rastreado: ${f}`));
-} catch { W('não foi possível verificar media rastreado pelo Git'); }
+  const tracked = require("child_process")
+    .execFileSync("git", ["ls-files", "07-library"], {
+      cwd: ROOT,
+      encoding: "utf8",
+    })
+    .split(/\r?\n/)
+    .filter(Boolean);
+  tracked
+    .filter((f) => allowedMedia.test(f))
+    .forEach((f) => E(`media pessoal rastreado: ${f}`));
+} catch {
+  W("não foi possível verificar media rastreado pelo Git");
+}
 
 // ---- documentos ----
 const DOCS = [

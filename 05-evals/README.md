@@ -3,10 +3,12 @@
 Sem medir, “parece melhor” é opinião. Este conjunto responde com números.
 
 ## Duas camadas
-1. **Routing (automático):** `npm test` verifica que cada prompt de `prompts.json` produz o `style_id`, caminho e hero esperados. Mede a *consistência do repo*, não a qualidade visual.
+
+1. **Routing (automático):** `npm test` verifica que cada prompt de `prompts.json` produz o `style_id`, caminho e hero esperados. Mede a _consistência do repo_, não a qualidade visual.
 2. **Visual (manual, cega):** os 8 prompts com `visual_eval: true`, gerados **com** e **sem** repo, pontuados com `rubric.md`.
 
 ## Procedimento visual
+
 1. Para cada prompt `visual_eval`:
    - **Sem repo:** dê o prompt tal como está ao agente (sem `CORE.md`, sem `.cursorrules`).
    - **Com repo:** `node tools/route.js "<prompt>" --context` + `CORE.md` + o prompt.
@@ -19,6 +21,7 @@ Sem medir, “parece melhor” é opinião. Este conjunto responde com números.
    - Menos de 5 pares: amostra insuficiente.
 
 ## Boas práticas
+
 - Repita com 2 modelos/ferramentas; um único modelo pode enviesar.
 - Quando acrescentar uma regra, adicione um prompt que a exercite e volte a medir.
 - Os `expected_*` em `prompts.json` são decisões de design: se o router discordar, decida qual dos dois está errado antes de “corrigir” o teste.

@@ -14,12 +14,8 @@
     "style_id": "clean_editorial",
     "patterns": {
       "hero": "H2",
-      "features": [
-        "F2"
-      ],
-      "social_proof": [
-        "S3"
-      ],
+      "features": ["F2"],
+      "social_proof": ["S3"],
       "navigation": "N1",
       "footer": "R2"
     },
@@ -41,34 +37,18 @@
       "style_id": "minimalist_warm",
       "variants": [
         {
-          "when_any": [
-            "premium",
-            "sofisticado",
-            "noturno",
-            "torra escura"
-          ],
+          "when_any": ["premium", "sofisticado", "noturno", "torra escura"],
           "style_id": "minimalist_warm_dark"
         },
         {
-          "when_any": [
-            "orgânico",
-            "origem",
-            "natureza",
-            "sustentável"
-          ],
+          "when_any": ["orgânico", "origem", "natureza", "sustentável"],
           "style_id": "organic_forest_dark"
         }
       ],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3",
-          "F2"
-        ],
-        "social_proof": [
-          "S1",
-          "S4"
-        ],
+        "features": ["F3", "F2"],
+        "social_proof": ["S1", "S4"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -94,13 +74,8 @@
           ]
         }
       ],
-      "dossier": [
-        "Café, torrefação, alimentar artesanal"
-      ],
-      "hero_alternatives": [
-        "H3",
-        "H5"
-      ]
+      "dossier": ["Café, torrefação, alimentar artesanal"],
+      "hero_alternatives": ["H3", "H5"]
     },
     {
       "id": "wellness-health-beauty",
@@ -114,21 +89,14 @@
       "style_id": "minimalist_warm",
       "variants": [
         {
-          "when_any": [
-            "luxo",
-            "premium"
-          ],
+          "when_any": ["luxo", "premium"],
           "style_id": "clean_editorial"
         }
       ],
       "patterns": {
         "hero": "H2",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -154,39 +122,23 @@
           ]
         }
       ],
-      "dossier": [
-        "Bem-estar, saúde, cosmética"
-      ],
-      "hero_alternatives": [
-        "H3"
-      ]
+      "dossier": ["Bem-estar, saúde, cosmética"],
+      "hero_alternatives": ["H3"]
     },
     {
       "id": "fashion-commerce",
-      "match_terms": [
-        "moda",
-        "e-commerce",
-        "loja online",
-        "vestuário"
-      ],
+      "match_terms": ["moda", "e-commerce", "loja online", "vestuário"],
       "style_id": "minimalist_warm",
       "variants": [
         {
-          "when_any": [
-            "luxo",
-            "premium"
-          ],
+          "when_any": ["luxo", "premium"],
           "style_id": "clean_editorial"
         }
       ],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F1"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F1"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -212,12 +164,8 @@
           ]
         }
       ],
-      "dossier": [
-        "Moda e e-commerce"
-      ],
-      "hero_alternatives": [
-        "H5"
-      ]
+      "dossier": ["Moda e e-commerce"],
+      "hero_alternatives": ["H5"]
     },
     {
       "id": "saas-developer-ai",
@@ -233,32 +181,18 @@
       "style_id": "saas_dark_modern",
       "variants": [
         {
-          "when_any": [
-            "futurista",
-            "ia avançada",
-            "glassmorphism"
-          ],
+          "when_any": ["futurista", "ia avançada", "glassmorphism"],
           "style_id": "glassmorphism_tech"
         },
         {
-          "when_any": [
-            "múltiplos recursos",
-            "mosaico",
-            "bento"
-          ],
+          "when_any": ["múltiplos recursos", "mosaico", "bento"],
           "style_id": "bento_grid_layout"
         }
       ],
       "patterns": {
         "hero": "H4",
-        "features": [
-          "F1",
-          "F4"
-        ],
-        "social_proof": [
-          "S2",
-          "S3"
-        ],
+        "features": ["F1", "F4"],
+        "social_proof": ["S2", "S3"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -292,12 +226,8 @@
           ]
         }
       ],
-      "dossier": [
-        "SaaS, developer tools, IA"
-      ],
-      "hero_alternatives": [
-        "H1"
-      ]
+      "dossier": ["SaaS, developer tools, IA"],
+      "hero_alternatives": ["H1"]
     },
     {
       "id": "fintech-enterprise",
@@ -312,14 +242,8 @@
       "style_id": "minimalist_corporate",
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F5",
-          "F3"
-        ],
-        "social_proof": [
-          "S3",
-          "S4"
-        ],
+        "features": ["F5", "F3"],
+        "social_proof": ["S3", "S4"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -353,12 +277,8 @@
           ]
         }
       ],
-      "dossier": [
-        "Fintech e enterprise"
-      ],
-      "hero_alternatives": [
-        "H4"
-      ]
+      "dossier": ["Fintech e enterprise"],
+      "hero_alternatives": ["H4"]
     },
     {
       "id": "real-estate-marketplace",
@@ -372,23 +292,14 @@
       "style_id": "minimalist_corporate",
       "variants": [
         {
-          "when_any": [
-            "moderno",
-            "tecnológico"
-          ],
+          "when_any": ["moderno", "tecnológico"],
           "style_id": "saas_dark_modern"
         }
       ],
       "patterns": {
         "hero": "H6",
-        "features": [
-          "F3",
-          "F1"
-        ],
-        "social_proof": [
-          "S2",
-          "S1"
-        ],
+        "features": ["F3", "F1"],
+        "social_proof": ["S2", "S1"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -414,9 +325,7 @@
           ]
         }
       ],
-      "dossier": [
-        "Imobiliário e marketplaces (ex: ONDJO, ImoBlog)"
-      ],
+      "dossier": ["Imobiliário e marketplaces (ex: ONDJO, ImoBlog)"],
       "hero_alternatives": []
     },
     {
@@ -433,20 +342,14 @@
       "style_id": "clean_editorial",
       "variants": [
         {
-          "when_any": [
-            "tecnológico"
-          ],
+          "when_any": ["tecnológico"],
           "style_id": "saas_dark_modern"
         }
       ],
       "patterns": {
         "hero": "H8",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S4"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S4"],
         "navigation": "N1",
         "footer": "R1"
       },
@@ -483,9 +386,7 @@
         "Portfólio, criativo, developer pessoal",
         "Educação, blog, conteúdo"
       ],
-      "hero_alternatives": [
-        "H2"
-      ]
+      "hero_alternatives": ["H2"]
     },
     {
       "id": "community-gaming",
@@ -502,12 +403,8 @@
       "style_id": "game_arcade_dark",
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F1"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F1"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R1"
       },
@@ -533,20 +430,11 @@
           ]
         }
       ],
-      "dossier": [
-        "Comunidades, jogos, Discord"
-      ],
-      "hero_alternatives": [
-        "H7",
-        "H5"
-      ],
+      "dossier": ["Comunidades, jogos, Discord"],
+      "hero_alternatives": ["H7", "H5"],
       "variants": [
         {
-          "when_any": [
-            "profissional",
-            "corporativo",
-            "empresa"
-          ],
+          "when_any": ["profissional", "corporativo", "empresa"],
           "style_id": "saas_dark_modern"
         }
       ]
@@ -563,12 +451,8 @@
       "style_id": "dark_craft_ink",
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R1"
       },
@@ -588,9 +472,7 @@
         {
           "name": "Fontsinuse",
           "url": "https://fontsinuse.com/",
-          "pattern_cues": [
-            "Typography research by context and medium"
-          ]
+          "pattern_cues": ["Typography research by context and medium"]
         },
         {
           "name": "Liquid Death",
@@ -601,30 +483,17 @@
           ]
         }
       ],
-      "dossier": [
-        "Tatuagem, barbearia, bares, atitude"
-      ],
-      "hero_alternatives": [
-        "H2",
-        "H5"
-      ]
+      "dossier": ["Tatuagem, barbearia, bares, atitude"],
+      "hero_alternatives": ["H2", "H5"]
     },
     {
       "id": "crypto-web3-youth",
-      "match_terms": [
-        "crypto",
-        "web3",
-        "blockchain"
-      ],
+      "match_terms": ["crypto", "web3", "blockchain"],
       "style_id": "bold_neobrutalism",
       "patterns": {
         "hero": "H7",
-        "features": [
-          "F1"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F1"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R1"
       },
@@ -644,17 +513,11 @@
         {
           "name": "Brutalist Websites",
           "url": "https://brutalistwebsites.com/",
-          "pattern_cues": [
-            "Expressive, unconventional web composition"
-          ]
+          "pattern_cues": ["Expressive, unconventional web composition"]
         }
       ],
-      "dossier": [
-        "Jovem, crypto, web3, atitude digital"
-      ],
-      "hero_alternatives": [
-        "H1"
-      ]
+      "dossier": ["Jovem, crypto, web3, atitude digital"],
+      "hero_alternatives": ["H1"]
     },
     {
       "id": "restaurant-hospitality",
@@ -668,12 +531,8 @@
       "style_id": "minimalist_warm",
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -699,12 +558,8 @@
           ]
         }
       ],
-      "dossier": [
-        "Restaurantes e hospitalidade"
-      ],
-      "hero_alternatives": [
-        "H2"
-      ]
+      "dossier": ["Restaurantes e hospitalidade"],
+      "hero_alternatives": ["H2"]
     },
     {
       "id": "beverage-packaging-loud",
@@ -733,20 +588,12 @@
       ],
       "patterns": {
         "hero": "H5",
-        "features": [
-          "F2",
-          "F1"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F2", "F1"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R1"
       },
-      "hero_alternatives": [
-        "H7",
-        "H3"
-      ],
+      "hero_alternatives": ["H7", "H3"],
       "dossier": [
         "Bebidas e embalagem de consumo (energéticos, refrigerantes)"
       ],
@@ -786,35 +633,19 @@
       "style_id": "swiss_technical_light",
       "variants": [
         {
-          "when_any": [
-            "luxo",
-            "premium",
-            "galeria"
-          ],
+          "when_any": ["luxo", "premium", "galeria"],
           "style_id": "clean_editorial"
         }
       ],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3",
-          "F5",
-          "F6"
-        ],
-        "social_proof": [
-          "S3",
-          "S4"
-        ],
+        "features": ["F3", "F5", "F6"],
+        "social_proof": ["S3", "S4"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H2",
-        "H8"
-      ],
-      "dossier": [
-        "Hardware, engenharia, arquitetura"
-      ],
+      "hero_alternatives": ["H2", "H8"],
+      "dossier": ["Hardware, engenharia, arquitetura"],
       "principles": [
         "Especificações, medidas e diagramas como conteúdo principal; monoespaçada para dados.",
         "Grelha visível e hierarquia técnica; evitar imagens de stock genéricas."
@@ -823,16 +654,12 @@
         {
           "name": "Teenage Engineering",
           "url": "https://teenage.engineering/",
-          "pattern_cues": [
-            "Produto + especificação em primeiro plano"
-          ]
+          "pattern_cues": ["Produto + especificação em primeiro plano"]
         },
         {
           "name": "Framework",
           "url": "https://frame.work/",
-          "pattern_cues": [
-            "Especificações e modularidade em destaque"
-          ]
+          "pattern_cues": ["Especificações e modularidade em destaque"]
         }
       ]
     },
@@ -850,33 +677,19 @@
       "style_id": "minimalist_corporate",
       "variants": [
         {
-          "when_any": [
-            "bem-estar",
-            "spa",
-            "holístico"
-          ],
+          "when_any": ["bem-estar", "spa", "holístico"],
           "style_id": "minimalist_warm"
         }
       ],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3",
-          "F2"
-        ],
-        "social_proof": [
-          "S1",
-          "S2"
-        ],
+        "features": ["F3", "F2"],
+        "social_proof": ["S1", "S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H2"
-      ],
-      "dossier": [
-        "Clínicas e saúde"
-      ],
+      "hero_alternatives": ["H2"],
+      "dossier": ["Clínicas e saúde"],
       "principles": [
         "Marcação, horários, morada e especialidades visíveis sem scroll.",
         "Linguagem clara, sem promessas de cura; credenciais verificáveis."
@@ -893,48 +706,17 @@
         {
           "name": "Zocdoc",
           "url": "https://www.zocdoc.com/",
-          "pattern_cues": [
-            "Marcação como ação principal"
-          ]
+          "pattern_cues": ["Marcação como ação principal"]
         }
       ]
     }
   ],
   "pattern_ids": {
-    "hero": [
-      "H1",
-      "H2",
-      "H3",
-      "H4",
-      "H5",
-      "H6",
-      "H7",
-      "H8",
-      "H9"
-    ],
-    "features": [
-      "F1",
-      "F2",
-      "F3",
-      "F4",
-      "F5",
-      "F6"
-    ],
-    "social_proof": [
-      "S1",
-      "S2",
-      "S3",
-      "S4"
-    ],
-    "navigation": [
-      "N1",
-      "N2",
-      "N3"
-    ],
-    "footer": [
-      "R1",
-      "R2"
-    ]
+    "hero": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9"],
+    "features": ["F1", "F2", "F3", "F4", "F5", "F6"],
+    "social_proof": ["S1", "S2", "S3", "S4"],
+    "navigation": ["N1", "N2", "N3"],
+    "footer": ["R1", "R2"]
   },
   "tones": {
     "loud": [

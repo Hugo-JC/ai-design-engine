@@ -21,7 +21,8 @@ function summarize(data) {
   const mean = (a) =>
     a.length ? a.reduce((x, y) => x + y, 0) / a.length : NaN;
   const by = (cond) => runs.filter((r) => r.condition === cond);
-  const w = by("with_repo"), wr = by("with_repo_refs"),
+  const w = by("with_repo"),
+    wr = by("with_repo_refs"),
     o = by("without_repo");
   const pairs = [];
   w.forEach((a) => {
@@ -33,8 +34,12 @@ function summarize(data) {
     ties = pairs.length - wins - losses;
   const diff = mean(pairs.map((p) => p.d));
   const refPairs = [];
-  wr.forEach(a => { const b=w.find(x=>x.prompt_id===a.prompt_id); if(b) refPairs.push({id:a.prompt_id,d:total(a)-total(b)}); });
-  const refDiff = mean(refPairs.map(p=>p.d)); const refWins=refPairs.filter(p=>p.d>0).length;
+  wr.forEach((a) => {
+    const b = w.find((x) => x.prompt_id === a.prompt_id);
+    if (b) refPairs.push({ id: a.prompt_id, d: total(a) - total(b) });
+  });
+  const refDiff = mean(refPairs.map((p) => p.d));
+  const refWins = refPairs.filter((p) => p.d > 0).length;
   const perCrit = CRIT.map((c) => ({
     criterion: c,
     with: mean(w.map((r) => r.scores[c])),
@@ -60,7 +65,18 @@ function summarize(data) {
     losses,
     per_criterion: perCrit,
     verdict,
-    refs: { pairs: refPairs.length, mean_diff: refDiff, wins: refWins, losses: refPairs.filter(p=>p.d<0).length, verdict: refPairs.length < 5 ? `Amostra insuficiente (${refPairs.length} pares; mínimo 5).` : refDiff >= 2 && refWins/refPairs.length >= .6 ? 'As referências COMPENSAM: ganho médio ≥ 2/16 e vitórias ≥ 60%.' : 'As referências ainda não demonstram ganho mensurável.' },
+    refs: {
+      pairs: refPairs.length,
+      mean_diff: refDiff,
+      wins: refWins,
+      losses: refPairs.filter((p) => p.d < 0).length,
+      verdict:
+        refPairs.length < 5
+          ? `Amostra insuficiente (${refPairs.length} pares; mínimo 5).`
+          : refDiff >= 2 && refWins / refPairs.length >= 0.6
+            ? "As referências COMPENSAM: ganho médio ≥ 2/16 e vitórias ≥ 60%."
+            : "As referências ainda não demonstram ganho mensurável.",
+    },
   };
 }
 if (require.main === module) {
@@ -86,6 +102,8 @@ if (require.main === module) {
     ),
   );
   console.log(`\n➡️  ${r.verdict}\n`);
-  console.log(`Referências vs repo: ${r.refs.pairs} pares · Δ ${r.refs.mean_diff.toFixed(1)} · vitórias ${r.refs.wins} · ${r.refs.verdict}\n`);
+  console.log(
+    `Referências vs repo: ${r.refs.pairs} pares · Δ ${r.refs.mean_diff.toFixed(1)} · vitórias ${r.refs.wins} · ${r.refs.verdict}\n`,
+  );
 }
 module.exports = { summarize, CRIT };

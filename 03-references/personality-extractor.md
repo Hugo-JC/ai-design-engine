@@ -11,11 +11,11 @@ A IA lê o pedido e separa duas coisas que antes se misturavam:
 
 Lista completa e executável em `local-presets.json` → `tones`. Resumo:
 
-| Tom (palavras no pedido) | Intensidade | O que ajusta |
-| :--- | :--- | :--- |
-| agressivo, ousado, explosivo, energético, jovem, rápido, irreverente, rebelde, intenso, vibrante, atitude | `loud` | Accent até 25% da superfície, tipografia de display maior, movimento mais marcado, contraste de cor mais forte |
-| calmo, acolhedor, elegante, sereno, minimalista, sofisticado, suave, discreto, tranquilo | `calm` | Accent até 10%, mais espaço negativo, movimento mínimo, tipografia mais contida |
-| (nenhum ou empate) | a do estilo (`intensity`) | — |
+| Tom (palavras no pedido)                                                                                  | Intensidade               | O que ajusta                                                                                                   |
+| :-------------------------------------------------------------------------------------------------------- | :------------------------ | :------------------------------------------------------------------------------------------------------------- |
+| agressivo, ousado, explosivo, energético, jovem, rápido, irreverente, rebelde, intenso, vibrante, atitude | `loud`                    | Accent até 25% da superfície, tipografia de display maior, movimento mais marcado, contraste de cor mais forte |
+| calmo, acolhedor, elegante, sereno, minimalista, sofisticado, suave, discreto, tranquilo                  | `calm`                    | Accent até 10%, mais espaço negativo, movimento mínimo, tipografia mais contida                                |
+| (nenhum ou empate)                                                                                        | a do estilo (`intensity`) | —                                                                                                              |
 
 ## Regras de aplicação
 

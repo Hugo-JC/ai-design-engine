@@ -3,7 +3,9 @@
   "version": "3.1.0-beta.1",
   "description": "Regras, tokens, router determinístico e validadores para reduzir AI Slop em interfaces frontend.",
   "license": "MIT",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "route": "node tools/route.js",
     "validate": "node tools/validate-design.js",

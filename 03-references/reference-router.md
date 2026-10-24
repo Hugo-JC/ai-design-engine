@@ -1,6 +1,7 @@
 # Router de Referências Local-First
 
 ## Escada de referências v3.1
+
 Prioridade: referências fornecidas pelo utilizador → conectores → biblioteca pessoal [BETA, opt-in] → captura individual por URL → dossiês offline. Use `node tools/route.js "<pedido>" --context --refs`; no máximo três referências no total. Falhas de acesso não bloqueiam o trabalho. Registe o padrão extraído e o que não copiar; nunca replique uma página.
 
 Use `local-presets.json` como catálogo de referência offline. Os presets descrevem princípios de composição e pistas de pesquisa, não réplicas de sites, textos, assets ou sistemas proprietários. Consulte também `layout-archetypes.md`, `personality-extractor.md`, `curated-references.md` e `02-styles-and-tokens/design-styles.json` quando estiverem disponíveis localmente.
