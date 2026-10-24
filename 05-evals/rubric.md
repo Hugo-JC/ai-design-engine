@@ -13,4 +13,6 @@ Cada resultado recebe **0, 1 ou 2** em 8 critérios (máx. 16). Avalie em 1440 p
 | Acabamento (`polish`) | Sem estados, quebra em mobile | Estados e responsivo básicos | Hover/foco, mobile, movimento controlado |
 | “Parece marca real?” (`realbrand`) | Claramente gerado por IA | Duvidoso | Convence como site real |
 
+**Penalização por cópia:** se o resultado parecer um clone reconhecível da referência, retire 1 ponto em `realbrand`.
+
 **Regras do teste:** mesmo modelo/ferramenta, mesmo prompt, uma tentativa por condição, sem iterações extra. Embaralhe a ordem A/B. Idealmente 2 avaliadores; usar a média.

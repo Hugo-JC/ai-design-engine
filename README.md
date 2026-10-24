@@ -2,6 +2,9 @@
 
 Regras, tokens, um **router determinístico** e validadores para orientar interfaces de frontend com identidade de nicho e reduzir o “AI Slop”. É um guardrail de direção visual; não substitui requisitos de produto nem uma revisão de UX.
 
+## Referências v3.1 beta
+Use `node tools/route.js "<pedido>" --context --refs` para ativar a escada local-first (máx. 3). A biblioteca `07-library/` só é consultada com `ade.config.json` → `beta.library: true`. Media permanece ignorada pelo Git; o repo não descarrega conteúdo de plataformas.
+
 ## O que mudou na v3 (resumo)
 - **Menos para ler:** `CORE.md` (1 página) + `node tools/route.js --context` (≈2 KB) em vez de 10 ficheiros.
 - **Routing executável e testado**, com fonte única (`local-presets.json`). Fim das contradições entre router e extrator.
@@ -47,6 +50,7 @@ Requer Node ≥ 18 (testado em 22). Sem dependências.
 | `tools/render-audit.js <f\|url> [--out dir]` | **beta**: auditoria com Chromium (overflow, contraste computado, alvos de toque, foco por teclado, tracking) em 3 viewports + screenshots; requer `playwright` |
 
 ## Limites (honestos)
+- O estado das fontes continua `untested` até executar `node tools/ref-check.js --write` numa máquina com rede; captura Playwright e ingestão de vídeo dependem de ferramentas opcionais e não são exercitadas sem elas.
 - O validador **não renderiza**. Contraste e “accent espalhado” são estimativas; confirme no browser.
 - `render-audit.js` foi testado em Chromium headless (fixtures e a Refri v2), mas não em dispositivos reais, Firefox ou WebKit. Recursos externos (fontes, CDN) precisam de rede para o render ser representativo.
 - Presets e dossiês são pontos de partida, não verdades. O gosto não se codifica todo em regras: valide com `05-evals/`.

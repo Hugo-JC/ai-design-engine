@@ -9,6 +9,10 @@ Núcleo do AI Design Engine v3. O resto do repo carrega-se **só quando for prec
 3. **Construir** com os tokens do `style_id`. Um pedido explícito do utilizador (cores, fontes, estilo) vence os tokens.
 4. **Auditar:** `node tools/validate-design.js <ficheiro> --style <style_id>` e corrija; depois reveja o resultado **renderizado** (ou `node tools/render-audit.js`). Declare o que não conseguiu verificar.
 
+## Referências (opcional, máx. 3)
+Escada: pedido do utilizador → conector (Mobbin/Figma) → biblioteca [BETA] → captura por URL → dossiê do router.
+Extraia padrões, não layouts; registe no brief “fonte → extraído | não copiado”. Sem referências, siga só o dossiê.
+
 ## As 14 regras que mais falham
 
 1. O **nicho** decide o estilo. O **tom** só ajusta a intensidade (`calm` / `balanced` / `loud`).

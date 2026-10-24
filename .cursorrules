@@ -3,7 +3,7 @@
 Ao gerar componentes de UI, páginas ou layouts de frontend:
 
 1. Leia `CORE.md` (núcleo de 1 página). Não carregue o repo inteiro.
-2. Corra `node tools/route.js "<pedido>" --context` para obter `style_id`, tokens, arquétipos, dossiê do nicho e o esqueleto do DESIGN BRIEF.
+2. Corra `node tools/route.js "<pedido>" --context --refs` para obter brief, tokens, dossiê e referências (máx. 3).
 3. Escreva o DESIGN BRIEF (8 linhas) antes do código; implemente com os tokens do `style_id`. Pedido explícito do utilizador > tokens.
 4. Antes de entregar: `node tools/validate-design.js <ficheiro> --style <style_id>`, corrija e confirme o resultado renderizado. O validador é estático/heurístico; diga o que não verificou.
 

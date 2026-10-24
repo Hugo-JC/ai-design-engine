@@ -1,5 +1,4 @@
 # Acervo de Inspiração e Referências de Elite
-
 Quando precisar estruturar o fluxo visual de uma página, consulte os conceitos e arquiteturas das seguintes referências:
 
 ## Plataformas de Referência Visual
@@ -140,3 +139,5 @@ Quando precisar estruturar o fluxo visual de uma página, consulte os conceitos 
 1. **Extrair o padrão:** estrutura, ritmo, tipografia e tipo de prova social da referência. Nunca cores exatas nem texto.
 2. **Traduzir ao nicho:** adaptar o padrão ao `style_id` e ao público do projeto.
 3. **Registar no brief:** indicar 2 marcas de referência e o padrão específico emprestado de cada uma.
+# Fontes catalogadas e escada v3.1
+O catálogo de fontes e estados de acesso está em `reference-sources.json`; consulte `reference-router.md` para a escada local-first. Estados começam como `untested` e só são atualizados por `tools/ref-check.js --write`.

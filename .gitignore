@@ -1,3 +1,17 @@
 node_modules/
 audit-out/
+# Biblioteca pessoal [BETA]; apenas notas, manifestos e metadados versionados
+07-library/**/*.mp4
+07-library/**/*.mov
+07-library/**/*.webm
+07-library/**/*.mkv
+07-library/**/*.png
+07-library/**/*.jpg
+07-library/**/*.jpeg
+07-library/**/*.webp
+07-library/**/*.pdf
+07-library/**/*.epub
+07-library/**/frames/
+references/
+ade.config.json
 .DS_Store

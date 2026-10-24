@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["version", "items"],
+  "properties": { "version": { "const": 1 }, "items": { "type": "array", "items": { "$ref": "item.schema.json" } } },
+  "additionalProperties": true
+}

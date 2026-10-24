@@ -1,0 +1,4 @@
+{
+  "references": { "enabled": true, "max_refs": 3, "offline": false, "connectors": ["mobbin"], "library_path": "07-library", "capture_dir": "references" },
+  "beta": { "library": false }
+}

@@ -1,6 +1,6 @@
 {
   "name": "ai-design-engine",
-  "version": "3.0.0",
+  "version": "3.1.0-beta.1",
   "description": "Regras, tokens, router determinístico e validadores para reduzir AI Slop em interfaces frontend.",
   "license": "MIT",
   "engines": { "node": ">=18" },
@@ -9,6 +9,10 @@
     "validate": "node tools/validate-design.js",
     "lint": "node tools/lint-repo.js",
     "test": "node --test",
-    "eval": "node tools/eval-summary.js"
+    "eval": "node tools/eval-summary.js",
+    "ref:check": "node tools/ref-check.js",
+    "ref:search": "node tools/ref-search.js",
+    "ref:capture": "node tools/ref-capture.js",
+    "ref:ingest": "node tools/ref-ingest.js"
   }
 }

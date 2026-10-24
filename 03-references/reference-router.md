@@ -1,5 +1,8 @@
 # Router de Referências Local-First
 
+## Escada de referências v3.1
+Prioridade: referências fornecidas pelo utilizador → conectores → biblioteca pessoal [BETA, opt-in] → captura individual por URL → dossiês offline. Use `node tools/route.js "<pedido>" --context --refs`; no máximo três referências no total. Falhas de acesso não bloqueiam o trabalho. Registe o padrão extraído e o que não copiar; nunca replique uma página.
+
 Use `local-presets.json` como catálogo de referência offline. Os presets descrevem princípios de composição e pistas de pesquisa, não réplicas de sites, textos, assets ou sistemas proprietários. Consulte também `layout-archetypes.md`, `personality-extractor.md`, `curated-references.md` e `02-styles-and-tokens/design-styles.json` quando estiverem disponíveis localmente.
 
 ## Encaminhamento determinístico (v3: executável)
@@ -10,7 +13,7 @@ O algoritmo está implementado em `tools/route.js`; `node tools/route.js "<pedid
 2. **Normalização:** minúsculas, sem acentos, pontuação → espaço. A comparação é por **palavra/expressão inteira** (nunca por substring: “bar” não casa com “barato”) e tolera plural regular (`+s`, `+es`).
 3. **Seleção do preset:** vence a expressão coincidente **mais específica** (mais caracteres normalizados); empate → o primeiro preset do array. Exemplo: “clínica de saúde” → `clinic-healthcare` (“clinica”, 7) e não `wellness-health-beauty` (“saude”, 5).
 4. **Variante:** só se uma expressão de `when_any` estiver no pedido; havendo várias, a primeira listada.
-5. **Sem preset:** pontuar as `keywords` de `design-styles.json` (ignorando `non_niche_terms`). Melhor pontuação (>0) decide; empate → ordem do catálogo; pontuação 0 → `fallback`. O caminho (`preset`, `keywords` ou `fallback`) e a razão ficam no brief. *(Isto resolve a contradição da v2, em que o router mandava para o fallback e o extrator mandava escolher por parecer.)*
+5. **Sem preset:** pontuar as `keywords` de `design-styles.json` (ignorando `non_niche_terms`). Melhor pontuação (>0) decide; empate → ordem do catálogo; pontuação 0 → `fallback`. O caminho (`preset`, `keywords` ou `fallback`) e a razão ficam no brief. _(Isto resolve a contradição da v2, em que o router mandava para o fallback e o extrator mandava escolher por parecer.)_
 6. **Tom:** ajusta só a intensidade (ver `personality-extractor.md`); nunca troca o nicho.
 7. Use apenas IDs de padrão de `layout-archetypes.md`. Escolha a estrutura que o conteúdo real suporta (H5 exige um produto reconhecível); `hero_alternatives` lista outras opções válidas para o nicho. Registe `style_id`, arquétipo de hero e justificação no DESIGN BRIEF.
 8. Aplique `principles` e `pattern_cues` como abstrações. Use `sources[].url` para estudar princípios públicos, nunca para copiar layouts, imagens, textos, identidade ou componentes proprietários.

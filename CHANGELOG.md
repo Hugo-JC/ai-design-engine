@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0-beta.1] — 2026-10-24
+
+### Adicionado
+- Escada local-first de referências, catálogo de fontes e `route.js --refs` (máx. 3).
+- Ferramentas `ref:check`, `ref:search`, `ref:capture` e `ref:ingest`; biblioteca pessoal opt-in.
+- Avaliação marginal `with_repo_refs` e validações da biblioteca.
+
 ## [3.0.0] — 2026-10-24
 
 ### Adicionado

@@ -69,10 +69,10 @@ function route(prompt) {
   return out;
 }
 
-function brief(r) {
+function brief(r, refs = null) {
   const t = r.tokens;
   const tone = [...r.tone_words.loud, ...r.tone_words.calm];
-  const refs = (r.sources || []).slice(0, 2).map((s) => `${s.name} (${(s.pattern_cues || [])[0] || 'padrão'})`).join('; ');
+  const legacyRefs = (r.sources || []).slice(0, 2).map((s) => `${s.name} (${(s.pattern_cues || [])[0] || 'padrão'})`).join('; ');
   return [
     'DESIGN BRIEF',
     `- Nicho / público: ${r.preset_id || '(sem nicho mapeado)'} — <preencher público>`,
@@ -81,7 +81,7 @@ function brief(r) {
     `- Modo e tipografia: ${t.mode} · ${t.typography}`,
     `- Arquétipo de hero + motivo: ${r.patterns.hero}${r.hero_alternatives.length ? ` (alternativas: ${r.hero_alternatives.join(', ')})` : ''} — <justificar com o conteúdo real>`,
     '- Elemento visual principal (se relevante): <preencher>',
-    `- Referências/padrões (opcional): ${refs || '<opcional>'}`,
+    `- Referências${Array.isArray(refs) ? ' (nível)' : '/padrões (opcional)'}: ${Array.isArray(refs) ? (refs.length ? refs.map(x => `${x.level} ${x.id} → ${x.extract} | não copiar: ${x.do_not_copy}`).join('; ') : 'só dossiê do repo (L4)') : legacyRefs || '<opcional>'}`,
     '- Risco principal a evitar: <preencher>'
   ].join('\n');
 }
@@ -103,11 +103,11 @@ function dossierText(r) {
   }).join('\n\n');
 }
 
-function context(r) {
+function context(r, refs = null, capabilities = null) {
   const t = r.tokens, c = t.colors;
   const share = { calm: 10, balanced: 15, loud: 25 }[r.intensity];
   return [
-    brief(r), '',
+    brief(r, refs), '',
     '## Tokens',
     `style_id=${r.style_id} · modo=${t.mode} · intensidade=${r.intensity} (accent ≤ ${share}% da superfície) · accent_mode=${t.accent_mode}`,
     `cores: bg ${c.background} · surface ${c.surface} · border ${c.border} · texto ${c.text_primary} · texto2 ${c.text_secondary} · accent ${c.accent}`,
@@ -117,6 +117,7 @@ function context(r) {
     '## Arquétipos', ...archetypeLines(r).map((l) => '- ' + l.replace(/^- /, '')), '',
     '## Princípios do nicho', ...(r.principles || []).map((x) => '- ' + x), '',
     '## Dossiê do nicho', dossierText(r) || '(sem dossiê)', '',
+    ...(refs ? ['## Referências (máx. 3)', `Capacidades: conector=${capabilities.connectors.join(',') || '—'} · biblioteca=${capabilities.library} · playwright=${capabilities.playwright ? 'sim' : 'não'} · modo=${refs[0] ? refs[0].level : 'L4'}`, ...refs.map((x,i) => `${i+1}. [${x.level}] ${x.id} — acesso: ${x.access} → extrair: ${x.extract} | não copiar: ${x.do_not_copy}`), ''] : []),
     'Depois de construir: node tools/validate-design.js <ficheiro> --style ' + r.style_id
   ].join('\n');
 }
@@ -127,9 +128,17 @@ function main() {
   const prompt = args.filter((a) => !a.startsWith('--')).join(' ').trim();
   if (!prompt) { console.error('Uso: node tools/route.js "<pedido>" [--json|--brief|--context]'); process.exit(1); }
   const r = route(prompt);
-  if (flags.includes('--json')) console.log(JSON.stringify(r, null, 2));
-  else if (flags.includes('--context')) console.log(context(r));
-  else if (flags.includes('--brief')) console.log(brief(r));
+  let refs = null, capabilities = null;
+  if (flags.includes('--refs')) {
+    const fs = require('fs'), path = require('path'); const root = path.resolve(__dirname, '..');
+    const configFile = path.join(root, 'ade.config.json'); const config = fs.existsSync(configFile) ? JSON.parse(fs.readFileSync(configFile, 'utf8')) : {};
+    const rc = config.references || {}; const connectorNames = [...new Set([...(rc.connectors || []), ...Object.keys(require('../03-references/reference-sources.json').connectors).filter(n => Object.keys(process.env).some(k => k.toLowerCase().includes(n)))])];
+    capabilities = { connectors: rc.offline ? [] : connectorNames, library: config.beta && config.beta.library === true ? (fs.existsSync(path.join(root, rc.library_path || '07-library')) ? 'on' : 'vazia') : 'off', playwright: (() => { try { require.resolve('playwright'); return true; } catch { return false; } })() };
+    refs = require('./ref-search').search(prompt, { max: rc.max_refs || 3 });
+  }
+  if (flags.includes('--json')) console.log(JSON.stringify({ ...r, ...(refs ? { references: refs, capabilities } : {}) }, null, 2));
+  else if (flags.includes('--context')) console.log(context(r, refs, capabilities));
+  else if (flags.includes('--brief')) console.log(brief(r, refs));
   else {
     console.log(`style_id:   ${r.style_id}${r.variant_applied ? `  (variante de ${r.base_style_id})` : ''}`);
     console.log(`caminho:    ${r.selection_path} — ${r.reason}`);
