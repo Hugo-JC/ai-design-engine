@@ -1,13 +1,38 @@
 # CORE — leia isto primeiro (1 página)
 
-Núcleo do AI Design Engine v3. O resto do repo carrega-se **só quando for preciso**: um agente que lê 89 KB antes de desenhar não os aplica todos.
+Núcleo do AI Design Engine v3. O resto do repo carrega-se só quando for preciso: um agente que lê 89 KB antes de desenhar não os aplica todos.
+
+## Mapa rápido de contexto
+
+Os ficheiros canónicos e a carga útil relevante são estes:
+
+- `CORE.md`: fluxo operacional e precedência; ponto de entrada do agente.
+- `AGENTS.md`: instruções curtas para execução assistida.
+- `tools/route.js`: router determinístico para `style_id`, intensidade, padrões, brief e contexto.
+- `03-references/local-presets.json`: fonte de verdade do nicho → preset e do fallback.
+- `02-styles-and-tokens/design-styles.json`: fonte de verdade dos tokens e estilos visuais.
+- `tools/validate-design.js`: validação automática do HTML/CSS; não substitui inspeção visual.
+- `tools/lint-repo.js`: integridade do repo e consistência de tokens, presets e referências.
+- `05-evals/prompts.json`: casos de regressão do router e critérios esperados.
+- `tests/*.test.js`: provas de comportamento determinístico e regressões de compatibilidade.
+
+O agente não precisa de ler todo o repositório. A leitura recomendada é: `CORE.md` → `tools/route.js`/`local-presets.json` → `design-styles.json` → o ficheiro alvo → `validate-design.js` → o teste relevante.
 
 ## Protocolo (4 passos)
 
-1. **Rotear:** `node tools/route.js "<pedido>" --context` devolve `style_id`, tokens, arquétipos, dossiê do nicho e o esqueleto do DESIGN BRIEF (≈2 KB). Sem Node, siga `03-references/reference-router.md` à mão.
+1. **Rotear:** `node tools/route.js "<pedido>" --context` devolve `style_id`, tokens, arquétipos, dossiê do nicho e o esqueleto do DESIGN BRIEF (≈2 KB). Sem Node, siga `03-references/reference-[...]` ou use `--brief` para um resumo executável.
 2. **Brief:** complete o DESIGN BRIEF (8 linhas). Se faltar algo essencial, faça UMA pergunta curta; caso contrário assuma e declare a suposição.
 3. **Construir** com os tokens do `style_id`. Um pedido explícito do utilizador (cores, fontes, estilo) vence os tokens.
-4. **Auditar:** `node tools/validate-design.js <ficheiro> --style <style_id>` e corrija; depois reveja o resultado **renderizado** (ou `node tools/render-audit.js`). Declare o que não conseguiu verificar.
+4. **Auditar:** `node tools/validate-design.js <ficheiro> --style <style_id>` e corrija; depois reveja o resultado renderizado (ou `node tools/render-audit.js`). Declare o que não conseguiu verificar.
+
+## Distinguir decisão de design e evidência
+
+- **Regra escrita**: documento, checklist ou padrão.
+- **Regra aplicada**: decisão tomada no código ou no layout.
+- **Validação estática**: análise automática, determinística e limitada.
+- **Auditoria visual**: inspeção do render em browser ou screenshot.
+- **Referencia estética**: visual inspirador, extraído e não copiado por layout.
+- **Artefacto testado**: comportamento validado por teste ou verificação executada.
 
 ## Referências (opcional, máx. 3)
 
