@@ -78,18 +78,18 @@ Design premium é aquele que transmite:
 
 Antes de gerar um design, colete ou infira estas informações:
 
-| Item                | Pergunta                                                                     |
-| ------------------- | ---------------------------------------------------------------------------- |
-| Marca               | Qual é o nome, setor e posicionamento?                                       |
-| Público             | Quem é o usuário ideal?                                                      |
-| Objetivo            | Vender, captar leads, apresentar portfólio, educar ou informar?              |
-| Ação principal      | Comprar, agendar, cadastrar, baixar, contato ou explorar?                    |
-| Tom de voz          | Premium, técnico, acolhedor, ousado, minimalista ou editorial?               |
+| Item | Pergunta |
+|---|---|
+| Marca | Qual é o nome, setor e posicionamento? |
+| Público | Quem é o usuário ideal? |
+| Objetivo | Vender, captar leads, apresentar portfólio, educar ou informar? |
+| Ação principal | Comprar, agendar, cadastrar, baixar, contato ou explorar? |
+| Tom de voz | Premium, técnico, acolhedor, ousado, minimalista ou editorial? |
 | Referência estética | Luxo, tech, editorial, orgânico, brutalista refinado, corporate ou criativo? |
-| Paleta              | Quais cores existem na marca?                                                |
-| Tipografia          | Existe fonte oficial ou preferência estética?                                |
-| Conteúdo            | Quais textos, imagens, provas sociais e CTAs existem?                        |
-| Plataforma          | Web, mobile, landing page, dashboard ou e-commerce?                          |
+| Paleta | Quais cores existem na marca? |
+| Tipografia | Existe fonte oficial ou preferência estética? |
+| Conteúdo | Quais textos, imagens, provas sociais e CTAs existem? |
+| Plataforma | Web, mobile, landing page, dashboard ou e-commerce? |
 
 Se faltar informação, faça suposições inteligentes e declare-as no início da resposta.
 
@@ -103,14 +103,14 @@ Se faltar informação, faça suposições inteligentes e declare-as no início 
 
 Escolha uma direção estética coerente com a marca:
 
-| Estilo               | Características                                                   | Ideal para                              |
-| -------------------- | ----------------------------------------------------------------- | --------------------------------------- |
-| Minimalista de luxo  | Muito espaço, tipografia elegante, poucas cores                   | Moda, imóveis, consultoria, beleza      |
-| Tech premium         | Escuro, contrastes precisos, detalhes de interface, dados visuais | SaaS, IA, fintech, produtos digitais    |
-| Editorial            | Tipografia grande, grids fortes, imagens expressivas              | Revistas, portfólios, cultura, agências |
-| Orgânico sofisticado | Texturas suaves, formas naturais, tons terrosos                   | Wellness, sustentabilidade, alimentação |
-| Corporate refinado   | Estrutura clara, confiança, dados, hierarquia forte               | Consultoria, jurídico, finanças, B2B    |
-| Criativo autoral     | Composição ousada, movimento, identidade forte                    | Estúdios, agências, artistas, campanhas |
+| Estilo | Características | Ideal para |
+|---|---|---|
+| Minimalista de luxo | Muito espaço, tipografia elegante, poucas cores | Moda, imóveis, consultoria, beleza |
+| Tech premium | Escuro, contrastes precisos, detalhes de interface, dados visuais | SaaS, IA, fintech, produtos digitais |
+| Editorial | Tipografia grande, grids fortes, imagens expressivas | Revistas, portfólios, cultura, agências |
+| Orgânico sofisticado | Texturas suaves, formas naturais, tons terrosos | Wellness, sustentabilidade, alimentação |
+| Corporate refinado | Estrutura clara, confiança, dados, hierarquia forte | Consultoria, jurídico, finanças, B2B |
+| Criativo autoral | Composição ousada, movimento, identidade forte | Estúdios, agências, artistas, campanhas |
 
 **Regra:** escolha um estilo dominante e mantenha-o consistente em todo o site.
 
@@ -448,11 +448,11 @@ Ao gerar designs, ofereça variações estratégicas, não aleatórias.
 
 Para cada projeto, gere no máximo três direções:
 
-| Direção                 | Objetivo                                  | Estilo                                  |
-| ----------------------- | ----------------------------------------- | --------------------------------------- |
+| Direção | Objetivo | Estilo |
+|---|---|---|
 | Direção A — Sofisticada | Transmite luxo, confiança e exclusividade | Minimalista, elegante, tipografia forte |
-| Direção B — Moderna     | Transmite inovação, tecnologia e clareza  | Tech, limpa, contrastes precisos        |
-| Direção C — Expressiva  | Transmite personalidade e diferenciação   | Editorial, criativa, composição ousada  |
+| Direção B — Moderna | Transmite inovação, tecnologia e clareza | Tech, limpa, contrastes precisos |
+| Direção C — Expressiva | Transmite personalidade e diferenciação | Editorial, criativa, composição ousada |
 
 Para cada direção, inclua:
 
@@ -522,7 +522,6 @@ Entregue:
 ## 16. Checklist de qualidade premium
 
 ### Estratégia
-
 - [ ] O objetivo da página está claro?
 - [ ] O público foi considerado?
 - [ ] Existe uma ação principal definida?
@@ -530,7 +529,6 @@ Entregue:
 - [ ] O design resolve um problema real?
 
 ### Identidade
-
 - [ ] O estilo é coerente com a marca?
 - [ ] A paleta é restrita e intencional?
 - [ ] A tipografia transmite o posicionamento correto?
@@ -538,7 +536,6 @@ Entregue:
 - [ ] O design parece autoral?
 
 ### Composição
-
 - [ ] A hierarquia visual está clara?
 - [ ] O grid está bem aplicado?
 - [ ] O espaçamento é generoso e consistente?
@@ -546,7 +543,6 @@ Entregue:
 - [ ] Nenhuma seção está sobrecarregada?
 
 ### Interação
-
 - [ ] Os botões são claros e acessíveis?
 - [ ] Os estados de hover, foco e erro existem?
 - [ ] As animações são sutis e funcionais?
@@ -554,7 +550,6 @@ Entregue:
 - [ ] O site funciona bem no mobile?
 
 ### Qualidade técnica
-
 - [ ] O contraste atende WCAG?
 - [ ] O site é navegável por teclado?
 - [ ] As imagens estão otimizadas?
@@ -563,7 +558,6 @@ Entregue:
 - [ ] O design pode ser implementado com performance?
 
 ### Conversão
-
 - [ ] O CTA é específico?
 - [ ] O CTA está visível?
 - [ ] Há prova social relevante?
@@ -592,4 +586,4 @@ Entregue:
 
 ---
 
-_Use este documento como base para gerar landing pages, sites institucionais, portfólios, e-commerces, dashboards e design systems premium com IA._
+*Use este documento como base para gerar landing pages, sites institucionais, portfólios, e-commerces, dashboards e design systems premium com IA.*

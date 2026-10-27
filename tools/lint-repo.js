@@ -168,6 +168,17 @@ cat.presets.forEach((p) => {
 (cat.non_niche_terms || []).forEach((t) => {
   if (termOwner.has(norm(t))) E(`non_niche_terms contém termo de nicho: ${t}`);
 });
+// v3.2: termos fracos e consultas de referência
+const weakOwner = new Map();
+cat.presets.forEach((p) => {
+  (p.weak_terms || []).forEach((t) => {
+    const n = norm(t);
+    if (termOwner.has(n) && termOwner.get(n) !== p.id) E(`termo fraco "${t}" também é termo forte de ${termOwner.get(n)}`);
+    if (weakOwner.has(n) && weakOwner.get(n) !== p.id) E(`termo fraco "${t}" repetido em ${weakOwner.get(n)} e ${p.id}`);
+    weakOwner.set(n, p.id);
+  });
+  if (p.ref_queries && (!Array.isArray(p.ref_queries) || p.ref_queries.some((q) => typeof q !== "string" || !q.trim()))) E(`[${p.id}] ref_queries inválido`);
+});
 if (!stylesDoc.styles[cat.fallback.style_id])
   E("fallback com style_id inexistente");
 

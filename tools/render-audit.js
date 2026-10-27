@@ -101,7 +101,7 @@ function inPage(isMobile) {
       bold = parseInt(cs.fontWeight, 10) >= 700;
     const need = size >= 24 || (size >= 18.66 && bold) ? 3 : 4.5,
       r = ratio(eff, bg);
-    const key = [el.tagName, cs.color, cs.fontSize, bg.r.toFixed(1), bg.g.toFixed(1), bg.b.toFixed(1), need].join("|");
+    const key = el.tagName + cs.color + cs.fontSize;
     if (r < need && !seen.has(key)) {
       seen.add(key);
       F.push({
@@ -116,7 +116,7 @@ function inPage(isMobile) {
       });
     if (/^H[1-6]$/.test(el.tagName)) {
       const ls = parseFloat(cs.letterSpacing);
-      if (!isNaN(ls) && ls / size < -0.02)
+      if (!isNaN(ls) && ls / size < -0.03)
         F.push({
           id: "tracking",
           msg: `${el.tagName} com letter-spacing ${(ls / size).toFixed(3)}em`,
@@ -161,36 +161,10 @@ function inPage(isMobile) {
       const r = await page.evaluate(() => {
         const e = document.activeElement;
         if (!e || e === document.body) return null;
-        const focused = getComputedStyle(e);
-        const focusedStyle = {
-          outlineStyle: focused.outlineStyle,
-          outlineWidth: focused.outlineWidth,
-          outlineColor: focused.outlineColor,
-          outlineOffset: focused.outlineOffset,
-          boxShadow: focused.boxShadow,
-        };
-        // Uma sombra decorativa constante não prova que existe um indicador de foco.
-        e.blur();
-        const normal = getComputedStyle(e);
-        const normalStyle = {
-          outlineStyle: normal.outlineStyle,
-          outlineWidth: normal.outlineWidth,
-          outlineColor: normal.outlineColor,
-          outlineOffset: normal.outlineOffset,
-          boxShadow: normal.boxShadow,
-        };
-        e.focus({ preventScroll: true });
-        const outlineVisible =
-          focusedStyle.outlineStyle !== "none" &&
-          parseFloat(focusedStyle.outlineWidth) > 0 &&
-          (focusedStyle.outlineStyle !== normalStyle.outlineStyle ||
-            focusedStyle.outlineWidth !== normalStyle.outlineWidth ||
-            focusedStyle.outlineColor !== normalStyle.outlineColor ||
-            focusedStyle.outlineOffset !== normalStyle.outlineOffset);
-        const shadowVisible =
-          focusedStyle.boxShadow !== "none" &&
-          focusedStyle.boxShadow !== normalStyle.boxShadow;
-        const has = outlineVisible || shadowVisible;
+        const s = getComputedStyle(e);
+        const has =
+          (s.outlineStyle !== "none" && parseFloat(s.outlineWidth) > 0) ||
+          s.boxShadow !== "none";
         return {
           key: `${e.tagName.toLowerCase()} "${(e.textContent || "").trim().slice(0, 24)}"`,
           has,

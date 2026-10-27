@@ -8,7 +8,6 @@
 ## 1. Princípios fundamentais
 
 ### 1.1 Clareza antes de estética
-
 Um site bonito que confunde o usuário falhou. Antes de escolher cores, fontes ou animações, defina:
 
 - Qual é o objetivo da página?
@@ -18,7 +17,6 @@ Um site bonito que confunde o usuário falhou. Antes de escolher cores, fontes o
 **Regra:** cada página deve ter um objetivo claro e uma ação principal evidente.
 
 ### 1.2 Hierarquia visual
-
 A hierarquia guia o olhar do usuário do elemento mais importante para o menos importante.
 
 Use estes recursos para criar hierarquia:
@@ -32,7 +30,6 @@ Use estes recursos para criar hierarquia:
 **Regra:** em cada seção, o usuário deve identificar rapidamente o que é título, apoio, ação e informação secundária.
 
 ### 1.3 Menos é mais
-
 Evite excesso de elementos, textos, cores, ícones e animações.
 
 - Remova tudo que não apoia o objetivo da página.
@@ -43,7 +40,6 @@ Evite excesso de elementos, textos, cores, ícones e animações.
 **Regra:** se um elemento não ajuda o usuário a entender, decidir ou agir, considere removê-lo.
 
 ### 1.4 Consistência
-
 Padrões consistentes reduzem o esforço cognitivo.
 
 Mantenha consistência em:
@@ -64,7 +60,6 @@ Mantenha consistência em:
 ## 2. Layout e composição
 
 ### 2.1 Use uma grade
-
 A grade organiza o conteúdo e cria alinhamento previsível.
 
 - Use uma grade de 12 colunas para layouts desktop.
@@ -75,7 +70,6 @@ A grade organiza o conteúdo e cria alinhamento previsível.
 **Regra:** nada deve parecer “colocado por acaso”; cada elemento deve se conectar visualmente a outro.
 
 ### 2.2 Mobile-first
-
 Projete primeiro para telas pequenas e depois expanda para telas maiores.
 
 - Priorize conteúdo essencial.
@@ -87,7 +81,6 @@ Projete primeiro para telas pequenas e depois expanda para telas maiores.
 **Regra:** se não funciona bem no celular, o design ainda não está pronto.
 
 ### 2.3 Espaçamento consistente
-
 O espaço em branco melhora legibilidade, foco e percepção de qualidade.
 
 - Defina uma escala de espaçamento, por exemplo: 4, 8, 12, 16, 24, 32, 48, 64, 96 e 128px.
@@ -98,7 +91,6 @@ O espaço em branco melhora legibilidade, foco e percepção de qualidade.
 **Regra:** proximidade agrupa; distância separa.
 
 ### 2.4 Alinhamento intencional
-
 - Alinhe textos à esquerda na maioria dos casos.
 - Centralize apenas títulos curtos, hero sections e chamadas isoladas.
 - Evite texto justificado na web, pois cria espaçamentos irregulares.
@@ -111,7 +103,6 @@ O espaço em branco melhora legibilidade, foco e percepção de qualidade.
 ## 3. Tipografia
 
 ### 3.1 Escolha poucas fontes
-
 - Use no máximo duas famílias tipográficas.
 - Uma para títulos e outra para texto corrido é suficiente.
 - Evite fontes decorativas em textos longos.
@@ -120,23 +111,21 @@ O espaço em branco melhora legibilidade, foco e percepção de qualidade.
 **Regra:** a tipografia deve comunicar antes de decorar.
 
 ### 3.2 Crie escala tipográfica
-
 Use uma escala consistente, por exemplo:
 
-| Função          | Tamanho sugerido |
-| --------------- | ---------------: |
-| Display / Hero  |          48–72px |
-| H1              |          36–48px |
-| H2              |          28–36px |
-| H3              |          22–28px |
-| Corpo de texto  |          16–18px |
-| Texto pequeno   |             14px |
-| Legenda / label |          12–13px |
+| Função | Tamanho sugerido |
+|---|---:|
+| Display / Hero | 48–72px |
+| H1 | 36–48px |
+| H2 | 28–36px |
+| H3 | 22–28px |
+| Corpo de texto | 16–18px |
+| Texto pequeno | 14px |
+| Legenda / label | 12–13px |
 
 **Regra:** nunca use corpo de texto menor que 16px em conteúdo principal.
 
 ### 3.3 Legibilidade
-
 - Use contraste adequado entre texto e fundo.
 - Evite cinza muito claro sobre fundo branco.
 - Use `line-height` entre 1.4 e 1.6 para textos corridos.
@@ -150,7 +139,6 @@ Use uma escala consistente, por exemplo:
 ## 4. Cor
 
 ### 4.1 Limite a paleta
-
 Uma paleta eficiente normalmente contém:
 
 - 1 cor primária.
@@ -162,7 +150,6 @@ Uma paleta eficiente normalmente contém:
 **Regra:** use cor com propósito, não como decoração.
 
 ### 4.2 Hierarquia por cor
-
 - Use a cor primária para a identidade da marca.
 - Use a cor de destaque principalmente para ações importantes, como “Comprar”, “Enviar” ou “Começar”.
 - Não use a mesma cor intensa para tudo.
@@ -171,7 +158,6 @@ Uma paleta eficiente normalmente contém:
 **Regra:** se tudo é destacado, nada é destacado.
 
 ### 4.3 Contraste e acessibilidade
-
 Siga as diretrizes WCAG:
 
 - Texto normal: contraste mínimo de 4.5:1.
@@ -186,7 +172,6 @@ Siga as diretrizes WCAG:
 ## 5. Navegação e arquitetura
 
 ### 5.1 Navegação previsível
-
 - Mantenha o menu principal no mesmo lugar em todas as páginas.
 - Use rótulos claros, como “Serviços”, “Preços”, “Contato” e “Sobre”.
 - Evite nomes criativos que confundem o usuário.
@@ -196,7 +181,6 @@ Siga as diretrizes WCAG:
 **Regra:** o usuário deve sempre saber onde está e como chegar a outro lugar.
 
 ### 5.2 Regra dos três cliques
-
 O usuário deve conseguir chegar às informações principais com poucos cliques.
 
 - Não esconda conteúdo essencial em menus profundos.
@@ -206,7 +190,6 @@ O usuário deve conseguir chegar às informações principais com poucos cliques
 **Regra:** quanto menos passos entre intenção e ação, melhor.
 
 ### 5.3 Breadcrumbs e busca
-
 Para sites grandes, adicione:
 
 - Breadcrumbs em páginas internas.
@@ -221,7 +204,6 @@ Para sites grandes, adicione:
 ## 6. UI e componentes
 
 ### 6.1 Botões
-
 - Um botão primário por seção ou contexto.
 - Botões secundários para ações menos importantes.
 - Botões terciários ou links para ações discretas.
@@ -244,7 +226,6 @@ Exemplos vagos:
 **Regra:** o texto do botão deve descrever a ação com clareza.
 
 ### 6.2 Formulários
-
 - Peça apenas informações necessárias.
 - Use labels visíveis, não apenas placeholders.
 - Agrupe campos relacionados.
@@ -255,7 +236,6 @@ Exemplos vagos:
 **Regra:** cada campo extra reduz a taxa de conclusão.
 
 ### 6.3 Estados de interface
-
 Todo componente interativo deve ter estados definidos:
 
 - Padrão.
@@ -270,7 +250,6 @@ Todo componente interativo deve ter estados definidos:
 **Regra:** o site deve responder visualmente a cada ação do usuário.
 
 ### 6.4 Feedback imediato
-
 - Confirme cliques e envios.
 - Mostre carregamento quando houver espera.
 - Informe sucesso ou erro de forma clara.
@@ -284,7 +263,6 @@ Exemplo bom: “Não foi possível enviar o formulário. Verifique seu e-mail e 
 ## 7. UX e psicologia
 
 ### 7.1 Não me faça pensar
-
 O usuário não deve precisar decifrar a interface.
 
 - Torne links e botões visualmente clicáveis.
@@ -296,7 +274,6 @@ O usuário não deve precisar decifrar a interface.
 **Regra:** a melhor interface é aquela que parece óbvia.
 
 ### 7.2 Lei de Hick
-
 Quanto mais opções, mais tempo para decidir.
 
 - Limite opções visíveis por tela.
@@ -307,7 +284,6 @@ Quanto mais opções, mais tempo para decidir.
 **Regra:** ofereça escolhas, mas facilite a decisão.
 
 ### 7.3 Lei de Fitts
-
 Alvos maiores e mais próximos são mais fáceis de usar.
 
 - Botões principais devem ser grandes.
@@ -316,7 +292,6 @@ Alvos maiores e mais próximos são mais fáceis de usar.
 - No mobile, coloque ações principais ao alcance do polegar.
 
 ### 7.4 Prova social
-
 Use com honestidade:
 
 - Depoimentos.
@@ -328,7 +303,6 @@ Use com honestidade:
 **Regra:** prova social deve ser real, específica e relevante.
 
 ### 7.5 Reduza atrito
-
 - Permita navegar sem cadastro sempre que possível.
 - Ofereça checkout como visitante.
 - Reduza campos obrigatórios.
@@ -342,7 +316,6 @@ Use com honestidade:
 ## 8. Acessibilidade
 
 ### 8.1 Estrutura semântica
-
 - Use um único `h1` por página.
 - Mantenha uma hierarquia lógica de títulos.
 - Use `nav`, `main`, `header`, `footer`, `section` e `article` corretamente.
@@ -350,14 +323,12 @@ Use com honestidade:
 - Marque imagens decorativas como decorativas.
 
 ### 8.2 Navegação por teclado
-
 - Todos os elementos interativos devem ser acessíveis por teclado.
 - O foco deve ser sempre visível.
 - A ordem de tabulação deve seguir a ordem visual.
 - Evite remover o outline de foco sem substituí-lo por outro indicador claro.
 
 ### 8.3 Conteúdo acessível
-
 - Use links descritivos.
 - Não dependa apenas de cor.
 - Ofereça contraste suficiente.
@@ -371,7 +342,6 @@ Use com honestidade:
 ## 9. Performance
 
 ### 9.1 Velocidade é design
-
 Um site lento prejudica experiência, SEO e conversão.
 
 - Comprima imagens.
@@ -384,7 +354,6 @@ Um site lento prejudica experiência, SEO e conversão.
 **Regra:** performance faz parte da experiência de design.
 
 ### 9.2 Imagens
-
 - Use dimensões corretas para cada dispositivo.
 - Evite imagens gigantes em containers pequenos.
 - Prefira SVG para ícones, logotipos e ilustrações simples.
@@ -392,7 +361,6 @@ Um site lento prejudica experiência, SEO e conversão.
 - Use `alt` adequado.
 
 ### 9.3 Animações
-
 Animações devem ajudar, não distrair.
 
 - Use animações curtas, entre 150ms e 400ms.
@@ -407,7 +375,6 @@ Animações devem ajudar, não distrair.
 ## 10. Conteúdo e copywriting
 
 ### 10.1 Escreva para escanear
-
 Usuários geralmente escaneiam páginas.
 
 - Use títulos claros.
@@ -417,7 +384,6 @@ Usuários geralmente escaneiam páginas.
 - Vá direto ao ponto.
 
 ### 10.2 Linguagem centrada no usuário
-
 Fale sobre o benefício do usuário, não apenas sobre a empresa.
 
 Em vez de:
@@ -431,7 +397,6 @@ Escreva:
 **Regra:** o texto deve responder “o que eu ganho com isso?”.
 
 ### 10.3 CTA claro
-
 Cada página deve ter uma chamada para ação principal.
 
 - Use verbos de ação.
@@ -445,7 +410,6 @@ Cada página deve ter uma chamada para ação principal.
 ## 11. Design responsivo
 
 ### 11.1 Breakpoints
-
 Não projete apenas para “desktop” e “mobile”. Considere:
 
 - Mobile pequeno: até 480px.
@@ -455,7 +419,6 @@ Não projete apenas para “desktop” e “mobile”. Considere:
 - Desktop grande: acima de 1440px.
 
 ### 11.2 Adaptação de conteúdo
-
 - Reorganize colunas em telas menores.
 - Reduza menus para navegação mobile.
 - Ajuste tamanhos de fonte proporcionalmente.
@@ -469,7 +432,6 @@ Não projete apenas para “desktop” e “mobile”. Considere:
 ## 12. Design system
 
 ### 12.1 Crie tokens de design
-
 Documente e padronize:
 
 - Cores.
@@ -495,7 +457,6 @@ Exemplo de tokens:
 ```
 
 ### 12.2 Componentes reutilizáveis
-
 Crie componentes com variações previsíveis:
 
 - Botão: primário, secundário, fantasma, ícone.
@@ -510,7 +471,6 @@ Crie componentes com variações previsíveis:
 ## 13. Tendências atualizadas
 
 ### 13.1 Design limpo e funcional
-
 A tendência atual privilegia:
 
 - Interfaces simples.
@@ -521,7 +481,6 @@ A tendência atual privilegia:
 - Microinterações úteis.
 
 ### 13.2 Dark mode
-
 Se oferecer modo escuro:
 
 - Não inverta cores automaticamente.
@@ -530,7 +489,6 @@ Se oferecer modo escuro:
 - Teste contraste nos dois modos.
 
 ### 13.3 Microinterações
-
 Use microinterações para dar vida e feedback:
 
 - Hover em botões.
@@ -542,7 +500,6 @@ Use microinterações para dar vida e feedback:
 **Regra:** microinteração deve comunicar algo, não apenas enfeitar.
 
 ### 13.4 Personalização e IA
-
 Sites modernos podem usar personalização, recomendações e assistentes de IA, mas com cuidado:
 
 - Seja transparente sobre o uso de IA.
@@ -556,14 +513,12 @@ Sites modernos podem usar personalização, recomendações e assistentes de IA,
 ## 14. Checklist final antes de publicar
 
 ### Estrutura
-
 - [ ] O objetivo da página está claro?
 - [ ] Existe uma ação principal visível?
 - [ ] A hierarquia visual está correta?
 - [ ] O conteúdo está organizado em blocos claros?
 
 ### Visual
-
 - [ ] As fontes são legíveis?
 - [ ] A paleta de cores é limitada e consistente?
 - [ ] Os espaçamentos seguem uma escala?
@@ -571,7 +526,6 @@ Sites modernos podem usar personalização, recomendações e assistentes de IA,
 - [ ] O contraste é suficiente?
 
 ### UX
-
 - [ ] A navegação é previsível?
 - [ ] Os botões têm textos claros?
 - [ ] Os formulários são curtos e claros?
@@ -579,7 +533,6 @@ Sites modernos podem usar personalização, recomendações e assistentes de IA,
 - [ ] O site funciona bem no mobile?
 
 ### Acessibilidade
-
 - [ ] É navegável por teclado?
 - [ ] O foco está visível?
 - [ ] As imagens têm `alt` adequado?
@@ -587,7 +540,6 @@ Sites modernos podem usar personalização, recomendações e assistentes de IA,
 - [ ] Os textos têm contraste adequado?
 
 ### Performance
-
 - [ ] As imagens estão otimizadas?
 - [ ] As fontes estão otimizadas?
 - [ ] Não há scripts desnecessários?
@@ -595,7 +547,6 @@ Sites modernos podem usar personalização, recomendações e assistentes de IA,
 - [ ] O site foi testado em conexão lenta?
 
 ### Conversão
-
 - [ ] O CTA está claro?
 - [ ] O texto explica o benefício para o usuário?
 - [ ] Há prova social quando relevante?
@@ -621,4 +572,4 @@ Sites modernos podem usar personalização, recomendações e assistentes de IA,
 
 ---
 
-_Use este documento como base para criar um design system, revisar layouts ou padronizar a criação de novos websites._
+*Use este documento como base para criar um design system, revisar layouts ou padronizar a criação de novos websites.*

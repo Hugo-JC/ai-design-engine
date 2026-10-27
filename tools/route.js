@@ -28,14 +28,18 @@ function route(prompt) {
   const text = norm(prompt);
   const nonNiche = new Set((cat.non_niche_terms || []).map(norm));
 
-  // 1) preset por nicho: expressão mais específica (mais caracteres); empate → ordem do catálogo
-  let best = null;
+  // 1) preset por nicho: termos FORTES vencem FRACOS; depois, expressão mais específica; empate → ordem do catálogo
+  const cands = [];
   cat.presets.forEach((p, i) => {
-    const hits = p.match_terms.filter((t) => has(text, t));
-    if (!hits.length) return;
+    const strong = p.match_terms.filter((t) => has(text, t));
+    const weak = (p.weak_terms || []).filter((t) => has(text, t));
+    if (!strong.length && !weak.length) return;
+    const hits = strong.length ? strong : weak;
     const spec = Math.max(...hits.map((t) => norm(t).length));
-    if (!best || spec > best.spec) best = { p, i, hits, spec };
+    cands.push({ p, i, hits, spec, tier: strong.length ? 2 : 1 });
   });
+  cands.sort((a, b) => b.tier - a.tier || b.spec - a.spec || a.i - b.i);
+  const best = cands[0] || null;
 
   let out = {
     prompt,
@@ -101,6 +105,18 @@ function route(prompt) {
         "sem nicho nem keywords reconhecidos; fallback local. Se faltar informação essencial, fazer UMA pergunta curta.";
     }
   }
+  out.alternatives = cands.slice(1).map((c) => ({ preset_id: c.p.id, matched_terms: c.hits, style_id: c.p.style_id }));
+  const second = cands[1];
+  out.weak_only = !!best && best.tier === 1;
+  out.confidence = !best || out.weak_only
+    ? "low"
+    : !second || second.tier < best.tier
+      ? "high"
+      : best.spec - second.spec >= 3
+        ? "medium"
+        : second.p.style_id !== best.p.style_id
+          ? "low"
+          : "medium";
   out.base_style_id = base;
   out.style_id = out.style_id || base;
   const style = styles[out.style_id];
@@ -133,7 +149,7 @@ function brief(r, refs = null) {
     .join("; ");
   return [
     "DESIGN BRIEF",
-    `- Nicho / público: ${r.preset_id || "(sem nicho mapeado)"} — <preencher público>`,
+    `- Nicho / público: ${r.preset_id || "(sem nicho mapeado)"} [confiança ${r.confidence}${r.alternatives.length ? "; também casa com " + r.alternatives.slice(0, 2).map((a) => a.preset_id).join(", ") : ""}]${r.confidence === "low" ? " — CONFIRMAR O NICHO COM O UTILIZADOR" : ""} — <preencher público>`,
     `- Tom: ${tone.length ? tone.join(", ") : "<preencher>"} → intensidade ${r.intensity}`,
     `- style_id + justificação: ${r.style_id}${r.variant_applied ? ` (variante: ${r.variant_applied.because.join(", ")})` : ""} — ${r.reason}`,
     `- Modo e tipografia: ${t.mode} · ${t.typography}`,
@@ -287,6 +303,7 @@ function main() {
       `style_id:   ${r.style_id}${r.variant_applied ? `  (variante de ${r.base_style_id})` : ""}`,
     );
     console.log(`caminho:    ${r.selection_path} — ${r.reason}`);
+    console.log(`confiança:  ${r.confidence}${r.weak_only ? ' (só termo genérico)' : ''}${r.alternatives.length ? ' · também casa com: ' + r.alternatives.slice(0, 3).map((x) => x.preset_id).join(', ') : ''}`);
     console.log(`intensidade:${r.intensity}`);
     console.log(
       `hero:       ${r.patterns.hero}  features: ${r.patterns.features.join("/")}  prova: ${r.patterns.social_proof.join("/")}  nav: ${r.patterns.navigation}  rodapé: ${r.patterns.footer}`,

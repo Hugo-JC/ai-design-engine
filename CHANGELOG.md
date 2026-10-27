@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.2.0]
+
+### Adicionado
+- **47 presets novos** (14 → 61): cosmética, joalharia, eletrónica, casa/decoração, mercearia, livros, brinquedos, pet/veterinária, florista, vinhos, padaria, artesanato, desporto/outdoor, ginásio, yoga, salão/spa, terapia/nutrição, farmácia, advogados, contabilidade, agências, fotografia, construção/serviços, logística, automóvel, solar, agricultura, escolas, cursos online, línguas, creches, ONG, igrejas, governo, eventos, música, cinema, media, jogos indie, hotéis/viagens, delivery, casamentos, classificados, cibersegurança, apps móveis, telecomunicações, emprego. Termos em PT-PT, PT-BR e EN, com variantes de estilo.
+- **3 estilos** (14 → 17): `luxury_noir`, `sport_kinetic_dark`, `civic_trust_light` (contrastes AA verificados pelo lint).
+- Router: `weak_terms` (termos genéricos como "loja online" só decidem se nada mais casar), `alternatives` e `confidence` (high/medium/low) na saída; `weak_only`; o brief assinala "CONFIRMAR O NICHO" quando a confiança é baixa.
+- Presets: campo `ref_queries` (consultas de pesquisa por nicho) e 47 dossiês novos em `curated-references.md`.
+- `05-evals/routing-corpus.json` (dev, held-out, fresh, negativos, conflitos de tom, ambíguos) e `tests/routing-corpus.test.js`. Relatório: `05-evals/ROUTING-REPORT.md`.
+
+### Alterado
+- Termos fortes que eram genéricos passaram a fracos ou foram removidos: `loja`, `e-commerce`, `marketplace`, `comunidade`, `construção`, `energético`, `boutique`, `estética`, `branding`, `design gráfico`, `token`.
+- Presets existentes enriquecidos (EN, variantes de género/número, termos locais lusófonos) e `real-estate-marketplace` ganha variante de luxo.
+- `dark_craft_ink`: removida a keyword genérica "estúdio" (mandava "estúdio de yoga" para o estilo de tatuagem).
+
+### Corrigido
+- Teste "brief e contexto têm o formato esperado" falhava porque a tabela Markdown foi reformatada: o regex passou a tolerar espaços.
 ## [3.1.0-beta.1] — 2026-10-24
 
 ### Adicionado

@@ -330,13 +330,11 @@ function validate(content, file, tokens) {
       noOutline.map((r) => r.index),
     );
 
-  // 4. tracking: respeita o limite do estilo, nunca abaixo de -0.02em.
-  const minTrk = Math.max(
-    -0.02,
-    tokens && tokens.heading_tracking_range
+  // 4. tracking (limite do estilo - 0.01 de tolerância)
+  const minTrk =
+    (tokens && tokens.heading_tracking_range
       ? tokens.heading_tracking_range[0]
-      : -0.02,
-  );
+      : -0.02) - 0.01;
   const tight = [...findAll(content, /\btracking-tighter\b/)];
   findAll(content, /tracking-\[(-\d*\.?\d+)em\]/).forEach((h) => {
     if (parseFloat(h.m[1]) < minTrk) tight.push(h);

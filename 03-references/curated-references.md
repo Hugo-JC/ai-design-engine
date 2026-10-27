@@ -126,6 +126,241 @@ Quando precisar estruturar o fluxo visual de uma página, consulte os conceitos 
 - **Pedir emprestado:** marcação como ação principal (máx. 3 campos); horários, morada e contactos sem scroll; equipa com nome e especialidade verificável; preços e tabelas claros; FAQ da primeira consulta; contraste e tamanho de texto generosos.
 - **Evitar:** azul-hospital genérico com stock sorridente; promessas de cura ou resultados; pop-ups invasivos; formulários longos.
 
+### Cosmética e skincare
+- **Pedir emprestado:** produto em escala; paleta contida com a cor do ingrediente; rótulo legível; antes/depois só com prova.
+- **Evitar:** stock de pessoas sem relação com o produto; imagens com marcas de terceiros; alegações médicas sem prova; 3 cores de destaque.
+- **Procurar:** melhores sites de marcas de cosmética natural; best skincare brand websites.
+
+### Joalharia e relógios
+- **Pedir emprestado:** macro fotografia sobre fundo escuro; tipografia serifada contida; detalhes de material e certificado.
+- **Evitar:** dourado em tudo (acento só num elemento); stock genérico de mãos; ornamentos.
+- **Procurar:** melhores sites de joalharia de luxo; luxury jewelry brand website design.
+
+### Eletrónica de consumo
+- **Pedir emprestado:** produto em escala; tabela de especificações em monoespaçada; comparação lado a lado.
+- **Evitar:** neon e gradientes roxos; especificações escondidas; renders sem escala.
+- **Procurar:** melhores sites de eletrónica de consumo; consumer electronics product page design.
+
+### Casa, decoração e mobiliário
+- **Pedir emprestado:** ambientes completos; paleta de materiais; fichas de produto com medidas.
+- **Evitar:** salas de stock vazias; cards todos iguais; preços escondidos.
+- **Procurar:** melhores sites de mobiliário e decoração; furniture store website design.
+
+### Mercearia e produtos frescos
+- **Pedir emprestado:** fotografia real de produto; origem do produtor; calendário de época.
+- **Evitar:** frutas de stock sem relação com o que se vende; misturar cosmética e alimentos sem explicar a relação.
+- **Procurar:** melhores sites de mercearia online; online grocery website design.
+
+### Editoras e livrarias
+- **Pedir emprestado:** capas em grelha editorial; índice de coleções; excertos.
+- **Evitar:** mockups 3D genéricos; stock de livros; dezenas de cores de capa sem sistema.
+- **Procurar:** melhores sites de editoras independentes; independent publisher website design.
+
+### Brinquedos e puericultura
+- **Pedir emprestado:** filtros por idade; selos de segurança claros; fotografia de produto limpa.
+- **Evitar:** palhaçada visual; texto pequeno; claims de segurança sem certificação.
+- **Procurar:** melhores sites de lojas de brinquedos; toy store website design.
+
+### Pet shop e veterinária
+- **Pedir emprestado:** fotografia real; marcação em 2 cliques; urgências destacadas.
+- **Evitar:** clip-art de patinhas em excesso; stock de cães felizes sem relação; promessas clínicas.
+- **Procurar:** melhores sites de clínicas veterinárias; veterinary clinic website design.
+
+### Floristas e presentes
+- **Pedir emprestado:** navegar por ocasião; cutoff de entrega; fotografia de arranjos reais.
+- **Evitar:** stock de rosas; cartões iguais; preços só no carrinho.
+- **Procurar:** melhores sites de floristas; florist website design.
+
+### Vinhos e destilados
+- **Pedir emprestado:** narrativa de origem; ficha de prova; garrafas em escala.
+- **Evitar:** uvas de stock; dourado em tudo; falta de aviso de idade/consumo.
+- **Procurar:** melhores sites de vinhos e adegas; winery website design.
+
+### Padarias e pastelarias
+- **Pedir emprestado:** foto de textura; horário do forno; encomendas por data.
+- **Evitar:** stock de croissants; alergénios escondidos; carrinho pesado para uma padaria de bairro.
+- **Procurar:** melhores sites de pastelarias; bakery website design.
+
+### Artesanato e velas
+- **Pedir emprestado:** bastidores do processo; edições limitadas; embalagem como parte da marca.
+- **Evitar:** imitar a estética rústica de stock; falta de preços e prazos.
+- **Procurar:** melhores sites de artesanato e velas; handmade candle shop website design.
+
+### Desporto e outdoor
+- **Pedir emprestado:** ação em primeiro plano; fichas técnicas; filtros por atividade.
+- **Evitar:** gradiente neon genérico; stock de ginásio; contraste fraco sobre fotografia.
+- **Procurar:** melhores sites de equipamento outdoor; outdoor gear brand website design.
+
+### Ginásios e fitness
+- **Pedir emprestado:** grelha de horários; planos lado a lado; aula experimental.
+- **Evitar:** corpos de stock; antes/depois sem consentimento; letras pequenas sobre foto.
+- **Procurar:** melhores sites de ginásios; gym website design.
+
+### Yoga e meditação
+- **Pedir emprestado:** grelha de aulas; professores com nome; ritmo calmo.
+- **Evitar:** pôr-do-sol de stock; mandala genérica; aulas com preços escondidos.
+- **Procurar:** melhores sites de estúdios de yoga; yoga studio website design.
+
+### Salões e spa
+- **Pedir emprestado:** menu de serviços com preço/duração; marcação rápida; equipa.
+- **Evitar:** pedras e orquídeas de stock; texto sobre foto; promessas milagrosas.
+- **Procurar:** melhores sites de salões de beleza; hair salon website design.
+
+### Terapia, coaching e nutrição
+- **Pedir emprestado:** página 'como funciona a primeira sessão'; credenciais verificáveis; tom calmo.
+- **Evitar:** stock de pessoas tristes; promessas de resultados; marcação escondida.
+- **Procurar:** melhores sites de psicólogos; therapist website design.
+
+### Farmácias e suplementos
+- **Pedir emprestado:** pesquisa em destaque; filtros por necessidade; avisos legais legíveis.
+- **Evitar:** alegações terapêuticas sem prova; letras pequenas nos avisos.
+- **Procurar:** melhores sites de farmácias online; online pharmacy website design.
+
+### Advogados e serviços jurídicos
+- **Pedir emprestado:** áreas de atuação em lista clara; equipa; contacto direto.
+- **Evitar:** balança da justiça e martelo de stock; promessas de resultado; jargão sem explicação.
+- **Procurar:** melhores sites de escritórios de advogados; law firm website design.
+
+### Contabilidade e consultoria
+- **Pedir emprestado:** serviços por perfil de cliente; calendário fiscal; pacotes.
+- **Evitar:** gráficos de setas a subir em stock; texto vago de 'soluções'; contactos escondidos.
+- **Procurar:** melhores sites de contabilidade; accounting firm website design.
+
+### Agências criativas
+- **Pedir emprestado:** casos com resultado; tipografia de personalidade; marquee de clientes.
+- **Evitar:** 'somos apaixonados por'; grid de logos sem contexto; efeitos que escondem o conteúdo.
+- **Procurar:** melhores sites de agências criativas; creative agency website design.
+
+### Fotografia e vídeo
+- **Pedir emprestado:** séries editadas; lightbox rápido; serviços e preços.
+- **Evitar:** carrosséis lentos; marca de água gigante; 40 imagens sem edição.
+- **Procurar:** melhores sites de fotógrafos; photographer portfolio website design.
+
+### Construção e serviços domésticos
+- **Pedir emprestado:** antes/depois reais; orçamento em 2 passos; WhatsApp.
+- **Evitar:** capacetes e apertos de mão de stock; contactos escondidos; promessas de prazo sem base.
+- **Procurar:** melhores sites de construtoras; construction company website design.
+
+### Logística e transportes
+- **Pedir emprestado:** rastreio em destaque; mapa de cobertura; cotação rápida.
+- **Evitar:** camiões de stock; slogans vagos; formulário de 15 campos.
+- **Procurar:** melhores sites de transportadoras; logistics company website design.
+
+### Stands e oficinas
+- **Pedir emprestado:** filtros por preço/ano/km; ficha técnica; marcação de revisão.
+- **Evitar:** fotos de stock de carros; preços só por telefone.
+- **Procurar:** melhores sites de stands automóvel; car dealership website design.
+
+### Energia solar e renováveis
+- **Pedir emprestado:** simulador de poupança; casos com números; processo em 3 passos.
+- **Evitar:** sol e folhas de stock; promessas de poupança sem base; verde-clichê em tudo.
+- **Procurar:** melhores sites de energia solar; solar company website design.
+
+### Agricultura e agritech
+- **Pedir emprestado:** ciclo da safra; mapa de origem; certificações.
+- **Evitar:** trigais de stock; verde-clichê; falta de contacto comercial.
+- **Procurar:** melhores sites de agricultura; agritech website design.
+
+### Escolas e universidades
+- **Pedir emprestado:** candidaturas em destaque; calendário; pesquisa de cursos.
+- **Evitar:** estudantes sorridentes de stock; menus profundos; PDFs em vez de páginas.
+- **Procurar:** melhores sites de escolas e universidades; university website design.
+
+### Cursos online e edtech
+- **Pedir emprestado:** programa por módulos; aula de amostra; prova de alunos.
+- **Evitar:** promessas de 'ganhar milhares'; contadores falsos; countdown agressivo.
+- **Procurar:** melhores sites de cursos online; online course platform website design.
+
+### Escolas de línguas e explicações
+- **Pedir emprestado:** teste de nível; horários por nível; certificações.
+- **Evitar:** bandeiras de stock; promessas de 'fluente em 30 dias'.
+- **Procurar:** melhores sites de escolas de línguas; language school website design.
+
+### Creches e infantários
+- **Pedir emprestado:** dia típico; equipa; marcação de visita.
+- **Evitar:** ilustrações genéricas de stock; texto infantilizado para pais; horários escondidos.
+- **Procurar:** melhores sites de creches; daycare website design.
+
+### ONG e associações
+- **Pedir emprestado:** impacto em números; histórias com nome e consentimento; doação simples.
+- **Evitar:** imagens de sofrimento exploradoras; contadores sem fonte; formulário de doação longo.
+- **Procurar:** melhores sites de ONG; nonprofit website design.
+
+### Igrejas e comunidades de fé
+- **Pedir emprestado:** horários e morada no topo; calendário de eventos; transmissão ao vivo.
+- **Evitar:** estética de empresa; stock de mãos em oração; texto sectário.
+- **Procurar:** melhores sites de igrejas; church website design.
+
+### Governo e serviços públicos
+- **Pedir emprestado:** tarefas mais procuradas em destaque; pesquisa; linguagem simples.
+- **Evitar:** banners institucionais; PDFs; menus de 7 níveis.
+- **Procurar:** melhores sites de serviços públicos; government service website design.
+
+### Eventos e festivais
+- **Pedir emprestado:** data+local gigantes; programa por dia; marquee de artistas.
+- **Evitar:** countdown agressivo; fundo de vídeo pesado sem fallback; programa em PDF.
+- **Procurar:** melhores sites de festivais; conference website design.
+
+### Artistas e bandas
+- **Pedir emprestado:** player em destaque; datas de tour; links de streaming.
+- **Evitar:** fundos de vídeo pesados; autoplay com som; imagens de stock de palco.
+- **Procurar:** melhores sites de bandas; band website design.
+
+### Produtoras e cinema
+- **Pedir emprestado:** showreel; página por projeto com ficha técnica; créditos.
+- **Evitar:** autoplay sem pausa; 4K sem fallback; texto sobre frame sem contraste.
+- **Procurar:** melhores sites de produtoras de vídeo; film production company website design.
+
+### Podcasts, newsletters e media
+- **Pedir emprestado:** índice de episódios; subscrição visível; ritmo editorial.
+- **Evitar:** player escondido; popups de subscrição imediatos.
+- **Procurar:** melhores sites de podcasts; podcast website design.
+
+### Estúdios de jogos indie
+- **Pedir emprestado:** trailer; capturas; wishlist; press kit.
+- **Evitar:** arte genérica de IA; neon roxo; falta de plataforma/data.
+- **Procurar:** melhores sites de jogos indie; indie game website design.
+
+### Hotéis, turismo e viagens
+- **Pedir emprestado:** pesquisa de datas; galeria do lugar; política de cancelamento.
+- **Evitar:** paraísos de stock; reservas escondidas; preço final só no fim.
+- **Procurar:** melhores sites de hotéis boutique; boutique hotel website design.
+
+### Delivery, takeaway e food trucks
+- **Pedir emprestado:** menu visual com preços; tempo de entrega; localização/horário do truck.
+- **Evitar:** pratos de stock; taxas escondidas; menu em PDF.
+- **Procurar:** melhores sites de food trucks; food truck website design.
+
+### Casamentos e eventos privados
+- **Pedir emprestado:** galerias reais; pacotes; processo em passos.
+- **Evitar:** mãos com alianças de stock; lettering imitado; formulário longo.
+- **Procurar:** melhores sites de wedding planners; wedding planner website design.
+
+### Marketplaces e classificados
+- **Pedir emprestado:** pesquisa e filtros; selos de confiança; publicar em 3 passos.
+- **Evitar:** banners de anúncios invasivos; falta de moderação visível.
+- **Procurar:** melhores sites de classificados; classifieds marketplace website design.
+
+### Cibersegurança e serviços de TI
+- **Pedir emprestado:** metodologia; certificações; demo de painel.
+- **Evitar:** cadeados e matrizes verdes de stock; medo como argumento; roxo/neon.
+- **Procurar:** melhores sites de cibersegurança; cybersecurity company website design.
+
+### Landing de aplicações móveis
+- **Pedir emprestado:** mockup com ecrãs reais; botões de loja; capturas por função.
+- **Evitar:** telemóveis de stock vazios; screenshots falsos; gradiente roxo.
+- **Procurar:** melhores landing pages de apps; mobile app landing page design.
+
+### Telecomunicações e internet
+- **Pedir emprestado:** comparador de planos; verificação de cobertura; suporte visível.
+- **Evitar:** velocidade como único argumento; asteriscos em tudo; stock de routers.
+- **Procurar:** melhores sites de operadoras de internet; internet provider website design.
+
+### Emprego e recrutamento
+- **Pedir emprestado:** pesquisa e filtros; candidatura rápida; perfil de empresa.
+- **Evitar:** apertos de mão de stock; formulários de 10 passos.
+- **Procurar:** melhores sites de recrutamento; job board website design.
+
 ## C. Dez Fugas do Genérico (aplicar pelo menos 3 por página)
 
 1. **Assimetria deliberada:** colunas 7/5 ou 8/4 em vez de 50/50.

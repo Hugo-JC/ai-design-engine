@@ -61,6 +61,6 @@ test("brief e contexto têm o formato esperado", () => {
   assert.match(brief(r), /^DESIGN BRIEF\n- Nicho/);
   const c = context(r);
   assert.match(c, /## Tokens/);
-  assert.match(c, /\| H3 \|/);
+  assert.match(c, /\|\s*H3\s*\|/);
   assert.match(c, /### Tatuagem/);
 });

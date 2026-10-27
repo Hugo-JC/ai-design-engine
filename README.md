@@ -21,7 +21,7 @@ ai-design-engine/
 ├── AGENTS.md  .cursorrules         # instruções curtas para agentes
 ├── README.md  CHANGELOG.md  MASTER-PROJECT-SPEC.md  package.json
 ├── 01-rules-and-constraints/       # ai-design-rules.md · anti-patterns.md
-├── 02-styles-and-tokens/           # design-styles.json (14 estilos)
+├── 02-styles-and-tokens/           # design-styles.json (17 estilos)
 ├── 03-references/                  # local-presets.json (fonte única) · router · extrator · arquétipos · dossiês · catálogo
 ├── 04-agent-prompts/               # system-prompt-auditor.md
 ├── 05-evals/                       # prompts.json · rubric.md · results.template.json
