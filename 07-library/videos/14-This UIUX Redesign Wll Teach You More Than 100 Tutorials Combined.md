@@ -1,5 +1,7 @@
 # tactiq.io free youtube transcript
+
 # These UX/UI mistakes SCREAM you’re a junior
+
 # https://www.youtube.com/watch/GGg61sdEjeI
 
 00:00:00.960 Take a look at this ugly product page. I
