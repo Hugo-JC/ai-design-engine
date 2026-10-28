@@ -3,34 +3,40 @@
   "date": "",
   "model_or_tool": "",
   "blind": true,
+  "protocol": {
+    "viewport_desktop": "1440px",
+    "viewport_mobile": "390px",
+    "attempts_per_condition": 1,
+    "randomized_labels": true,
+    "evaluators": 2
+  },
   "runs": [
     {
       "prompt_id": 1,
-      "condition": "with_repo_refs",
-      "scores": {
-        "identity": null,
-        "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
-      },
-      "notes": ""
-    },
-    {
-      "prompt_id": 1,
       "condition": "with_repo",
       "scores": {
-        "identity": null,
+        "brief": null,
         "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
       },
       "notes": ""
     },
@@ -38,14 +44,28 @@
       "prompt_id": 1,
       "condition": "without_repo",
       "scores": {
-        "identity": null,
+        "brief": null,
         "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
       },
       "notes": ""
     },
@@ -53,14 +73,28 @@
       "prompt_id": 2,
       "condition": "with_repo",
       "scores": {
-        "identity": null,
+        "brief": null,
         "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
       },
       "notes": ""
     },
@@ -68,14 +102,86 @@
       "prompt_id": 2,
       "condition": "without_repo",
       "scores": {
-        "identity": null,
+        "brief": null,
         "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
+      },
+      "notes": ""
+    },
+    {
+      "prompt_id": 3,
+      "condition": "with_repo",
+      "scores": {
+        "brief": null,
+        "hierarchy": null,
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
+      },
+      "notes": ""
+    },
+    {
+      "prompt_id": 3,
+      "condition": "without_repo",
+      "scores": {
+        "brief": null,
+        "hierarchy": null,
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
       },
       "notes": ""
     },
@@ -83,14 +189,28 @@
       "prompt_id": 4,
       "condition": "with_repo",
       "scores": {
-        "identity": null,
+        "brief": null,
         "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
       },
       "notes": ""
     },
@@ -98,14 +218,28 @@
       "prompt_id": 4,
       "condition": "without_repo",
       "scores": {
-        "identity": null,
+        "brief": null,
         "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
       },
       "notes": ""
     },
@@ -113,14 +247,28 @@
       "prompt_id": 5,
       "condition": "with_repo",
       "scores": {
-        "identity": null,
+        "brief": null,
         "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
       },
       "notes": ""
     },
@@ -128,134 +276,28 @@
       "prompt_id": 5,
       "condition": "without_repo",
       "scores": {
-        "identity": null,
+        "brief": null,
         "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
       },
-      "notes": ""
-    },
-    {
-      "prompt_id": 7,
-      "condition": "with_repo",
-      "scores": {
-        "identity": null,
-        "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
-      },
-      "notes": ""
-    },
-    {
-      "prompt_id": 7,
-      "condition": "without_repo",
-      "scores": {
-        "identity": null,
-        "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
-      },
-      "notes": ""
-    },
-    {
-      "prompt_id": 8,
-      "condition": "with_repo",
-      "scores": {
-        "identity": null,
-        "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
-      },
-      "notes": ""
-    },
-    {
-      "prompt_id": 8,
-      "condition": "without_repo",
-      "scores": {
-        "identity": null,
-        "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
-      },
-      "notes": ""
-    },
-    {
-      "prompt_id": 9,
-      "condition": "with_repo",
-      "scores": {
-        "identity": null,
-        "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
-      },
-      "notes": ""
-    },
-    {
-      "prompt_id": 9,
-      "condition": "without_repo",
-      "scores": {
-        "identity": null,
-        "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
-      },
-      "notes": ""
-    },
-    {
-      "prompt_id": 10,
-      "condition": "with_repo",
-      "scores": {
-        "identity": null,
-        "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
-      },
-      "notes": ""
-    },
-    {
-      "prompt_id": 10,
-      "condition": "without_repo",
-      "scores": {
-        "identity": null,
-        "hierarchy": null,
-        "color": null,
-        "rhythm": null,
-        "composition": null,
-        "copy": null,
-        "polish": null,
-        "realbrand": null
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
       },
       "notes": ""
     }
