@@ -1,6 +1,6 @@
 # AI Design Engine
 
- > Router determinístico, tokens de estilo e validadores para reduzir AI slop em interfaces frontend. Comece por BOOTSTRAP.md.
+> Router determinístico, tokens de estilo e validadores para reduzir AI slop em interfaces frontend. Comece por BOOTSTRAP.md.
 
 ## Começar aqui
 - [Protocolo (obrigatório)](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/agents/PROTOCOL.md): critério de sucesso e passos
