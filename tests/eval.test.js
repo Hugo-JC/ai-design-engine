@@ -36,6 +36,19 @@ test("amostra inferior a cinco pares não pode declarar vitória", () => {
   assert.match(summarize({ runs }).verdict, /insuficiente/);
 });
 
+test("template vazio é reconhecido como rubrica v2, mas não pontua resultados incompletos", () => {
+  const blankScores = Object.fromEntries(CRIT.map((criterion) => [criterion, null]));
+  const result = summarize({
+    runs: [
+      { prompt_id: 1, condition: "with_repo", scores: { ...blankScores } },
+      { prompt_id: 1, condition: "without_repo", scores: { ...blankScores } },
+    ],
+  });
+  assert.strictEqual(result.schema, "v2");
+  assert.strictEqual(result.max_score, 20);
+  assert.strictEqual(result.pairs, 0);
+});
+
 test("resultados históricos com oito critérios continuam suportados", () => {
   assert.strictEqual(LEGACY_CRIT.length, 8);
   const runs = [];
