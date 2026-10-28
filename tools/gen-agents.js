@@ -9,7 +9,8 @@ const ROOT = path.resolve(__dirname, "..");
 const HEADER =
   "<!-- GERADO por `node tools/gen-agents.js` a partir de agents/PROTOCOL.md. NÃO EDITAR À MÃO. -->";
 const nl = (s) => s.replace(/\r\n/g, "\n");
-const read = (p) => nl(fs.readFileSync(path.join(ROOT, p), "utf8"));
+const norm = (s) => nl(s).trimEnd();
+const read = (p) => norm(fs.readFileSync(path.join(ROOT, p), "utf8"));
 
 function rawBase() {
   try {
@@ -51,7 +52,7 @@ function llms() {
 }
 
 function bootstrap(proto) {
-  return `${HEADER}\n\n# BOOTSTRAP: cola isto no início da conversa\n\n${proto}\n## Sem execução de código (chat)\nPede ao utilizador o \`ADE-CONTEXT.md\`. Se não o tiver, trabalha só com este protocolo: faz o brief à mão e, no fim, cita por regra a linha do teu código que a cumpre. Diz que não correste o validador.\n`;
+  return `${HEADER}\n\n# BOOTSTRAP: cola isto no início da conversa\n\n${proto}\n## Sem execução de código (chat)\nPede ao utilizador o \`ADE-CONTEXT.md\`. Se não o tiver, trabalha só com este protocolo: faz o brief à mão e, no fim, cita por regra a linha do teu código que a cumpre. Diz que não correste o código e que não tens o contexto completo.\n`;
 }
 
 function targets() {
@@ -74,7 +75,8 @@ function check() {
   return Object.entries(targets())
     .filter(([f, c]) => {
       const p = path.join(ROOT, f);
-      return !fs.existsSync(p) || nl(fs.readFileSync(p, "utf8")) !== c;
+      const actual = fs.existsSync(p) ? norm(fs.readFileSync(p, "utf8")) : null;
+      return actual !== norm(c);
     })
     .map(([f]) => f);
 }
@@ -83,7 +85,7 @@ function write() {
   for (const [f, c] of Object.entries(targets())) {
     const p = path.join(ROOT, f);
     fs.mkdirSync(path.dirname(p), { recursive: true });
-    fs.writeFileSync(p, c);
+    fs.writeFileSync(p, `${norm(c)}\n`);
   }
 }
 
