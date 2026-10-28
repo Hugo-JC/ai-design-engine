@@ -8,7 +8,7 @@ Se vai gerar UI, páginas ou componentes, o protocolo é **obrigatório** ([`age
 
 1. `node tools/route.js "<pedido>" --context --refs`
 2. Confiança ≠ `high`, ou pedido sem nicho/mercado/produtos reais → faça **UMA** pergunta antes de construir.
-3. DESIGN BRIEF sem campos `<preencher>`.
+3. DESIGN BRIEF sem campos <preencher>.
 4. Construa com os tokens do estilo.
 5. `node tools/validate-design.js <ficheiro> --style <style_id>` até passar.
 6. Entregue brief + saída do validador + suposições + o que **não** verificou. Sem evidência, a entrega não conta.
@@ -18,8 +18,8 @@ Se vai gerar UI, páginas ou componentes, o protocolo é **obrigatório** ([`age
 ## Para humanos: início rápido
 
 ```bash
-node tools/route.js "Loja online de cosméticos naturais" --brief     # nicho, estilo, hero, confiança
-node tools/bundle.js "Loja online de cosméticos naturais" --out ADE-CONTEXT.md   # para chats sem execução
+node tools/route.js "Loja online de cosméticos naturais" --brief
+node tools/bundle.js "Loja online de cosméticos naturais" --out ADE-CONTEXT.md
 node tools/validate-design.js index.html --style minimalist_warm
 npm test && npm run lint && npm run agents:check
 ```
@@ -30,15 +30,15 @@ Requer Node ≥ 18 (testado em 22). Sem dependências obrigatórias; Playwright 
 
 `agents/PROTOCOL.md` é a **fonte única**. `node tools/gen-agents.js` gera os atalhos; o lint e o CI falham se algum divergir.
 
-| Ferramenta                           | Ficheiro gerado                                   |
-| :----------------------------------- | :------------------------------------------------ |
-| Claude Code                          | `CLAUDE.md`                                       |
-| Codex e agentes que leem `AGENTS.md` | `AGENTS.md`                                       |
-| Gemini CLI                           | `GEMINI.md`                                       |
-| Cursor                               | `.cursor/rules/ade.mdc` (+ `.cursorrules` legado) |
-| Copilot                              | `.github/copilot-instructions.md`                 |
-| Windsurf                             | `.windsurfrules`                                  |
-| Chats (ChatGPT, Claude.ai, Gemini…)  | `BOOTSTRAP.md` + `ADE-CONTEXT.md`                 |
+| Ferramenta | Ficheiro gerado |
+| :--- | :--- |
+| Claude Code | `CLAUDE.md` |
+| Codex e agentes que leem `AGENTS.md` | `AGENTS.md` |
+| Gemini CLI | `GEMINI.md` |
+| Cursor | `.cursor/rules/ade.mdc` (+ `.cursorrules` legado) |
+| Copilot | `.github/copilot-instructions.md` |
+| Windsurf | `.windsurfrules` |
+| Chats (ChatGPT, Claude.ai, Gemini…) | `BOOTSTRAP.md` + `ADE-CONTEXT.md` |
 
 Os formatos de cada ferramenta são os conhecidos à data; confirme na documentação atual de cada uma.
 
@@ -52,6 +52,14 @@ Os formatos de cada ferramenta são os conhecidos à data; confirme na documenta
 ├── tools/             # route · validate-design · bundle · gen-agents · lint-repo · render-audit · ref-* · eval-summary
 └── tests/             # node --test
 ```
+
+## Novos recursos de conhecimento e qualidade
+
+- [`07-library/reading-list.md`](07-library/reading-list.md): livros, fontes normativas e leitura orientada a heurísticas.
+- [`07-library/videos/README.md`](07-library/videos/README.md): fluxo para notas de talks/transcrições com atribuição e sem republicar material protegido.
+- [`05-evals/QUALITY-ROADMAP.md`](05-evals/QUALITY-ROADMAP.md): avaliação visual cega, métricas, acessibilidade e prioridades para a alpha.
+
+**Regra de ouro:** adicionar mais conteúdo não garante melhores interfaces. Converter conhecimento em heurísticas testáveis e medir resultados antes de promover uma regra ao núcleo.
 
 ## Estado (honesto)
 
