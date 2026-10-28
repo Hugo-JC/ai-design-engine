@@ -1,71 +1,113 @@
 # AI Design Engine v4 (alpha)
 
-Router determinístico, tokens de estilo e validadores para orientar interfaces frontend com identidade de nicho e reduzir o “AI slop”. É um guardrail de direção visual: não substitui revisão humana.
+Uma ferramenta para orientar IA e designers na criação de interfaces com melhor direção visual, consistência e contexto de nicho.
 
-## Para agentes de IA (obrigatório, leia isto primeiro)
+O objetivo do projeto é simples: reduzir "AI slop" e fazer com que a geração de UI comece a partir de padrões reais, linguagem de marca, arquitetura de página e restrições visualmente úteis.
 
-Se vai gerar UI, páginas ou componentes, o protocolo é **obrigatório** ([`agents/PROTOCOL.md`](agents/PROTOCOL.md), 2 KB). Em resumo:
+## O que é o projeto
 
-1. `node tools/route.js "<pedido>" --context --refs`
-2. Confiança ≠ `high`, ou pedido sem nicho/mercado/produtos reais → faça **UMA** pergunta antes de construir.
-3. DESIGN BRIEF sem campos <preencher>.
-4. Construa com os tokens do estilo.
-5. `node tools/validate-design.js <ficheiro> --style <style_id>` até passar.
-6. Entregue brief + saída do validador + suposições + o que **não** verificou. Sem evidência, a entrega não conta.
+O AI Design Engine combina:
 
-**Sem execução de código (chat)?** Cole [`BOOTSTRAP.md`](BOOTSTRAP.md) e anexe o ficheiro de `node tools/bundle.js "<pedido>" --out ADE-CONTEXT.md`. Instruções por ferramenta em [`agents/hosts/`](agents/hosts/); índice para LLMs em [`llms.txt`](llms.txt).
+- roteamento determinístico de prompts para estilos e padrões;
+- tokens visuais por nicho e intenção;
+- validação de acessibilidade e contraste;
+- contextos prontos para agentes de IA gerar interfaces melhores;
+- referências e heurísticas que ajudam a evitar layouts genéricos.
 
-## Para humanos: início rápido
+Em vez de pedir para "criar um site bonito", o projeto ajuda a responder primeiro:
+
+- qual é o nicho?
+- qual é o tom da marca?
+- que tipo de layout faz sentido?
+- que padrões visuais e de conteúdo são adequados?
+
+## Para quem é
+
+- designers que querem um ponto de partida mais firme;
+- agentes de IA que geram interfaces e precisam de contexto;
+- times que querem reduzir retrabalho visual e improviso;
+- founders e PMs que precisam de protótipos com direção clara.
+
+## Como funciona em 3 passos
+
+1. O pedido entra no router.
+2. O sistema identifica o nicho, tom e estilo mais adequados.
+3. O agente recebe contexto, tokens, arquétipos e regras de validação antes de construir.
+
+Isso melhora a qualidade da base sobre a qual a interface é gerada, em vez de partir de um "prompt genérico".
+
+## Casos de uso
+
+- ecommerce de beleza, skincare ou lifestyle
+- landing pages de SaaS B2B
+- protótipos de aplicações internas
+- páginas de produtos de nicho
+- interfaces de startups com identidade clara
+
+## Exemplos de prompts que funcionam melhor
 
 ```bash
 node tools/route.js "Loja online de cosméticos naturais" --brief
 node tools/bundle.js "Loja online de cosméticos naturais" --out ADE-CONTEXT.md
 node tools/validate-design.js index.html --style minimalist_warm
-npm test && npm run lint && npm run agents:check
 ```
 
-Requer Node ≥ 18 (testado em 22). Sem dependências obrigatórias; Playwright é opcional (`render-audit`, `ref-capture`).
+Exemplos de intenção de produto:
 
-## Como cada ferramenta carrega o protocolo
+- "Landing page premium para marca de suplementos naturais"
+- "App de agendamento para clínica estética premium"
+- "Site institucional para startup de automação de marketing"
+- "Marketplace de produtos artesanais com estética editorial"
 
-`agents/PROTOCOL.md` é a **fonte única**. `node tools/gen-agents.js` gera os atalhos; o lint e o CI falham se algum divergir.
+## O que diferencia este projeto
 
-| Ferramenta | Ficheiro gerado |
-| :--- | :--- |
-| Claude Code | `CLAUDE.md` |
-| Codex e agentes que leem `AGENTS.md` | `AGENTS.md` |
-| Gemini CLI | `GEMINI.md` |
-| Cursor | `.cursor/rules/ade.mdc` (+ `.cursorrules` legado) |
-| Copilot | `.github/copilot-instructions.md` |
-| Windsurf | `.windsurfrules` |
-| Chats (ChatGPT, Claude.ai, Gemini…) | `BOOTSTRAP.md` + `ADE-CONTEXT.md` |
+- foco em direção visual, não só em geração de HTML;
+- regras para acessibilidade e contraste;
+- uso de nicho e contexto para reduzir designs amplos demais;
+- validação antes da entrega final;
+- estrutura pensada para agentes e humanos trabalharem juntos.
 
-Os formatos de cada ferramenta são os conhecidos à data; confirme na documentação atual de cada uma.
+## Ver em ação
 
-## Estrutura
+Veja o guia de showcase com prompts, padrões e exemplos de aplicação praticados:
+
+- [SHOWCASE.md](SHOWCASE.md)
+
+## Estrutura rápida
 
 ```text
-├── agents/            # PROTOCOL.md (fonte única) · hosts/ (uma nota por ferramenta)
-├── CORE.md            # as 14 regras que mais falham
-├── 01-rules-and-constraints/ · 02-styles-and-tokens/ (17 estilos) · 03-references/ (61 presets, dossiês)
-├── 04-agent-prompts/ · 05-evals/ · 06-case-studies/ · 07-library/ (beta)
-├── tools/             # route · validate-design · bundle · gen-agents · lint-repo · render-audit · ref-* · eval-summary
-└── tests/             # node --test
+├── agents/              # protocolo e instruções para agentes
+├── 02-styles-and-tokens/ # estilos visuais e tokens
+├── 03-references/       # presets, padrões e dossiês de nicho
+├── tools/               # router, bundle, validação e utilitários
+├── tests/               # validações automatizadas
+├── SHOWCASE.md          # exemplos visuais e prompts prontos
+├── README.md            # visão geral do projeto
+└── package.json         # scripts principais
 ```
 
-## Novos recursos de conhecimento e qualidade
+## Estado do projeto
 
-- [`07-library/reading-list.md`](07-library/reading-list.md): livros, fontes normativas e leitura orientada a heurísticas.
-- [`07-library/videos/README.md`](07-library/videos/README.md): fluxo para notas de talks/transcrições com atribuição e sem republicar material protegido.
-- [`05-evals/QUALITY-ROADMAP.md`](05-evals/QUALITY-ROADMAP.md): avaliação visual cega, métricas, acessibilidade e prioridades para a alpha.
+Este repositório está em fase alpha, com foco em qualidade de direcionamento visual e contexto para agentes. O objetivo principal não é apenas "gerar telas", mas gerar telas com melhor identidade e menor improviso.
 
-**Regra de ouro:** adicionar mais conteúdo não garante melhores interfaces. Converter conhecimento em heurísticas testáveis e medir resultados antes de promover uma regra ao núcleo.
+## Começar
 
-## Estado (honesto)
+```bash
+npm test
+npm run lint
+npm run agents:check
+```
 
-- **CI verificado:** a execução [#12](https://github.com/Hugo-JC/ai-design-engine/actions/runs/40665476019) passou em 9 combinações de SO/Node (Ubuntu, macOS e Windows; Node 18, 20 e 22), incluindo `npm test`, `npm run lint` e `npm run agents:check`.
-- **Verificado por testes:** router (61 presets, confiança e alternativas), validador, lint, geração e sincronia dos atalhos, bundle.
-- **Alpha:** entrada para agentes (`agents/`, `bundle`). **Beta:** referências (`--refs`), biblioteca `07-library/`, `render-audit`.
-- **Ainda não medido:** se o design sai **melhor** com o repo e com este protocolo. A avaliação visual cega continua pendente; ver `05-evals/` e seguir o protocolo antes de afirmar ganhos.
+Se quiseres usar o router diretamente:
 
-Histórico e migração: [`CHANGELOG.md`](CHANGELOG.md).
+```bash
+node tools/route.js "Loja online de cosméticos naturais" --context
+```
+
+## Regra de ouro
+
+Adicionar mais conteúdo não basta. O que realmente importa é transformar conhecimento em heurísticas testáveis, com contexto útil para o design e para a IA.
+
+---
+
+Se quiseres, o próximo passo pode ser transformar este repositório em um projeto mais "de produto" com páginas de destaque, exemplos visuais, arquitetura de demonstração e narrativa mais forte para quem entra pela primeira vez.
