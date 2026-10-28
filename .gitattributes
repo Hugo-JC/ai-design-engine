@@ -1,0 +1,11 @@
+* text=auto eol=lf
+# atalhos gerados por tools/gen-agents.js
+CLAUDE.md linguist-generated=true
+AGENTS.md linguist-generated=true
+GEMINI.md linguist-generated=true
+.cursorrules linguist-generated=true
+.windsurfrules linguist-generated=true
+.github/copilot-instructions.md linguist-generated=true
+.cursor/rules/ade.mdc linguist-generated=true
+BOOTSTRAP.md linguist-generated=true
+llms.txt linguist-generated=true

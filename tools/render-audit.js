@@ -146,7 +146,13 @@ function inPage(isMobile) {
     ? target
     : "file://" + path.resolve(target);
   fs.mkdirSync(out, { recursive: true });
-  const browser = await chromium.launch();
+  let browser;
+  try {
+    browser = await chromium.launch();
+  } catch (e) {
+    console.error(`Browser indisponível: ${String(e.message).split("\n")[0]}\nInstale com: npx playwright install chromium`);
+    process.exit(2);
+  }
   const report = [];
   for (const vp of VIEWPORTS) {
     const page = await browser.newPage({

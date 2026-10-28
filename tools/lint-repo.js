@@ -25,13 +25,13 @@ const stylesDoc = JSON.parse(rd("02-styles-and-tokens/design-styles.json"));
 const cat = JSON.parse(rd("03-references/local-presets.json"));
 const sourceCatalog = JSON.parse(rd("03-references/reference-sources.json"));
 const major = parseInt(pkg.version, 10);
-if (stylesDoc.version !== major)
+if (!(stylesDoc.version >= 3 && stylesDoc.version <= major))
   E(
-    `design-styles.json version (${stylesDoc.version}) ≠ major do package.json (${major})`,
+    `design-styles.json version (${stylesDoc.version}) fora do intervalo [3, ${major}]`,
   );
-if (cat.version !== major)
+if (!(cat.version >= 3 && cat.version <= major))
   E(
-    `local-presets.json version (${cat.version}) ≠ major do package.json (${major})`,
+    `local-presets.json version (${cat.version}) fora do intervalo [3, ${major}]`,
   );
 const top = (rd("CHANGELOG.md").match(/^## \[(\d+\.\d+\.\d+(?:-[\w.]+)?)\]/m) ||
   [])[1];
@@ -300,6 +300,26 @@ if (!/\.cursorrules/.test(".cursorrules") || rd(".cursorrules").length > 2600)
   W(".cursorrules > 2.6 KB: mantenha-o curto e aponte para CORE.md");
 if (rd("CORE.md").length > 5200)
   W("CORE.md > 5.2 KB: o núcleo deve caber numa página");
+
+// v4: entrada para agentes
+{
+  const gen = require("./gen-agents");
+  const proto = exists("agents/PROTOCOL.md") ? rd("agents/PROTOCOL.md") : "";
+  if (!proto) E("agents/PROTOCOL.md em falta");
+  else {
+    if (Buffer.byteLength(proto) > 4096) E(`agents/PROTOCOL.md > 4096 bytes (${Buffer.byteLength(proto)})`);
+    for (const m of ["Critério de sucesso", "UMA pergunta", "[PLACEHOLDER]", "Honestidade", "Precedência", "evidência"])
+      if (!proto.includes(m)) E(`agents/PROTOCOL.md sem a marca obrigatória: ${m}`);
+  }
+  gen.check().forEach((d) => E(`atalho desatualizado: ${d} (corra: node tools/gen-agents.js)`));
+  ["claude", "chatgpt", "cursor", "copilot", "gemini", "windsurf", "generic"].forEach((h) => {
+    if (!exists(`agents/hosts/${h}.md`)) E(`agents/hosts/${h}.md em falta`);
+  });
+  if (exists("BOOTSTRAP.md") && Buffer.byteLength(rd("BOOTSTRAP.md")) > 4096) E("BOOTSTRAP.md > 4096 bytes");
+  if (exists("llms.txt"))
+    for (const m of rd("llms.txt").matchAll(/\]\(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+\/([^)\s]+)\)/g))
+      if (!exists(m[1])) E(`llms.txt aponta para ficheiro inexistente: ${m[1]}`);
+}
 
 console.log(
   `\n🔎 lint-repo v${pkg.version}: ${Object.keys(stylesDoc.styles).length} estilos · ${cat.presets.length} presets · ${allIds.size} padrões`,

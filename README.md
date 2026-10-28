@@ -1,60 +1,57 @@
-# AI Design Engine v3
+# AI Design Engine v4 (alpha)
 
-Regras, tokens, um router determinístico e validadores para orientar interfaces de frontend com identidade de nicho e reduzir o “AI Slop”. É um guardrail de direção visual; não substitui revisão humana.
+Router determinístico, tokens de estilo e validadores para orientar interfaces frontend com identidade de nicho e reduzir o “AI slop”. É um guardrail de direção visual: não substitui revisão humana.
 
-## Referências v3.1 beta
-Use `node tools/route.js "<pedido>" --context --refs` para ativar a escada local-first (máx. 3). A biblioteca `07-library/` só é consultada com `ade.config.json` → `beta.library: true`. Media local não é lido por defeito.
+## Para agentes de IA (obrigatório, leia isto primeiro)
+Se vai gerar UI, páginas ou componentes, o protocolo é **obrigatório** ([`agents/PROTOCOL.md`](agents/PROTOCOL.md), 2 KB). Em resumo:
 
-## O que mudou na v3 (resumo)
-- **Menos para ler:** `CORE.md` (1 página) + `node tools/route.js --context` (≈2 KB) em vez de 10 ficheiros.
-- **Routing executável e testado**, com fonte única (`local-presets.json`). Fim das contradições entre router e extrator.
-- **Validador CSS-aware** com tokens (`--style`): sem falsos positivos de hover/foco em CSS puro, com contraste, accent espalhado, deriva de paleta e mais.
-- **Intensidade** (`calm`/`balanced`/`loud`) e **cor do produto ≠ accent de UI**: regras já não penalizam marcas ruidosas.
-- **4 estilos novos** e 3 presets (bebidas, hardware/arquitetura, clínicas); o accent por defeito de `saas_dark_modern` deixou de ser índigo.
-- **Avaliação** (`05-evals/`) para medir se o repo ajuda e **lint do repo** para impedir deriva.
-Detalhe e migração: `CHANGELOG.md`.
+1. `node tools/route.js "<pedido>" --context --refs`
+2. Confiança ≠ `high`, ou pedido sem nicho/mercado/produtos reais → faça **UMA** pergunta antes de construir.
+3. DESIGN BRIEF sem campos `<preencher>`.
+4. Construa com os tokens do estilo.
+5. `node tools/validate-design.js <ficheiro> --style <style_id>` até passar.
+6. Entregue brief + saída do validador + suposições + o que **não** verificou. Sem evidência, a entrega não conta.
+
+**Sem execução de código (chat)?** Cole [`BOOTSTRAP.md`](BOOTSTRAP.md) e anexe o ficheiro de `node tools/bundle.js "<pedido>" --out ADE-CONTEXT.md`. Instruções por ferramenta em [`agents/hosts/`](agents/hosts/); índice para LLMs em [`llms.txt`](llms.txt).
+
+## Para humanos: início rápido
+```bash
+node tools/route.js "Loja online de cosméticos naturais" --brief     # nicho, estilo, hero, confiança
+node tools/bundle.js "Loja online de cosméticos naturais" --out ADE-CONTEXT.md   # para chats sem execução
+node tools/validate-design.js index.html --style minimalist_warm
+npm test && npm run lint && npm run agents:check
+```
+Requer Node ≥ 18 (testado em 22). Sem dependências obrigatórias; Playwright é opcional (`render-audit`, `ref-capture`).
+
+## Como cada ferramenta carrega o protocolo
+`agents/PROTOCOL.md` é a **fonte única**. `node tools/gen-agents.js` gera os atalhos; o lint e o CI falham se algum divergir.
+
+| Ferramenta | Ficheiro gerado |
+| :-- | :-- |
+| Claude Code | `CLAUDE.md` |
+| Codex e agentes que leem `AGENTS.md` | `AGENTS.md` |
+| Gemini CLI | `GEMINI.md` |
+| Cursor | `.cursor/rules/ade.mdc` (+ `.cursorrules` legado) |
+| Copilot | `.github/copilot-instructions.md` |
+| Windsurf | `.windsurfrules` |
+| Chats (ChatGPT, Claude.ai, Gemini…) | `BOOTSTRAP.md` + `ADE-CONTEXT.md` |
+
+Os formatos de cada ferramenta são os conhecidos à data; confirme na documentação atual de cada uma.
 
 ## Estrutura
 ```text
-ai-design-engine/
-├── CORE.md                         # núcleo de 1 página (ler primeiro)
-├── AGENTS.md  .cursorrules         # instruções curtas para agentes
-├── README.md  CHANGELOG.md  MASTER-PROJECT-SPEC.md  package.json
-├── 01-rules-and-constraints/       # ai-design-rules.md · anti-patterns.md
-├── 02-styles-and-tokens/           # design-styles.json (17 estilos)
-├── 03-references/                  # local-presets.json (fonte única) · router · extrator · arquétipos · dossiês · catálogo
-├── 04-agent-prompts/               # system-prompt-auditor.md
-├── 05-evals/                       # prompts.json · rubric.md · results.template.json
-├── 06-case-studies/refri/          # v1 (slop) vs v2 (com regras) + análise
-├── tools/                          # route · validate-design · lint-repo · eval-summary · render-audit · lib/color
-└── tests/                          # node --test
+├── agents/            # PROTOCOL.md (fonte única) · hosts/ (uma nota por ferramenta)
+├── CORE.md            # as 14 regras que mais falham
+├── 01-rules-and-constraints/ · 02-styles-and-tokens/ (17 estilos) · 03-references/ (61 presets, dossiês)
+├── 04-agent-prompts/ · 05-evals/ · 06-case-studies/ · 07-library/ (beta)
+├── tools/             # route · validate-design · bundle · gen-agents · lint-repo · render-audit · ref-* · eval-summary
+└── tests/             # node --test
 ```
 
-## Início rápido
-```bash
-node tools/route.js "Quero um site para uma marca de refrigerantes energéticos" --context
-# … o agente constrói o ficheiro …
-node tools/validate-design.js index.html --style loud_beverage_dark --allow "#ff7a00,#ff3d6e"
-npm test            # router, validador, avaliação
-npm run lint        # integridade do repo (tokens, contrastes, presets, referências)
-```
-Requer Node ≥ 18 (testado em 22). Sem dependências.
+## Estado (honesto)
+- **Verificado por testes:** router (61 presets, confiança e alternativas), validador, lint, geração e sincronia dos atalhos, bundle.
+- **Alpha:** entrada para agentes (`agents/`, `bundle`). **Beta:** referências (`--refs`), biblioteca `07-library/`, `render-audit`.
+- **Por validar:** o workflow de CI (`.github/workflows/ci.yml`) foi escrito mas ainda não correu no GitHub.
+- **Ainda não medido:** se o design sai **melhor** com o repo e com este protocolo. Ver `05-evals/`; o teste U0–U4 está por fazer.
 
-## Ferramentas
-| Comando | Função |
-| :--- | :--- |
-| `tools/route.js "<pedido>" [--brief\|--context\|--json]` | pedido → `style_id`, intensidade, padrões, brief, contexto compacto |
-| `tools/validate-design.js <f...> [--style id] [--accent #hex] [--allow #hex,…] [--strict] [--json]` | validação estática de HTML/JSX/TSX/Vue/Svelte/CSS |
-| `tools/lint-repo.js` | valida o próprio repo (contraste dos tokens, IDs, dossiês, deriva, versões) |
-| `tools/eval-summary.js [results.json]` | sumário da avaliação com/sem repo |
-| `tools/render-audit.js <f\|url> [--out dir]` | **beta**: auditoria com Chromium (overflow, contraste computado, alvos de toque, foco por teclado, tracking) em 3 viewports + screenshots; requer Chromium local |
-
-## Limites (honestos)
-- O estado das fontes continua `untested` até executar `node tools/ref-check.js --write` numa máquina com rede; captura Playwright e ingestão de vídeo dependem de ferramentas opcionais e não são obrigatório para o toim do repo.
-- O validador **não renderiza**. Contraste e “accent espalhado” são estimativas; confirme no browser.
-- `render-audit.js` foi testado em Chromium headless (fixtures e a Refri v2), mas não em dispositivos reais, Firefox ou WebKit. Recursos externos (fontes, CDN) precisam de rede para o render ser legítimo.
-- Presets e dossiês são pontos de partida, não verdades. O gosto não se codifica todo em regras: valide com `05-evals/`.
-- Em produtos operacionais complexos, requisitos funcionais e usabilidade prevalecem sobre regras decorativas.
-
-## Como saber se o repo compensa
-Siga `05-evals/README.md`: 8 prompts fixos, geração com e sem repo, pontuação cega (0–2 × 8 critérios) e `node tools/eval-summary.js`. Não expanda regras sem ganho medido.
+Histórico e migração: [`CHANGELOG.md`](CHANGELOG.md).

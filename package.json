@@ -1,6 +1,6 @@
 {
   "name": "ai-design-engine",
-  "version": "3.2.0",
+  "version": "4.0.0-alpha.1",
   "description": "Regras, tokens, router determinístico e validadores para reduzir AI Slop em interfaces frontend.",
   "license": "MIT",
   "engines": {
@@ -15,6 +15,13 @@
     "ref:check": "node tools/ref-check.js",
     "ref:search": "node tools/ref-search.js",
     "ref:capture": "node tools/ref-capture.js",
-    "ref:ingest": "node tools/ref-ingest.js"
+    "ref:ingest": "node tools/ref-ingest.js",
+    "agents:gen": "node tools/gen-agents.js",
+    "agents:check": "node tools/gen-agents.js --check",
+    "bundle": "node tools/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hugo-JC/ai-design-engine.git"
   }
 }

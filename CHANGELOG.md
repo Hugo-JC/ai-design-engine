@@ -1,5 +1,25 @@
 # Changelog
 
+## [4.0.0-alpha.1]
+
+### Adicionado
+- **Entrada para agentes:** `agents/PROTOCOL.md` (fonte única, ≤ 4 KB, com critério de sucesso, regra de evidência, política de ativos/conteúdo/mercado e pergunta única), `agents/hosts/*` (uma nota por ferramenta), `BOOTSTRAP.md` e `llms.txt`.
+- `tools/gen-agents.js` (+ `--check`): gera `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.cursorrules`, `.windsurfrules`, `.github/copilot-instructions.md` e `.cursor/rules/ade.mdc` a partir do protocolo.
+- `tools/bundle.js` (`npm run bundle`): gera `ADE-CONTEXT.md` (protocolo + 14 regras + contexto do router) para chats sem execução de código; orçamento de 12 KB, determinístico.
+- CI (`.github/workflows/ci.yml`): ubuntu/macos/windows × Node 18/20/22; `.editorconfig` e `.gitattributes` (LF; ficheiros gerados marcados).
+- Lint: impõe orçamento e marcas do protocolo, sincronia dos atalhos, links do `llms.txt`. Testes: `tests/agents.test.js`.
+
+### Alterado
+- README *agent-first* (protocolo no topo, estado honesto). `AGENTS.md` e `.cursorrules` passam a ser **gerados**: não editar à mão.
+- Lint: a versão de `design-styles.json` e `local-presets.json` tem de estar em [3, major] (antes tinha de igualar o major).
+
+### Corrigido
+- `render-audit` e `ref-capture` saem com código 2 e dica de instalação quando o browser não arranca (antes: exceção não tratada, que fazia o teste falhar em vez de saltar).
+- Removido `tmp.txt`.
+
+### Não verificado
+- O CI nunca correu no GitHub. Os formatos de carregamento por ferramenta são os conhecidos; confirmar na documentação de cada uma.
+- Não foi medido se o protocolo faz os agentes seguirem o repo (teste U0–U4 por fazer).
 ## [3.2.0]
 
 ### Adicionado

@@ -47,7 +47,13 @@ async function main() {
   );
   fs.mkdirSync(out, { recursive: true });
   const widths = get("--viewports", "390,1440").split(",").map(Number);
-  const browser = await pw.chromium.launch({ headless: true });
+  let browser;
+  try {
+    browser = await pw.chromium.launch({ headless: true });
+  } catch (e) {
+    console.error(`Browser indisponível: ${String(e.message).split("\n")[0]}\nInstale com: npx playwright install chromium`);
+    process.exit(2);
+  }
   try {
     const metadata = {
       url,

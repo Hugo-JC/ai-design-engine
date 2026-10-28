@@ -1,0 +1,26 @@
+# AI Design Engine
+
+> Router determinístico, tokens de estilo e validadores para reduzir AI slop em interfaces frontend. Comece por BOOTSTRAP.md.
+
+## Começar aqui
+- [Protocolo (obrigatório)](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/agents/PROTOCOL.md): critério de sucesso e passos
+- [Bootstrap para chat](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/BOOTSTRAP.md): protocolo pronto a colar
+- [Núcleo de regras](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/CORE.md): as 14 regras que mais falham
+
+## Ferramentas
+- [Router](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/tools/route.js): pedido → estilo, padrões, brief e contexto
+- [Validador](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/tools/validate-design.js): validação estática com tokens do estilo
+- [Bundle](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/tools/bundle.js): gera ADE-CONTEXT.md para chats sem execução de código
+
+## Dados
+- [Presets](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/03-references/local-presets.json): nicho → estilo e padrões
+- [Estilos](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/02-styles-and-tokens/design-styles.json): tokens por estilo
+
+## Por host
+- [claude](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/agents/hosts/claude.md): como carregar e limites
+- [chatgpt](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/agents/hosts/chatgpt.md): como carregar e limites
+- [cursor](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/agents/hosts/cursor.md): como carregar e limites
+- [copilot](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/agents/hosts/copilot.md): como carregar e limites
+- [gemini](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/agents/hosts/gemini.md): como carregar e limites
+- [windsurf](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/agents/hosts/windsurf.md): como carregar e limites
+- [generic](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/agents/hosts/generic.md): como carregar e limites
