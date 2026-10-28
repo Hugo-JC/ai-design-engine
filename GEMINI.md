@@ -1,7 +1,5 @@
 <!-- GERADO por `node tools/gen-agents.js` a partir de agents/PROTOCOL.md. NÃO EDITAR À MÃO. -->
 
-# BOOTSTRAP: cola isto no início da conversa
-
 # Protocolo AI Design Engine (obrigatório)
 
 Aplica-se sempre que gerares UI, páginas, componentes ou layouts de frontend.
@@ -38,5 +36,3 @@ Não escrevas “segui o repo”, “validado” ou “testado” sem a evidênc
 
 ## Precedência
 Acessibilidade e requisitos funcionais › pedido explícito › tokens do estilo › regras gerais › avisos heurísticos.
-## Sem execução de código (chat)
-Pede ao utilizador o `ADE-CONTEXT.md`. Se não o tiver, trabalha só com este protocolo: faz o brief à mão e, no fim, cita por regra a linha do teu código que a cumpre. Diz que não corriste o código e que não tens o contexto completo.
