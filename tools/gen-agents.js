@@ -8,9 +8,9 @@ const path = require("path");
 const ROOT = path.resolve(__dirname, "..");
 const HEADER =
   "<!-- GERADO por `node tools/gen-agents.js` a partir de agents/PROTOCOL.md. NÃO EDITAR À MÃO. -->";
-const nl = (s) => s.replace(/\r\n/g, "\n");
-const norm = (s) => nl(s).replace(/\n+$/, "\n");
-const read = (p) => norm(fs.readFileSync(path.join(ROOT, p), "utf8"));
+const canonicalEol = (s) => s.replace(/\r\n?/g, "\n");
+const normalizeGenerated = (s) => canonicalEol(s).replace(/\n+$/, "\n");
+const read = (p) => normalizeGenerated(fs.readFileSync(path.join(ROOT, p), "utf8"));
 
 function rawBase() {
   try {
@@ -52,7 +52,7 @@ function llms() {
 }
 
 function bootstrap(proto) {
-  return `${HEADER}\n\n# BOOTSTRAP: cola isto no início da conversa\n\n${proto}\n## Sem execução de código (chat)\nPede ao utilizador o \`ADE-CONTEXT.md\`. Se não o tiver, trabalha só com este protocolo: faz o brief à mão e, no fim, cita por regra a linha do teu código que a cumpre. Diz que não correste o código e que não tens o contexto completo.\n`;
+  return `${HEADER}\n\n# BOOTSTRAP: cola isto no início da conversa\n\n${proto}\n## Sem execução de código (chat)\nPede ao utilizador o \`ADE-CONTEXT.md\`. Se não o tiver, trabalha só com estes materiais e confirma as suposições.\n`;
 }
 
 function targets() {
@@ -76,8 +76,8 @@ function check() {
     .filter(([f, c]) => {
       const p = path.join(ROOT, f);
       if (!fs.existsSync(p)) return true;
-      const actual = norm(fs.readFileSync(p, "utf8"));
-      return actual !== norm(c);
+      const actual = normalizeGenerated(fs.readFileSync(p, "utf8"));
+      return actual !== normalizeGenerated(c);
     })
     .map(([f]) => f);
 }
@@ -86,7 +86,7 @@ function write() {
   for (const [f, c] of Object.entries(targets())) {
     const p = path.join(ROOT, f);
     fs.mkdirSync(path.dirname(p), { recursive: true });
-    fs.writeFileSync(p, `${norm(c)}\n`);
+    fs.writeFileSync(p, normalizeGenerated(c));
   }
 }
 
