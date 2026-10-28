@@ -37,7 +37,10 @@ function isComplete(scores, criteria) {
 }
 
 function hasKeys(scores, criteria) {
-  return Boolean(scores && criteria.every((key) => Object.prototype.hasOwnProperty.call(scores, key)));
+  return Boolean(
+    scores &&
+      criteria.every((key) => Object.prototype.hasOwnProperty.call(scores, key))
+  );
 }
 
 function schemaFor(run) {
@@ -143,18 +146,22 @@ if (require.main === module) {
   }
   const result = summarize(JSON.parse(fs.readFileSync(file, "utf8")));
   const fmt = (value) => (Number.isFinite(value) ? value.toFixed(1) : "n/a");
+  console.log("");
   console.log(
-    `\\nRubrica: ${result.schema} · pares completos: ${result.pairs} · COM repo ${fmt(result.mean_with)}/${result.max_score} · SEM repo ${fmt(result.mean_without)}/${result.max_score} · Δ ${fmt(result.mean_diff)}`
+    `Rubrica: ${result.schema} · pares completos: ${result.pairs} · COM repo ${fmt(result.mean_with)}/${result.max_score} · SEM repo ${fmt(result.mean_without)}/${result.max_score} · Δ ${fmt(result.mean_diff)}`
   );
-  console.log(`Vitórias ${result.wins} · empates ${result.ties} · derrotas ${result.losses}\\n`);
+  console.log(`Vitórias ${result.wins} · empates ${result.ties} · derrotas ${result.losses}`);
+  console.log("");
   result.per_criterion.forEach((criterion) =>
     console.log(
       `${criterion.criterion.padEnd(16)} com ${fmt(criterion.with)} · sem ${fmt(criterion.without)} · Δ ${fmt(criterion.with - criterion.without)}`
     )
   );
-  console.log(`\\n➡️  ${result.verdict}\\n`);
+  console.log("");
+  console.log(`➡️  ${result.verdict}`);
+  console.log("");
   console.log(
-    `Referências vs repo: ${result.refs.pairs} pares · Δ ${fmt(result.refs.mean_diff)} · vitórias ${result.refs.wins} · ${result.refs.verdict}\\n`
+    `Referências vs repo: ${result.refs.pairs} pares · Δ ${fmt(result.refs.mean_diff)} · vitórias ${result.refs.wins} · ${result.refs.verdict}`
   );
 }
 
