@@ -35,7 +35,7 @@ function build(prompt) {
     "- Motion: escolha no máximo 2–3 famílias úteis. Feedback imediato e subtil; scroll reveal discreto; nada de tilt, cursor personalizado, parallax forte, blobs em loop ou cascatas longas por decoração.",
     "- Respeite prefers-reduced-motion; não esconda conteúdo essencial enquanto animações ou JavaScript carregam.",
     "- Auditoria: se retirar o logótipo, a página ainda parece pertencer à marca? Se não, reveja a direção visual, não apenas o polimento.",
-  ].join("\\n");
+  ].join("\n");
   return nl(
     [
       "<!-- ADE-CONTEXT: gerado por tools/bundle.js para o pedido abaixo. Anexe/cole este ficheiro no chat. -->",
