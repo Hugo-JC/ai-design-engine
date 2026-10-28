@@ -11,6 +11,7 @@ O AI Design Engine combina:
 - roteamento determinístico de prompts para estilos e padrões;
 - tokens visuais por nicho e intenção;
 - validação de acessibilidade e contraste;
+- um playbook de referências reais para tipografia, composição, espaçamento e motion sem copiar layouts;
 - contextos prontos para agentes de IA gerar interfaces melhores;
 - referências e heurísticas que ajudam a evitar layouts genéricos.
 
@@ -71,6 +72,7 @@ Exemplos de intenção de produto:
 
 Veja o guia de showcase com prompts, padrões e exemplos de aplicação praticados:
 
+- [Playbook de direção visual](03-references/design-intelligence-playbook.md)
 - [SHOWCASE.md](SHOWCASE.md)
 
 ## Estrutura rápida
