@@ -1,7 +1,5 @@
 <!-- GERADO por `node tools/gen-agents.js` a partir de agents/PROTOCOL.md. NÃO EDITAR À MÃO. -->
 
-# BOOTSTRAP: cola isto no início da conversa
-
 # Protocolo AI Design Engine (obrigatório)
 
 Aplica-se sempre que gerares UI, páginas, componentes ou layouts de frontend.
@@ -15,9 +13,9 @@ A tua entrega só é válida se:
 
 ## Passos (por esta ordem)
 1. Roteia: `node tools/route.js "<pedido>" --context --refs`. Sem execução de código? Pede o `ADE-CONTEXT.md` ao utilizador (`node tools/bundle.js "<pedido>"`) ou segue as 14 regras de `CORE.md`.
-2. Se a confiança não for `high`, ou o pedido não diz nicho, mercado/idioma ou produtos reais, faz UMA pergunta curta antes de construir. Senão assume e declara as suposições. “Moderno” não basta.
-3. Escreve o DESIGN BRIEF (8 linhas) com o `style_id` do router. Antes de desenhar, consulta `03-references/design-intelligence-playbook.md` (ou a secção Anti-monocultura de `CORE.md` se não conseguires abrir as referências).
-4. Define explicitamente: estratégia tipográfica, ritmo de espaçamento, arquétipo de hero, variação de densidade entre secções, princípio(s) de referência e 2–3 famílias de motion no relatório final.
+2. Se a confiança não for `high`, ou o pedido não diz nicho, mercado/idioma ou produtos reais, faz UMA pergunta curta antes de construir. Senão assume e declara as suposições. “Moderno” é insuficiente; define a identidade e o contexto.
+3. Escreve o DESIGN BRIEF (8 linhas) com o `style_id` do router. Antes de desenhar, consulta `03-references/design-intelligence-playbook.md` (ou a secção Anti-monocultura de `CORE.md` se não conseguires aceder ao playbook).
+4. Define explicitamente: estratégia tipográfica, ritmo de espaçamento, arquétipo de hero, variação de densidade entre secções, princípio(s) de referência e 2–3 famílias de motion no documento final.
 5. Constrói com os tokens do estilo. Pedido explícito do utilizador > tokens. Referências fornecem princípios, não layouts, imagens, copy ou identidade para copiar.
 6. Valida e corrige até passar. Com browser: `node tools/render-audit.js <ficheiro>`. Verifica desktop e mobile quando possível.
 7. Entrega: brief, saída do validador, suposições, referências “fonte → extraído | não copiado” e o que NÃO verificaste.
@@ -38,5 +36,3 @@ Não escrevas “segui o repo”, “validado” ou “testado” sem a evidênc
 
 ## Precedência
 Acessibilidade e requisitos funcionais › pedido explícito › tokens do estilo › regras gerais › avisos heurísticos.
-## Sem execução de código (chat)
-Pede ao utilizador o `ADE-CONTEXT.md`. Se não o tiver, trabalha só com este protocolo: faz o brief à mão e, no fim, cita por regra a linha do teu código que a cumpre. Diz que não correste o código e que não tens o contexto completo.
