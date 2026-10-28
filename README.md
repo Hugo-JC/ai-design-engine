@@ -63,9 +63,9 @@ Os formatos de cada ferramenta são os conhecidos à data; confirme na documenta
 
 ## Estado (honesto)
 
+- **CI verificado:** a execução [#12](https://github.com/Hugo-JC/ai-design-engine/actions/runs/40665476019) passou em 9 combinações de SO/Node (Ubuntu, macOS e Windows; Node 18, 20 e 22), incluindo `npm test`, `npm run lint` e `npm run agents:check`.
 - **Verificado por testes:** router (61 presets, confiança e alternativas), validador, lint, geração e sincronia dos atalhos, bundle.
 - **Alpha:** entrada para agentes (`agents/`, `bundle`). **Beta:** referências (`--refs`), biblioteca `07-library/`, `render-audit`.
-- **Por validar:** o workflow de CI (`.github/workflows/ci.yml`) foi escrito mas ainda não correu no GitHub.
-- **Ainda não medido:** se o design sai **melhor** com o repo e com este protocolo. Ver `05-evals/`; o teste U0–U4 está por fazer.
+- **Ainda não medido:** se o design sai **melhor** com o repo e com este protocolo. A avaliação visual cega continua pendente; ver `05-evals/` e seguir o protocolo antes de afirmar ganhos.
 
 Histórico e migração: [`CHANGELOG.md`](CHANGELOG.md).
