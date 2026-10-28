@@ -32,6 +32,7 @@ function llms() {
     L("Protocolo (obrigatório)", "agents/PROTOCOL.md", "critério de sucesso e passos"),
     L("Bootstrap para chat", "BOOTSTRAP.md", "protocolo pronto a colar"),
     L("Núcleo de regras", "CORE.md", "as 14 regras que mais falham"),
+    L("Playbook de direção visual", "03-references/design-intelligence-playbook.md", "referências, tipografia, espaço, composição e motion"),
     "",
     "## Ferramentas",
     L("Router", "tools/route.js", "pedido → estilo, padrões, brief e contexto"),
