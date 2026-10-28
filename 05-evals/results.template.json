@@ -70,6 +70,35 @@
       "notes": ""
     },
     {
+      "prompt_id": 1,
+      "condition": "with_repo_refs",
+      "scores": {
+        "brief": null,
+        "hierarchy": null,
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
+      },
+      "notes": ""
+    },
+    {
       "prompt_id": 2,
       "condition": "with_repo",
       "scores": {
@@ -100,64 +129,6 @@
     },
     {
       "prompt_id": 2,
-      "condition": "without_repo",
-      "scores": {
-        "brief": null,
-        "hierarchy": null,
-        "identity": null,
-        "responsive": null,
-        "accessibility": null,
-        "interaction": null,
-        "trust": null,
-        "implementation": null,
-        "performance": null,
-        "originality": null
-      },
-      "evidence": {
-        "brief": "",
-        "hierarchy": "",
-        "identity": "",
-        "responsive": "",
-        "accessibility": "",
-        "interaction": "",
-        "trust": "",
-        "implementation": "",
-        "performance": "",
-        "originality": ""
-      },
-      "notes": ""
-    },
-    {
-      "prompt_id": 3,
-      "condition": "with_repo",
-      "scores": {
-        "brief": null,
-        "hierarchy": null,
-        "identity": null,
-        "responsive": null,
-        "accessibility": null,
-        "interaction": null,
-        "trust": null,
-        "implementation": null,
-        "performance": null,
-        "originality": null
-      },
-      "evidence": {
-        "brief": "",
-        "hierarchy": "",
-        "identity": "",
-        "responsive": "",
-        "accessibility": "",
-        "interaction": "",
-        "trust": "",
-        "implementation": "",
-        "performance": "",
-        "originality": ""
-      },
-      "notes": ""
-    },
-    {
-      "prompt_id": 3,
       "condition": "without_repo",
       "scores": {
         "brief": null,
@@ -274,6 +245,238 @@
     },
     {
       "prompt_id": 5,
+      "condition": "without_repo",
+      "scores": {
+        "brief": null,
+        "hierarchy": null,
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
+      },
+      "notes": ""
+    },
+    {
+      "prompt_id": 7,
+      "condition": "with_repo",
+      "scores": {
+        "brief": null,
+        "hierarchy": null,
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
+      },
+      "notes": ""
+    },
+    {
+      "prompt_id": 7,
+      "condition": "without_repo",
+      "scores": {
+        "brief": null,
+        "hierarchy": null,
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
+      },
+      "notes": ""
+    },
+    {
+      "prompt_id": 8,
+      "condition": "with_repo",
+      "scores": {
+        "brief": null,
+        "hierarchy": null,
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
+      },
+      "notes": ""
+    },
+    {
+      "prompt_id": 8,
+      "condition": "without_repo",
+      "scores": {
+        "brief": null,
+        "hierarchy": null,
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
+      },
+      "notes": ""
+    },
+    {
+      "prompt_id": 9,
+      "condition": "with_repo",
+      "scores": {
+        "brief": null,
+        "hierarchy": null,
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
+      },
+      "notes": ""
+    },
+    {
+      "prompt_id": 9,
+      "condition": "without_repo",
+      "scores": {
+        "brief": null,
+        "hierarchy": null,
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
+      },
+      "notes": ""
+    },
+    {
+      "prompt_id": 10,
+      "condition": "with_repo",
+      "scores": {
+        "brief": null,
+        "hierarchy": null,
+        "identity": null,
+        "responsive": null,
+        "accessibility": null,
+        "interaction": null,
+        "trust": null,
+        "implementation": null,
+        "performance": null,
+        "originality": null
+      },
+      "evidence": {
+        "brief": "",
+        "hierarchy": "",
+        "identity": "",
+        "responsive": "",
+        "accessibility": "",
+        "interaction": "",
+        "trust": "",
+        "implementation": "",
+        "performance": "",
+        "originality": ""
+      },
+      "notes": ""
+    },
+    {
+      "prompt_id": 10,
       "condition": "without_repo",
       "scores": {
         "brief": null,
