@@ -17,8 +17,13 @@ function section(md, heading) {
 }
 
 function build(prompt) {
-  const r = spawnSync(process.execPath, [path.join(ROOT, "tools", "route.js"), prompt, "--context", "--refs"], { cwd: ROOT, encoding: "utf8" });
-  if (r.status !== 0) throw new Error(`route.js falhou (exit ${r.status}): ${(r.stderr || "").split("\n")[0]}`);
+  const r = spawnSync(
+    process.execPath,
+    [path.join(ROOT, "tools", "route.js"), prompt, "--context", "--refs"],
+    { cwd: ROOT, encoding: "utf8" }
+  );
+  if (r.status !== 0)
+    throw new Error(`route.js falhou (exit ${r.status}): ${(r.stderr || "").split("\n")[0]}`);
   const rules = section(read("CORE.md"), "As 14 regras que mais falham");
   return nl(
     [
@@ -36,21 +41,39 @@ function build(prompt) {
       "",
       "Fim do contexto. Se não consegues executar comandos, diz isso no relatório final.",
       "",
-    ].join("\n"),
+    ].join("\n")
   );
 }
 
 if (require.main === module) {
   const a = process.argv.slice(2);
-  const opt = (n) => { const i = a.indexOf(n); return i >= 0 ? a[i + 1] : null; };
+  const opt = (n) => {
+    const i = a.indexOf(n);
+    return i >= 0 ? a[i + 1] : null;
+  };
   const skip = new Set(["--out", "--max-bytes"]);
-  const prompt = a.filter((x, i) => !x.startsWith("--") && !skip.has(a[i - 1])).join(" ").trim();
-  if (!prompt) { console.error('Uso: node tools/bundle.js "<pedido>" [--out ficheiro] [--max-bytes 12000]'); process.exit(2); }
+  const prompt = a
+    .filter((x, i) => !x.startsWith("--") && !skip.has(a[i - 1]))
+    .join(" ")
+    .trim();
+  if (!prompt) {
+    console.error('Uso: node tools/bundle.js "<pedido>" [--out ficheiro] [--max-bytes 12000]');
+    process.exit(2);
+  }
   let out;
-  try { out = build(prompt); } catch (e) { console.error(`❌ ${e.message}`); process.exit(1); }
-  const bytes = Buffer.byteLength(out), max = parseInt(opt("--max-bytes") || "12000", 10);
-  if (opt("--out")) fs.writeFileSync(opt("--out"), out); else process.stdout.write(out);
-  console.error(`bundle: ${bytes} bytes${bytes > max ? ` ⚠️ acima do orçamento de ${max}` : ` (orçamento ${max})`}`);
+  try {
+    out = build(prompt);
+  } catch (e) {
+    console.error(`❌ ${e.message}`);
+    process.exit(1);
+  }
+  const bytes = Buffer.byteLength(out),
+    max = parseInt(opt("--max-bytes") || "12000", 10);
+  if (opt("--out")) fs.writeFileSync(opt("--out"), out);
+  else process.stdout.write(out);
+  console.error(
+    `bundle: ${bytes} bytes${bytes > max ? ` ⚠️ acima do orçamento de ${max}` : ` (orçamento ${max})`}`
+  );
   if (bytes > max) process.exit(3);
 }
 module.exports = { build, section };

@@ -15,11 +15,7 @@
       "purpose": "Sites animados e movimento",
       "access": ["url", "screenshot"],
       "traits": ["scroll-motion", "hero-experimental"],
-      "niches": [
-        "community-gaming",
-        "crypto-web3-youth",
-        "beverage-packaging-loud"
-      ],
+      "niches": ["community-gaming", "crypto-web3-youth", "beverage-packaging-loud"],
       "fetch_status": "untested",
       "last_checked": null,
       "license_note": "estudo privado; não redistribuir"
@@ -71,10 +67,7 @@
       "purpose": "Layouts editoriais",
       "access": ["url"],
       "traits": ["editorial", "minimal"],
-      "niches": [
-        "portfolio-editorial-education",
-        "hardware-engineering-architecture"
-      ],
+      "niches": ["portfolio-editorial-education", "hardware-engineering-architecture"],
       "fetch_status": "untested",
       "last_checked": null,
       "license_note": "estudo privado"
@@ -114,11 +107,7 @@
       "access": ["connector", "screenshot"],
       "connector": "mobbin",
       "traits": ["flows", "onboarding", "pricing"],
-      "niches": [
-        "saas-developer-ai",
-        "fintech-enterprise",
-        "real-estate-marketplace"
-      ],
+      "niches": ["saas-developer-ai", "fintech-enterprise", "real-estate-marketplace"],
       "fetch_status": "untested",
       "last_checked": null,
       "license_note": "confirmar termos; manter privado"

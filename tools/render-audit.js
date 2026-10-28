@@ -11,9 +11,7 @@ const out = process.argv.includes("--out")
   ? process.argv[process.argv.indexOf("--out") + 1]
   : "audit-out";
 if (!target) {
-  console.error(
-    "Uso: node tools/render-audit.js <ficheiro.html|url> [--out dir]",
-  );
+  console.error("Uso: node tools/render-audit.js <ficheiro.html|url> [--out dir]");
   process.exit(1);
 }
 let chromium;
@@ -21,7 +19,7 @@ try {
   ({ chromium } = require("playwright"));
 } catch {
   console.error(
-    "Playwright não instalado. Execute: npm i -D playwright && npx playwright install chromium",
+    "Playwright não instalado. Execute: npm i -D playwright && npx playwright install chromium"
   );
   process.exit(2);
 }
@@ -87,14 +85,11 @@ function inPage(isMobile) {
   const seen = new Set();
   document.querySelectorAll("body *").forEach((el) => {
     if (hidden(el)) return;
-    const own = [...el.childNodes].some(
-      (n) => n.nodeType === 3 && n.textContent.trim().length,
-    );
+    const own = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim().length);
     if (!own) return;
     const cs = getComputedStyle(el),
       fg = parse(cs.color);
-    if (!fg || fg.a === 0 || cs.webkitTextFillColor === "rgba(0, 0, 0, 0)")
-      return;
+    if (!fg || fg.a === 0 || cs.webkitTextFillColor === "rgba(0, 0, 0, 0)") return;
     const bg = bgOf(el),
       eff = fg.a < 1 ? over(fg, bg) : fg,
       size = parseFloat(cs.fontSize),
@@ -142,15 +137,15 @@ function inPage(isMobile) {
 }
 
 (async () => {
-  const url = /^https?:\/\//.test(target)
-    ? target
-    : "file://" + path.resolve(target);
+  const url = /^https?:\/\//.test(target) ? target : "file://" + path.resolve(target);
   fs.mkdirSync(out, { recursive: true });
   let browser;
   try {
     browser = await chromium.launch();
   } catch (e) {
-    console.error(`Browser indisponível: ${String(e.message).split("\n")[0]}\nInstale com: npx playwright install chromium`);
+    console.error(
+      `Browser indisponível: ${String(e.message).split("\n")[0]}\nInstale com: npx playwright install chromium`
+    );
     process.exit(2);
   }
   const report = [];
@@ -169,8 +164,7 @@ function inPage(isMobile) {
         if (!e || e === document.body) return null;
         const s = getComputedStyle(e);
         const has =
-          (s.outlineStyle !== "none" && parseFloat(s.outlineWidth) > 0) ||
-          s.boxShadow !== "none";
+          (s.outlineStyle !== "none" && parseFloat(s.outlineWidth) > 0) || s.boxShadow !== "none";
         return {
           key: `${e.tagName.toLowerCase()} "${(e.textContent || "").trim().slice(0, 24)}"`,
           has,

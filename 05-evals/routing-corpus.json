@@ -1,952 +1,940 @@
 {
- "version": 1,
- "about": "Corpus de roteamento. dev = usado para afinar termos; heldout = escrito antes dos presets e medido UMA vez no fim. Ambos escritos pelo mesmo autor (viés assumido). ambiguous = pedidos que devem sair com confiança baixa e alternativas. fresh/negatives/conflicts: escritos DEPOIS da afinação, medidos na 1.ª execução (resultado reportado antes de qualquer correção).",
- "dev": [
-  {
-   "prompt": "Site para um salão de cabeleireiro com marcação online",
-   "expected_preset": "spa-salon-aesthetics",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Loja online de cosméticos naturais",
-   "expected_preset": "beauty-cosmetics-skincare",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Marca de perfumes de luxo com loja online",
-   "expected_preset": "beauty-cosmetics-skincare",
-   "expected_style": "luxury_noir"
-  },
-  {
-   "prompt": "Landing page de joalharia artesanal",
-   "expected_preset": "jewelry-watches-luxury",
-   "expected_style": "luxury_noir"
-  },
-  {
-   "prompt": "Loja de roupa streetwear",
-   "expected_preset": "fashion-commerce",
-   "expected_style": "bold_neobrutalism"
-  },
-  {
-   "prompt": "Boutique de moda feminina",
-   "expected_preset": "fashion-commerce",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Loja de telemóveis e gadgets",
-   "expected_preset": "consumer-electronics-gadgets",
-   "expected_style": "swiss_technical_light"
-  },
-  {
-   "prompt": "Loja de móveis e decoração",
-   "expected_preset": "home-decor-furniture",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Mercearia online de produtos frescos",
-   "expected_preset": "grocery-farm-fresh-produce",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Editora independente de livros de poesia",
-   "expected_preset": "books-publishing-bookstore",
-   "expected_style": "clean_editorial"
-  },
-  {
-   "prompt": "Loja de brinquedos educativos",
-   "expected_preset": "toys-kids-products",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Pet shop com banho e tosquia",
-   "expected_preset": "pet-care-veterinary",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Clínica veterinária de bairro",
-   "expected_preset": "pet-care-veterinary",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Florista com entregas ao domicílio",
-   "expected_preset": "florist-gifts-flowers",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Adega com vinhos de autor",
-   "expected_preset": "wine-spirits-cellar",
-   "expected_style": "luxury_noir"
-  },
-  {
-   "prompt": "Padaria e pastelaria tradicional",
-   "expected_preset": "bakery-patisserie-sweets",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Loja de velas artesanais",
-   "expected_preset": "handmade-crafts-candles",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Loja de equipamento de campismo e trekking",
-   "expected_preset": "sports-outdoor-gear",
-   "expected_style": "sport_kinetic_dark"
-  },
-  {
-   "prompt": "Ginásio com treino de musculação",
-   "expected_preset": "fitness-gym-training",
-   "expected_style": "sport_kinetic_dark"
-  },
-  {
-   "prompt": "Estúdio de yoga e meditação",
-   "expected_preset": "yoga-pilates-meditation-studio",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Spa e massagens relaxantes",
-   "expected_preset": "spa-salon-aesthetics",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Consultório de psicologia online",
-   "expected_preset": "mental-health-coaching-therapy",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Site de nutricionista",
-   "expected_preset": "mental-health-coaching-therapy",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Farmácia online com suplementos",
-   "expected_preset": "pharmacy-health-products",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Escritório de advogados especializado em direito comercial",
-   "expected_preset": "law-firm-legal",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Gabinete de contabilidade para pequenas empresas",
-   "expected_preset": "accounting-consulting-business",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Agência de marketing digital",
-   "expected_preset": "marketing-creative-agency",
-   "expected_style": "bold_neobrutalism"
-  },
-  {
-   "prompt": "Fotógrafo profissional de retratos",
-   "expected_preset": "photography-video-studio",
-   "expected_style": "clean_editorial"
-  },
-  {
-   "prompt": "Empresa de construção civil e remodelações",
-   "expected_preset": "construction-trades-home-services",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Transportadora com serviço de mudanças",
-   "expected_preset": "logistics-transport-delivery",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Stand de automóveis usados",
-   "expected_preset": "automotive-dealer-workshop",
-   "expected_style": "swiss_technical_light"
-  },
-  {
-   "prompt": "Empresa de painéis solares",
-   "expected_preset": "energy-solar-sustainability",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Cooperativa agrícola de produtores de milho",
-   "expected_preset": "agriculture-agritech-farm",
-   "expected_style": "organic_forest_dark"
-  },
-  {
-   "prompt": "Escola secundária privada",
-   "expected_preset": "school-university-institutional",
-   "expected_style": "civic_trust_light"
-  },
-  {
-   "prompt": "Plataforma de cursos online de programação",
-   "expected_preset": "online-courses-edtech",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Escola de línguas para adultos",
-   "expected_preset": "language-school-tutoring",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Creche e jardim de infância",
-   "expected_preset": "kindergarten-childcare",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "ONG de apoio a crianças carenciadas",
-   "expected_preset": "nonprofit-ngo-charity",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Igreja evangélica local",
-   "expected_preset": "church-faith-community",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Câmara municipal e serviços ao cidadão",
-   "expected_preset": "government-municipality-public",
-   "expected_style": "civic_trust_light"
-  },
-  {
-   "prompt": "Conferência anual de tecnologia",
-   "expected_preset": "events-conference-festival",
-   "expected_style": "bold_neobrutalism"
-  },
-  {
-   "prompt": "Festival de música ao ar livre",
-   "expected_preset": "events-conference-festival",
-   "expected_style": "bold_neobrutalism"
-  },
-  {
-   "prompt": "Banda de rock com digressão",
-   "expected_preset": "music-artist-band-label",
-   "expected_style": "dark_craft_ink"
-  },
-  {
-   "prompt": "Produtora de vídeo e cinema",
-   "expected_preset": "film-production-studio",
-   "expected_style": "luxury_noir"
-  },
-  {
-   "prompt": "Podcast sobre empreendedorismo",
-   "expected_preset": "podcast-media-newsletter",
-   "expected_style": "clean_editorial"
-  },
-  {
-   "prompt": "Estúdio de jogos indie",
-   "expected_preset": "indie-game-studio",
-   "expected_style": "game_arcade_dark"
-  },
-  {
-   "prompt": "Hotel boutique no Algarve",
-   "expected_preset": "hotel-resort-travel-agency",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Agência de viagens para África",
-   "expected_preset": "hotel-resort-travel-agency",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Food truck de hambúrgueres",
-   "expected_preset": "food-delivery-takeaway-truck",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Wedding planner em Lisboa",
-   "expected_preset": "wedding-private-events",
-   "expected_style": "clean_editorial"
-  },
-  {
-   "prompt": "Plataforma de classificados",
-   "expected_preset": "marketplace-classifieds",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Empresa de cibersegurança",
-   "expected_preset": "cybersecurity-it-services",
-   "expected_style": "saas_dark_modern"
-  },
-  {
-   "prompt": "Landing de lançamento de uma app móvel",
-   "expected_preset": "mobile-app-landing",
-   "expected_style": "bento_grid_layout"
-  },
-  {
-   "prompt": "Operadora de internet por fibra",
-   "expected_preset": "telecom-internet-isp",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Bolsa de emprego e recrutamento",
-   "expected_preset": "recruitment-hr-jobs",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Escritório de arquitetura de interiores",
-   "expected_preset": "home-decor-furniture",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Restaurante de comida tradicional angolana",
-   "expected_preset": "restaurant-hospitality",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Cafetaria especializada em café de origem",
-   "expected_preset": "coffee-artisan-food",
-   "expected_style": "organic_forest_dark"
-  },
-  {
-   "prompt": "Estúdio de tatuagem e piercing",
-   "expected_preset": "tattoo-barber-nightlife",
-   "expected_style": "dark_craft_ink"
-  },
-  {
-   "prompt": "SaaS de gestão de projetos",
-   "expected_preset": "saas-developer-ai",
-   "expected_style": "saas_dark_modern"
-  },
-  {
-   "prompt": "Banco digital com carteira digital",
-   "expected_preset": "fintech-enterprise",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Imobiliária de luxo",
-   "expected_preset": "real-estate-marketplace",
-   "expected_style": "luxury_noir"
-  },
-  {
-   "prompt": "Refrigerante de guaraná energético",
-   "expected_preset": "beverage-packaging-loud",
-   "expected_style": "loud_beverage_dark"
-  },
-  {
-   "prompt": "Atelier de arquitetura",
-   "expected_preset": "hardware-engineering-architecture",
-   "expected_style": "swiss_technical_light"
-  },
-  {
-   "prompt": "Clínica dentária",
-   "expected_preset": "clinic-healthcare",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Blog de design",
-   "expected_preset": "portfolio-editorial-education",
-   "expected_style": "clean_editorial"
-  },
-  {
-   "prompt": "Comunidade de Roblox",
-   "expected_preset": "community-gaming",
-   "expected_style": "game_arcade_dark"
-  },
-  {
-   "prompt": "Token e NFT para jovens",
-   "expected_preset": "crypto-web3-youth",
-   "expected_style": "bold_neobrutalism"
-  },
-  {
-   "prompt": "Online store for handmade candles",
-   "expected_preset": "handmade-crafts-candles",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "A landing page for a coffee roastery",
-   "expected_preset": "coffee-artisan-food",
-   "expected_style": "minimalist_warm"
-  }
- ],
- "heldout": [
-  {
-   "prompt": "Salão de manicure e unhas de gel",
-   "expected_preset": "spa-salon-aesthetics",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Marca de skincare vegan",
-   "expected_preset": "beauty-cosmetics-skincare",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Perfumaria de nicho exclusiva",
-   "expected_preset": "beauty-cosmetics-skincare",
-   "expected_style": "luxury_noir"
-  },
-  {
-   "prompt": "Relojoaria suíça de alta gama",
-   "expected_preset": "jewelry-watches-luxury",
-   "expected_style": "luxury_noir"
-  },
-  {
-   "prompt": "Loja de sapatilhas urbanas",
-   "expected_preset": "fashion-commerce",
-   "expected_style": "bold_neobrutalism"
-  },
-  {
-   "prompt": "Online clothing store",
-   "expected_preset": "fashion-commerce",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Loja de computadores portáteis",
-   "expected_preset": "consumer-electronics-gadgets",
-   "expected_style": "swiss_technical_light"
-  },
-  {
-   "prompt": "Showroom de cozinhas e mobiliário à medida",
-   "expected_preset": "home-decor-furniture",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Talho e peixaria do bairro",
-   "expected_preset": "grocery-farm-fresh-produce",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Livraria independente",
-   "expected_preset": "books-publishing-bookstore",
-   "expected_style": "clean_editorial"
-  },
-  {
-   "prompt": "Loja de artigos para bebé",
-   "expected_preset": "toys-kids-products",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Canil e gatil com adoção responsável",
-   "expected_preset": "pet-care-veterinary",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Arranjos florais para eventos",
-   "expected_preset": "florist-gifts-flowers",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Produtor de whisky artesanal",
-   "expected_preset": "wine-spirits-cellar",
-   "expected_style": "luxury_noir"
-  },
-  {
-   "prompt": "Pastelaria com bolos personalizados",
-   "expected_preset": "bakery-patisserie-sweets",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Cerâmica feita à mão",
-   "expected_preset": "handmade-crafts-candles",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Loja de bicicletas e ciclismo",
-   "expected_preset": "sports-outdoor-gear",
-   "expected_style": "sport_kinetic_dark"
-  },
-  {
-   "prompt": "App de treino personalizado",
-   "expected_preset": "fitness-gym-training",
-   "expected_style": "sport_kinetic_dark"
-  },
-  {
-   "prompt": "Retiro de mindfulness",
-   "expected_preset": "yoga-pilates-meditation-studio",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Clínica de estética avançada",
-   "expected_preset": "spa-salon-aesthetics",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Psicóloga clínica",
-   "expected_preset": "mental-health-coaching-therapy",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Parafarmácia online",
-   "expected_preset": "pharmacy-health-products",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Advogada especialista em direito de família",
-   "expected_preset": "law-firm-legal",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Consultor financeiro independente",
-   "expected_preset": "accounting-consulting-business",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Agência criativa de branding",
-   "expected_preset": "marketing-creative-agency",
-   "expected_style": "bold_neobrutalism"
-  },
-  {
-   "prompt": "Fotografia de produto para e-commerce",
-   "expected_preset": "photography-video-studio",
-   "expected_style": "clean_editorial"
-  },
-  {
-   "prompt": "Eletricista e canalizador",
-   "expected_preset": "construction-trades-home-services",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Empresa de entregas rápidas",
-   "expected_preset": "logistics-transport-delivery",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Oficina mecânica",
-   "expected_preset": "automotive-dealer-workshop",
-   "expected_style": "swiss_technical_light"
-  },
-  {
-   "prompt": "Instalação de painéis fotovoltaicos",
-   "expected_preset": "energy-solar-sustainability",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Fazenda de gado e agronegócio",
-   "expected_preset": "agriculture-agritech-farm",
-   "expected_style": "organic_forest_dark"
-  },
-  {
-   "prompt": "Universidade pública",
-   "expected_preset": "school-university-institutional",
-   "expected_style": "civic_trust_light"
-  },
-  {
-   "prompt": "Mentoria online de programação",
-   "expected_preset": "online-courses-edtech",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Explicações de matemática",
-   "expected_preset": "language-school-tutoring",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Infantário com pedagogia Montessori",
-   "expected_preset": "kindergarten-childcare",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Associação de voluntariado",
-   "expected_preset": "nonprofit-ngo-charity",
-   "expected_style": "civic_trust_light"
-  },
-  {
-   "prompt": "Paróquia de bairro",
-   "expected_preset": "church-faith-community",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Junta de freguesia",
-   "expected_preset": "government-municipality-public",
-   "expected_style": "civic_trust_light"
-  },
-  {
-   "prompt": "Hackathon universitário",
-   "expected_preset": "events-conference-festival",
-   "expected_style": "bold_neobrutalism"
-  },
-  {
-   "prompt": "Cantor e compositor independente",
-   "expected_preset": "music-artist-band-label",
-   "expected_style": "dark_craft_ink"
-  },
-  {
-   "prompt": "Documentário independente",
-   "expected_preset": "film-production-studio",
-   "expected_style": "luxury_noir"
-  },
-  {
-   "prompt": "Newsletter semanal de tecnologia",
-   "expected_preset": "podcast-media-newsletter",
-   "expected_style": "clean_editorial"
-  },
-  {
-   "prompt": "Jogo de plataformas indie para PC",
-   "expected_preset": "indie-game-studio",
-   "expected_style": "game_arcade_dark"
-  },
-  {
-   "prompt": "Resort de praia",
-   "expected_preset": "hotel-resort-travel-agency",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Pizzaria artesanal",
-   "expected_preset": "food-delivery-takeaway-truck",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Organização de casamentos",
-   "expected_preset": "wedding-private-events",
-   "expected_style": "clean_editorial"
-  },
-  {
-   "prompt": "Anúncios de compra e venda",
-   "expected_preset": "marketplace-classifieds",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Empresa de segurança informática",
-   "expected_preset": "cybersecurity-it-services",
-   "expected_style": "saas_dark_modern"
-  },
-  {
-   "prompt": "Aplicação para iOS e Android",
-   "expected_preset": "mobile-app-landing",
-   "expected_style": "bento_grid_layout"
-  },
-  {
-   "prompt": "Fornecedor de internet",
-   "expected_preset": "telecom-internet-isp",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Agência de emprego",
-   "expected_preset": "recruitment-hr-jobs",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Decoração de interiores",
-   "expected_preset": "home-decor-furniture",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Tasca portuguesa com petiscos",
-   "expected_preset": "restaurant-hospitality",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Torrefação de café",
-   "expected_preset": "coffee-artisan-food",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Barbearia clássica",
-   "expected_preset": "tattoo-barber-nightlife",
-   "expected_style": "dark_craft_ink"
-  },
-  {
-   "prompt": "Plataforma de gestão de clientes (CRM)",
-   "expected_preset": "saas-developer-ai",
-   "expected_style": "saas_dark_modern"
-  },
-  {
-   "prompt": "Cartão de crédito e microcrédito",
-   "expected_preset": "fintech-enterprise",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Mansões de luxo à venda",
-   "expected_preset": "real-estate-marketplace",
-   "expected_style": "luxury_noir"
-  },
-  {
-   "prompt": "Energy drink for gamers",
-   "expected_preset": "beverage-packaging-loud",
-   "expected_style": "loud_beverage_dark"
-  },
-  {
-   "prompt": "Engenharia mecânica e prototipagem",
-   "expected_preset": "hardware-engineering-architecture",
-   "expected_style": "swiss_technical_light"
-  },
-  {
-   "prompt": "Dentista pediátrico",
-   "expected_preset": "clinic-healthcare",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Revista online de cultura",
-   "expected_preset": "portfolio-editorial-education",
-   "expected_style": "clean_editorial"
-  },
-  {
-   "prompt": "Servidor de Minecraft",
-   "expected_preset": "community-gaming",
-   "expected_style": "game_arcade_dark"
-  },
-  {
-   "prompt": "Memecoin e DeFi",
-   "expected_preset": "crypto-web3-youth",
-   "expected_style": "bold_neobrutalism"
-  },
-  {
-   "prompt": "Cervejeira artesanal",
-   "expected_preset": "beverage-packaging-loud",
-   "expected_style": "loud_beverage_dark"
-  }
- ],
- "ambiguous": [
-  {
-   "prompt": "Loja de loções corporais botânicas e frutas frescas",
-   "expected_candidates": [
-    "beauty-cosmetics-skincare",
-    "grocery-farm-fresh-produce"
-   ]
-  },
-  {
-   "prompt": "Fotógrafo de casamentos",
-   "expected_candidates": [
-    "photography-video-studio",
-    "wedding-private-events"
-   ]
-  },
-  {
-   "prompt": "Hotel para cães",
-   "expected_candidates": [
-    "hotel-resort-travel-agency",
-    "pet-care-veterinary"
-   ]
-  },
-  {
-   "prompt": "Fábrica de componentes eletrónicos",
-   "expected_candidates": [
-    "hardware-engineering-architecture",
-    "consumer-electronics-gadgets"
-   ]
-  }
- ],
- "fresh": [
-  {
-   "prompt": "Olá! Preciso de um site bonito e profissional para o meu gabinete de advocacia em Lisboa",
-   "expected_preset": "law-firm-legal",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Quero vender os meus bolos caseiros online",
-   "expected_preset": "bakery-patisserie-sweets",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Website para uma empresa de pintura e remodelação de casas",
-   "expected_preset": "construction-trades-home-services",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Site para a minha loja de bijuteria feita à mão",
-   "expected_preset": "handmade-crafts-candles",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Plataforma para marcar consultas de fisioterapia",
-   "expected_preset": "clinic-healthcare",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Site para um restaurante de sushi com delivery",
-   "expected_preset": "restaurant-hospitality",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Landing page para uma clínica de implantes dentários",
-   "expected_preset": "clinic-healthcare",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Site para a minha academia de pilates",
-   "expected_preset": "yoga-pilates-meditation-studio",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Loja de capas para telemóvel",
-   "expected_preset": "consumer-electronics-gadgets",
-   "expected_style": "swiss_technical_light"
-  },
-  {
-   "prompt": "Quero um site para vender perfumes",
-   "expected_preset": "beauty-cosmetics-skincare",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Website for a yoga studio in London",
-   "expected_preset": "yoga-pilates-meditation-studio",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "I need a website for my law firm",
-   "expected_preset": "law-firm-legal",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Landing page for a SaaS that helps HR teams",
-   "expected_preset": "saas-developer-ai",
-   "expected_style": "saas_dark_modern"
-  },
-  {
-   "prompt": "Online shop for kids toys",
-   "expected_preset": "toys-kids-products",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Site para uma empresa de energia solar para casas",
-   "expected_preset": "energy-solar-sustainability",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "Site para a minha creche",
-   "expected_preset": "kindergarten-childcare",
-   "expected_style": "fresh_playful_light"
-  },
-  {
-   "prompt": "Página para promover o meu festival de jazz",
-   "expected_preset": "events-conference-festival",
-   "expected_style": "bold_neobrutalism"
-  },
-  {
-   "prompt": "Quero um site para a minha banda",
-   "expected_preset": "music-artist-band-label",
-   "expected_style": "dark_craft_ink"
-  },
-  {
-   "prompt": "Loja online de vinhos portugueses",
-   "expected_preset": "wine-spirits-cellar",
-   "expected_style": "luxury_noir"
-  },
-  {
-   "prompt": "Site para clínica veterinária e pet shop",
-   "expected_preset": "pet-care-veterinary",
-   "expected_style": "minimalist_corporate"
-  },
-  {
-   "prompt": "App para encontrar e reservar ginásios",
-   "expected_preset": "fitness-gym-training",
-   "expected_style": "sport_kinetic_dark"
-  },
-  {
-   "prompt": "Site para uma marca de roupa de praia",
-   "expected_preset": "fashion-commerce",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Portfólio de ilustrador",
-   "expected_preset": "portfolio-editorial-education",
-   "expected_style": "clean_editorial"
-  },
-  {
-   "prompt": "Loja online de móveis de design",
-   "expected_preset": "home-decor-furniture",
-   "expected_style": "minimalist_warm"
-  }
- ],
- "negatives": [
-  {
-   "prompt": "Site para uma empresa de reciclagem de resíduos"
-  },
-  {
-   "prompt": "Clube de xadrez da cidade"
-  },
-  {
-   "prompt": "Astrólogo e leituras de tarot"
-  },
-  {
-   "prompt": "Funerária familiar"
-  },
-  {
-   "prompt": "Lavandaria self-service"
-  },
-  {
-   "prompt": "Museu de história natural"
-  },
-  {
-   "prompt": "Aluguer de equipamento audiovisual"
-  },
-  {
-   "prompt": "Tradução e interpretação simultânea"
-  },
-  {
-   "prompt": "Parque aquático para famílias"
-  },
-  {
-   "prompt": "Loja de ferragens e bricolage"
-  },
-  {
-   "prompt": "Empresa de segurança privada"
-  },
-  {
-   "prompt": "Torneio de padel"
-  },
-  {
-   "prompt": "Landing page moderna com estética minimalista e fotografia em grande formato"
-  },
-  {
-   "prompt": "Quero um site elegante, com branding forte e design gráfico cuidado"
-  },
-  {
-   "prompt": "Página inicial com tipografia grande, fotografia full-bleed e animações de scroll"
-  },
-  {
-   "prompt": "Preciso de um site com tema escuro e botões arredondados"
-  },
-  {
-   "prompt": "Quiosque de gelados à beira-mar"
-  },
-  {
-   "prompt": "Detetive privado"
-  },
-  {
-   "prompt": "Agência de modelos"
-  },
-  {
-   "prompt": "Site para o meu negócio"
-  },
-  {
-   "prompt": "Landing page para o meu produto"
-  },
-  {
-   "prompt": "Single page com design tokens e componentes reutilizáveis"
-  },
-  {
-   "prompt": "Site com um tour virtual em 3D"
-  }
- ],
- "conflicts": [
-  {
-   "prompt": "Escritório de advogados com visual energético e jovem",
-   "expected_preset": "law-firm-legal"
-  },
-  {
-   "prompt": "Clínica dentária com visual jovem e agressivo",
-   "expected_preset": "clinic-healthcare"
-  },
-  {
-   "prompt": "Padaria com identidade ousada e moderna",
-   "expected_preset": "bakery-patisserie-sweets"
-  },
-  {
-   "prompt": "Escola de programação com visual futurista",
-   "expected_preset": "school-university-institutional"
-  },
-  {
-   "prompt": "Hotel com piscina e bar",
-   "expected_preset": "hotel-resort-travel-agency"
-  },
-  {
-   "prompt": "Restaurante com bar de cocktails",
-   "expected_preset": "restaurant-hospitality"
-  },
-  {
-   "prompt": "Loja de roupa com estilo rock",
-   "expected_preset": "fashion-commerce"
-  },
-  {
-   "prompt": "Consultório de nutrição com design energético e vibrante",
-   "expected_preset": "mental-health-coaching-therapy"
-  }
- ],
- "coverage": [
-  {
-   "prompt": "Marca de bem-estar com produtos naturais",
-   "expected_preset": "wellness-health-beauty",
-   "expected_style": "minimalist_warm"
-  },
-  {
-   "prompt": "Loja de ervas medicinais e saúde natural",
-   "expected_preset": "wellness-health-beauty",
-   "expected_style": "minimalist_warm"
-  }
- ]
+  "version": 1,
+  "about": "Corpus de roteamento. dev = usado para afinar termos; heldout = escrito antes dos presets e medido UMA vez no fim. Ambos escritos pelo mesmo autor (viés assumido). ambiguous = pedidos que devem sair com confiança baixa e alternativas. fresh/negatives/conflicts: escritos DEPOIS da afinação, medidos na 1.ª execução (resultado reportado antes de qualquer correção).",
+  "dev": [
+    {
+      "prompt": "Site para um salão de cabeleireiro com marcação online",
+      "expected_preset": "spa-salon-aesthetics",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Loja online de cosméticos naturais",
+      "expected_preset": "beauty-cosmetics-skincare",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Marca de perfumes de luxo com loja online",
+      "expected_preset": "beauty-cosmetics-skincare",
+      "expected_style": "luxury_noir"
+    },
+    {
+      "prompt": "Landing page de joalharia artesanal",
+      "expected_preset": "jewelry-watches-luxury",
+      "expected_style": "luxury_noir"
+    },
+    {
+      "prompt": "Loja de roupa streetwear",
+      "expected_preset": "fashion-commerce",
+      "expected_style": "bold_neobrutalism"
+    },
+    {
+      "prompt": "Boutique de moda feminina",
+      "expected_preset": "fashion-commerce",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Loja de telemóveis e gadgets",
+      "expected_preset": "consumer-electronics-gadgets",
+      "expected_style": "swiss_technical_light"
+    },
+    {
+      "prompt": "Loja de móveis e decoração",
+      "expected_preset": "home-decor-furniture",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Mercearia online de produtos frescos",
+      "expected_preset": "grocery-farm-fresh-produce",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Editora independente de livros de poesia",
+      "expected_preset": "books-publishing-bookstore",
+      "expected_style": "clean_editorial"
+    },
+    {
+      "prompt": "Loja de brinquedos educativos",
+      "expected_preset": "toys-kids-products",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Pet shop com banho e tosquia",
+      "expected_preset": "pet-care-veterinary",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Clínica veterinária de bairro",
+      "expected_preset": "pet-care-veterinary",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Florista com entregas ao domicílio",
+      "expected_preset": "florist-gifts-flowers",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Adega com vinhos de autor",
+      "expected_preset": "wine-spirits-cellar",
+      "expected_style": "luxury_noir"
+    },
+    {
+      "prompt": "Padaria e pastelaria tradicional",
+      "expected_preset": "bakery-patisserie-sweets",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Loja de velas artesanais",
+      "expected_preset": "handmade-crafts-candles",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Loja de equipamento de campismo e trekking",
+      "expected_preset": "sports-outdoor-gear",
+      "expected_style": "sport_kinetic_dark"
+    },
+    {
+      "prompt": "Ginásio com treino de musculação",
+      "expected_preset": "fitness-gym-training",
+      "expected_style": "sport_kinetic_dark"
+    },
+    {
+      "prompt": "Estúdio de yoga e meditação",
+      "expected_preset": "yoga-pilates-meditation-studio",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Spa e massagens relaxantes",
+      "expected_preset": "spa-salon-aesthetics",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Consultório de psicologia online",
+      "expected_preset": "mental-health-coaching-therapy",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Site de nutricionista",
+      "expected_preset": "mental-health-coaching-therapy",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Farmácia online com suplementos",
+      "expected_preset": "pharmacy-health-products",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Escritório de advogados especializado em direito comercial",
+      "expected_preset": "law-firm-legal",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Gabinete de contabilidade para pequenas empresas",
+      "expected_preset": "accounting-consulting-business",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Agência de marketing digital",
+      "expected_preset": "marketing-creative-agency",
+      "expected_style": "bold_neobrutalism"
+    },
+    {
+      "prompt": "Fotógrafo profissional de retratos",
+      "expected_preset": "photography-video-studio",
+      "expected_style": "clean_editorial"
+    },
+    {
+      "prompt": "Empresa de construção civil e remodelações",
+      "expected_preset": "construction-trades-home-services",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Transportadora com serviço de mudanças",
+      "expected_preset": "logistics-transport-delivery",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Stand de automóveis usados",
+      "expected_preset": "automotive-dealer-workshop",
+      "expected_style": "swiss_technical_light"
+    },
+    {
+      "prompt": "Empresa de painéis solares",
+      "expected_preset": "energy-solar-sustainability",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Cooperativa agrícola de produtores de milho",
+      "expected_preset": "agriculture-agritech-farm",
+      "expected_style": "organic_forest_dark"
+    },
+    {
+      "prompt": "Escola secundária privada",
+      "expected_preset": "school-university-institutional",
+      "expected_style": "civic_trust_light"
+    },
+    {
+      "prompt": "Plataforma de cursos online de programação",
+      "expected_preset": "online-courses-edtech",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Escola de línguas para adultos",
+      "expected_preset": "language-school-tutoring",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Creche e jardim de infância",
+      "expected_preset": "kindergarten-childcare",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "ONG de apoio a crianças carenciadas",
+      "expected_preset": "nonprofit-ngo-charity",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Igreja evangélica local",
+      "expected_preset": "church-faith-community",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Câmara municipal e serviços ao cidadão",
+      "expected_preset": "government-municipality-public",
+      "expected_style": "civic_trust_light"
+    },
+    {
+      "prompt": "Conferência anual de tecnologia",
+      "expected_preset": "events-conference-festival",
+      "expected_style": "bold_neobrutalism"
+    },
+    {
+      "prompt": "Festival de música ao ar livre",
+      "expected_preset": "events-conference-festival",
+      "expected_style": "bold_neobrutalism"
+    },
+    {
+      "prompt": "Banda de rock com digressão",
+      "expected_preset": "music-artist-band-label",
+      "expected_style": "dark_craft_ink"
+    },
+    {
+      "prompt": "Produtora de vídeo e cinema",
+      "expected_preset": "film-production-studio",
+      "expected_style": "luxury_noir"
+    },
+    {
+      "prompt": "Podcast sobre empreendedorismo",
+      "expected_preset": "podcast-media-newsletter",
+      "expected_style": "clean_editorial"
+    },
+    {
+      "prompt": "Estúdio de jogos indie",
+      "expected_preset": "indie-game-studio",
+      "expected_style": "game_arcade_dark"
+    },
+    {
+      "prompt": "Hotel boutique no Algarve",
+      "expected_preset": "hotel-resort-travel-agency",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Agência de viagens para África",
+      "expected_preset": "hotel-resort-travel-agency",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Food truck de hambúrgueres",
+      "expected_preset": "food-delivery-takeaway-truck",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Wedding planner em Lisboa",
+      "expected_preset": "wedding-private-events",
+      "expected_style": "clean_editorial"
+    },
+    {
+      "prompt": "Plataforma de classificados",
+      "expected_preset": "marketplace-classifieds",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Empresa de cibersegurança",
+      "expected_preset": "cybersecurity-it-services",
+      "expected_style": "saas_dark_modern"
+    },
+    {
+      "prompt": "Landing de lançamento de uma app móvel",
+      "expected_preset": "mobile-app-landing",
+      "expected_style": "bento_grid_layout"
+    },
+    {
+      "prompt": "Operadora de internet por fibra",
+      "expected_preset": "telecom-internet-isp",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Bolsa de emprego e recrutamento",
+      "expected_preset": "recruitment-hr-jobs",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Escritório de arquitetura de interiores",
+      "expected_preset": "home-decor-furniture",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Restaurante de comida tradicional angolana",
+      "expected_preset": "restaurant-hospitality",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Cafetaria especializada em café de origem",
+      "expected_preset": "coffee-artisan-food",
+      "expected_style": "organic_forest_dark"
+    },
+    {
+      "prompt": "Estúdio de tatuagem e piercing",
+      "expected_preset": "tattoo-barber-nightlife",
+      "expected_style": "dark_craft_ink"
+    },
+    {
+      "prompt": "SaaS de gestão de projetos",
+      "expected_preset": "saas-developer-ai",
+      "expected_style": "saas_dark_modern"
+    },
+    {
+      "prompt": "Banco digital com carteira digital",
+      "expected_preset": "fintech-enterprise",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Imobiliária de luxo",
+      "expected_preset": "real-estate-marketplace",
+      "expected_style": "luxury_noir"
+    },
+    {
+      "prompt": "Refrigerante de guaraná energético",
+      "expected_preset": "beverage-packaging-loud",
+      "expected_style": "loud_beverage_dark"
+    },
+    {
+      "prompt": "Atelier de arquitetura",
+      "expected_preset": "hardware-engineering-architecture",
+      "expected_style": "swiss_technical_light"
+    },
+    {
+      "prompt": "Clínica dentária",
+      "expected_preset": "clinic-healthcare",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Blog de design",
+      "expected_preset": "portfolio-editorial-education",
+      "expected_style": "clean_editorial"
+    },
+    {
+      "prompt": "Comunidade de Roblox",
+      "expected_preset": "community-gaming",
+      "expected_style": "game_arcade_dark"
+    },
+    {
+      "prompt": "Token e NFT para jovens",
+      "expected_preset": "crypto-web3-youth",
+      "expected_style": "bold_neobrutalism"
+    },
+    {
+      "prompt": "Online store for handmade candles",
+      "expected_preset": "handmade-crafts-candles",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "A landing page for a coffee roastery",
+      "expected_preset": "coffee-artisan-food",
+      "expected_style": "minimalist_warm"
+    }
+  ],
+  "heldout": [
+    {
+      "prompt": "Salão de manicure e unhas de gel",
+      "expected_preset": "spa-salon-aesthetics",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Marca de skincare vegan",
+      "expected_preset": "beauty-cosmetics-skincare",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Perfumaria de nicho exclusiva",
+      "expected_preset": "beauty-cosmetics-skincare",
+      "expected_style": "luxury_noir"
+    },
+    {
+      "prompt": "Relojoaria suíça de alta gama",
+      "expected_preset": "jewelry-watches-luxury",
+      "expected_style": "luxury_noir"
+    },
+    {
+      "prompt": "Loja de sapatilhas urbanas",
+      "expected_preset": "fashion-commerce",
+      "expected_style": "bold_neobrutalism"
+    },
+    {
+      "prompt": "Online clothing store",
+      "expected_preset": "fashion-commerce",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Loja de computadores portáteis",
+      "expected_preset": "consumer-electronics-gadgets",
+      "expected_style": "swiss_technical_light"
+    },
+    {
+      "prompt": "Showroom de cozinhas e mobiliário à medida",
+      "expected_preset": "home-decor-furniture",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Talho e peixaria do bairro",
+      "expected_preset": "grocery-farm-fresh-produce",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Livraria independente",
+      "expected_preset": "books-publishing-bookstore",
+      "expected_style": "clean_editorial"
+    },
+    {
+      "prompt": "Loja de artigos para bebé",
+      "expected_preset": "toys-kids-products",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Canil e gatil com adoção responsável",
+      "expected_preset": "pet-care-veterinary",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Arranjos florais para eventos",
+      "expected_preset": "florist-gifts-flowers",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Produtor de whisky artesanal",
+      "expected_preset": "wine-spirits-cellar",
+      "expected_style": "luxury_noir"
+    },
+    {
+      "prompt": "Pastelaria com bolos personalizados",
+      "expected_preset": "bakery-patisserie-sweets",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Cerâmica feita à mão",
+      "expected_preset": "handmade-crafts-candles",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Loja de bicicletas e ciclismo",
+      "expected_preset": "sports-outdoor-gear",
+      "expected_style": "sport_kinetic_dark"
+    },
+    {
+      "prompt": "App de treino personalizado",
+      "expected_preset": "fitness-gym-training",
+      "expected_style": "sport_kinetic_dark"
+    },
+    {
+      "prompt": "Retiro de mindfulness",
+      "expected_preset": "yoga-pilates-meditation-studio",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Clínica de estética avançada",
+      "expected_preset": "spa-salon-aesthetics",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Psicóloga clínica",
+      "expected_preset": "mental-health-coaching-therapy",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Parafarmácia online",
+      "expected_preset": "pharmacy-health-products",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Advogada especialista em direito de família",
+      "expected_preset": "law-firm-legal",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Consultor financeiro independente",
+      "expected_preset": "accounting-consulting-business",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Agência criativa de branding",
+      "expected_preset": "marketing-creative-agency",
+      "expected_style": "bold_neobrutalism"
+    },
+    {
+      "prompt": "Fotografia de produto para e-commerce",
+      "expected_preset": "photography-video-studio",
+      "expected_style": "clean_editorial"
+    },
+    {
+      "prompt": "Eletricista e canalizador",
+      "expected_preset": "construction-trades-home-services",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Empresa de entregas rápidas",
+      "expected_preset": "logistics-transport-delivery",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Oficina mecânica",
+      "expected_preset": "automotive-dealer-workshop",
+      "expected_style": "swiss_technical_light"
+    },
+    {
+      "prompt": "Instalação de painéis fotovoltaicos",
+      "expected_preset": "energy-solar-sustainability",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Fazenda de gado e agronegócio",
+      "expected_preset": "agriculture-agritech-farm",
+      "expected_style": "organic_forest_dark"
+    },
+    {
+      "prompt": "Universidade pública",
+      "expected_preset": "school-university-institutional",
+      "expected_style": "civic_trust_light"
+    },
+    {
+      "prompt": "Mentoria online de programação",
+      "expected_preset": "online-courses-edtech",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Explicações de matemática",
+      "expected_preset": "language-school-tutoring",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Infantário com pedagogia Montessori",
+      "expected_preset": "kindergarten-childcare",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Associação de voluntariado",
+      "expected_preset": "nonprofit-ngo-charity",
+      "expected_style": "civic_trust_light"
+    },
+    {
+      "prompt": "Paróquia de bairro",
+      "expected_preset": "church-faith-community",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Junta de freguesia",
+      "expected_preset": "government-municipality-public",
+      "expected_style": "civic_trust_light"
+    },
+    {
+      "prompt": "Hackathon universitário",
+      "expected_preset": "events-conference-festival",
+      "expected_style": "bold_neobrutalism"
+    },
+    {
+      "prompt": "Cantor e compositor independente",
+      "expected_preset": "music-artist-band-label",
+      "expected_style": "dark_craft_ink"
+    },
+    {
+      "prompt": "Documentário independente",
+      "expected_preset": "film-production-studio",
+      "expected_style": "luxury_noir"
+    },
+    {
+      "prompt": "Newsletter semanal de tecnologia",
+      "expected_preset": "podcast-media-newsletter",
+      "expected_style": "clean_editorial"
+    },
+    {
+      "prompt": "Jogo de plataformas indie para PC",
+      "expected_preset": "indie-game-studio",
+      "expected_style": "game_arcade_dark"
+    },
+    {
+      "prompt": "Resort de praia",
+      "expected_preset": "hotel-resort-travel-agency",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Pizzaria artesanal",
+      "expected_preset": "food-delivery-takeaway-truck",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Organização de casamentos",
+      "expected_preset": "wedding-private-events",
+      "expected_style": "clean_editorial"
+    },
+    {
+      "prompt": "Anúncios de compra e venda",
+      "expected_preset": "marketplace-classifieds",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Empresa de segurança informática",
+      "expected_preset": "cybersecurity-it-services",
+      "expected_style": "saas_dark_modern"
+    },
+    {
+      "prompt": "Aplicação para iOS e Android",
+      "expected_preset": "mobile-app-landing",
+      "expected_style": "bento_grid_layout"
+    },
+    {
+      "prompt": "Fornecedor de internet",
+      "expected_preset": "telecom-internet-isp",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Agência de emprego",
+      "expected_preset": "recruitment-hr-jobs",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Decoração de interiores",
+      "expected_preset": "home-decor-furniture",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Tasca portuguesa com petiscos",
+      "expected_preset": "restaurant-hospitality",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Torrefação de café",
+      "expected_preset": "coffee-artisan-food",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Barbearia clássica",
+      "expected_preset": "tattoo-barber-nightlife",
+      "expected_style": "dark_craft_ink"
+    },
+    {
+      "prompt": "Plataforma de gestão de clientes (CRM)",
+      "expected_preset": "saas-developer-ai",
+      "expected_style": "saas_dark_modern"
+    },
+    {
+      "prompt": "Cartão de crédito e microcrédito",
+      "expected_preset": "fintech-enterprise",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Mansões de luxo à venda",
+      "expected_preset": "real-estate-marketplace",
+      "expected_style": "luxury_noir"
+    },
+    {
+      "prompt": "Energy drink for gamers",
+      "expected_preset": "beverage-packaging-loud",
+      "expected_style": "loud_beverage_dark"
+    },
+    {
+      "prompt": "Engenharia mecânica e prototipagem",
+      "expected_preset": "hardware-engineering-architecture",
+      "expected_style": "swiss_technical_light"
+    },
+    {
+      "prompt": "Dentista pediátrico",
+      "expected_preset": "clinic-healthcare",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Revista online de cultura",
+      "expected_preset": "portfolio-editorial-education",
+      "expected_style": "clean_editorial"
+    },
+    {
+      "prompt": "Servidor de Minecraft",
+      "expected_preset": "community-gaming",
+      "expected_style": "game_arcade_dark"
+    },
+    {
+      "prompt": "Memecoin e DeFi",
+      "expected_preset": "crypto-web3-youth",
+      "expected_style": "bold_neobrutalism"
+    },
+    {
+      "prompt": "Cervejeira artesanal",
+      "expected_preset": "beverage-packaging-loud",
+      "expected_style": "loud_beverage_dark"
+    }
+  ],
+  "ambiguous": [
+    {
+      "prompt": "Loja de loções corporais botânicas e frutas frescas",
+      "expected_candidates": ["beauty-cosmetics-skincare", "grocery-farm-fresh-produce"]
+    },
+    {
+      "prompt": "Fotógrafo de casamentos",
+      "expected_candidates": ["photography-video-studio", "wedding-private-events"]
+    },
+    {
+      "prompt": "Hotel para cães",
+      "expected_candidates": ["hotel-resort-travel-agency", "pet-care-veterinary"]
+    },
+    {
+      "prompt": "Fábrica de componentes eletrónicos",
+      "expected_candidates": ["hardware-engineering-architecture", "consumer-electronics-gadgets"]
+    }
+  ],
+  "fresh": [
+    {
+      "prompt": "Olá! Preciso de um site bonito e profissional para o meu gabinete de advocacia em Lisboa",
+      "expected_preset": "law-firm-legal",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Quero vender os meus bolos caseiros online",
+      "expected_preset": "bakery-patisserie-sweets",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Website para uma empresa de pintura e remodelação de casas",
+      "expected_preset": "construction-trades-home-services",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Site para a minha loja de bijuteria feita à mão",
+      "expected_preset": "handmade-crafts-candles",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Plataforma para marcar consultas de fisioterapia",
+      "expected_preset": "clinic-healthcare",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Site para um restaurante de sushi com delivery",
+      "expected_preset": "restaurant-hospitality",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Landing page para uma clínica de implantes dentários",
+      "expected_preset": "clinic-healthcare",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Site para a minha academia de pilates",
+      "expected_preset": "yoga-pilates-meditation-studio",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Loja de capas para telemóvel",
+      "expected_preset": "consumer-electronics-gadgets",
+      "expected_style": "swiss_technical_light"
+    },
+    {
+      "prompt": "Quero um site para vender perfumes",
+      "expected_preset": "beauty-cosmetics-skincare",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Website for a yoga studio in London",
+      "expected_preset": "yoga-pilates-meditation-studio",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "I need a website for my law firm",
+      "expected_preset": "law-firm-legal",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Landing page for a SaaS that helps HR teams",
+      "expected_preset": "saas-developer-ai",
+      "expected_style": "saas_dark_modern"
+    },
+    {
+      "prompt": "Online shop for kids toys",
+      "expected_preset": "toys-kids-products",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Site para uma empresa de energia solar para casas",
+      "expected_preset": "energy-solar-sustainability",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "Site para a minha creche",
+      "expected_preset": "kindergarten-childcare",
+      "expected_style": "fresh_playful_light"
+    },
+    {
+      "prompt": "Página para promover o meu festival de jazz",
+      "expected_preset": "events-conference-festival",
+      "expected_style": "bold_neobrutalism"
+    },
+    {
+      "prompt": "Quero um site para a minha banda",
+      "expected_preset": "music-artist-band-label",
+      "expected_style": "dark_craft_ink"
+    },
+    {
+      "prompt": "Loja online de vinhos portugueses",
+      "expected_preset": "wine-spirits-cellar",
+      "expected_style": "luxury_noir"
+    },
+    {
+      "prompt": "Site para clínica veterinária e pet shop",
+      "expected_preset": "pet-care-veterinary",
+      "expected_style": "minimalist_corporate"
+    },
+    {
+      "prompt": "App para encontrar e reservar ginásios",
+      "expected_preset": "fitness-gym-training",
+      "expected_style": "sport_kinetic_dark"
+    },
+    {
+      "prompt": "Site para uma marca de roupa de praia",
+      "expected_preset": "fashion-commerce",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Portfólio de ilustrador",
+      "expected_preset": "portfolio-editorial-education",
+      "expected_style": "clean_editorial"
+    },
+    {
+      "prompt": "Loja online de móveis de design",
+      "expected_preset": "home-decor-furniture",
+      "expected_style": "minimalist_warm"
+    }
+  ],
+  "negatives": [
+    {
+      "prompt": "Site para uma empresa de reciclagem de resíduos"
+    },
+    {
+      "prompt": "Clube de xadrez da cidade"
+    },
+    {
+      "prompt": "Astrólogo e leituras de tarot"
+    },
+    {
+      "prompt": "Funerária familiar"
+    },
+    {
+      "prompt": "Lavandaria self-service"
+    },
+    {
+      "prompt": "Museu de história natural"
+    },
+    {
+      "prompt": "Aluguer de equipamento audiovisual"
+    },
+    {
+      "prompt": "Tradução e interpretação simultânea"
+    },
+    {
+      "prompt": "Parque aquático para famílias"
+    },
+    {
+      "prompt": "Loja de ferragens e bricolage"
+    },
+    {
+      "prompt": "Empresa de segurança privada"
+    },
+    {
+      "prompt": "Torneio de padel"
+    },
+    {
+      "prompt": "Landing page moderna com estética minimalista e fotografia em grande formato"
+    },
+    {
+      "prompt": "Quero um site elegante, com branding forte e design gráfico cuidado"
+    },
+    {
+      "prompt": "Página inicial com tipografia grande, fotografia full-bleed e animações de scroll"
+    },
+    {
+      "prompt": "Preciso de um site com tema escuro e botões arredondados"
+    },
+    {
+      "prompt": "Quiosque de gelados à beira-mar"
+    },
+    {
+      "prompt": "Detetive privado"
+    },
+    {
+      "prompt": "Agência de modelos"
+    },
+    {
+      "prompt": "Site para o meu negócio"
+    },
+    {
+      "prompt": "Landing page para o meu produto"
+    },
+    {
+      "prompt": "Single page com design tokens e componentes reutilizáveis"
+    },
+    {
+      "prompt": "Site com um tour virtual em 3D"
+    }
+  ],
+  "conflicts": [
+    {
+      "prompt": "Escritório de advogados com visual energético e jovem",
+      "expected_preset": "law-firm-legal"
+    },
+    {
+      "prompt": "Clínica dentária com visual jovem e agressivo",
+      "expected_preset": "clinic-healthcare"
+    },
+    {
+      "prompt": "Padaria com identidade ousada e moderna",
+      "expected_preset": "bakery-patisserie-sweets"
+    },
+    {
+      "prompt": "Escola de programação com visual futurista",
+      "expected_preset": "school-university-institutional"
+    },
+    {
+      "prompt": "Hotel com piscina e bar",
+      "expected_preset": "hotel-resort-travel-agency"
+    },
+    {
+      "prompt": "Restaurante com bar de cocktails",
+      "expected_preset": "restaurant-hospitality"
+    },
+    {
+      "prompt": "Loja de roupa com estilo rock",
+      "expected_preset": "fashion-commerce"
+    },
+    {
+      "prompt": "Consultório de nutrição com design energético e vibrante",
+      "expected_preset": "mental-health-coaching-therapy"
+    }
+  ],
+  "coverage": [
+    {
+      "prompt": "Marca de bem-estar com produtos naturais",
+      "expected_preset": "wellness-health-beauty",
+      "expected_style": "minimalist_warm"
+    },
+    {
+      "prompt": "Loja de ervas medicinais e saúde natural",
+      "expected_preset": "wellness-health-beauty",
+      "expected_style": "minimalist_warm"
+    }
+  ]
 }

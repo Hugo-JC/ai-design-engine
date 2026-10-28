@@ -26,17 +26,11 @@ const cat = JSON.parse(rd("03-references/local-presets.json"));
 const sourceCatalog = JSON.parse(rd("03-references/reference-sources.json"));
 const major = parseInt(pkg.version, 10);
 if (!(stylesDoc.version >= 3 && stylesDoc.version <= major))
-  E(
-    `design-styles.json version (${stylesDoc.version}) fora do intervalo [3, ${major}]`,
-  );
+  E(`design-styles.json version (${stylesDoc.version}) fora do intervalo [3, ${major}]`);
 if (!(cat.version >= 3 && cat.version <= major))
-  E(
-    `local-presets.json version (${cat.version}) fora do intervalo [3, ${major}]`,
-  );
-const top = (rd("CHANGELOG.md").match(/^## \[(\d+\.\d+\.\d+(?:-[\w.]+)?)\]/m) ||
-  [])[1];
-if (top !== pkg.version)
-  E(`CHANGELOG (${top}) ≠ package.json (${pkg.version})`);
+  E(`local-presets.json version (${cat.version}) fora do intervalo [3, ${major}]`);
+const top = (rd("CHANGELOG.md").match(/^## \[(\d+\.\d+\.\d+(?:-[\w.]+)?)\]/m) || [])[1];
+if (top !== pkg.version) E(`CHANGELOG (${top}) ≠ package.json (${pkg.version})`);
 
 // ---- estilos ----
 const REQ = [
@@ -53,14 +47,7 @@ const REQ = [
   "accent_mode",
   "accent_usage",
 ];
-const COL = [
-  "background",
-  "surface",
-  "border",
-  "text_primary",
-  "text_secondary",
-  "accent",
-];
+const COL = ["background", "surface", "border", "text_primary", "text_secondary", "accent"];
 for (const [id, s] of Object.entries(stylesDoc.styles)) {
   REQ.forEach((k) => {
     if (s[k] === undefined) E(`[${id}] falta o campo "${k}"`);
@@ -69,10 +56,8 @@ for (const [id, s] of Object.entries(stylesDoc.styles)) {
   COL.forEach((k) => {
     if (!C.parseColor(s.colors[k])) E(`[${id}] cor inválida em colors.${k}`);
   });
-  if (!["calm", "balanced", "loud"].includes(s.intensity))
-    E(`[${id}] intensity inválida`);
-  if (!["ui", "product"].includes(s.accent_mode))
-    E(`[${id}] accent_mode inválido`);
+  if (!["calm", "balanced", "loud"].includes(s.intensity)) E(`[${id}] intensity inválida`);
+  if (!["ui", "product"].includes(s.accent_mode)) E(`[${id}] accent_mode inválido`);
   if (s.heading_tracking_range && s.heading_tracking_range[0] < -0.02)
     E(`[${id}] heading_tracking_range[0] < -0.02em`);
   if (s.radius === "0px" && !s.border_width)
@@ -85,23 +70,12 @@ for (const [id, s] of Object.entries(stylesDoc.styles)) {
   };
   const ck = (label, a, b, min) => {
     const r = C.contrast(a, b);
-    if (r !== null && r < min)
-      E(`[${id}] contraste ${label} ${r.toFixed(2)}:1 < ${min}:1`);
+    if (r !== null && r < min) E(`[${id}] contraste ${label} ${r.toFixed(2)}:1 < ${min}:1`);
   };
   ck("texto/fundo", solid(s.colors.text_primary), bg, 4.5);
   ck("texto2/fundo", solid(s.colors.text_secondary), bg, 4.5);
-  ck(
-    "texto/superfície",
-    solid(s.colors.text_primary),
-    solid(s.colors.surface),
-    4.5,
-  );
-  ck(
-    "texto2/superfície",
-    solid(s.colors.text_secondary),
-    solid(s.colors.surface),
-    4.5,
-  );
+  ck("texto/superfície", solid(s.colors.text_primary), solid(s.colors.surface), 4.5);
+  ck("texto2/superfície", solid(s.colors.text_secondary), solid(s.colors.surface), 4.5);
   const accs = [s.colors.accent, ...(s.accent_alternatives || [])];
   accs.forEach((a, i) => {
     const c = C.parseColor(a);
@@ -113,7 +87,7 @@ for (const [id, s] of Object.entries(stylesDoc.styles)) {
     const on = C.bestOn(c);
     if (on.ratio < 4.5)
       E(
-        `[${id}] nenhum texto (preto/branco) atinge 4.5:1 sobre o accent ${a} (${on.ratio.toFixed(2)})`,
+        `[${id}] nenhum texto (preto/branco) atinge 4.5:1 sobre o accent ${a} (${on.ratio.toFixed(2)})`
       );
     if (C.isGenericPurple(c) && !s.allow_purple)
       E(`[${id}] accent ${a} é roxo/índigo genérico (anti-pattern 1)`);
@@ -128,8 +102,7 @@ const hasArch = (id) =>
   new RegExp(`^- \\*\\*${id}\\b`, "m").test(arch);
 const allIds = new Set(Object.values(cat.pattern_ids).flat());
 allIds.forEach((id) => {
-  if (!hasArch(id))
-    E(`padrão ${id} está em pattern_ids mas não em layout-archetypes.md`);
+  if (!hasArch(id)) E(`padrão ${id} está em pattern_ids mas não em layout-archetypes.md`);
 });
 const termOwner = new Map(),
   seenId = new Set();
@@ -173,14 +146,19 @@ const weakOwner = new Map();
 cat.presets.forEach((p) => {
   (p.weak_terms || []).forEach((t) => {
     const n = norm(t);
-    if (termOwner.has(n) && termOwner.get(n) !== p.id) E(`termo fraco "${t}" também é termo forte de ${termOwner.get(n)}`);
-    if (weakOwner.has(n) && weakOwner.get(n) !== p.id) E(`termo fraco "${t}" repetido em ${weakOwner.get(n)} e ${p.id}`);
+    if (termOwner.has(n) && termOwner.get(n) !== p.id)
+      E(`termo fraco "${t}" também é termo forte de ${termOwner.get(n)}`);
+    if (weakOwner.has(n) && weakOwner.get(n) !== p.id)
+      E(`termo fraco "${t}" repetido em ${weakOwner.get(n)} e ${p.id}`);
     weakOwner.set(n, p.id);
   });
-  if (p.ref_queries && (!Array.isArray(p.ref_queries) || p.ref_queries.some((q) => typeof q !== "string" || !q.trim()))) E(`[${p.id}] ref_queries inválido`);
+  if (
+    p.ref_queries &&
+    (!Array.isArray(p.ref_queries) || p.ref_queries.some((q) => typeof q !== "string" || !q.trim()))
+  )
+    E(`[${p.id}] ref_queries inválido`);
 });
-if (!stylesDoc.styles[cat.fallback.style_id])
-  E("fallback com style_id inexistente");
+if (!stylesDoc.styles[cat.fallback.style_id]) E("fallback com style_id inexistente");
 
 // ---- catálogo de referências v3.1 ----
 const nicheIds = new Set(cat.presets.map((p) => p.id));
@@ -189,24 +167,15 @@ for (const s of sourceCatalog.sources || []) {
   if (sourceIds.has(s.id)) E(`fonte duplicada: ${s.id}`);
   sourceIds.add(s.id);
   if (!/^https:\/\//.test(s.url)) E(`[fonte ${s.id}] URL deve usar https`);
-  if (
-    !["gallery", "app-ui", "packaging", "typography", "motion-code"].includes(
-      s.kind,
-    )
-  )
+  if (!["gallery", "app-ui", "packaging", "typography", "motion-code"].includes(s.kind))
     E(`[fonte ${s.id}] kind inválido`);
   (s.access || []).forEach((a) => {
-    if (!["url", "screenshot", "connector"].includes(a))
-      E(`[fonte ${s.id}] access inválido: ${a}`);
+    if (!["url", "screenshot", "connector"].includes(a)) E(`[fonte ${s.id}] access inválido: ${a}`);
   });
   (s.niches || []).forEach((n) => {
     if (!nicheIds.has(n)) E(`[fonte ${s.id}] nicho inexistente: ${n}`);
   });
-  if (
-    !["untested", "ok", "js-only", "blocked", "login", "error"].includes(
-      s.fetch_status,
-    )
-  )
+  if (!["untested", "ok", "js-only", "blocked", "login", "error"].includes(s.fetch_status))
     E(`[fonte ${s.id}] fetch_status inválido`);
 }
 const allowedMedia = /\.(mp4|mov|webm|mkv|png|jpe?g|webp|pdf|epub)$/i;
@@ -235,20 +204,8 @@ for (const collection of ["videos", "books", "mobbin"]) {
   }
 }
 const ignore = rd(".gitignore");
-[
-  "mp4",
-  "mov",
-  "webm",
-  "mkv",
-  "png",
-  "jpg",
-  "jpeg",
-  "webp",
-  "pdf",
-  "epub",
-].forEach((ext) => {
-  if (!ignore.includes(`07-library/**/*.${ext}`))
-    E(`.gitignore sem regra para ${ext}`);
+["mp4", "mov", "webm", "mkv", "png", "jpg", "jpeg", "webp", "pdf", "epub"].forEach((ext) => {
+  if (!ignore.includes(`07-library/**/*.${ext}`)) E(`.gitignore sem regra para ${ext}`);
 });
 try {
   const tracked = require("child_process")
@@ -258,9 +215,7 @@ try {
     })
     .split(/\r?\n/)
     .filter(Boolean);
-  tracked
-    .filter((f) => allowedMedia.test(f))
-    .forEach((f) => E(`media pessoal rastreado: ${f}`));
+  tracked.filter((f) => allowedMedia.test(f)).forEach((f) => E(`media pessoal rastreado: ${f}`));
 } catch {
   W("não foi possível verificar media rastreado pelo Git");
 }
@@ -281,7 +236,7 @@ DOCS.forEach((d) => {
   }
   const txt = rd(d);
   for (const m of txt.matchAll(
-    /`((?:0[1-6]-[\w-]+|tools|tests)\/[\w./-]+\.(?:md|json|js|html)|(?:CORE|AGENTS|CHANGELOG|README|MASTER-PROJECT-SPEC)\.md)`/g,
+    /`((?:0[1-6]-[\w-]+|tools|tests)\/[\w./-]+\.(?:md|json|js|html)|(?:CORE|AGENTS|CHANGELOG|README|MASTER-PROJECT-SPEC)\.md)`/g
   )) {
     if (!exists(m[1]) && !/results\.json$/.test(m[1]))
       E(`${d} refere ficheiro inexistente: ${m[1]}`);
@@ -290,16 +245,15 @@ DOCS.forEach((d) => {
 // fonte única: o mapa nicho→style_id vive em local-presets.json; não pode reaparecer duplicado
 if (
   /\|\s*Nicho \/ palavras-chave\s*\|\s*`style_id`/i.test(
-    rd("03-references/personality-extractor.md"),
+    rd("03-references/personality-extractor.md")
   )
 )
   E(
-    "personality-extractor.md voltou a ter uma tabela nicho→style_id (fonte única: local-presets.json)",
+    "personality-extractor.md voltou a ter uma tabela nicho→style_id (fonte única: local-presets.json)"
   );
 if (!/\.cursorrules/.test(".cursorrules") || rd(".cursorrules").length > 2600)
   W(".cursorrules > 2.6 KB: mantenha-o curto e aponte para CORE.md");
-if (rd("CORE.md").length > 5200)
-  W("CORE.md > 5.2 KB: o núcleo deve caber numa página");
+if (rd("CORE.md").length > 5200) W("CORE.md > 5.2 KB: o núcleo deve caber numa página");
 
 // v4: entrada para agentes
 {
@@ -307,26 +261,35 @@ if (rd("CORE.md").length > 5200)
   const proto = exists("agents/PROTOCOL.md") ? rd("agents/PROTOCOL.md") : "";
   if (!proto) E("agents/PROTOCOL.md em falta");
   else {
-    if (Buffer.byteLength(proto) > 4096) E(`agents/PROTOCOL.md > 4096 bytes (${Buffer.byteLength(proto)})`);
-    for (const m of ["Critério de sucesso", "UMA pergunta", "[PLACEHOLDER]", "Honestidade", "Precedência", "evidência"])
+    if (Buffer.byteLength(proto) > 4096)
+      E(`agents/PROTOCOL.md > 4096 bytes (${Buffer.byteLength(proto)})`);
+    for (const m of [
+      "Critério de sucesso",
+      "UMA pergunta",
+      "[PLACEHOLDER]",
+      "Honestidade",
+      "Precedência",
+      "evidência",
+    ])
       if (!proto.includes(m)) E(`agents/PROTOCOL.md sem a marca obrigatória: ${m}`);
   }
   gen.check().forEach((d) => E(`atalho desatualizado: ${d} (corra: node tools/gen-agents.js)`));
   ["claude", "chatgpt", "cursor", "copilot", "gemini", "windsurf", "generic"].forEach((h) => {
     if (!exists(`agents/hosts/${h}.md`)) E(`agents/hosts/${h}.md em falta`);
   });
-  if (exists("BOOTSTRAP.md") && Buffer.byteLength(rd("BOOTSTRAP.md")) > 4096) E("BOOTSTRAP.md > 4096 bytes");
+  if (exists("BOOTSTRAP.md") && Buffer.byteLength(rd("BOOTSTRAP.md")) > 4096)
+    E("BOOTSTRAP.md > 4096 bytes");
   if (exists("llms.txt"))
-    for (const m of rd("llms.txt").matchAll(/\]\(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+\/([^)\s]+)\)/g))
+    for (const m of rd("llms.txt").matchAll(
+      /\]\(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+\/([^)\s]+)\)/g
+    ))
       if (!exists(m[1])) E(`llms.txt aponta para ficheiro inexistente: ${m[1]}`);
 }
 
 console.log(
-  `\n🔎 lint-repo v${pkg.version}: ${Object.keys(stylesDoc.styles).length} estilos · ${cat.presets.length} presets · ${allIds.size} padrões`,
+  `\n🔎 lint-repo v${pkg.version}: ${Object.keys(stylesDoc.styles).length} estilos · ${cat.presets.length} presets · ${allIds.size} padrões`
 );
 warns.forEach((w) => console.log("⚠️  " + w));
 errors.forEach((e) => console.log("❌ " + e));
-console.log(
-  errors.length ? `\n${errors.length} erro(s).` : "\n✅ Repo consistente.",
-);
+console.log(errors.length ? `\n${errors.length} erro(s).` : "\n✅ Repo consistente.");
 process.exit(errors.length ? 1 : 0);

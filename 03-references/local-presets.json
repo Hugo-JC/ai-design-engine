@@ -14,12 +14,8 @@
     "style_id": "clean_editorial",
     "patterns": {
       "hero": "H2",
-      "features": [
-        "F2"
-      ],
-      "social_proof": [
-        "S3"
-      ],
+      "features": ["F2"],
+      "social_proof": ["S3"],
       "navigation": "N1",
       "footer": "R2"
     },
@@ -46,34 +42,18 @@
       "style_id": "minimalist_warm",
       "variants": [
         {
-          "when_any": [
-            "premium",
-            "sofisticado",
-            "noturno",
-            "torra escura"
-          ],
+          "when_any": ["premium", "sofisticado", "noturno", "torra escura"],
           "style_id": "minimalist_warm_dark"
         },
         {
-          "when_any": [
-            "orgânico",
-            "origem",
-            "natureza",
-            "sustentável"
-          ],
+          "when_any": ["orgânico", "origem", "natureza", "sustentável"],
           "style_id": "organic_forest_dark"
         }
       ],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3",
-          "F2"
-        ],
-        "social_proof": [
-          "S1",
-          "S4"
-        ],
+        "features": ["F3", "F2"],
+        "social_proof": ["S1", "S4"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -99,13 +79,8 @@
           ]
         }
       ],
-      "dossier": [
-        "Café, torrefação, alimentar artesanal"
-      ],
-      "hero_alternatives": [
-        "H3",
-        "H5"
-      ]
+      "dossier": ["Café, torrefação, alimentar artesanal"],
+      "hero_alternatives": ["H3", "H5"]
     },
     {
       "id": "wellness-health-beauty",
@@ -122,21 +97,14 @@
       "style_id": "minimalist_warm",
       "variants": [
         {
-          "when_any": [
-            "luxo",
-            "premium"
-          ],
+          "when_any": ["luxo", "premium"],
           "style_id": "clean_editorial"
         }
       ],
       "patterns": {
         "hero": "H2",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -148,10 +116,7 @@
         {
           "name": "Aesop",
           "url": "https://www.aesop.com/",
-          "pattern_cues": [
-            "Measured editorial copy",
-            "Material and product-led imagery"
-          ]
+          "pattern_cues": ["Measured editorial copy", "Material and product-led imagery"]
         },
         {
           "name": "Headspace",
@@ -162,12 +127,8 @@
           ]
         }
       ],
-      "dossier": [
-        "Bem-estar, saúde, cosmética"
-      ],
-      "hero_alternatives": [
-        "H3"
-      ]
+      "dossier": ["Bem-estar, saúde, cosmética"],
+      "hero_alternatives": ["H3"]
     },
     {
       "id": "fashion-commerce",
@@ -186,30 +147,18 @@
       "style_id": "minimalist_warm",
       "variants": [
         {
-          "when_any": [
-            "streetwear",
-            "urbana",
-            "urbano",
-            "skate"
-          ],
+          "when_any": ["streetwear", "urbana", "urbano", "skate"],
           "style_id": "bold_neobrutalism"
         },
         {
-          "when_any": [
-            "luxo",
-            "premium"
-          ],
+          "when_any": ["luxo", "premium"],
           "style_id": "clean_editorial"
         }
       ],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F1"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F1"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -235,12 +184,8 @@
           ]
         }
       ],
-      "dossier": [
-        "Moda e e-commerce"
-      ],
-      "hero_alternatives": [
-        "H5"
-      ],
+      "dossier": ["Moda e e-commerce"],
+      "hero_alternatives": ["H5"],
       "weak_terms": [
         "boutique",
         "e-commerce",
@@ -277,32 +222,18 @@
       "style_id": "saas_dark_modern",
       "variants": [
         {
-          "when_any": [
-            "futurista",
-            "ia avançada",
-            "glassmorphism"
-          ],
+          "when_any": ["futurista", "ia avançada", "glassmorphism"],
           "style_id": "glassmorphism_tech"
         },
         {
-          "when_any": [
-            "múltiplos recursos",
-            "mosaico",
-            "bento"
-          ],
+          "when_any": ["múltiplos recursos", "mosaico", "bento"],
           "style_id": "bento_grid_layout"
         }
       ],
       "patterns": {
         "hero": "H4",
-        "features": [
-          "F1",
-          "F4"
-        ],
-        "social_proof": [
-          "S2",
-          "S3"
-        ],
+        "features": ["F1", "F4"],
+        "social_proof": ["S2", "S3"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -314,10 +245,7 @@
         {
           "name": "Linear",
           "url": "https://linear.app/",
-          "pattern_cues": [
-            "Product-led demonstrations",
-            "Compact, high-clarity hierarchy"
-          ]
+          "pattern_cues": ["Product-led demonstrations", "Compact, high-clarity hierarchy"]
         },
         {
           "name": "Vercel",
@@ -336,12 +264,8 @@
           ]
         }
       ],
-      "dossier": [
-        "SaaS, developer tools, IA"
-      ],
-      "hero_alternatives": [
-        "H1"
-      ]
+      "dossier": ["SaaS, developer tools, IA"],
+      "hero_alternatives": ["H1"]
     },
     {
       "id": "fintech-enterprise",
@@ -371,14 +295,8 @@
       "style_id": "minimalist_corporate",
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F5",
-          "F3"
-        ],
-        "social_proof": [
-          "S3",
-          "S4"
-        ],
+        "features": ["F5", "F3"],
+        "social_proof": ["S3", "S4"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -406,18 +324,11 @@
         {
           "name": "Wise",
           "url": "https://wise.com/",
-          "pattern_cues": [
-            "Transparent pricing cues",
-            "Plain-language explanations of transfers"
-          ]
+          "pattern_cues": ["Transparent pricing cues", "Plain-language explanations of transfers"]
         }
       ],
-      "dossier": [
-        "Fintech e enterprise"
-      ],
-      "hero_alternatives": [
-        "H4"
-      ]
+      "dossier": ["Fintech e enterprise"],
+      "hero_alternatives": ["H4"]
     },
     {
       "id": "real-estate-marketplace",
@@ -437,35 +348,18 @@
       "style_id": "minimalist_corporate",
       "variants": [
         {
-          "when_any": [
-            "luxo",
-            "luxuosa",
-            "luxuoso",
-            "mansões",
-            "mansão",
-            "exclusivo",
-            "villas"
-          ],
+          "when_any": ["luxo", "luxuosa", "luxuoso", "mansões", "mansão", "exclusivo", "villas"],
           "style_id": "luxury_noir"
         },
         {
-          "when_any": [
-            "moderno",
-            "tecnológico"
-          ],
+          "when_any": ["moderno", "tecnológico"],
           "style_id": "saas_dark_modern"
         }
       ],
       "patterns": {
         "hero": "H6",
-        "features": [
-          "F3",
-          "F1"
-        ],
-        "social_proof": [
-          "S2",
-          "S1"
-        ],
+        "features": ["F3", "F1"],
+        "social_proof": ["S2", "S1"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -491,9 +385,7 @@
           ]
         }
       ],
-      "dossier": [
-        "Imobiliário e marketplaces (ex: ONDJO, ImoBlog)"
-      ],
+      "dossier": ["Imobiliário e marketplaces (ex: ONDJO, ImoBlog)"],
       "hero_alternatives": []
     },
     {
@@ -517,20 +409,14 @@
       "style_id": "clean_editorial",
       "variants": [
         {
-          "when_any": [
-            "tecnológico"
-          ],
+          "when_any": ["tecnológico"],
           "style_id": "saas_dark_modern"
         }
       ],
       "patterns": {
         "hero": "H8",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S4"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S4"],
         "navigation": "N1",
         "footer": "R1"
       },
@@ -542,10 +428,7 @@
         {
           "name": "Stripe Press",
           "url": "https://press.stripe.com/",
-          "pattern_cues": [
-            "Editorial pacing",
-            "Distinctive book and author presentation"
-          ]
+          "pattern_cues": ["Editorial pacing", "Distinctive book and author presentation"]
         },
         {
           "name": "Substack",
@@ -558,18 +441,11 @@
         {
           "name": "Awwwards",
           "url": "https://www.awwwards.com/",
-          "pattern_cues": [
-            "Portfolio navigation and varied project presentation"
-          ]
+          "pattern_cues": ["Portfolio navigation and varied project presentation"]
         }
       ],
-      "dossier": [
-        "Portfólio, criativo, developer pessoal",
-        "Educação, blog, conteúdo"
-      ],
-      "hero_alternatives": [
-        "H2"
-      ]
+      "dossier": ["Portfólio, criativo, developer pessoal", "Educação, blog, conteúdo"],
+      "hero_alternatives": ["H2"]
     },
     {
       "id": "community-gaming",
@@ -591,12 +467,8 @@
       "style_id": "game_arcade_dark",
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F1"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F1"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R1"
       },
@@ -622,26 +494,15 @@
           ]
         }
       ],
-      "dossier": [
-        "Comunidades, jogos, Discord"
-      ],
-      "hero_alternatives": [
-        "H7",
-        "H5"
-      ],
+      "dossier": ["Comunidades, jogos, Discord"],
+      "hero_alternatives": ["H7", "H5"],
       "variants": [
         {
-          "when_any": [
-            "profissional",
-            "corporativo",
-            "empresa"
-          ],
+          "when_any": ["profissional", "corporativo", "empresa"],
           "style_id": "saas_dark_modern"
         }
       ],
-      "weak_terms": [
-        "comunidade"
-      ]
+      "weak_terms": ["comunidade"]
     },
     {
       "id": "tattoo-barber-nightlife",
@@ -665,12 +526,8 @@
       "style_id": "dark_craft_ink",
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R1"
       },
@@ -682,34 +539,21 @@
         {
           "name": "Brutalist Websites",
           "url": "https://brutalistwebsites.com/",
-          "pattern_cues": [
-            "Unconventional composition",
-            "Direct, high-contrast typography"
-          ]
+          "pattern_cues": ["Unconventional composition", "Direct, high-contrast typography"]
         },
         {
           "name": "Fontsinuse",
           "url": "https://fontsinuse.com/",
-          "pattern_cues": [
-            "Typography research by context and medium"
-          ]
+          "pattern_cues": ["Typography research by context and medium"]
         },
         {
           "name": "Liquid Death",
           "url": "https://liquiddeath.com/",
-          "pattern_cues": [
-            "Distinctive irreverent brand voice",
-            "Packaging-led visual impact"
-          ]
+          "pattern_cues": ["Distinctive irreverent brand voice", "Packaging-led visual impact"]
         }
       ],
-      "dossier": [
-        "Tatuagem, barbearia, bares, atitude"
-      ],
-      "hero_alternatives": [
-        "H2",
-        "H5"
-      ]
+      "dossier": ["Tatuagem, barbearia, bares, atitude"],
+      "hero_alternatives": ["H2", "H5"]
     },
     {
       "id": "crypto-web3-youth",
@@ -727,12 +571,8 @@
       "style_id": "bold_neobrutalism",
       "patterns": {
         "hero": "H7",
-        "features": [
-          "F1"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F1"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R1"
       },
@@ -752,17 +592,11 @@
         {
           "name": "Brutalist Websites",
           "url": "https://brutalistwebsites.com/",
-          "pattern_cues": [
-            "Expressive, unconventional web composition"
-          ]
+          "pattern_cues": ["Expressive, unconventional web composition"]
         }
       ],
-      "dossier": [
-        "Jovem, crypto, web3, atitude digital"
-      ],
-      "hero_alternatives": [
-        "H1"
-      ]
+      "dossier": ["Jovem, crypto, web3, atitude digital"],
+      "hero_alternatives": ["H1"]
     },
     {
       "id": "restaurant-hospitality",
@@ -787,12 +621,8 @@
       "style_id": "minimalist_warm",
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
@@ -812,18 +642,11 @@
         {
           "name": "Blue Bottle Coffee",
           "url": "https://bluebottlecoffee.com/",
-          "pattern_cues": [
-            "Product and hospitality context",
-            "Quiet, deliberate photography"
-          ]
+          "pattern_cues": ["Product and hospitality context", "Quiet, deliberate photography"]
         }
       ],
-      "dossier": [
-        "Restaurantes e hospitalidade"
-      ],
-      "hero_alternatives": [
-        "H2"
-      ]
+      "dossier": ["Restaurantes e hospitalidade"],
+      "hero_alternatives": ["H2"]
     },
     {
       "id": "beverage-packaging-loud",
@@ -846,36 +669,19 @@
       "style_id": "loud_beverage_dark",
       "variants": [
         {
-          "when_any": [
-            "infantil",
-            "crianças",
-            "divertido",
-            "frutas",
-            "natural",
-            "saudável"
-          ],
+          "when_any": ["infantil", "crianças", "divertido", "frutas", "natural", "saudável"],
           "style_id": "fresh_playful_light"
         }
       ],
       "patterns": {
         "hero": "H5",
-        "features": [
-          "F2",
-          "F1"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F2", "F1"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R1"
       },
-      "hero_alternatives": [
-        "H7",
-        "H3"
-      ],
-      "dossier": [
-        "Bebidas e embalagem de consumo (energéticos, refrigerantes)"
-      ],
+      "hero_alternatives": ["H7", "H3"],
+      "dossier": ["Bebidas e embalagem de consumo (energéticos, refrigerantes)"],
       "principles": [
         "A embalagem é o herói: em escala, reconhecível, cortada pela margem; texto mínimo.",
         "Sabor/variante muda a cor do produto, não a paleta inteira da UI. Declarar números e avisos legais com unidade ligada."
@@ -884,23 +690,15 @@
         {
           "name": "Liquid Death",
           "url": "https://liquiddeath.com/",
-          "pattern_cues": [
-            "Voz de marca irreverente",
-            "Embalagem como impacto visual"
-          ]
+          "pattern_cues": ["Voz de marca irreverente", "Embalagem como impacto visual"]
         },
         {
           "name": "Poppi",
           "url": "https://drinkpoppi.com/",
-          "pattern_cues": [
-            "Cor por sabor",
-            "Produto repetido em escala e ritmo"
-          ]
+          "pattern_cues": ["Cor por sabor", "Produto repetido em escala e ritmo"]
         }
       ],
-      "weak_terms": [
-        "energético"
-      ]
+      "weak_terms": ["energético"]
     },
     {
       "id": "hardware-engineering-architecture",
@@ -932,35 +730,19 @@
       "style_id": "swiss_technical_light",
       "variants": [
         {
-          "when_any": [
-            "luxo",
-            "premium",
-            "galeria"
-          ],
+          "when_any": ["luxo", "premium", "galeria"],
           "style_id": "clean_editorial"
         }
       ],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3",
-          "F5",
-          "F6"
-        ],
-        "social_proof": [
-          "S3",
-          "S4"
-        ],
+        "features": ["F3", "F5", "F6"],
+        "social_proof": ["S3", "S4"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H2",
-        "H8"
-      ],
-      "dossier": [
-        "Hardware, engenharia, arquitetura"
-      ],
+      "hero_alternatives": ["H2", "H8"],
+      "dossier": ["Hardware, engenharia, arquitetura"],
       "principles": [
         "Especificações, medidas e diagramas como conteúdo principal; monoespaçada para dados.",
         "Grelha visível e hierarquia técnica; evitar imagens de stock genéricas."
@@ -969,21 +751,15 @@
         {
           "name": "Teenage Engineering",
           "url": "https://teenage.engineering/",
-          "pattern_cues": [
-            "Produto + especificação em primeiro plano"
-          ]
+          "pattern_cues": ["Produto + especificação em primeiro plano"]
         },
         {
           "name": "Framework",
           "url": "https://frame.work/",
-          "pattern_cues": [
-            "Especificações e modularidade em destaque"
-          ]
+          "pattern_cues": ["Especificações e modularidade em destaque"]
         }
       ],
-      "weak_terms": [
-        "construção"
-      ]
+      "weak_terms": ["construção"]
     },
     {
       "id": "clinic-healthcare",
@@ -1014,33 +790,19 @@
       "style_id": "minimalist_corporate",
       "variants": [
         {
-          "when_any": [
-            "bem-estar",
-            "spa",
-            "holístico"
-          ],
+          "when_any": ["bem-estar", "spa", "holístico"],
           "style_id": "minimalist_warm"
         }
       ],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3",
-          "F2"
-        ],
-        "social_proof": [
-          "S1",
-          "S2"
-        ],
+        "features": ["F3", "F2"],
+        "social_proof": ["S1", "S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H2"
-      ],
-      "dossier": [
-        "Clínicas e saúde"
-      ],
+      "hero_alternatives": ["H2"],
+      "dossier": ["Clínicas e saúde"],
       "principles": [
         "Marcação, horários, morada e especialidades visíveis sem scroll.",
         "Linguagem clara, sem promessas de cura; credenciais verificáveis."
@@ -1049,17 +811,12 @@
         {
           "name": "One Medical",
           "url": "https://www.onemedical.com/",
-          "pattern_cues": [
-            "Marcação como ação principal",
-            "Informação prática clara"
-          ]
+          "pattern_cues": ["Marcação como ação principal", "Informação prática clara"]
         },
         {
           "name": "Zocdoc",
           "url": "https://www.zocdoc.com/",
-          "pattern_cues": [
-            "Marcação como ação principal"
-          ]
+          "pattern_cues": ["Marcação como ação principal"]
         }
       ]
     },
@@ -1102,23 +859,13 @@
       ],
       "patterns": {
         "hero": "H5",
-        "features": [
-          "F2",
-          "F1"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2", "F1"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H3",
-        "H1"
-      ],
-      "dossier": [
-        "Cosmética e skincare"
-      ],
+      "hero_alternatives": ["H3", "H1"],
+      "dossier": ["Cosmética e skincare"],
       "principles": [
         "Produto em escala e textura (cor, ingrediente, aplicação) como herói; fotografia própria, não stock.",
         "Ingredientes, modo de uso e provas visíveis; alegações dermatológicas só com evidência (marcar [PLACEHOLDER])."
@@ -1147,31 +894,19 @@
       "variants": [],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S4"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S4"],
         "navigation": "N2",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H5",
-        "H2"
-      ],
-      "dossier": [
-        "Joalharia e relógios"
-      ],
+      "hero_alternatives": ["H5", "H2"],
+      "dossier": ["Joalharia e relógios"],
       "principles": [
         "Fotografia macro e luz controlada; poucos elementos, muito espaço; o produto domina.",
         "Preço, materiais e certificação visíveis; narrativa de artesanato com factos."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de joalharia de luxo",
-        "luxury jewelry brand website design"
-      ]
+      "ref_queries": ["melhores sites de joalharia de luxo", "luxury jewelry brand website design"]
     },
     {
       "id": "consumer-electronics-gadgets",
@@ -1199,33 +934,19 @@
       "style_id": "swiss_technical_light",
       "variants": [
         {
-          "when_any": [
-            "gaming",
-            "gamer",
-            "jogos"
-          ],
+          "when_any": ["gaming", "gamer", "jogos"],
           "style_id": "game_arcade_dark"
         }
       ],
       "patterns": {
         "hero": "H5",
-        "features": [
-          "F5",
-          "F6"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F5", "F6"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H4",
-        "H1"
-      ],
-      "dossier": [
-        "Eletrónica de consumo"
-      ],
+      "hero_alternatives": ["H4", "H1"],
+      "dossier": ["Eletrónica de consumo"],
       "principles": [
         "Especificações e comparação em primeiro plano; produto em escala sobre fundo neutro.",
         "Preço, garantia e compatibilidade claros; tabela comparativa honesta."
@@ -1258,41 +979,25 @@
       "style_id": "minimalist_warm",
       "variants": [
         {
-          "when_any": [
-            "luxo",
-            "luxuoso",
-            "alta gama"
-          ],
+          "when_any": ["luxo", "luxuoso", "alta gama"],
           "style_id": "clean_editorial"
         }
       ],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1",
-        "H8"
-      ],
-      "dossier": [
-        "Casa, decoração e mobiliário"
-      ],
+      "hero_alternatives": ["H1", "H8"],
+      "dossier": ["Casa, decoração e mobiliário"],
       "principles": [
         "Ambientes reais em escala humana e luz natural; mostrar o produto em contexto e em detalhe.",
         "Medidas, materiais, prazos de entrega e política de devolução visíveis."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de mobiliário e decoração",
-        "furniture store website design"
-      ]
+      "ref_queries": ["melhores sites de mobiliário e decoração", "furniture store website design"]
     },
     {
       "id": "grocery-farm-fresh-produce",
@@ -1318,31 +1023,19 @@
       "variants": [],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F1"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F1"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H5",
-        "H1"
-      ],
-      "dossier": [
-        "Mercearia e produtos frescos"
-      ],
+      "hero_alternatives": ["H5", "H1"],
+      "dossier": ["Mercearia e produtos frescos"],
       "principles": [
         "Frescura visível: fotografia real de produto, origem e época; categorias claras.",
         "Cabaz, entrega e janela horária explicados; preço por unidade e por peso."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de mercearia online",
-        "online grocery website design"
-      ]
+      "ref_queries": ["melhores sites de mercearia online", "online grocery website design"]
     },
     {
       "id": "books-publishing-bookstore",
@@ -1362,22 +1055,13 @@
       "variants": [],
       "patterns": {
         "hero": "H8",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H2",
-        "H3"
-      ],
-      "dossier": [
-        "Editoras e livrarias"
-      ],
+      "hero_alternatives": ["H2", "H3"],
+      "dossier": ["Editoras e livrarias"],
       "principles": [
         "Capas como protagonistas, tipografia de livro (serifa) e ritmo de leitura.",
         "Excertos, autor e onde comprar claros; newsletter como CTA secundário."
@@ -1405,30 +1089,19 @@
       "variants": [],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F1"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F1"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H5"
-      ],
-      "dossier": [
-        "Brinquedos e puericultura"
-      ],
+      "hero_alternatives": ["H5"],
+      "dossier": ["Brinquedos e puericultura"],
       "principles": [
         "Cor e forma alegres com contraste AA; fotografia de produto limpa e segurança em destaque.",
         "Faixa etária, segurança e certificação visíveis; pais como público de decisão."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de lojas de brinquedos",
-        "toy store website design"
-      ]
+      "ref_queries": ["melhores sites de lojas de brinquedos", "toy store website design"]
     },
     {
       "id": "pet-care-veterinary",
@@ -1455,41 +1128,25 @@
       "style_id": "fresh_playful_light",
       "variants": [
         {
-          "when_any": [
-            "clínica veterinária",
-            "hospital veterinário",
-            "veterinária",
-            "veterinário"
-          ],
+          "when_any": ["clínica veterinária", "hospital veterinário", "veterinária", "veterinário"],
           "style_id": "minimalist_corporate"
         }
       ],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H3"
-      ],
-      "dossier": [
-        "Pet shop e veterinária"
-      ],
+      "hero_alternatives": ["H3"],
+      "dossier": ["Pet shop e veterinária"],
       "principles": [
         "Calor e confiança: fotografia real de animais, serviços e horários claros.",
         "Marcação e urgências visíveis; equipa com nome e especialidade."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de clínicas veterinárias",
-        "veterinary clinic website design"
-      ]
+      "ref_queries": ["melhores sites de clínicas veterinárias", "veterinary clinic website design"]
     },
     {
       "id": "florist-gifts-flowers",
@@ -1509,30 +1166,19 @@
       "variants": [],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1"
-      ],
-      "dossier": [
-        "Floristas e presentes"
-      ],
+      "hero_alternatives": ["H1"],
+      "dossier": ["Floristas e presentes"],
       "principles": [
         "Fotografia de arranjos em luz natural; sazonalidade e entrega no mesmo dia como promessa concreta.",
         "Escolha por ocasião e prazo de entrega visíveis."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de floristas",
-        "florist website design"
-      ]
+      "ref_queries": ["melhores sites de floristas", "florist website design"]
     },
     {
       "id": "wine-spirits-cellar",
@@ -1557,31 +1203,19 @@
       "variants": [],
       "patterns": {
         "hero": "H9",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S4"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S4"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H3",
-        "H5"
-      ],
-      "dossier": [
-        "Vinhos e destilados"
-      ],
+      "hero_alternatives": ["H3", "H5"],
+      "dossier": ["Vinhos e destilados"],
       "principles": [
         "Terroir e origem como narrativa; garrafa em escala sobre fundo escuro.",
         "Notas de prova, castas, ano e harmonizações legíveis; aviso de consumo responsável."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de vinhos e adegas",
-        "winery website design"
-      ]
+      "ref_queries": ["melhores sites de vinhos e adegas", "winery website design"]
     },
     {
       "id": "bakery-patisserie-sweets",
@@ -1603,41 +1237,25 @@
       "style_id": "minimalist_warm",
       "variants": [
         {
-          "when_any": [
-            "infantil",
-            "festas",
-            "cupcakes",
-            "divertido"
-          ],
+          "when_any": ["infantil", "festas", "cupcakes", "divertido"],
           "style_id": "fresh_playful_light"
         }
       ],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1"
-      ],
-      "dossier": [
-        "Padarias e pastelarias"
-      ],
+      "hero_alternatives": ["H1"],
+      "dossier": ["Padarias e pastelarias"],
       "principles": [
         "Apetite primeiro: fotografia próxima, textura e luz natural; horários e encomendas à vista.",
         "Encomenda com antecedência e opções (tamanho, alergénios) claras."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de pastelarias",
-        "bakery website design"
-      ]
+      "ref_queries": ["melhores sites de pastelarias", "bakery website design"]
     },
     {
       "id": "handmade-crafts-candles",
@@ -1662,30 +1280,19 @@
       "variants": [],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1"
-      ],
-      "dossier": [
-        "Artesanato e velas"
-      ],
+      "hero_alternatives": ["H1"],
+      "dossier": ["Artesanato e velas"],
       "principles": [
         "Processo e materiais como história: mãos, oficina, lote; fotografia com textura.",
         "Lotes limitados, tempo de produção e envio claros."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de artesanato e velas",
-        "handmade candle shop website design"
-      ]
+      "ref_queries": ["melhores sites de artesanato e velas", "handmade candle shop website design"]
     },
     {
       "id": "sports-outdoor-gear",
@@ -1712,31 +1319,19 @@
       "variants": [],
       "patterns": {
         "hero": "H5",
-        "features": [
-          "F1"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F1"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H3",
-        "H7"
-      ],
-      "dossier": [
-        "Desporto e outdoor"
-      ],
+      "hero_alternatives": ["H3", "H7"],
+      "dossier": ["Desporto e outdoor"],
       "principles": [
         "Movimento e escala: fotografia em ação, produto em uso, tipografia condensada forte.",
         "Especificações técnicas (peso, material, condições) legíveis e comparáveis."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de equipamento outdoor",
-        "outdoor gear brand website design"
-      ]
+      "ref_queries": ["melhores sites de equipamento outdoor", "outdoor gear brand website design"]
     },
     {
       "id": "fitness-gym-training",
@@ -1757,31 +1352,19 @@
       "variants": [],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H5",
-        "H7"
-      ],
-      "dossier": [
-        "Ginásios e fitness"
-      ],
+      "hero_alternatives": ["H5", "H7"],
+      "dossier": ["Ginásios e fitness"],
       "principles": [
         "Energia real: pessoas reais a treinar, horários e planos claros; aula experimental como CTA.",
         "Preços e planos transparentes; resultados só com consentimento e sem promessas médicas."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de ginásios",
-        "gym website design"
-      ]
+      "ref_queries": ["melhores sites de ginásios", "gym website design"]
     },
     {
       "id": "yoga-pilates-meditation-studio",
@@ -1800,30 +1383,19 @@
       "variants": [],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H2"
-      ],
-      "dossier": [
-        "Yoga e meditação"
-      ],
+      "hero_alternatives": ["H2"],
+      "dossier": ["Yoga e meditação"],
       "principles": [
         "Calma visual: espaço negativo, luz suave, movimento lento.",
         "Horários, níveis e primeira aula grátis visíveis."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de estúdios de yoga",
-        "yoga studio website design"
-      ]
+      "ref_queries": ["melhores sites de estúdios de yoga", "yoga studio website design"]
     },
     {
       "id": "spa-salon-aesthetics",
@@ -1846,40 +1418,25 @@
       "style_id": "minimalist_warm",
       "variants": [
         {
-          "when_any": [
-            "luxo",
-            "luxuoso",
-            "premium"
-          ],
+          "when_any": ["luxo", "luxuoso", "premium"],
           "style_id": "luxury_noir"
         }
       ],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1"
-      ],
-      "dossier": [
-        "Salões e spa"
-      ],
+      "hero_alternatives": ["H1"],
+      "dossier": ["Salões e spa"],
       "principles": [
         "Serviços com preço e duração claros; marcação como ação principal.",
         "Fotografia do espaço e da equipa; antes/depois só com consentimento."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de salões de beleza",
-        "hair salon website design"
-      ]
+      "ref_queries": ["melhores sites de salões de beleza", "hair salon website design"]
     },
     {
       "id": "mental-health-coaching-therapy",
@@ -1908,30 +1465,19 @@
       "variants": [],
       "patterns": {
         "hero": "H2",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1"
-      ],
-      "dossier": [
-        "Terapia, coaching e nutrição"
-      ],
+      "hero_alternatives": ["H1"],
+      "dossier": ["Terapia, coaching e nutrição"],
       "principles": [
         "Confiança antes de tudo: foto real do profissional, abordagem explicada e como é a primeira sessão.",
         "Privacidade, preços e marcação claros; sem promessas de cura."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de psicólogos",
-        "therapist website design"
-      ]
+      "ref_queries": ["melhores sites de psicólogos", "therapist website design"]
     },
     {
       "id": "pharmacy-health-products",
@@ -1949,30 +1495,19 @@
       "variants": [],
       "patterns": {
         "hero": "H6",
-        "features": [
-          "F1"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F1"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1"
-      ],
-      "dossier": [
-        "Farmácias e suplementos"
-      ],
+      "hero_alternatives": ["H1"],
+      "dossier": ["Farmácias e suplementos"],
       "principles": [
         "Pesquisa e categorias primeiro; informação clara sobre produto, dosagem e aviso legal.",
         "Serviço (entrega, aconselhamento) e horários visíveis."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de farmácias online",
-        "online pharmacy website design"
-      ]
+      "ref_queries": ["melhores sites de farmácias online", "online pharmacy website design"]
     },
     {
       "id": "law-firm-legal",
@@ -1998,40 +1533,25 @@
       "style_id": "minimalist_corporate",
       "variants": [
         {
-          "when_any": [
-            "boutique",
-            "prestígio",
-            "tradicional"
-          ],
+          "when_any": ["boutique", "prestígio", "tradicional"],
           "style_id": "clean_editorial"
         }
       ],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S3"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S3"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H2"
-      ],
-      "dossier": [
-        "Advogados e serviços jurídicos"
-      ],
+      "hero_alternatives": ["H2"],
+      "dossier": ["Advogados e serviços jurídicos"],
       "principles": [
         "Autoridade calma: tipografia sóbria, áreas de atuação claras, equipa com nome e especialidade.",
         "Primeiro contacto simples; confidencialidade e honorários explicados."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de escritórios de advogados",
-        "law firm website design"
-      ]
+      "ref_queries": ["melhores sites de escritórios de advogados", "law firm website design"]
     },
     {
       "id": "accounting-consulting-business",
@@ -2055,30 +1575,19 @@
       "variants": [],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S3"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S3"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H2"
-      ],
-      "dossier": [
-        "Contabilidade e consultoria"
-      ],
+      "hero_alternatives": ["H2"],
+      "dossier": ["Contabilidade e consultoria"],
       "principles": [
         "Clareza e números: serviços por tipo de cliente, prazos fiscais, preços ou pacotes.",
         "Casos e resultados concretos e primeiro contacto simples."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de contabilidade",
-        "accounting firm website design"
-      ]
+      "ref_queries": ["melhores sites de contabilidade", "accounting firm website design"]
     },
     {
       "id": "marketing-creative-agency",
@@ -2097,42 +1606,25 @@
       "style_id": "bold_neobrutalism",
       "variants": [
         {
-          "when_any": [
-            "minimal",
-            "elegante",
-            "sofisticada",
-            "editorial"
-          ],
+          "when_any": ["minimal", "elegante", "sofisticada", "editorial"],
           "style_id": "clean_editorial"
         }
       ],
       "patterns": {
         "hero": "H2",
-        "features": [
-          "F5"
-        ],
-        "social_proof": [
-          "S4"
-        ],
+        "features": ["F5"],
+        "social_proof": ["S4"],
         "navigation": "N2",
         "footer": "R1"
       },
-      "hero_alternatives": [
-        "H7",
-        "H8"
-      ],
-      "dossier": [
-        "Agências criativas"
-      ],
+      "hero_alternatives": ["H7", "H8"],
+      "dossier": ["Agências criativas"],
       "principles": [
         "Trabalho em primeiro plano: casos com resultado e processo; tipografia com personalidade.",
         "Pontos de prova (logos + frase do que fizeram) e CTA claro para briefing."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de agências criativas",
-        "creative agency website design"
-      ]
+      "ref_queries": ["melhores sites de agências criativas", "creative agency website design"]
     },
     {
       "id": "photography-video-studio",
@@ -2153,31 +1645,19 @@
       "variants": [],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H8",
-        "H2"
-      ],
-      "dossier": [
-        "Fotografia e vídeo"
-      ],
+      "hero_alternatives": ["H8", "H2"],
+      "dossier": ["Fotografia e vídeo"],
       "principles": [
         "O trabalho é a página: imagens grandes, carregamento rápido, séries bem editadas.",
         "Serviços, preços indicativos e disponibilidade; contacto direto."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de fotógrafos",
-        "photographer portfolio website design"
-      ]
+      "ref_queries": ["melhores sites de fotógrafos", "photographer portfolio website design"]
     },
     {
       "id": "construction-trades-home-services",
@@ -2208,30 +1688,19 @@
       "variants": [],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S3"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S3"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H6"
-      ],
-      "dossier": [
-        "Construção e serviços domésticos"
-      ],
+      "hero_alternatives": ["H6"],
+      "dossier": ["Construção e serviços domésticos"],
       "principles": [
         "Confiança local: obras reais antes/depois, zona de atuação, orçamento grátis como CTA.",
         "Certificações, seguros e garantia visíveis; telefone/WhatsApp em destaque."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de construtoras",
-        "construction company website design"
-      ]
+      "ref_queries": ["melhores sites de construtoras", "construction company website design"]
     },
     {
       "id": "logistics-transport-delivery",
@@ -2256,30 +1725,19 @@
       "variants": [],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H6"
-      ],
-      "dossier": [
-        "Logística e transportes"
-      ],
+      "hero_alternatives": ["H6"],
+      "dossier": ["Logística e transportes"],
       "principles": [
         "Rastreio, cobertura e prazos: informação operacional antes de adjetivos.",
         "Pedido de cotação em poucos campos; SLA e contactos visíveis."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de transportadoras",
-        "logistics company website design"
-      ]
+      "ref_queries": ["melhores sites de transportadoras", "logistics company website design"]
     },
     {
       "id": "automotive-dealer-workshop",
@@ -2304,41 +1762,25 @@
       "style_id": "swiss_technical_light",
       "variants": [
         {
-          "when_any": [
-            "luxo",
-            "superdesportivo",
-            "clássicos"
-          ],
+          "when_any": ["luxo", "superdesportivo", "clássicos"],
           "style_id": "luxury_noir"
         }
       ],
       "patterns": {
         "hero": "H5",
-        "features": [
-          "F5"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F5"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1",
-        "H6"
-      ],
-      "dossier": [
-        "Stands e oficinas"
-      ],
+      "hero_alternatives": ["H1", "H6"],
+      "dossier": ["Stands e oficinas"],
       "principles": [
         "Inventário e ficha técnica primeiro: filtros, preço, quilometragem, garantia.",
         "Marcação de revisão e orçamento transparentes."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de stands automóvel",
-        "car dealership website design"
-      ]
+      "ref_queries": ["melhores sites de stands automóvel", "car dealership website design"]
     },
     {
       "id": "energy-solar-sustainability",
@@ -2358,40 +1800,25 @@
       "style_id": "minimalist_corporate",
       "variants": [
         {
-          "when_any": [
-            "natureza",
-            "ecológico",
-            "ecologico"
-          ],
+          "when_any": ["natureza", "ecológico", "ecologico"],
           "style_id": "organic_forest_dark"
         }
       ],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H4"
-      ],
-      "dossier": [
-        "Energia solar e renováveis"
-      ],
+      "hero_alternatives": ["H4"],
+      "dossier": ["Energia solar e renováveis"],
       "principles": [
         "Poupança e impacto em números reais (kWh, anos de retorno) e simulador simples.",
         "Instalação, garantia e financiamento explicados."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de energia solar",
-        "solar company website design"
-      ]
+      "ref_queries": ["melhores sites de energia solar", "solar company website design"]
     },
     {
       "id": "agriculture-agritech-farm",
@@ -2415,31 +1842,19 @@
       "variants": [],
       "patterns": {
         "hero": "H9",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S3"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S3"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H3",
-        "H1"
-      ],
-      "dossier": [
-        "Agricultura e agritech"
-      ],
+      "hero_alternatives": ["H3", "H1"],
+      "dossier": ["Agricultura e agritech"],
       "principles": [
         "Origem e terra: fotografia real de campo, safra e processo; números de produção.",
         "Certificações e rastreabilidade visíveis; contacto comercial direto."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de agricultura",
-        "agritech website design"
-      ]
+      "ref_queries": ["melhores sites de agricultura", "agritech website design"]
     },
     {
       "id": "school-university-institutional",
@@ -2460,30 +1875,19 @@
       "variants": [],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H6"
-      ],
-      "dossier": [
-        "Escolas e universidades"
-      ],
+      "hero_alternatives": ["H6"],
+      "dossier": ["Escolas e universidades"],
       "principles": [
         "Informação prática primeiro: cursos, candidaturas, calendário e contactos.",
         "Acessibilidade alta: contraste, texto grande e navegação simples."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de escolas e universidades",
-        "university website design"
-      ]
+      "ref_queries": ["melhores sites de escolas e universidades", "university website design"]
     },
     {
       "id": "online-courses-edtech",
@@ -2507,41 +1911,25 @@
       "style_id": "fresh_playful_light",
       "variants": [
         {
-          "when_any": [
-            "empresas",
-            "corporativo",
-            "b2b"
-          ],
+          "when_any": ["empresas", "corporativo", "b2b"],
           "style_id": "minimalist_corporate"
         }
       ],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H4",
-        "H6"
-      ],
-      "dossier": [
-        "Cursos online e edtech"
-      ],
+      "hero_alternatives": ["H4", "H6"],
+      "dossier": ["Cursos online e edtech"],
       "principles": [
         "Resultado de aprendizagem concreto: o que vais saber fazer; programa, duração e preço claros.",
         "Pré-visualização real da aula e provas de alunos."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de cursos online",
-        "online course platform website design"
-      ]
+      "ref_queries": ["melhores sites de cursos online", "online course platform website design"]
     },
     {
       "id": "language-school-tutoring",
@@ -2563,28 +1951,19 @@
       "variants": [],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
       "hero_alternatives": [],
-      "dossier": [
-        "Escolas de línguas e explicações"
-      ],
+      "dossier": ["Escolas de línguas e explicações"],
       "principles": [
         "Níveis e horários claros; aula experimental; professores com nome.",
         "Prova de progresso (certificações) sem promessas milagrosas."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de escolas de línguas",
-        "language school website design"
-      ]
+      "ref_queries": ["melhores sites de escolas de línguas", "language school website design"]
     },
     {
       "id": "kindergarten-childcare",
@@ -2604,30 +1983,19 @@
       "variants": [],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1"
-      ],
-      "dossier": [
-        "Creches e infantários"
-      ],
+      "hero_alternatives": ["H1"],
+      "dossier": ["Creches e infantários"],
       "principles": [
         "Segurança e calor humano: rotina diária, equipa e instalações reais; visita marcada como CTA.",
         "Preços, horários e regras claros para os pais."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de creches",
-        "daycare website design"
-      ]
+      "ref_queries": ["melhores sites de creches", "daycare website design"]
     },
     {
       "id": "nonprofit-ngo-charity",
@@ -2655,41 +2023,25 @@
       "style_id": "civic_trust_light",
       "variants": [
         {
-          "when_any": [
-            "crianças",
-            "infância",
-            "carenciadas"
-          ],
+          "when_any": ["crianças", "infância", "carenciadas"],
           "style_id": "fresh_playful_light"
         }
       ],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H9",
-        "H1"
-      ],
-      "dossier": [
-        "ONG e associações"
-      ],
+      "hero_alternatives": ["H9", "H1"],
+      "dossier": ["ONG e associações"],
       "principles": [
         "Impacto em números reais e histórias com consentimento; doar em 2 cliques.",
         "Transparência: relatório, destino dos fundos e contactos."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de ONG",
-        "nonprofit website design"
-      ]
+      "ref_queries": ["melhores sites de ONG", "nonprofit website design"]
     },
     {
       "id": "church-faith-community",
@@ -2714,30 +2066,19 @@
       "variants": [],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1"
-      ],
-      "dossier": [
-        "Igrejas e comunidades de fé"
-      ],
+      "hero_alternatives": ["H1"],
+      "dossier": ["Igrejas e comunidades de fé"],
       "principles": [
         "Acolhimento: horários de culto, morada e como chegar visíveis; rostos reais da comunidade.",
         "Eventos e transmissões; doações com transparência; tom humilde."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de igrejas",
-        "church website design"
-      ]
+      "ref_queries": ["melhores sites de igrejas", "church website design"]
     },
     {
       "id": "government-municipality-public",
@@ -2762,30 +2103,19 @@
       "variants": [],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H6"
-      ],
-      "dossier": [
-        "Governo e serviços públicos"
-      ],
+      "hero_alternatives": ["H6"],
+      "dossier": ["Governo e serviços públicos"],
       "principles": [
         "Tarefas primeiro: o que o cidadão quer fazer (pagar, pedir, marcar) em 1 clique.",
         "Acessibilidade AA/AAA, linguagem simples, contactos e horários."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de serviços públicos",
-        "government service website design"
-      ]
+      "ref_queries": ["melhores sites de serviços públicos", "government service website design"]
     },
     {
       "id": "events-conference-festival",
@@ -2807,42 +2137,25 @@
       "style_id": "bold_neobrutalism",
       "variants": [
         {
-          "when_any": [
-            "congresso",
-            "formal",
-            "corporativo",
-            "summit"
-          ],
+          "when_any": ["congresso", "formal", "corporativo", "summit"],
           "style_id": "minimalist_corporate"
         }
       ],
       "patterns": {
         "hero": "H7",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S4"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S4"],
         "navigation": "N2",
         "footer": "R1"
       },
-      "hero_alternatives": [
-        "H2",
-        "H1"
-      ],
-      "dossier": [
-        "Eventos e festivais"
-      ],
+      "hero_alternatives": ["H2", "H1"],
+      "dossier": ["Eventos e festivais"],
       "principles": [
         "Data, local e preço no primeiro ecrã; programa claro por dia; CTA de bilhete.",
         "Oradores/artistas com nome e rosto reais; contagem decrescente discreta."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de festivais",
-        "conference website design"
-      ]
+      "ref_queries": ["melhores sites de festivais", "conference website design"]
     },
     {
       "id": "music-artist-band-label",
@@ -2865,42 +2178,25 @@
       "style_id": "dark_craft_ink",
       "variants": [
         {
-          "when_any": [
-            "eletrónica",
-            "dj",
-            "club",
-            "techno"
-          ],
+          "when_any": ["eletrónica", "dj", "club", "techno"],
           "style_id": "bold_neobrutalism"
         }
       ],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R1"
       },
-      "hero_alternatives": [
-        "H7",
-        "H2"
-      ],
-      "dossier": [
-        "Artistas e bandas"
-      ],
+      "hero_alternatives": ["H7", "H2"],
+      "dossier": ["Artistas e bandas"],
       "principles": [
         "Música primeiro: player visível, datas de concertos, merch e links de streaming.",
         "Identidade forte e coerente com o som; imagens próprias."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de bandas",
-        "band website design"
-      ]
+      "ref_queries": ["melhores sites de bandas", "band website design"]
     },
     {
       "id": "film-production-studio",
@@ -2923,22 +2219,13 @@
       "variants": [],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S4"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S4"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H9",
-        "H8"
-      ],
-      "dossier": [
-        "Produtoras e cinema"
-      ],
+      "hero_alternatives": ["H9", "H8"],
+      "dossier": ["Produtoras e cinema"],
       "principles": [
         "Showreel como herói (com fallback estático); frames fortes e tipografia contida.",
         "Créditos, prémios e contacto de produção claros."
@@ -2969,31 +2256,19 @@
       "variants": [],
       "patterns": {
         "hero": "H8",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H2",
-        "H1"
-      ],
-      "dossier": [
-        "Podcasts, newsletters e media"
-      ],
+      "hero_alternatives": ["H2", "H1"],
+      "dossier": ["Podcasts, newsletters e media"],
       "principles": [
         "Episódios/edições como índice editorial; subscrição em destaque; tipografia de leitura.",
         "Autor, periodicidade e onde ouvir/ler claros."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de podcasts",
-        "podcast website design"
-      ]
+      "ref_queries": ["melhores sites de podcasts", "podcast website design"]
     },
     {
       "id": "indie-game-studio",
@@ -3013,31 +2288,19 @@
       "variants": [],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S4"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S4"],
         "navigation": "N1",
         "footer": "R1"
       },
-      "hero_alternatives": [
-        "H7",
-        "H5"
-      ],
-      "dossier": [
-        "Estúdios de jogos indie"
-      ],
+      "hero_alternatives": ["H7", "H5"],
+      "dossier": ["Estúdios de jogos indie"],
       "principles": [
         "Trailer e capturas reais primeiro; plataformas e data de lançamento claras; wishlist como CTA.",
         "Personagem/mascote e arte própria; press kit acessível."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de jogos indie",
-        "indie game website design"
-      ]
+      "ref_queries": ["melhores sites de jogos indie", "indie game website design"]
     },
     {
       "id": "hotel-resort-travel-agency",
@@ -3062,42 +2325,25 @@
       "style_id": "minimalist_warm",
       "variants": [
         {
-          "when_any": [
-            "luxo",
-            "luxuoso",
-            "5 estrelas",
-            "exclusivo"
-          ],
+          "when_any": ["luxo", "luxuoso", "5 estrelas", "exclusivo"],
           "style_id": "luxury_noir"
         }
       ],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H6",
-        "H9"
-      ],
-      "dossier": [
-        "Hotéis, turismo e viagens"
-      ],
+      "hero_alternatives": ["H6", "H9"],
+      "dossier": ["Hotéis, turismo e viagens"],
       "principles": [
         "Lugar e experiência: fotografia real do lugar e dos quartos; localização e reserva à vista.",
         "Preços e política de cancelamento claros; avaliações verificadas."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de hotéis boutique",
-        "boutique hotel website design"
-      ]
+      "ref_queries": ["melhores sites de hotéis boutique", "boutique hotel website design"]
     },
     {
       "id": "food-delivery-takeaway-truck",
@@ -3122,31 +2368,19 @@
       "variants": [],
       "patterns": {
         "hero": "H5",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R1"
       },
-      "hero_alternatives": [
-        "H6",
-        "H7"
-      ],
-      "dossier": [
-        "Delivery, takeaway e food trucks"
-      ],
+      "hero_alternatives": ["H6", "H7"],
+      "dossier": ["Delivery, takeaway e food trucks"],
       "principles": [
         "Apetite e rapidez: fotografia de prato, menu claro, pedido em poucos toques.",
         "Zona de entrega, tempo e custo visíveis; horários e localização do truck."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de food trucks",
-        "food truck website design"
-      ]
+      "ref_queries": ["melhores sites de food trucks", "food truck website design"]
     },
     {
       "id": "wedding-private-events",
@@ -3165,41 +2399,25 @@
       "style_id": "clean_editorial",
       "variants": [
         {
-          "when_any": [
-            "festa infantil",
-            "aniversário",
-            "batizado"
-          ],
+          "when_any": ["festa infantil", "aniversário", "batizado"],
           "style_id": "fresh_playful_light"
         }
       ],
       "patterns": {
         "hero": "H3",
-        "features": [
-          "F2"
-        ],
-        "social_proof": [
-          "S1"
-        ],
+        "features": ["F2"],
+        "social_proof": ["S1"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H9",
-        "H2"
-      ],
-      "dossier": [
-        "Casamentos e eventos privados"
-      ],
+      "hero_alternatives": ["H9", "H2"],
+      "dossier": ["Casamentos e eventos privados"],
       "principles": [
         "Emoção e detalhe: galeria real, estilo da equipa e processo de planeamento.",
         "Pacotes e disponibilidade/datas; pedido de orçamento simples."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de wedding planners",
-        "wedding planner website design"
-      ]
+      "ref_queries": ["melhores sites de wedding planners", "wedding planner website design"]
     },
     {
       "id": "marketplace-classifieds",
@@ -3216,33 +2434,20 @@
       "variants": [],
       "patterns": {
         "hero": "H6",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1"
-      ],
-      "dossier": [
-        "Marketplaces e classificados"
-      ],
+      "hero_alternatives": ["H1"],
+      "dossier": ["Marketplaces e classificados"],
       "principles": [
         "Pesquisa e filtros primeiro; confiança (verificação, denúncia, pagamento seguro).",
         "Fluxo de publicar anúncio simples e visível."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de classificados",
-        "classifieds marketplace website design"
-      ],
-      "weak_terms": [
-        "marketplace"
-      ]
+      "ref_queries": ["melhores sites de classificados", "classifieds marketplace website design"],
+      "weak_terms": ["marketplace"]
     },
     {
       "id": "cybersecurity-it-services",
@@ -3263,40 +2468,25 @@
       "style_id": "saas_dark_modern",
       "variants": [
         {
-          "when_any": [
-            "pme",
-            "empresas locais",
-            "pequenas empresas"
-          ],
+          "when_any": ["pme", "empresas locais", "pequenas empresas"],
           "style_id": "minimalist_corporate"
         }
       ],
       "patterns": {
         "hero": "H4",
-        "features": [
-          "F4"
-        ],
-        "social_proof": [
-          "S4"
-        ],
+        "features": ["F4"],
+        "social_proof": ["S4"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1"
-      ],
-      "dossier": [
-        "Cibersegurança e serviços de TI"
-      ],
+      "hero_alternatives": ["H1"],
+      "dossier": ["Cibersegurança e serviços de TI"],
       "principles": [
         "Credibilidade técnica: certificações, metodologia e casos; demonstração real em vez de ícones de escudo.",
         "Resposta a incidentes e contacto 24/7 visíveis."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de cibersegurança",
-        "cybersecurity company website design"
-      ]
+      "ref_queries": ["melhores sites de cibersegurança", "cybersecurity company website design"]
     },
     {
       "id": "mobile-app-landing",
@@ -3318,31 +2508,19 @@
       "variants": [],
       "patterns": {
         "hero": "H5",
-        "features": [
-          "F4"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F4"],
+        "social_proof": ["S2"],
         "navigation": "N2",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H4",
-        "H1"
-      ],
-      "dossier": [
-        "Landing de aplicações móveis"
-      ],
+      "hero_alternatives": ["H4", "H1"],
+      "dossier": ["Landing de aplicações móveis"],
       "principles": [
         "Ecrãs reais do produto e uma promessa; link de loja visível acima da dobra.",
         "Capturas por funcionalidade, avaliações reais e política de privacidade."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores landing pages de apps",
-        "mobile app landing page design"
-      ]
+      "ref_queries": ["melhores landing pages de apps", "mobile app landing page design"]
     },
     {
       "id": "telecom-internet-isp",
@@ -3364,21 +2542,13 @@
       "variants": [],
       "patterns": {
         "hero": "H1",
-        "features": [
-          "F5"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F5"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H6"
-      ],
-      "dossier": [
-        "Telecomunicações e internet"
-      ],
+      "hero_alternatives": ["H6"],
+      "dossier": ["Telecomunicações e internet"],
       "principles": [
         "Planos e cobertura primeiro: comparar tarifas lado a lado; verificação de cobertura por morada.",
         "Suporte e preços finais sem letras pequenas."
@@ -3408,67 +2578,27 @@
       "variants": [],
       "patterns": {
         "hero": "H6",
-        "features": [
-          "F3"
-        ],
-        "social_proof": [
-          "S2"
-        ],
+        "features": ["F3"],
+        "social_proof": ["S2"],
         "navigation": "N1",
         "footer": "R2"
       },
-      "hero_alternatives": [
-        "H1"
-      ],
-      "dossier": [
-        "Emprego e recrutamento"
-      ],
+      "hero_alternatives": ["H1"],
+      "dossier": ["Emprego e recrutamento"],
       "principles": [
         "Pesquisa de vagas primeiro (filtros por área/local); candidatura em poucos passos.",
         "Para empresas: processo e preços claros; transparência salarial quando possível."
       ],
       "sources": [],
-      "ref_queries": [
-        "melhores sites de recrutamento",
-        "job board website design"
-      ]
+      "ref_queries": ["melhores sites de recrutamento", "job board website design"]
     }
   ],
   "pattern_ids": {
-    "hero": [
-      "H1",
-      "H2",
-      "H3",
-      "H4",
-      "H5",
-      "H6",
-      "H7",
-      "H8",
-      "H9"
-    ],
-    "features": [
-      "F1",
-      "F2",
-      "F3",
-      "F4",
-      "F5",
-      "F6"
-    ],
-    "social_proof": [
-      "S1",
-      "S2",
-      "S3",
-      "S4"
-    ],
-    "navigation": [
-      "N1",
-      "N2",
-      "N3"
-    ],
-    "footer": [
-      "R1",
-      "R2"
-    ]
+    "hero": ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9"],
+    "features": ["F1", "F2", "F3", "F4", "F5", "F6"],
+    "social_proof": ["S1", "S2", "S3", "S4"],
+    "navigation": ["N1", "N2", "N3"],
+    "footer": ["R1", "R2"]
   },
   "tones": {
     "loud": [

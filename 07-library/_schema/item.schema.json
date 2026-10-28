@@ -1,16 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
-  "required": [
-    "id",
-    "type",
-    "title",
-    "notes_path",
-    "niches",
-    "archetypes",
-    "traits",
-    "status"
-  ],
+  "required": ["id", "type", "title", "notes_path", "niches", "archetypes", "traits", "status"],
   "properties": {
     "id": { "type": "string", "pattern": "^(vid|bk|mob)-[0-9]{3,}$" },
     "type": { "enum": ["video", "image", "book"] },

@@ -15,8 +15,7 @@ const run = (f) =>
 
 test("render-audit: bad.html tem achados; good.html passa", (t) => {
   const bad = run("bad.html");
-  if (bad.status !== 1)
-    return t.skip(`Playwright/Chromium indisponível (exit ${bad.status})`);
+  if (bad.status !== 1) return t.skip(`Playwright/Chromium indisponível (exit ${bad.status})`);
   assert.match(bad.stdout, /\[tracking\]/);
   assert.match(bad.stdout, /\[contrast\]/);
   assert.match(bad.stdout, /\[focus-visible\]/);

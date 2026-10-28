@@ -23,16 +23,13 @@ test("eval-summary: empate → sem ganho; amostra curta → aviso", () => {
   }
   assert.match(summarize({ runs }).verdict, /Sem ganho/);
   assert.match(
-    summarize({ runs: [mk(1, "with_repo", 2), mk(1, "without_repo", 0)] })
-      .verdict,
-    /insuficiente/,
+    summarize({ runs: [mk(1, "with_repo", 2), mk(1, "without_repo", 0)] }).verdict,
+    /insuficiente/
   );
 });
 test("eval-summary: ignora notas nulas (template por preencher)", () => {
   const r = summarize({
-    runs: [
-      { prompt_id: 1, condition: "with_repo", scores: { identity: null } },
-    ],
+    runs: [{ prompt_id: 1, condition: "with_repo", scores: { identity: null } }],
   });
   assert.strictEqual(r.pairs, 0);
 });

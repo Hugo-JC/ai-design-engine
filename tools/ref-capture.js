@@ -12,7 +12,7 @@ const get = (f, d) => {
 async function main() {
   if (!url)
     throw new Error(
-      "Uso: node tools/ref-capture.js <url> [--out references/<slug>] [--viewports 390,1440]",
+      "Uso: node tools/ref-capture.js <url> [--out references/<slug>] [--viewports 390,1440]"
     );
   const parsed = new URL(url);
   if (!["http:", "https:", "file:"].includes(parsed.protocol))
@@ -25,7 +25,7 @@ async function main() {
         const t = await r.text();
         if (/^User-agent:\s*\*\s*$[\s\S]*?^Disallow:\s*\/\s*$/im.test(t))
           throw new Error(
-            "Captura bloqueada por robots.txt; use --ignore-robots explicitamente se tiver autorização.",
+            "Captura bloqueada por robots.txt; use --ignore-robots explicitamente se tiver autorização."
           );
       }
     } catch (e) {
@@ -37,13 +37,13 @@ async function main() {
     pw = require("playwright");
   } catch {
     console.error(
-      "Playwright é opcional. Instale-o localmente (npm install --no-save playwright) e disponibilize Chromium.",
+      "Playwright é opcional. Instale-o localmente (npm install --no-save playwright) e disponibilize Chromium."
     );
     process.exitCode = 2;
     return;
   }
   const out = path.resolve(
-    get("--out", path.join("references", parsed.hostname || "local-capture")),
+    get("--out", path.join("references", parsed.hostname || "local-capture"))
   );
   fs.mkdirSync(out, { recursive: true });
   const widths = get("--viewports", "390,1440").split(",").map(Number);
@@ -51,7 +51,9 @@ async function main() {
   try {
     browser = await pw.chromium.launch({ headless: true });
   } catch (e) {
-    console.error(`Browser indisponível: ${String(e.message).split("\n")[0]}\nInstale com: npx playwright install chromium`);
+    console.error(
+      `Browser indisponível: ${String(e.message).split("\n")[0]}\nInstale com: npx playwright install chromium`
+    );
     process.exit(2);
   }
   try {
@@ -69,9 +71,7 @@ async function main() {
       const page = await browser.newPage({ viewport: { width, height: 900 } });
       await page
         .goto(url, { waitUntil: "networkidle", timeout: 30000 })
-        .catch(() =>
-          page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 }),
-        );
+        .catch(() => page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 }));
       const data = await page.evaluate(() => {
         const cs = (e) => (e ? getComputedStyle(e) : null);
         const h = document.querySelector("h1"),
@@ -79,10 +79,7 @@ async function main() {
           root = getComputedStyle(document.documentElement);
         const fonts = {};
         for (const e of document.querySelectorAll("body *")) {
-          const f = getComputedStyle(e)
-            .fontFamily.split(",")[0]
-            .replace(/["']/g, "")
-            .trim();
+          const f = getComputedStyle(e).fontFamily.split(",")[0].replace(/["']/g, "").trim();
           if (f) fonts[f] = (fonts[f] || 0) + 1;
         }
         const colors = {};
@@ -110,27 +107,19 @@ async function main() {
               ? {
                   size_px: parseFloat(hs.fontSize),
                   weight: Number(hs.fontWeight) || 400,
-                  letter_spacing_em:
-                    parseFloat(hs.letterSpacing) /
-                    (parseFloat(hs.fontSize) || 1),
+                  letter_spacing_em: parseFloat(hs.letterSpacing) / (parseFloat(hs.fontSize) || 1),
                 }
               : null,
             body: bs ? { size_px: parseFloat(bs.fontSize) } : null,
           },
           vars,
-          sections: document.querySelectorAll("main section,body>section")
-            .length,
+          sections: document.querySelectorAll("main section,body>section").length,
           marquee: !!document.querySelector("[class*=marquee],[data-marquee]"),
-          sticky: !!document.querySelector(
-            "nav[style*=sticky],header[style*=sticky]",
-          ),
+          sticky: !!document.querySelector("nav[style*=sticky],header[style*=sticky]"),
         };
       });
       if (width === widths[0]) {
-        const totalFontUses = data.fonts.reduce(
-          (sum, [, count]) => sum + count,
-          0,
-        );
+        const totalFontUses = data.fonts.reduce((sum, [, count]) => sum + count, 0);
         metadata.fonts = data.fonts.map(([family, n]) => ({
           family,
           usage_pct: Math.round((n / Math.max(1, totalFontUses)) * 100),
@@ -159,17 +148,14 @@ async function main() {
         });
       await page.close();
     }
-    fs.writeFileSync(
-      path.join(out, "capture.json"),
-      JSON.stringify(metadata, null, 2) + "\n",
-    );
+    fs.writeFileSync(path.join(out, "capture.json"), JSON.stringify(metadata, null, 2) + "\n");
     fs.writeFileSync(
       path.join(out, "notes.md"),
       "# Referência visual\n- **Fonte:** " +
         url +
         " · capturado em " +
         metadata.captured_at +
-        "\n- **Porque me atraiu (1 frase, minha):**\n\n## Padrões (palavras minhas)\n- Composição / arquétipo:\n- Tipografia (escala, peso, caixa):\n- Cor (papel de cada cor, não valores exatos):\n- Espaçamento e ritmo:\n- Movimento (o quê, quando, duração aproximada, easing):\n\n## Extrair\n-\n\n## Não copiar\n-\n\n## Mapeamento para o repo\n- Nicho(s): · Arquétipo(s): · Traço(s):\n",
+        "\n- **Porque me atraiu (1 frase, minha):**\n\n## Padrões (palavras minhas)\n- Composição / arquétipo:\n- Tipografia (escala, peso, caixa):\n- Cor (papel de cada cor, não valores exatos):\n- Espaçamento e ritmo:\n- Movimento (o quê, quando, duração aproximada, easing):\n\n## Extrair\n-\n\n## Não copiar\n-\n\n## Mapeamento para o repo\n- Nicho(s): · Arquétipo(s): · Traço(s):\n"
     );
   } finally {
     await browser.close();

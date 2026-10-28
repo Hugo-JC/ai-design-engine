@@ -13,15 +13,9 @@ const classify = (status, url, body) => {
     .replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<[^>]+>/gi, " ")
     .replace(/\s+/g, " ")
     .trim();
-  if (
-    /\/login|\/signin/i.test(new URL(url).pathname) ||
-    /<form[^>]+password/i.test(body)
-  )
+  if (/\/login|\/signin/i.test(new URL(url).pathname) || /<form[^>]+password/i.test(body))
     return "login";
-  if (
-    [401, 403, 429].includes(status) ||
-    /just a moment|captcha|verify you are human/i.test(body)
-  )
+  if ([401, 403, 429].includes(status) || /just a moment|captcha|verify you are human/i.test(body))
     return "blocked";
   if (status === 200) return text.length >= 800 ? "ok" : "js-only";
   return "error";
@@ -54,7 +48,7 @@ async function main() {
   const id = value("--id");
   const sources = data.sources.filter((s) => !id || s.id === id);
   const results = await Promise.all(
-    sources.map((s) => check(s, Number(value("--timeout", 15000)))),
+    sources.map((s) => check(s, Number(value("--timeout", 15000))))
   );
   if (args.includes("--write")) {
     const now = new Date().toISOString();
@@ -66,9 +60,7 @@ async function main() {
     fs.writeFileSync(file, JSON.stringify(data, null, 2) + "\n");
   }
   console.log("ID\tESTADO\tHTTP\tURL");
-  results.forEach((r) =>
-    console.log(`${r.id}\t${r.status}\t${r.http || "-"}\t${r.url}`),
-  );
+  results.forEach((r) => console.log(`${r.id}\t${r.status}\t${r.http || "-"}\t${r.url}`));
 }
 if (require.main === module)
   main().catch((e) => {

@@ -19,12 +19,9 @@ Este guia mostra como transformar código genérico gerado por IA em interfaces 
   <h3 class="text-white text-lg font-bold">Automação Rápida</h3>
   <hr class="my-2" />
   <p class="text-gray-300 text-base">
-    Nossa ferramenta automatiza seus processos de forma rápida e eficiente para
-    sua empresa crescer.
+    Nossa ferramenta automatiza seus processos de forma rápida e eficiente para sua empresa crescer.
   </p>
-  <button class="bg-purple-600 text-white p-2 w-full mt-2 rounded-none">
-    Saiba Mais
-  </button>
+  <button class="bg-purple-600 text-white p-2 w-full mt-2 rounded-none">Saiba Mais</button>
 </div>
 
 <!-- CORRETO: Design elegante, legível e moderno -->
@@ -45,12 +42,9 @@ Este guia mostra como transformar código genérico gerado por IA em interfaces 
   </div>
 
   <div class="space-y-1">
-    <h3 class="text-white text-lg font-semibold tracking-tight">
-      Automação Rápida
-    </h3>
+    <h3 class="text-white text-lg font-semibold tracking-tight">Automação Rápida</h3>
     <p class="text-zinc-400 text-sm leading-relaxed">
-      Nossa ferramenta otimiza seus fluxos de trabalho com precisão e sem
-      complicação.
+      Nossa ferramenta otimiza seus fluxos de trabalho com precisão e sem complicação.
     </p>
   </div>
 
@@ -135,12 +129,8 @@ Problemas reais encontrados em testes: letras coladas no título, linha divisór
   <div
     class="absolute -left-4 bottom-8 w-56 rounded-2xl bg-stone-800/90 p-4 backdrop-blur flex flex-col gap-1"
   >
-    <span class="text-[11px] uppercase tracking-[0.12em] text-stone-400"
-      >Origem do lote</span
-    >
-    <p class="font-semibold text-stone-50 text-balance">
-      Serra da Mantiqueira, 1.200&nbsp;m
-    </p>
+    <span class="text-[11px] uppercase tracking-[0.12em] text-stone-400">Origem do lote</span>
+    <p class="font-semibold text-stone-50 text-balance">Serra da Mantiqueira, 1.200&nbsp;m</p>
     <p class="text-sm text-stone-400">Colheita manual · Processo lavado</p>
   </div>
 </div>

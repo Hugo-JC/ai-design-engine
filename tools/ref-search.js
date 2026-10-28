@@ -10,33 +10,22 @@ const norm = (s) =>
     .toLowerCase();
 function search(prompt, options = {}) {
   const configFile = path.join(root, "ade.config.json");
-  const config = fs.existsSync(configFile)
-    ? JSON.parse(fs.readFileSync(configFile, "utf8"))
-    : {};
+  const config = fs.existsSync(configFile) ? JSON.parse(fs.readFileSync(configFile, "utf8")) : {};
   const refs = config.references || {};
-  const max = Math.min(
-    3,
-    Math.max(0, Number(options.max || refs.max_refs || 3)),
-  );
+  const max = Math.min(3, Math.max(0, Number(options.max || refs.max_refs || 3)));
   if (refs.enabled === false) return [];
   const catalog = JSON.parse(
-    fs.readFileSync(
-      path.join(root, "03-references/reference-sources.json"),
-      "utf8",
-    ),
+    fs.readFileSync(path.join(root, "03-references/reference-sources.json"), "utf8")
   );
   const presets = JSON.parse(
-    fs.readFileSync(
-      path.join(root, "03-references/local-presets.json"),
-      "utf8",
-    ),
+    fs.readFileSync(path.join(root, "03-references/local-presets.json"), "utf8")
   );
   const preset = options.preset
     ? presets.presets.find((p) => p.id === options.preset)
     : presets.presets.find(
         (p) =>
           norm(prompt).includes(p.id.replace(/-/g, " ")) ||
-          p.match_terms.some((t) => norm(prompt).includes(norm(t))),
+          p.match_terms.some((t) => norm(prompt).includes(norm(t)))
       );
   const niche = options.preset || (preset && preset.id);
   const archetype = options.archetype || (preset && preset.patterns.hero);
@@ -66,12 +55,9 @@ function search(prompt, options = {}) {
         if (!["indexed", "summarized"].includes(item.status)) continue;
         let score = 0;
         if (niche && (item.niches || []).includes(niche)) score += 4;
-        if (archetype && (item.archetypes || []).includes(archetype))
-          score += 3;
+        if (archetype && (item.archetypes || []).includes(archetype)) score += 3;
         if (
-          (item.traits || []).some(
-            (t) => terms.includes(t.replace(/-/g, " ")) || terms.includes(t),
-          )
+          (item.traits || []).some((t) => terms.includes(t.replace(/-/g, " ")) || terms.includes(t))
         )
           score += 2;
         if (score)
@@ -81,9 +67,7 @@ function search(prompt, options = {}) {
             access: "notes",
             why: `correspondência (pontuação ${score})`,
             extract: (item.extract || []).join("; ") || "consultar notes.md",
-            do_not_copy:
-              (item.do_not_copy || []).join(", ") ||
-              "marca, copy e composição integral",
+            do_not_copy: (item.do_not_copy || []).join(", ") || "marca, copy e composição integral",
             score,
             rating: item.rating || 0,
             order: output.length,
@@ -100,14 +84,10 @@ function search(prompt, options = {}) {
         access: "url",
         url: source.url,
         why: "fonte pública associada ao preset",
-        extract:
-          (source.pattern_cues || []).join(", ") ||
-          "padrões abstratos do nicho",
+        extract: (source.pattern_cues || []).join(", ") || "padrões abstratos do nicho",
         do_not_copy: "logótipo, copy, imagens e layout integral",
       });
-    for (const source of catalog.sources.filter((s) =>
-      (s.niches || []).includes(niche),
-    ))
+    for (const source of catalog.sources.filter((s) => (s.niches || []).includes(niche)))
       output.push({
         id: source.id,
         level: "L3",
@@ -129,17 +109,14 @@ function search(prompt, options = {}) {
     extract: "princípios e arquétipos do router",
     do_not_copy: "não aplicável",
   });
-  const unique = output.filter(
-    (x, i, a) => a.findIndex((y) => y.id === x.id) === i,
-  );
+  const unique = output.filter((x, i, a) => a.findIndex((y) => y.id === x.id) === i);
   return unique
     .sort(
       (a, b) =>
-        ({ L1: 0, L2: 1, L3: 2, L4: 3 })[a.level] -
-          { L1: 0, L2: 1, L3: 2, L4: 3 }[b.level] ||
+        ({ L1: 0, L2: 1, L3: 2, L4: 3 })[a.level] - { L1: 0, L2: 1, L3: 2, L4: 3 }[b.level] ||
         (b.score || 0) - (a.score || 0) ||
         (b.rating || 0) - (a.rating || 0) ||
-        (a.order || 0) - (b.order || 0),
+        (a.order || 0) - (b.order || 0)
     )
     .slice(0, max);
 }
@@ -151,9 +128,7 @@ if (require.main === module) {
   };
   const prompt = args
     .filter(
-      (x) =>
-        !x.startsWith("--") &&
-        !["--preset", "--archetype", "--trait", "--max"].includes(x),
+      (x) => !x.startsWith("--") && !["--preset", "--archetype", "--trait", "--max"].includes(x)
     )
     .join(" ");
   const result = search(prompt, {
@@ -166,8 +141,8 @@ if (require.main === module) {
   else
     result.forEach((r) =>
       console.log(
-        `[${r.level}] ${r.id} — acesso: ${r.access} → extrair: ${r.extract} | não copiar: ${r.do_not_copy}`,
-      ),
+        `[${r.level}] ${r.id} — acesso: ${r.access} → extrair: ${r.extract} | não copiar: ${r.do_not_copy}`
+      )
     );
 }
 module.exports = { search };

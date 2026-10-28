@@ -22,18 +22,13 @@ const allowHex = (optVal("--allow") || "")
   .map((x) => x.trim().toLowerCase())
   .filter(Boolean);
 const files = argv.filter(
-  (a, i) =>
-    !a.startsWith("--") &&
-    !["--style", "--allow", "--accent"].includes(argv[i - 1]),
+  (a, i) => !a.startsWith("--") && !["--style", "--allow", "--accent"].includes(argv[i - 1])
 );
 
 // ---------- utilitários ----------
 const lineOf = (c, i) => c.slice(0, i).split("\n").length;
 function findAll(content, regex) {
-  const re = new RegExp(
-    regex.source,
-    regex.flags.includes("g") ? regex.flags : regex.flags + "g",
-  );
+  const re = new RegExp(regex.source, regex.flags.includes("g") ? regex.flags : regex.flags + "g");
   const hits = [];
   let m;
   while ((m = re.exec(content)) !== null) {
@@ -46,8 +41,7 @@ const linesOf = (content, idxs, max = 5) => {
   const ls = [...new Set(idxs.map((i) => lineOf(content, i)))];
   return `(linha${ls.length > 1 ? "s" : ""} ${ls.slice(0, max).join(", ")}${ls.length > max ? "…" : ""})`;
 };
-const strip = (s) =>
-  s.replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, " "));
+const strip = (s) => s.replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, " "));
 
 // ---------- CSS ----------
 function extractCss(content, file) {
@@ -87,8 +81,7 @@ function parseCss(css, offset) {
       }
       const body = str.slice(open + 1, j - 1);
       if (head.startsWith("@")) {
-        if (/^@(media|supports|layer)/.test(head))
-          walk(body, base + open + 1, head);
+        if (/^@(media|supports|layer)/.test(head)) walk(body, base + open + 1, head);
         else if (/keyframes/.test(head))
           rules.push({
             selector: head,
@@ -120,7 +113,7 @@ function makeResolver(rules) {
     depth > 6
       ? v
       : v.replace(/var\(\s*(--[\w-]+)\s*(?:,\s*([^)]*))?\)/g, (_, n, fb) =>
-          vars[n] !== undefined ? res(vars[n], depth + 1) : fb || "",
+          vars[n] !== undefined ? res(vars[n], depth + 1) : fb || ""
         );
   return { vars, res };
 }
@@ -138,9 +131,7 @@ const sizePx = (v) => {
 // ---------- markup ----------
 const TAG_RE = /<[A-Za-z][A-Za-z0-9-]*\b[^>]*>/g;
 const classesOf = (t) => {
-  const m = t.match(
-    /class(?:Name)?\s*=\s*(?:"([^"]*)"|'([^']*)'|\{`([^`]*)`\})/,
-  );
+  const m = t.match(/class(?:Name)?\s*=\s*(?:"([^"]*)"|'([^']*)'|\{`([^`]*)`\})/);
   return m ? (m[1] || m[2] || m[3] || "").split(/\s+/).filter(Boolean) : [];
 };
 const idOf = (t) => {
@@ -152,10 +143,8 @@ function isButtonLike(hit) {
     n = (t.match(/^<([A-Za-z][A-Za-z0-9]*)/) || [])[1];
   if (!n) return false;
   if (/^button$/i.test(n) || /^[A-Z][A-Za-z0-9]*Button$/.test(n)) return true;
-  if (/^a$/i.test(n))
-    return /\bhref\s*=/.test(t) || /\brole\s*=\s*["']?button/.test(t);
-  if (/^input$/i.test(n))
-    return /\btype\s*=\s*["']?(?:button|submit|reset)/i.test(t);
+  if (/^a$/i.test(n)) return /\bhref\s*=/.test(t) || /\brole\s*=\s*["']?button/.test(t);
+  if (/^input$/i.test(n)) return /\btype\s*=\s*["']?(?:button|submit|reset)/i.test(t);
   return false;
 }
 function compoundMatches(compound, tagName, classes, id) {
@@ -168,10 +157,7 @@ function compoundMatches(compound, tagName, classes, id) {
   return cls.every((x) => classes.includes(x)) && ids.every((x) => x === id);
 }
 function cssCovers(rules, state, tagName, classes, id) {
-  const pseudo =
-    state === "hover"
-      ? [":hover"]
-      : [":focus-visible", ":focus", ":focus-within"];
+  const pseudo = state === "hover" ? [":hover"] : [":focus-visible", ":focus", ":focus-within"];
   return rules.some(
     (r) =>
       !r.keyframes &&
@@ -184,19 +170,14 @@ function cssCovers(rules, state, tagName, classes, id) {
             .filter(Boolean)
             .pop() || "";
         return compoundMatches(last, tagName, classes, id);
-      }),
+      })
   );
 }
 
 // ---------- validação ----------
 function loadTokens() {
   if (!styleId) return null;
-  const f = path.resolve(
-    __dirname,
-    "..",
-    "02-styles-and-tokens",
-    "design-styles.json",
-  );
+  const f = path.resolve(__dirname, "..", "02-styles-and-tokens", "design-styles.json");
   const st = JSON.parse(fs.readFileSync(f, "utf8")).styles[styleId];
   if (!st) {
     console.error(`❌ style_id desconhecido: ${styleId}`);
@@ -213,8 +194,7 @@ function validate(content, file, tokens) {
     F.push({
       id,
       severity,
-      message:
-        message + (idxs && idxs.length ? " " + linesOf(content, idxs) : ""),
+      message: message + (idxs && idxs.length ? " " + linesOf(content, idxs) : ""),
     });
   const isDoc = /<html\b/i.test(content);
   const blocks = extractCss(content, file);
@@ -223,10 +203,9 @@ function validate(content, file, tokens) {
   const tags = findAll(content, TAG_RE);
   const bodyText = content.replace(
     /<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<[^>]+>/g,
-    (m) => m.replace(/[^\n]/g, " "),
+    (m) => m.replace(/[^\n]/g, " ")
   );
-  const isNeo =
-    styleId === "bold_neobrutalism" || (tokens && tokens.radius === "0px");
+  const isNeo = styleId === "bold_neobrutalism" || (tokens && tokens.radius === "0px");
 
   // 1. separadores
   const hr = findAll(content, /<hr\b/i);
@@ -235,57 +214,46 @@ function validate(content, file, tokens) {
       "hr",
       "warn",
       `${hr.length} tag(s) <hr>. Use espaçamento ou mudança de superfície.`,
-      hr.map((h) => h.index),
+      hr.map((h) => h.index)
     );
   if (/\.mdx?$/i.test(file)) {
     const md = findAll(content, /^\s*(?:---+|___+|\*\*\*+)\s*$/m).filter(
-      (h) => lineOf(content, h.index) > 1,
+      (h) => lineOf(content, h.index) > 1
     );
     if (md.length)
       add(
         "md-rule",
         "warn",
         `${md.length} linha(s) horizontal(is) Markdown.`,
-        md.map((h) => h.index),
+        md.map((h) => h.index)
       );
   }
   const dis = [
     ...findAll(content, /\b(?:border-t|border-b|divide-y|h-px)\b/),
-    ...findAll(
-      content,
-      /border-(?:top|bottom)\s*:\s*\d+(?:\.\d+)?px\s+(?:solid|dashed|dotted)/i,
-    ),
+    ...findAll(content, /border-(?:top|bottom)\s*:\s*\d+(?:\.\d+)?px\s+(?:solid|dashed|dotted)/i),
   ];
   if (dis.length)
     add(
       "divider",
       "warn",
       `${dis.length} possível(eis) divisor(es) disfarçado(s). Se separam blocos soltos, troque por espaçamento/fundo.`,
-      dis.map((h) => h.index),
+      dis.map((h) => h.index)
     );
 
   // 2. botões retos
   if (!isNeo) {
-    const sq = tags
-      .filter(isButtonLike)
-      .filter((h) => /\brounded-none\b/.test(h.text));
+    const sq = tags.filter(isButtonLike).filter((h) => /\brounded-none\b/.test(h.text));
     const sqCss = rules.filter(
       (r) =>
         !r.keyframes &&
-        /(^|[\s,>+~])(button|a?\.btn[\w-]*|\.button[\w-]*)\b/.test(
-          r.selector,
-        ) &&
-        r.decls.some(
-          (d) => d.prop === "border-radius" && /^0(px)?$/.test(d.value),
-        ),
+        /(^|[\s,>+~])(button|a?\.btn[\w-]*|\.button[\w-]*)\b/.test(r.selector) &&
+        r.decls.some((d) => d.prop === "border-radius" && /^0(px)?$/.test(d.value))
     );
     if (sq.length || sqCss.length)
-      add(
-        "square-btn",
-        "warn",
-        "Botões com border-radius 0 sem estilo neo-brutalista explícito.",
-        [...sq.map((h) => h.index), ...sqCss.map((r) => r.index)],
-      );
+      add("square-btn", "warn", "Botões com border-radius 0 sem estilo neo-brutalista explícito.", [
+        ...sq.map((h) => h.index),
+        ...sqCss.map((r) => r.index),
+      ]);
   }
 
   // 3. estados hover/focus (Tailwind OU CSS real)
@@ -297,44 +265,39 @@ function validate(content, file, tokens) {
       id = idOf(h.text);
     const twH = cls.some((c) => /(^|:)hover:|group-hover/.test(c)),
       twF = cls.some((c) => /(^|:)focus(-visible)?:/.test(c));
-    if (!twH && !cssCovers(rules, "hover", name, cls, id))
-      miss.hover.push(h.index);
-    if (!twF && !cssCovers(rules, "focus", name, cls, id))
-      miss.focus.push(h.index);
+    if (!twH && !cssCovers(rules, "hover", name, cls, id)) miss.hover.push(h.index);
+    if (!twF && !cssCovers(rules, "focus", name, cls, id)) miss.focus.push(h.index);
   });
   if (miss.hover.length)
     add(
       "hover",
       "warn",
       `${miss.hover.length} botão(ões)/link(s) de ação sem estado de hover (nem em classes nem em CSS).`,
-      miss.hover,
+      miss.hover
     );
   if (miss.focus.length)
     add(
       "focus",
       "warn",
       `${miss.focus.length} botão(ões)/link(s) de ação sem estado de foco visível (:focus-visible).`,
-      miss.focus,
+      miss.focus
     );
   const noOutline = rules.filter(
     (r) =>
-      r.decls.some(
-        (d) => d.prop === "outline" && /^(none|0)\b/.test(d.value),
-      ) && !/:focus-visible/.test(r.selector),
+      r.decls.some((d) => d.prop === "outline" && /^(none|0)\b/.test(d.value)) &&
+      !/:focus-visible/.test(r.selector)
   );
   if (noOutline.length && !rules.some((r) => /:focus-visible/.test(r.selector)))
     add(
       "outline",
       "warn",
       "outline removido sem alternativa :focus-visible.",
-      noOutline.map((r) => r.index),
+      noOutline.map((r) => r.index)
     );
 
   // 4. tracking (limite do estilo - 0.01 de tolerância)
   const minTrk =
-    (tokens && tokens.heading_tracking_range
-      ? tokens.heading_tracking_range[0]
-      : -0.02) - 0.01;
+    (tokens && tokens.heading_tracking_range ? tokens.heading_tracking_range[0] : -0.02) - 0.01;
   const tight = [...findAll(content, /\btracking-tighter\b/)];
   findAll(content, /tracking-\[(-\d*\.?\d+)em\]/).forEach((h) => {
     if (parseFloat(h.m[1]) < minTrk) tight.push(h);
@@ -345,22 +308,20 @@ function validate(content, file, tokens) {
         const m = res(d.value).match(/^(-[\d.]*\.?\d+)em$/);
         if (m && parseFloat(m[1]) < minTrk) tight.push({ index: d.index });
       }
-    }),
+    })
   );
   if (tight.length)
     add(
       "tracking",
       "warn",
       `Tracking demasiado apertado (limite ${minTrk.toFixed(2)}em${tokens ? " do estilo" : ""}).`,
-      tight.map((h) => h.index),
+      tight.map((h) => h.index)
     );
 
   // 5. text-wrap em títulos
   const heads = tags.filter((h) => /^<h[1-6]\b/i.test(h.text));
   const wrapRules = rules.filter((r) =>
-    r.decls.some(
-      (d) => d.prop === "text-wrap" && /balance|pretty/.test(d.value),
-    ),
+    r.decls.some((d) => d.prop === "text-wrap" && /balance|pretty/.test(d.value))
   );
   const noWrap = heads.filter((h) => {
     if (/text-balance|text-wrap|textWrap|balance/.test(h.text)) return false;
@@ -377,9 +338,9 @@ function validate(content, file, tokens) {
               .pop() || "",
             name,
             cls,
-            id,
-          ) && /h[1-6]|\./.test(s),
-      ),
+            id
+          ) && /h[1-6]|\./.test(s)
+      )
     );
   });
   if (noWrap.length)
@@ -387,7 +348,7 @@ function validate(content, file, tokens) {
       "wrap",
       "warn",
       `${noWrap.length} título(s) sem text-wrap: balance (tag, classe ou regra CSS).`,
-      noWrap.map((h) => h.index),
+      noWrap.map((h) => h.index)
     );
 
   // 6. grelha de espaçamento: base 8, meio-passo 4 até 16px
@@ -400,38 +361,34 @@ function validate(content, file, tokens) {
   };
   findAll(
     content,
-    /\b(?:p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|ml|mr|gap|gap-x|gap-y|space-x|space-y)-\[(\d+(?:\.\d+)?)px\]/,
+    /\b(?:p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|ml|mr|gap|gap-x|gap-y|space-x|space-y)-\[(\d+(?:\.\d+)?)px\]/
   ).forEach((h) => chk(parseFloat(h.m[1]), h.index));
   findAll(
     content,
-    /(?:^|[\s"'`])-?(?:p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|ml|mr|gap|gap-x|gap-y|space-x|space-y)-(\d+(?:\.\d+)?)(?=$|[\s"'`])/g,
+    /(?:^|[\s"'`])-?(?:p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|ml|mr|gap|gap-x|gap-y|space-x|space-y)-(\d+(?:\.\d+)?)(?=$|[\s"'`])/g
   ).forEach((h) => chk(parseFloat(h.m[1]) * 4, h.index));
   rules.forEach((r) =>
     r.decls.forEach((d) => {
-      if (
-        !/^(padding|margin|gap|row-gap|column-gap)(-(top|right|bottom|left))?$/.test(
-          d.prop,
-        )
-      )
+      if (!/^(padding|margin|gap|row-gap|column-gap)(-(top|right|bottom|left))?$/.test(d.prop))
         return;
       [...res(d.value).matchAll(/(-?[\d.]+)(px|rem)\b/g)].forEach((m) =>
-        chk(Math.abs(parseFloat(m[1])) * (m[2] === "rem" ? 16 : 1), d.index),
+        chk(Math.abs(parseFloat(m[1])) * (m[2] === "rem" ? 16 : 1), d.index)
       );
-    }),
+    })
   );
   if (off.length)
     add(
       "grid",
       "warn",
       `${off.length} espaçamento(s) fora da grelha (múltiplos de 4px; base 8px).`,
-      off,
+      off
     );
   if (soft.length)
     add(
       "grid-info",
       "info",
       `${soft.length} espaçamento(s) >16px fora de múltiplos de 8px. Confirme se é intencional.`,
-      soft,
+      soft
     );
 
   // 7. roxo/índigo genérico
@@ -444,32 +401,25 @@ function validate(content, file, tokens) {
   )) {
     const pu = findAll(
       content,
-      /\b(?:bg|from|via|to|shadow|text|border|ring)-(?:purple|violet|fuchsia|indigo)-\d{2,3}/,
+      /\b(?:bg|from|via|to|shadow|text|border|ring)-(?:purple|violet|fuchsia|indigo)-\d{2,3}/
     );
     const css = [];
     rules.forEach((r) =>
       r.decls.forEach((d) => {
         if (d.prop.startsWith("--") && !COLOR_RE.test(d.value)) return;
-        [...res(d.value).matchAll(new RegExp(COLOR_RE.source, "g"))].forEach(
-          (m) => {
-            const c = C.parseColor(m[0]);
-            if (
-              c &&
-              c.a > 0 &&
-              C.isGenericPurple(c) &&
-              !allowHex.includes(C.toHex(c))
-            )
-              css.push(d.index);
-          },
-        );
-      }),
+        [...res(d.value).matchAll(new RegExp(COLOR_RE.source, "g"))].forEach((m) => {
+          const c = C.parseColor(m[0]);
+          if (c && c.a > 0 && C.isGenericPurple(c) && !allowHex.includes(C.toHex(c)))
+            css.push(d.index);
+        });
+      })
     );
     if (pu.length || css.length)
       add(
         "purple",
         "warn",
         'Roxo/índigo detetado ("Padrão Roxo Genérico"). Confirme que foi pedido ou faz parte do estilo.',
-        [...pu.map((h) => h.index), ...css],
+        [...pu.map((h) => h.index), ...css]
       );
   }
 
@@ -480,7 +430,7 @@ function validate(content, file, tokens) {
       "generic-copy",
       "warn",
       "Texto genérico/placeholder. Escreva cópia específica do nicho.",
-      gen.map((h) => h.index),
+      gen.map((h) => h.index)
     );
   const noAlt = findAll(content, /<img\b(?![^>]*\balt\s*=)[^>]*>/i);
   if (noAlt.length)
@@ -488,18 +438,15 @@ function validate(content, file, tokens) {
       "img-alt",
       "warn",
       `${noAlt.length} <img> sem alt.`,
-      noAlt.map((h) => h.index),
+      noAlt.map((h) => h.index)
     );
-  const divClick = findAll(
-    content,
-    /<div\b[^>]*\bonClick\b[^>]*>|<div\b[^>]*\bonclick\s*=[^>]*>/i,
-  );
+  const divClick = findAll(content, /<div\b[^>]*\bonClick\b[^>]*>|<div\b[^>]*\bonclick\s*=[^>]*>/i);
   if (divClick.length)
     add(
       "div-click",
       "warn",
       `${divClick.length} <div> clicável. Use <button> (teclado, foco, semântica).`,
-      divClick.map((h) => h.index),
+      divClick.map((h) => h.index)
     );
   if (isDoc) {
     if (!/<html[^>]*\blang\s*=/i.test(content))
@@ -507,8 +454,7 @@ function validate(content, file, tokens) {
     if (!/<meta[^>]*name=["']viewport["']/i.test(content))
       add("viewport", "warn", 'Falta <meta name="viewport">.');
     const h1 = heads.filter((h) => /^<h1\b/i.test(h.text)).length;
-    if (h1 !== 1)
-      add("h1-count", "info", `${h1} elementos <h1> (esperado: 1).`);
+    if (h1 !== 1) add("h1-count", "info", `${h1} elementos <h1> (esperado: 1).`);
   }
   const tiny = [];
   rules.forEach((r) =>
@@ -517,41 +463,31 @@ function validate(content, file, tokens) {
         const px = sizePx(res(d.value));
         if (px !== null && px < 12) tiny.push(d.index);
       }
-    }),
+    })
   );
-  if (tiny.length)
-    add("tiny-text", "warn", `${tiny.length} font-size < 12px.`, tiny);
+  if (tiny.length) add("tiny-text", "warn", `${tiny.length} font-size < 12px.`, tiny);
 
   // 9. movimento
   const moves =
     rules.some(
       (r) =>
         r.keyframes ||
-        r.decls.some(
-          (d) => d.prop === "animation" || d.prop.startsWith("animation-"),
-        ),
-    ) ||
-    /gsap|ScrollTrigger|requestAnimationFrame|framer-motion|anime\(/.test(
-      content,
-    );
+        r.decls.some((d) => d.prop === "animation" || d.prop.startsWith("animation-"))
+    ) || /gsap|ScrollTrigger|requestAnimationFrame|framer-motion|anime\(/.test(content);
   if (moves && !/prefers-reduced-motion/.test(content))
-    add(
-      "motion",
-      "warn",
-      "Há animação mas nenhum tratamento de prefers-reduced-motion.",
-    );
+    add("motion", "warn", "Há animação mas nenhum tratamento de prefers-reduced-motion.");
 
   // 10. repetição de classes
   const counts = new Map();
   findAll(content, /\bclass(?:Name)?\s*=\s*["']([^"']{50,})["']/).forEach((h) =>
-    counts.set(h.m[1], (counts.get(h.m[1]) || 0) + 1),
+    counts.set(h.m[1], (counts.get(h.m[1]) || 0) + 1)
   );
   const rep = [...counts.values()].filter((n) => n >= 3).length;
   if (rep)
     add(
       "repeat",
       "warn",
-      `${rep} conjunto(s) de classes repetido(s) 3+ vezes. Se são cards, varie conteúdo, escala e hierarquia.`,
+      `${rep} conjunto(s) de classes repetido(s) 3+ vezes. Se são cards, varie conteúdo, escala e hierarquia.`
     );
 
   // 11. contraste estimado (CSS)
@@ -564,7 +500,7 @@ function validate(content, file, tokens) {
   root.forEach((r) =>
     r.decls.forEach((d) => {
       rootMap[d.prop] = d;
-    }),
+    })
   );
   const pageBg = bgOf(rootMap);
   const hiddenTags = tags
@@ -587,9 +523,9 @@ function validate(content, file, tokens) {
               .pop() || "",
             h.name,
             h.cls,
-            h.id,
-          ),
-        ),
+            h.id
+          )
+        )
       )
     )
       return; // decorativo (aria-hidden)
@@ -620,20 +556,20 @@ function validate(content, file, tokens) {
         .slice(0, 3)
         .map((x) => x.t)
         .join("; ")}${lowC.length > 3 ? "…" : ""}`,
-      lowC.map((x) => x.i),
+      lowC.map((x) => x.i)
     );
 
   // 12. número + unidade
   const nu = findAll(
     bodyText,
-    /(?<![\p{L}\d])\d[\d.,]*[ ](?:mg|ml|kg|g|km|cm|mm|m|h|min|kz|aoa|%|€)(?![\p{L}\d])/giu,
+    /(?<![\p{L}\d])\d[\d.,]*[ ](?:mg|ml|kg|g|km|cm|mm|m|h|min|kz|aoa|%|€)(?![\p{L}\d])/giu
   );
   if (nu.length)
     add(
       "nbsp",
       "info",
       `${nu.length} número(s) com unidade separada por espaço normal. Use &nbsp; para não partir a linha.`,
-      nu.map((h) => h.index),
+      nu.map((h) => h.index)
     );
 
   // 13. tokens do estilo (só com --style)
@@ -662,26 +598,24 @@ function validate(content, file, tokens) {
             const h = norm(c);
             if (!allowed.has(h) && !seen.has(h)) seen.set(h, d.index);
           }
-        }),
-      ),
+        })
+      )
     );
-    [
-      ...content.matchAll(
-        /(?:fill|stroke|stop-color)\s*=\s*["'](#[0-9a-fA-F]{3,8})["']/g,
-      ),
-    ].forEach((m) => {
-      const c = C.parseColor(m[1]);
-      if (c) {
-        const h = norm(c);
-        if (!allowed.has(h) && !seen.has(h)) seen.set(h, m.index);
+    [...content.matchAll(/(?:fill|stroke|stop-color)\s*=\s*["'](#[0-9a-fA-F]{3,8})["']/g)].forEach(
+      (m) => {
+        const c = C.parseColor(m[1]);
+        if (c) {
+          const h = norm(c);
+          if (!allowed.has(h) && !seen.has(h)) seen.set(h, m.index);
+        }
       }
-    });
+    );
     if (seen.size)
       add(
         "palette-drift",
         "info",
         `${seen.size} cor(es) fora do token "${styleId}": ${[...seen.keys()].slice(0, 8).join(", ")}${seen.size > 8 ? "…" : ""}. Se forem cor do PRODUTO ou pedidas pelo utilizador, passe --allow.`,
-        [...seen.values()].slice(0, 5),
+        [...seen.values()].slice(0, 5)
       );
     // accent espalhado
     const kinds = new Set();
@@ -708,9 +642,9 @@ function validate(content, file, tokens) {
               ? "borda"
               : /^background/.test(d.prop)
                 ? "fundo"
-                : "sombra/efeito",
+                : "sombra/efeito"
         );
-      }),
+      })
     );
     const loud = tokens.intensity === "loud",
       maxUses = loud ? 14 : 8,
@@ -720,17 +654,13 @@ function validate(content, file, tokens) {
         "accent-spread",
         "warn",
         `Accent (${accHex}) em ${uses} declarações e ${kinds.size} tipos (${[...kinds].join(", ")}). Reserve-o a CTA/estado ativo/1 gesto tipográfico.`,
-        accIdx,
+        accIdx
       );
     // fontes
     const lc = content.toLowerCase();
     [tokens.font_display, tokens.font_body].filter(Boolean).forEach((f) => {
       if (!lc.includes(f.toLowerCase()))
-        add(
-          "fonts",
-          "info",
-          `Fonte do token "${f}" não encontrada no ficheiro.`,
-        );
+        add("fonts", "info", `Fonte do token "${f}" não encontrada no ficheiro.`);
     });
   }
   return F;
@@ -739,7 +669,7 @@ function validate(content, file, tokens) {
 // ---------- execução ----------
 if (!files.length) {
   console.error(
-    "Uso: node tools/validate-design.js <ficheiro...> [--style id] [--allow #hex] [--strict] [--json]",
+    "Uso: node tools/validate-design.js <ficheiro...> [--style id] [--allow #hex] [--strict] [--json]"
   );
   process.exit(1);
 }
@@ -761,7 +691,7 @@ if (asJson) console.log(JSON.stringify(all, null, 2));
 else
   for (const r of all) {
     console.log(
-      `\n--- 🛡️ AI DESIGN ENGINE v3 · ${r.file}${r.style ? ` · style ${r.style}` : ""} ---`,
+      `\n--- 🛡️ AI DESIGN ENGINE v3 · ${r.file}${r.style ? ` · style ${r.style}` : ""} ---`
     );
     const w = r.findings.filter((x) => x.severity === "warn"),
       i = r.findings.filter((x) => x.severity === "info");
@@ -769,7 +699,7 @@ else
     w.forEach((x) => console.log(`⚠️  [${x.id}] ${x.message}`));
     i.forEach((x) => console.log(`ℹ️  [${x.id}] ${x.message}`));
     console.log(
-      `(${w.length} aviso(s), ${i.length} info) · heurístico/estático: confirme no contexto e renderizado.`,
+      `(${w.length} aviso(s), ${i.length} info) · heurístico/estático: confirme no contexto e renderizado.`
     );
   }
 if (strict && warns > 0) process.exit(1);

@@ -22,9 +22,7 @@ function parseColor(input) {
       a: parseInt(h.slice(6, 8), 16) / 255,
     };
   }
-  m = s.match(
-    /^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)(?:\s*[,/]\s*([\d.]+)(%?))?\s*\)$/,
-  );
+  m = s.match(/^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)(?:\s*[,/]\s*([\d.]+)(%?))?\s*\)$/);
   if (m) {
     let a = m[4] === undefined ? 1 : parseFloat(m[4]);
     if (m[5] === "%") a /= 100;
@@ -36,8 +34,7 @@ const lin = (v) => {
   v /= 255;
   return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
 };
-const luminance = (c) =>
-  0.2126 * lin(c.r) + 0.7152 * lin(c.g) + 0.0722 * lin(c.b);
+const luminance = (c) => 0.2126 * lin(c.r) + 0.7152 * lin(c.g) + 0.0722 * lin(c.b);
 function contrast(a, b) {
   const A = typeof a === "string" ? parseColor(a) : a,
     B = typeof b === "string" ? parseColor(b) : b;
@@ -56,12 +53,7 @@ function blend(fg, bg) {
   };
 }
 function toHex(c) {
-  return (
-    "#" +
-    [c.r, c.g, c.b]
-      .map((v) => Math.round(v).toString(16).padStart(2, "0"))
-      .join("")
-  );
+  return "#" + [c.r, c.g, c.b].map((v) => Math.round(v).toString(16).padStart(2, "0")).join("");
 }
 function hsl(c) {
   const r = c.r / 255,
@@ -73,12 +65,7 @@ function hsl(c) {
   if (mx === mn) return { h: 0, s: 0, l };
   const d = mx - mn,
     s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
-  let h =
-    mx === r
-      ? (g - b) / d + (g < b ? 6 : 0)
-      : mx === g
-        ? (b - r) / d + 2
-        : (r - g) / d + 4;
+  let h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
   return { h: h * 60, s, l };
 }
 // Roxo/índigo "genérico de IA": matiz 255–305°, saturação razoável, nem muito escuro nem muito claro.
@@ -89,9 +76,7 @@ function isGenericPurple(c) {
 function bestOn(c) {
   const k = contrast(c, "#0a0a0a"),
     w = contrast(c, "#ffffff");
-  return k >= w
-    ? { color: "#0A0A0A", ratio: k }
-    : { color: "#FFFFFF", ratio: w };
+  return k >= w ? { color: "#0A0A0A", ratio: k } : { color: "#FFFFFF", ratio: w };
 }
 module.exports = {
   parseColor,

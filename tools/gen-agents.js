@@ -6,7 +6,8 @@
 const fs = require("fs");
 const path = require("path");
 const ROOT = path.resolve(__dirname, "..");
-const HEADER = "<!-- GERADO por `node tools/gen-agents.js` a partir de agents/PROTOCOL.md. NÃO EDITAR À MÃO. -->";
+const HEADER =
+  "<!-- GERADO por `node tools/gen-agents.js` a partir de agents/PROTOCOL.md. NÃO EDITAR À MÃO. -->";
 const nl = (s) => s.replace(/\r\n/g, "\n");
 const read = (p) => nl(fs.readFileSync(path.join(ROOT, p), "utf8"));
 
@@ -42,7 +43,9 @@ function llms() {
     L("Estilos", "02-styles-and-tokens/design-styles.json", "tokens por estilo"),
     "",
     "## Por host",
-    ...["claude", "chatgpt", "cursor", "copilot", "gemini", "windsurf", "generic"].map((h) => L(h, `agents/hosts/${h}.md`, "como carregar e limites")),
+    ...["claude", "chatgpt", "cursor", "copilot", "gemini", "windsurf", "generic"].map((h) =>
+      L(h, `agents/hosts/${h}.md`, "como carregar e limites")
+    ),
   ].join("\n")}\n`;
 }
 
@@ -86,11 +89,18 @@ function write() {
 if (require.main === module) {
   if (process.argv.includes("--check")) {
     const d = check();
-    if (d.length) { console.error(`Atalhos desatualizados:\n  ${d.join("\n  ")}\nCorra: node tools/gen-agents.js`); process.exit(1); }
+    if (d.length) {
+      console.error(
+        `Atalhos desatualizados:\n  ${d.join("\n  ")}\nCorra: node tools/gen-agents.js`
+      );
+      process.exit(1);
+    }
     console.log("✅ Atalhos de agentes em sincronia com agents/PROTOCOL.md");
   } else {
     write();
-    console.log(`✅ ${Object.keys(targets()).length} ficheiros gerados a partir de agents/PROTOCOL.md`);
+    console.log(
+      `✅ ${Object.keys(targets()).length} ficheiros gerados a partir de agents/PROTOCOL.md`
+    );
   }
 }
 module.exports = { targets, check, write };

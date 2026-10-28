@@ -18,7 +18,12 @@
     "ref:ingest": "node tools/ref-ingest.js",
     "agents:gen": "node tools/gen-agents.js",
     "agents:check": "node tools/gen-agents.js --check",
-    "bundle": "node tools/bundle.js"
+    "bundle": "node tools/bundle.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.5.0"
   },
   "repository": {
     "type": "git",

@@ -22,9 +22,7 @@ const has = (hay, term) => {
 
 function route(prompt) {
   const cat = JSON.parse(read("03-references/local-presets.json"));
-  const styles = JSON.parse(
-    read("02-styles-and-tokens/design-styles.json"),
-  ).styles;
+  const styles = JSON.parse(read("02-styles-and-tokens/design-styles.json")).styles;
   const text = norm(prompt);
   const nonNiche = new Set((cat.non_niche_terms || []).map(norm));
 
@@ -65,9 +63,7 @@ function route(prompt) {
       sources: best.p.sources || [],
       principles: best.p.principles || [],
     };
-    const v = (best.p.variants || []).find((x) =>
-      x.when_any.some((t) => has(text, t)),
-    );
+    const v = (best.p.variants || []).find((x) => x.when_any.some((t) => has(text, t)));
     if (v) {
       out.variant_applied = {
         style_id: v.style_id,
@@ -80,11 +76,8 @@ function route(prompt) {
     // 2) sem nicho mapeado: pontuar keywords dos estilos (ignorando adjetivos de tom)
     let top = null;
     Object.entries(styles).forEach(([id, s], i) => {
-      const hits = (s.keywords || []).filter(
-        (k) => !nonNiche.has(norm(k)) && has(text, k),
-      );
-      if (hits.length && (!top || hits.length > top.hits.length))
-        top = { id, hits, i };
+      const hits = (s.keywords || []).filter((k) => !nonNiche.has(norm(k)) && has(text, k));
+      if (hits.length && (!top || hits.length > top.hits.length)) top = { id, hits, i };
     });
     patterns = cat.fallback.patterns;
     extra = {
@@ -105,18 +98,21 @@ function route(prompt) {
         "sem nicho nem keywords reconhecidos; fallback local. Se faltar informação essencial, fazer UMA pergunta curta.";
     }
   }
-  out.alternatives = cands.slice(1).map((c) => ({ preset_id: c.p.id, matched_terms: c.hits, style_id: c.p.style_id }));
+  out.alternatives = cands
+    .slice(1)
+    .map((c) => ({ preset_id: c.p.id, matched_terms: c.hits, style_id: c.p.style_id }));
   const second = cands[1];
   out.weak_only = !!best && best.tier === 1;
-  out.confidence = !best || out.weak_only
-    ? "low"
-    : !second || second.tier < best.tier
-      ? "high"
-      : best.spec - second.spec >= 3
-        ? "medium"
-        : second.p.style_id !== best.p.style_id
-          ? "low"
-          : "medium";
+  out.confidence =
+    !best || out.weak_only
+      ? "low"
+      : !second || second.tier < best.tier
+        ? "high"
+        : best.spec - second.spec >= 3
+          ? "medium"
+          : second.p.style_id !== best.p.style_id
+            ? "low"
+            : "medium";
   out.base_style_id = base;
   out.style_id = out.style_id || base;
   const style = styles[out.style_id];
@@ -149,7 +145,15 @@ function brief(r, refs = null) {
     .join("; ");
   return [
     "DESIGN BRIEF",
-    `- Nicho / público: ${r.preset_id || "(sem nicho mapeado)"} [confiança ${r.confidence}${r.alternatives.length ? "; também casa com " + r.alternatives.slice(0, 2).map((a) => a.preset_id).join(", ") : ""}]${r.confidence === "low" ? " — CONFIRMAR O NICHO COM O UTILIZADOR" : ""} — <preencher público>`,
+    `- Nicho / público: ${r.preset_id || "(sem nicho mapeado)"} [confiança ${r.confidence}${
+      r.alternatives.length
+        ? "; também casa com " +
+          r.alternatives
+            .slice(0, 2)
+            .map((a) => a.preset_id)
+            .join(", ")
+        : ""
+    }]${r.confidence === "low" ? " — CONFIRMAR O NICHO COM O UTILIZADOR" : ""} — <preencher público>`,
     `- Tom: ${tone.length ? tone.join(", ") : "<preencher>"} → intensidade ${r.intensity}`,
     `- style_id + justificação: ${r.style_id}${r.variant_applied ? ` (variante: ${r.variant_applied.because.join(", ")})` : ""} — ${r.reason}`,
     `- Modo e tipografia: ${t.mode} · ${t.typography}`,
@@ -174,10 +178,8 @@ function archetypeLines(r) {
   return [...new Set(ids)].map(
     (id) =>
       md.find(
-        (l) =>
-          new RegExp(`^\\|\\s*${id}\\s*\\|`).test(l) ||
-          new RegExp(`^- \\*\\*${id}\\b`).test(l),
-      ) || `${id}: (ver layout-archetypes.md)`,
+        (l) => new RegExp(`^\\|\\s*${id}\\s*\\|`).test(l) || new RegExp(`^- \\*\\*${id}\\b`).test(l)
+      ) || `${id}: (ver layout-archetypes.md)`
   );
 }
 
@@ -223,13 +225,12 @@ function context(r, refs = null, capabilities = null) {
           `Capacidades: conector=${capabilities.connectors.join(",") || "—"} · biblioteca=${capabilities.library} · playwright=${capabilities.playwright ? "sim" : "não"} · modo=${refs[0] ? refs[0].level : "L4"}`,
           ...refs.map(
             (x, i) =>
-              `${i + 1}. [${x.level}] ${x.id} — acesso: ${x.access} → extrair: ${x.extract} | não copiar: ${x.do_not_copy}`,
+              `${i + 1}. [${x.level}] ${x.id} — acesso: ${x.access} → extrair: ${x.extract} | não copiar: ${x.do_not_copy}`
           ),
           "",
         ]
       : []),
-    "Depois de construir: node tools/validate-design.js <ficheiro> --style " +
-      r.style_id,
+    "Depois de construir: node tools/validate-design.js <ficheiro> --style " + r.style_id,
   ].join("\n");
 }
 
@@ -241,9 +242,7 @@ function main() {
     .join(" ")
     .trim();
   if (!prompt) {
-    console.error(
-      'Uso: node tools/route.js "<pedido>" [--json|--brief|--context]',
-    );
+    console.error('Uso: node tools/route.js "<pedido>" [--json|--brief|--context]');
     process.exit(1);
   }
   const r = route(prompt);
@@ -254,17 +253,13 @@ function main() {
       path = require("path");
     const root = path.resolve(__dirname, "..");
     const configFile = path.join(root, "ade.config.json");
-    const config = fs.existsSync(configFile)
-      ? JSON.parse(fs.readFileSync(configFile, "utf8"))
-      : {};
+    const config = fs.existsSync(configFile) ? JSON.parse(fs.readFileSync(configFile, "utf8")) : {};
     const rc = config.references || {};
     const connectorNames = [
       ...new Set([
         ...(rc.connectors || []),
-        ...Object.keys(
-          require("../03-references/reference-sources.json").connectors,
-        ).filter((n) =>
-          Object.keys(process.env).some((k) => k.toLowerCase().includes(n)),
+        ...Object.keys(require("../03-references/reference-sources.json").connectors).filter((n) =>
+          Object.keys(process.env).some((k) => k.toLowerCase().includes(n))
         ),
       ]),
     ];
@@ -289,27 +284,32 @@ function main() {
   }
   if (flags.includes("--json"))
     console.log(
-      JSON.stringify(
-        { ...r, ...(refs ? { references: refs, capabilities } : {}) },
-        null,
-        2,
-      ),
+      JSON.stringify({ ...r, ...(refs ? { references: refs, capabilities } : {}) }, null, 2)
     );
-  else if (flags.includes("--context"))
-    console.log(context(r, refs, capabilities));
+  else if (flags.includes("--context")) console.log(context(r, refs, capabilities));
   else if (flags.includes("--brief")) console.log(brief(r, refs));
   else {
     console.log(
-      `style_id:   ${r.style_id}${r.variant_applied ? `  (variante de ${r.base_style_id})` : ""}`,
+      `style_id:   ${r.style_id}${r.variant_applied ? `  (variante de ${r.base_style_id})` : ""}`
     );
     console.log(`caminho:    ${r.selection_path} — ${r.reason}`);
-    console.log(`confiança:  ${r.confidence}${r.weak_only ? ' (só termo genérico)' : ''}${r.alternatives.length ? ' · também casa com: ' + r.alternatives.slice(0, 3).map((x) => x.preset_id).join(', ') : ''}`);
+    console.log(
+      `confiança:  ${r.confidence}${r.weak_only ? " (só termo genérico)" : ""}${
+        r.alternatives.length
+          ? " · também casa com: " +
+            r.alternatives
+              .slice(0, 3)
+              .map((x) => x.preset_id)
+              .join(", ")
+          : ""
+      }`
+    );
     console.log(`intensidade:${r.intensity}`);
     console.log(
-      `hero:       ${r.patterns.hero}  features: ${r.patterns.features.join("/")}  prova: ${r.patterns.social_proof.join("/")}  nav: ${r.patterns.navigation}  rodapé: ${r.patterns.footer}`,
+      `hero:       ${r.patterns.hero}  features: ${r.patterns.features.join("/")}  prova: ${r.patterns.social_proof.join("/")}  nav: ${r.patterns.navigation}  rodapé: ${r.patterns.footer}`
     );
     console.log(
-      "\n(use --brief para o esqueleto do DESIGN BRIEF ou --context para o pacote de contexto compacto)",
+      "\n(use --brief para o esqueleto do DESIGN BRIEF ou --context para o pacote de contexto compacto)"
     );
   }
 }
