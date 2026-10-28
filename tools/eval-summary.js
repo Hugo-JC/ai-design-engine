@@ -36,9 +36,14 @@ function isComplete(scores, criteria) {
   );
 }
 
+function hasKeys(scores, criteria) {
+  return Boolean(scores && criteria.every((key) => Object.prototype.hasOwnProperty.call(scores, key)));
+}
+
 function schemaFor(run) {
-  if (isComplete(run.scores, CRIT)) return "v2";
-  if (isComplete(run.scores, LEGACY_CRIT)) return "legacy";
+  // Detect the rubric even when the template is still blank; completeness is checked separately.
+  if (hasKeys(run.scores, CRIT)) return "v2";
+  if (hasKeys(run.scores, LEGACY_CRIT)) return "legacy";
   return null;
 }
 
@@ -50,7 +55,11 @@ function summarize(data) {
   // Prefer the new rubric when present; otherwise retain support for legacy result files.
   const schema = allRuns.some((run) => run.schema === "v2") ? "v2" : "legacy";
   const criteria = schema === "v2" ? CRIT : LEGACY_CRIT;
-  const runs = allRuns.filter((run) => run.schema === schema);
+  const runs = allRuns.filter(
+    (run) =>
+      run.schema === schema &&
+      isComplete(run.scores, schema === "v2" ? CRIT : LEGACY_CRIT)
+  );
   const maxScore = criteria.length * 2;
   const total = (run) => criteria.reduce((sum, key) => sum + run.scores[key], 0);
   const mean = (values) =>
