@@ -5,7 +5,7 @@
 ## Começar aqui
 - [Protocolo (obrigatório)](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/agents/PROTOCOL.md): critério de sucesso e passos
 - [Bootstrap para chat](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/BOOTSTRAP.md): protocolo pronto a colar
-- [Núcleo de regras](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/CORE.md): regras operacionais e anti-monocultura visual
+- [Núcleo de regras](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/CORE.md): as 14 regras que mais falham
 - [Playbook de direção visual](https://raw.githubusercontent.com/Hugo-JC/ai-design-engine/main/03-references/design-intelligence-playbook.md): referências, tipografia, espaço, composição e motion
 
 ## Ferramentas

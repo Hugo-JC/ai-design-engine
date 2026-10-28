@@ -9,7 +9,7 @@ const ROOT = path.resolve(__dirname, "..");
 const HEADER =
   "<!-- GERADO por `node tools/gen-agents.js` a partir de agents/PROTOCOL.md. NÃO EDITAR À MÃO. -->";
 const nl = (s) => s.replace(/\r\n/g, "\n");
-const norm = (s) => nl(s).trimEnd();
+const norm = (s) => nl(s).replace(/\n+$/, "\n");
 const read = (p) => norm(fs.readFileSync(path.join(ROOT, p), "utf8"));
 
 function rawBase() {
@@ -75,7 +75,8 @@ function check() {
   return Object.entries(targets())
     .filter(([f, c]) => {
       const p = path.join(ROOT, f);
-      const actual = fs.existsSync(p) ? norm(fs.readFileSync(p, "utf8")) : null;
+      if (!fs.existsSync(p)) return true;
+      const actual = norm(fs.readFileSync(p, "utf8"));
       return actual !== norm(c);
     })
     .map(([f]) => f);
