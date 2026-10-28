@@ -25,6 +25,17 @@ function build(prompt) {
   if (r.status !== 0)
     throw new Error(`route.js falhou (exit ${r.status}): ${(r.stderr || "").split("\n")[0]}`);
   const rules = section(read("CORE.md"), "As 14 regras que mais falham");
+  const visualDirection = [
+    "## Direção visual anti-monocultura (resumo do playbook)",
+    "- Escolha tipografia, composição, ritmo de espaço e motion para a marca concreta; não reutilize automaticamente a mesma família de fontes, hero, paleta, cartões ou animações.",
+    "- Referências de contraste: Tim Wendelboe (produto e história com respiro editorial), Aesop (contenção sensorial e contexto), Apple (demonstração focada no produto), Linear (clareza de produto digital), Stripe (complexidade organizada). Extraia princípios, nunca copie layout, copy, imagens ou identidade.",
+    "- Tipografia: defina display e texto; uma terceira família só se tiver função. Inter, Poppins, DM Sans e Space Grotesk são opções, não defaults universais.",
+    "- Espaço: container de leitura, margens generosas e escala de 8 px; varie gaps conforme a relação e dê espaço vertical real entre secções. Nem tudo precisa de ser um card ou uma grelha.",
+    "- Composição: escolha o hero e a ordem das secções pelo conteúdo; o split esquerda/direita e três cards iguais não são defaults.",
+    "- Motion: escolha no máximo 2–3 famílias úteis. Feedback imediato e subtil; scroll reveal discreto; nada de tilt, cursor personalizado, parallax forte, blobs em loop ou cascatas longas por decoração.",
+    "- Respeite prefers-reduced-motion; não esconda conteúdo essencial enquanto animações ou JavaScript carregam.",
+    "- Auditoria: se retirar o logótipo, a página ainda parece pertencer à marca? Se não, reveja a direção visual, não apenas o polimento.",
+  ].join("\\n");
   return nl(
     [
       "<!-- ADE-CONTEXT: gerado por tools/bundle.js para o pedido abaixo. Anexe/cole este ficheiro no chat. -->",
@@ -35,6 +46,8 @@ function build(prompt) {
       read("agents/PROTOCOL.md").trimEnd(),
       "",
       rules,
+      "",
+      visualDirection,
       "",
       "## Contexto do router (saída de `route --context --refs`)",
       r.stdout.trimEnd(),
