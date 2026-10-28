@@ -52,7 +52,7 @@ function llms() {
 }
 
 function bootstrap(proto) {
-  return `${HEADER}\n\n# BOOTSTRAP: cola isto no início da conversa\n\n${proto}\n## Sem execução de código (chat)\nPede ao utilizador o \`ADE-CONTEXT.md\`. Se não o tiver, trabalha só com este protocolo: faz o brief à mão e, no fim, cita por regra a linha do teu código que a cumpre. Diz que não correste o código e que não tens o contexto completo.\n`;
+  return `${HEADER}\n\n# BOOTSTRAP: cola isto no início da conversa\n\n${proto}## Sem execução de código (chat)\nPede ao utilizador o \`ADE-CONTEXT.md\`. Se não o tiver, trabalha só com este protocolo: faz o brief à mão e, no fim, cita por regra a linha do teu código que a cumpre. Diz que não correste o código e que não tens o contexto completo.\n`;
 }
 
 function targets() {
